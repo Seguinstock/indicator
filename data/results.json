@@ -1,0 +1,13 @@
+{
+  "updated": "démo",
+  "buy": [
+    {"symbol": "ATD", "score": 83.4, "country": "CA"},
+    {"symbol": "NVDA", "score": 81.7, "country": "US"},
+    {"symbol": "CNQ", "score": 79.2, "country": "CA"},
+    {"symbol": "DE", "score": 77.8, "country": "US"}
+  ],
+  "sell": [
+    {"symbol": "CNQ", "score": 72.4, "country": "CA"},
+    {"symbol": "NVDA", "score": 68.1, "country": "US"}
+  ]
+}
