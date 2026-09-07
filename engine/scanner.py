@@ -18,6 +18,7 @@ SUPPORT_RECENCY_MAX, SUPPORT_RECENCY_DECAY, SUPPORT_PROXIMITY_MAX = 15, 0.075, 1
 TREND_SLOW, TREND_SLOPE_BACK = 200, 20
 TREND_BUY_FACTORS = {1: 1.05, -0.5: 0.90, -1: 0.85, -2: 0.70}
 TREND_SELL_FACTORS = {-1: 1.05, 0.5: 0.90, 1: 0.85, 2: 0.70}
+TREND_POTENTIAL = {-2:0.0,-1:0.1,-0.5:0.25,0:0.5,0.5:0.65,1:0.8,2:1.0}
 
 def yahoo_symbol(symbol, market):
     s = symbol.replace('.', '-')
@@ -72,7 +73,7 @@ def macd_v14(close):
     idx = .55*(100*math.tanh(momz/1.5)) + .30*(100*math.tanh(accz/1.5)) + .15*(100*math.tanh(posz/1.5))
     return float(np.clip(idx,-100,100))
 
-def support_v14(low, current_price):
+def support_v14(low, current_price, max_age=SUPPORT_MAX_AGE):
     lo = np.asarray(low,dtype=float); cnt=len(lo)
     if cnt < SUPPORT_MIN_HISTORY or not np.isfinite(current_price): return np.nan,np.nan,np.nan,np.nan
     cp=[]; ca=[]; sw=SUPPORT_HALF_WINDOW
@@ -80,7 +81,7 @@ def support_v14(low, current_price):
         level=lo[i]
         if level < np.min(lo[i-sw:i]) and level < np.min(lo[i+1:i+sw+1]):
             age=cnt-(i+1)
-            if age <= SUPPORT_MAX_AGE and level < current_price: cp.append(float(level)); ca.append(float(age))
+            if age <= max_age and level < current_price: cp.append(float(level)); ca.append(float(age))
     if not cp: return np.nan,np.nan,np.nan,np.nan
     cp=np.asarray(cp); ca=np.asarray(ca); centers=[]; strengths=[]; distances=[]
     for level in cp:
@@ -142,6 +143,35 @@ def trend_v14(close):
     if p<mas and down: return -.5
     return 0.0
 
+def clip01(x):
+    return float(np.clip(x,0,1))
+
+def buy_potential_score(rsi, rvol, trend, volatility_pct, support_distance_pct, cfg):
+    m=cfg['buy_model']
+    v0=float(m['volatility_floor_pct']); v1=float(m['volatility_full_pct'])
+    rv0=float(m['rvol_floor']); rv1=float(m['rvol_full'])
+    rt=float(m['rsi_target']); rr=max(float(m['rsi_range']),0.0001)
+    sd=max(float(m['support_max_distance_pct']),0.0001)
+    q_vol=clip01((volatility_pct-v0)/max(v1-v0,0.0001)) if np.isfinite(volatility_pct) else 0.0
+    q_trend=TREND_POTENTIAL.get(float(trend),0.5)
+    q_rvol=clip01((rvol-rv0)/max(rv1-rv0,0.0001)) if np.isfinite(rvol) else 0.0
+    q_rsi=clip01(1-abs(rsi-rt)/rr)
+    q_support=0.5 if not np.isfinite(support_distance_pct) else clip01((sd-support_distance_pct)/sd)
+    weights={
+        'volatility':float(m['volatility_weight']),
+        'trend':float(m['trend_weight']),
+        'rvol':float(m['rvol_weight']),
+        'rsi':float(m['rsi_weight']),
+        'support':float(m['support_weight'])
+    }
+    quality={'volatility':q_vol,'trend':q_trend,'rvol':q_rvol,'rsi':q_rsi,'support':q_support}
+    total=sum(max(w,0) for w in weights.values())
+    if total<=0: return 0.0,{k:0.0 for k in quality}
+    points={k:max(weights[k],0)*quality[k] for k in quality}
+    score=100*sum(points.values())/total
+    components={k:round(100*points[k]/total,1) for k in points}
+    return float(np.clip(score,0,100)),components
+
 def calc(row,h,cfg):
     h=restrict_v14_history(h)
     if len(h)<30: return None
@@ -149,12 +179,14 @@ def calc(row,h,cfg):
     r,rp=wilder_rsi(c,int(cfg['indicators']['rsi_period']))
     if not np.isfinite(r) or not np.isfinite(rp): return None
     dr=r-rp; rvn=int(cfg['indicators']['rvol_period']); ref=v[-(rvn+1):-1] if len(v)>rvn else np.array([]); rvol=float(v[-1]/np.mean(ref)) if len(ref) and np.mean(ref)>0 else np.nan
-    macd_idx=macd_v14(c); support,dist,support_score,support_strength=support_v14(low,price); trend=trend_v14(c)
+    max_age=int(cfg['indicators'].get('support_lookback',SUPPORT_MAX_AGE)); macd_idx=macd_v14(c); support,dist,support_score,support_strength=support_v14(low,price,max_age=max_age); trend=trend_v14(c)
     vc=c[-min(VOL_WINDOW,len(c)):]; ret=vc[1:]/vc[:-1]-1; vol_daily=sample_std(ret) if len(ret)>=2 else np.nan; vol_ann=vol_daily*math.sqrt(TRADING_DAYS) if np.isfinite(vol_daily) else np.nan
     rebound=rsi_points(r)+delta_rsi_points(dr)+(rvol_points(rvol) if np.isfinite(rvol) else 0)+(support_score if np.isfinite(support_score) else 0)
     timing_raw=float(np.clip(rebound+(macd_idx if np.isfinite(macd_idx) else 0)/100*10,0,100)); timing_corrected=float(np.clip(timing_raw*TREND_BUY_FACTORS.get(trend,1),0,100))
+    vol_pct=vol_ann*100 if np.isfinite(vol_ann) else np.nan; dist_pct=dist*100 if np.isfinite(dist) else np.nan
+    potential,components=buy_potential_score(r,rvol,trend,vol_pct,dist_pct,cfg)
     f=cfg['filters']; checks={'rsi':(not f['rsi']['enabled']) or r<=f['rsi']['buy_max'],'reversal':(not f['reversal']['enabled']) or dr>=f['reversal']['min_delta'],'support':(not f['support']['enabled']) or (np.isfinite(dist) and dist<=f['support']['max_distance_pct']/100),'rvol':(not f['rvol']['enabled']) or (np.isfinite(rvol) and rvol>=f['rvol']['min']),'macd':(not f['macd']['enabled']) or (np.isfinite(macd_idx) and macd_idx>=f['macd']['min_momentum']),'trend':(not f['trend']['enabled']) or trend>=f['trend']['min']}
-    return {'symbol':row['symbol'],'market':row['market'],'country':row['country'],'price':round(price,2),'rsi':round(r,1),'delta_rsi':round(dr,1),'rvol':round(rvol,2) if np.isfinite(rvol) else None,'support':round(support,2) if np.isfinite(support) else None,'support_distance_pct':round(dist*100,1) if np.isfinite(dist) else None,'support_score':round(support_score,1) if np.isfinite(support_score) else None,'support_strength':round(support_strength,1) if np.isfinite(support_strength) else None,'macd_momentum':round(macd_idx,1) if np.isfinite(macd_idx) else None,'trend':trend,'volatility_pct':round(vol_ann*100,1) if np.isfinite(vol_ann) else None,'timing_v14':round(timing_corrected,1),'filters':checks,'passed':all(checks.values()),'score':round(timing_corrected,1)}
+    return {'symbol':row['symbol'],'market':row['market'],'country':row['country'],'price':round(price,2),'rsi':round(r,1),'delta_rsi':round(dr,1),'rvol':round(rvol,2) if np.isfinite(rvol) else None,'support':round(support,2) if np.isfinite(support) else None,'support_distance_pct':round(dist_pct,1) if np.isfinite(dist_pct) else None,'support_score':round(support_score,1) if np.isfinite(support_score) else None,'support_strength':round(support_strength,1) if np.isfinite(support_strength) else None,'macd_momentum':round(macd_idx,1) if np.isfinite(macd_idx) else None,'trend':trend,'volatility_pct':round(vol_pct,1) if np.isfinite(vol_pct) else None,'timing_v14':round(timing_corrected,1),'buy_timing':round(timing_corrected,1),'potential_components':components,'potential_score':round(potential,1),'filters':checks,'passed':all(checks.values()),'score':round(potential,1)}
 
 def percentrank(values,x):
     a=np.sort(np.asarray([v for v in values if v is not None and np.isfinite(v)],dtype=float))
@@ -203,7 +235,7 @@ def main():
                 else: failed_symbols.append(r['symbol'])
             except Exception as e: errors.append(f"{r['symbol']}: {e}"); failed_symbols.append(r['symbol'])
         time.sleep(1)
-    buy=sorted([x for x in results if x['passed']],key=lambda x:x['score'],reverse=True)
+    buy=sorted(results,key=lambda x:x['score'],reverse=True)
     vols=[x['volatility_pct'] for x in results if x['volatility_pct'] is not None]
     ranked={}
     for x in results:
@@ -219,7 +251,7 @@ def main():
         sell=sorted([ranked[s] for s in p['held'] if s in ranked],key=lambda x:x['score'],reverse=True)
         sell_by_portfolio[pid]=sell[:cfg['visualisation']['sell_count']]
     default_sell=sell_by_portfolio.get('michel',[])
-    out={'updated':datetime.now(timezone.utc).astimezone().strftime('%Y-%m-%d %H:%M'),'universe':len(rows),'analyzed':len(results),'errors':len(errors),'failed_symbols':sorted(set(failed_symbols)),'buy':buy[:cfg['visualisation']['buy_count']],'sell':default_sell,'sell_by_portfolio':sell_by_portfolio,'portfolios':[{'id':pid,'name':p['name']} for pid,p in portfolios.items()]}
+    out={'updated':datetime.now(timezone.utc).astimezone().strftime('%Y-%m-%d %H:%M'),'universe':len(rows),'analyzed':len(results),'errors':len(errors),'failed_symbols':sorted(set(failed_symbols)),'buy_model':'potential_v1','buy':buy[:cfg['visualisation']['buy_count']],'sell':default_sell,'sell_by_portfolio':sell_by_portfolio,'portfolios':[{'id':pid,'name':p['name']} for pid,p in portfolios.items()]}
     (ROOT/'data/results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
     counts=', '.join(f"{pid}={len(v)}" for pid,v in sell_by_portfolio.items())
     print(f"Analyzed {len(results)}/{len(rows)}; buy={len(buy)} sell[{counts}] errors={len(errors)} failed={len(set(failed_symbols))}")
