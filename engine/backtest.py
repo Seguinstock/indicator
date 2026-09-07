@@ -1,4 +1,4 @@
-import csv, json, time, os
+import csv, json, time, os, math
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -31,6 +31,14 @@ def calc_asof(row, h, cfg):
         scanner.restrict_v14_history = old
 
 
+def finite_or_none(v):
+    try:
+        v=float(v)
+        return v if math.isfinite(v) else None
+    except Exception:
+        return None
+
+
 def forward_stats(h, entry):
     idx = pd.to_datetime(h.index).tz_localize(None) if getattr(pd.to_datetime(h.index), 'tz', None) else pd.to_datetime(h.index)
     f = h.loc[(idx > ASOF) & (idx <= END)].copy()
@@ -40,11 +48,13 @@ def forward_stats(h, entry):
     lows = f['Low'].astype(float).to_numpy()
     highs = f['High'].astype(float).to_numpy()
     end_price = float(closes[-1])
+    low = finite_or_none(np.nanmin(lows)) if np.isfinite(lows).any() else None
+    high = finite_or_none(np.nanmax(highs)) if np.isfinite(highs).any() else None
     return {
         'end_price': round(end_price, 4),
         'return_pct': round((end_price / entry - 1) * 100, 2),
-        'max_drawdown_pct': round((float(np.nanmin(lows)) / entry - 1) * 100, 2),
-        'max_upside_pct': round((float(np.nanmax(highs)) / entry - 1) * 100, 2),
+        'max_drawdown_pct': round((low / entry - 1) * 100, 2) if low is not None else None,
+        'max_upside_pct': round((high / entry - 1) * 100, 2) if high is not None else None,
     }
 
 
@@ -63,13 +73,13 @@ def summarize(rows):
         a=[r for r in rows if r['bucket']==name]
         if not a: continue
         rets=np.array([r['return_pct'] for r in a],dtype=float)
-        dds=np.array([r['max_drawdown_pct'] for r in a],dtype=float)
+        dds=np.array([np.nan if r['max_drawdown_pct'] is None else r['max_drawdown_pct'] for r in a],dtype=float)
         out[name]={
             'n':len(a),
             'avg_return_pct':round(float(np.nanmean(rets)),2),
             'median_return_pct':round(float(np.nanmedian(rets)),2),
             'win_rate_pct':round(float(np.mean(rets>0)*100),1),
-            'avg_max_drawdown_pct':round(float(np.nanmean(dds)),2),
+            'avg_max_drawdown_pct':round(float(np.nanmean(dds)),2) if np.isfinite(dds).any() else None,
         }
     return out
 
@@ -82,6 +92,17 @@ def filter_effect(rows, key):
         x=np.array([r['return_pct'] for r in a],dtype=float)
         return {'n':len(a),'avg_return_pct':round(float(np.nanmean(x)),2),'median_return_pct':round(float(np.nanmedian(x)),2),'win_rate_pct':round(float(np.mean(x>0)*100),1)}
     return {'pass':s(yes),'fail':s(no)}
+
+
+def clean_json(v):
+    if isinstance(v, dict): return {k:clean_json(x) for k,x in v.items()}
+    if isinstance(v, list): return [clean_json(x) for x in v]
+    if isinstance(v, (np.bool_,)): return bool(v)
+    if isinstance(v, (np.integer,)): return int(v)
+    if isinstance(v, (np.floating, float)):
+        x=float(v)
+        return x if math.isfinite(x) else None
+    return v
 
 
 def main():
@@ -112,7 +133,7 @@ def main():
                 y['filters']={k:bool(v) for k,v in x['filters'].items()}
                 y['passed']=bool(x['passed'])
                 y.update(fwd); y['bucket']=bucket(float(x['score']))
-                tested.append(y)
+                tested.append(clean_json(y))
             except Exception:
                 failed.append(r['symbol'])
         time.sleep(1)
@@ -128,7 +149,7 @@ def main():
         'top_by_score':tested[:50],
         'all_rows':tested,
     }
-    (ROOT/'data/backtest.json').write_text(json.dumps(out,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+    (ROOT/'data/backtest.json').write_text(json.dumps(clean_json(out),ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     print(f"Backtest {ASOF.date()} -> {END.date()} : {len(tested)}/{len(rows)}")
 
 if __name__=='__main__':
