@@ -2,6 +2,7 @@ const LABELS={rsi:'RSI',reversal:'Rebond RSI',support:'Zone de rebond',rvol:'RVO
 let POLL_TIMER=null;
 let REQUESTED_ASOF=null;
 let REQUESTED_END=null;
+let PRINT_OPEN_STATE=[];
 
 function fmt(v,d=1){return v==null||Number.isNaN(Number(v))?'—':Number(v).toFixed(d)}
 function pct(v){return v==null||Number.isNaN(Number(v))?'—':`${Number(v)>=0?'+':''}${Number(v).toFixed(2)} %`}
@@ -112,6 +113,27 @@ function stopPolling(){
   if(POLL_TIMER){clearInterval(POLL_TIMER);POLL_TIMER=null;}
 }
 
+function exportPdf(){
+  const rows=[...document.querySelectorAll('#btList details.stock')];
+  if(!rows.length){
+    const n=document.getElementById('reloadNotice');
+    n.textContent='Aucun résultat à exporter.';
+    n.className='notice bad';
+    return;
+  }
+  PRINT_OPEN_STATE=rows.map(x=>x.open);
+  rows.forEach(x=>x.open=true);
+  document.body.classList.add('printing-backtest');
+  window.print();
+}
+
+function restoreAfterPrint(){
+  const rows=[...document.querySelectorAll('#btList details.stock')];
+  rows.forEach((x,i)=>x.open=Boolean(PRINT_OPEN_STATE[i]));
+  PRINT_OPEN_STATE=[];
+  document.body.classList.remove('printing-backtest');
+}
+
 function launch(){
   const asof=document.getElementById('asof').value;
   const end=document.getElementById('end').value;
@@ -129,4 +151,6 @@ function launch(){
 
 document.getElementById('runBacktest').addEventListener('click',launch);
 document.getElementById('reloadBacktest').addEventListener('click',()=>loadBacktest(true));
+document.getElementById('exportBacktest').addEventListener('click',exportPdf);
+window.addEventListener('afterprint',restoreAfterPrint);
 setDefaults(); loadBacktest(false);
