@@ -1,9 +1,24 @@
 let RESULTS=null;
 
+function formatLocalUpdate(value){
+  if(!value)return '—';
+  let raw=String(value).trim();
+  // Le scanner enregistre l'heure en UTC. Si aucun fuseau n'est indiqué,
+  // on l'interprète explicitement comme UTC avant de l'afficher localement.
+  if(/^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/.test(raw)) raw=raw.replace(' ','T')+'Z';
+  const date=new Date(raw);
+  if(Number.isNaN(date.getTime()))return value;
+  return new Intl.DateTimeFormat('fr-CA',{
+    year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',second:'2-digit',
+    hour12:false
+  }).format(date);
+}
+
 async function loadResults(){
   const r=await fetch('data/results.json?'+Date.now(),{cache:'no-store'});
   const d=await r.json(); RESULTS=d;
-  document.getElementById('updated').textContent=`Mise à jour : ${d.updated||'—'} · ${d.analyzed||0}/${d.universe||0} titres analysés`;
+  document.getElementById('updated').textContent=`Mise à jour : ${formatLocalUpdate(d.updated)} · ${d.analyzed||0}/${d.universe||0} titres analysés`;
   render('buyList',d.buy||[],'buy');
   const sel=document.getElementById('sellPortfolio');
   const portfolios=(d.portfolios&&d.portfolios.length)?d.portfolios:[{id:'michel',name:'Michel'},{id:'fils',name:'Loïc'}];
