@@ -1,13 +1,57 @@
 {
-  "updated": "démo",
+  "updated": "2026-09-07 14:02",
+  "universe": 4,
+  "analyzed": 4,
+  "errors": 0,
   "buy": [
-    {"symbol": "ATD", "score": 83.4, "country": "CA"},
-    {"symbol": "NVDA", "score": 81.7, "country": "US"},
-    {"symbol": "CNQ", "score": 79.2, "country": "CA"},
-    {"symbol": "DE", "score": 77.8, "country": "US"}
+    {
+      "symbol": "RL",
+      "market": "XNYS",
+      "country": "US",
+      "price": 351.2,
+      "rsi": 39.3,
+      "delta_rsi": 6.2,
+      "rvol": 1.13,
+      "support": 351.2,
+      "support_distance_pct": 0.0,
+      "macd_momentum": 8.6,
+      "trend": 0,
+      "volatility_pct": 34.9,
+      "filters": {
+        "rsi": true,
+        "reversal": true,
+        "support": true,
+        "rvol": true,
+        "macd": true,
+        "trend": true
+      },
+      "passed": true,
+      "score": 70.1
+    },
+    {
+      "symbol": "DOV",
+      "market": "XNYS",
+      "country": "US",
+      "price": 192.88,
+      "rsi": 36.9,
+      "delta_rsi": 3.7,
+      "rvol": 1.29,
+      "support": 192.88,
+      "support_distance_pct": 0.0,
+      "macd_momentum": 3.8,
+      "trend": 0,
+      "volatility_pct": 26.1,
+      "filters": {
+        "rsi": true,
+        "reversal": true,
+        "support": true,
+        "rvol": true,
+        "macd": true,
+        "trend": true
+      },
+      "passed": true,
+      "score": 63.9
+    }
   ],
-  "sell": [
-    {"symbol": "CNQ", "score": 72.4, "country": "CA"},
-    {"symbol": "NVDA", "score": 68.1, "country": "US"}
-  ]
+  "sell": []
 }
