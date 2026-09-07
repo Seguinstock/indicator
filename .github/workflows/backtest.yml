@@ -43,8 +43,8 @@ jobs:
           end=date.fromisoformat(m2.group(1)) if m2 else asof+timedelta(days=28)
           if end <= asof:
               raise SystemExit('La date de fin doit être après la date historique')
-          if (end-asof).days > 93:
-              raise SystemExit('Fenêtre maximale : 93 jours')
+          if (end-asof).days > 400:
+              raise SystemExit('Fenêtre maximale : 400 jours')
           today=date.today()
           if asof >= today:
               raise SystemExit('La date historique doit être dans le passé')
