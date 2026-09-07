@@ -1,0 +1,32 @@
+name: Summarize potential validation
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  summarize:
+    if: github.actor == 'Seguinstock' && github.event.issue.title == 'Summarize Stock Indicator Potential Validation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python engine/summarize_validation.py
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/backtest_validation_summary.json
+          git commit -m 'Add compact potential validation summary' || exit 0
+          git pull --rebase
+          git push
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close ${{ github.event.issue.number }} --comment 'Résumé créé.'
