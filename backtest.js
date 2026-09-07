@@ -52,16 +52,30 @@ async function loadBacktest(showFeedback=false){
   }
 }
 
+function equalWeightPortfolio(rows,count){
+  const sample=(rows||[]).slice(0,count).filter(x=>Number.isFinite(Number(x.return_pct)));
+  if(!sample.length)return null;
+  const invested=sample.length;
+  const endValue=sample.reduce((sum,x)=>sum+(1+Number(x.return_pct)/100),0);
+  const gainPct=(endValue/invested-1)*100;
+  return {n:sample.length,invested,endValue,gainPct};
+}
+
 function renderSummary(d){
+  const rows=d.all_rows||d.top_by_score||[];
+  const p30=equalWeightPortfolio(rows,30);
+  const p100=equalWeightPortfolio(rows,100);
+  const portfolioCards=[p30&&`<div class="bt-stat portfolio-result"><b>Portefeuille Top 30</b><span class="${p30.gainPct>=0?'ok':'no'}">${pct(p30.gainPct)}</span><small>1 $ par titre · ${p30.invested.toFixed(0)} $ → ${p30.endValue.toFixed(2)} $</small></div>`,p100&&`<div class="bt-stat portfolio-result"><b>Portefeuille Top 100</b><span class="${p100.gainPct>=0?'ok':'no'}">${pct(p100.gainPct)}</span><small>1 $ par titre · ${p100.invested.toFixed(0)} $ → ${p100.endValue.toFixed(2)} $</small></div>`].filter(Boolean).join('');
+
   const effects=d.filter_effects||{};
   const order=['macd','rvol','reversal','rsi','support','trend'];
-  const cards=order.map(k=>{
+  const filterCards=order.map(k=>{
     const x=effects[k]; if(!x?.pass||!x?.fail)return '';
     const diff=Number(x.pass.avg_return_pct)-Number(x.fail.avg_return_pct);
     const cls=diff>0.25?'ok':diff<-0.25?'no':'neutral';
     return `<div class="bt-stat"><b>${LABELS[k]||k}</b><span class="${cls}">Passe ${pct(x.pass.avg_return_pct)}</span><small>Échoue ${pct(x.fail.avg_return_pct)} · gagnants ${fmt(x.pass.win_rate_pct)} %</small></div>`;
   }).join('');
-  document.getElementById('btSummary').innerHTML=cards;
+  document.getElementById('btSummary').innerHTML=portfolioCards+filterCards;
 }
 
 function renderRows(rows){
