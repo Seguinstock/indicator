@@ -1,0 +1,5 @@
+symbol,market,country,enabled
+ATD,XTSE,CA,true
+CNQ,XTSE,CA,true
+NVDA,XNAS,US,true
+DE,XNYS,US,true
