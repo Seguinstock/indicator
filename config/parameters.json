@@ -1,10 +1,17 @@
 {
+  "indicators": {
+    "rsi_period": 14,
+    "rvol_period": 20,
+    "support_lookback": 200
+  },
   "filters": {
-    "rsi": {"enabled": true, "buy_max": 35, "sell_min": 70},
-    "support": {"enabled": true, "max_distance_pct": 4.0},
-    "rvol": {"enabled": true, "min": 1.2},
-    "macd": {"enabled": true, "min_momentum": 10},
-    "trend": {"enabled": true, "min": 0}
+    "rsi": {"enabled": true, "buy_max": 40},
+    "reversal": {"enabled": true, "min_delta": 0.5},
+    "support": {"enabled": true, "max_distance_pct": 6.0},
+    "rvol": {"enabled": true, "min": 1.0},
+    "macd": {"enabled": true, "min_momentum": 0},
+    "trend": {"enabled": true, "min": -0.5},
+    "sell": {"rsi_min": 65, "macd_max": 0, "trend_max": 0}
   },
   "visualisation": {
     "buy_count": 30,
