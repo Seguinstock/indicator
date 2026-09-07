@@ -101,9 +101,14 @@ def main():
                 h=raw[t] if len(tickers)>1 else raw
                 x=calc_asof(r,h,cfg)
                 if not x: failed.append(r['symbol']); continue
-                fwd=forward_stats(h,float(x['price']))
+                hist=restrict_asof(h)
+                if hist.empty: failed.append(r['symbol']); continue
+                entry=float(hist['Close'].astype(float).iloc[-1])
+                fwd=forward_stats(h,entry)
                 if not fwd: failed.append(r['symbol']); continue
-                y={k:x[k] for k in ['symbol','market','country','price','rsi','delta_rsi','rvol','support_distance_pct','support_score','macd_momentum','trend','volatility_pct','score','filters','passed']}
+                y={k:x[k] for k in ['symbol','market','country','price','rsi','delta_rsi','rvol','support_distance_pct','support_score','macd_momentum','trend','volatility_pct','score']}
+                y['filters']={k:bool(v) for k,v in x['filters'].items()}
+                y['passed']=bool(x['passed'])
                 y.update(fwd); y['bucket']=bucket(float(x['score']))
                 tested.append(y)
             except Exception:
