@@ -9,8 +9,8 @@ import yfinance as yf
 import scanner
 
 ROOT = Path(__file__).resolve().parents[1]
-ASOF = pd.Timestamp('2026-08-07')
-END = pd.Timestamp('2026-09-04')
+ASOF = pd.Timestamp('2026-05-01')
+END = pd.Timestamp('2026-05-29')
 
 
 def restrict_asof(h):
@@ -93,7 +93,7 @@ def main():
         batch=rows[i:i+75]
         tickers=[scanner.yahoo_symbol(r['symbol'],r['market']) for r in batch]
         try:
-            raw=yf.download(tickers,start='2025-03-01',end='2026-09-05',interval='1d',group_by='ticker',auto_adjust=True,threads=True,progress=False)
+            raw=yf.download(tickers,start='2024-12-01',end='2026-05-30',interval='1d',group_by='ticker',auto_adjust=True,threads=True,progress=False)
         except Exception:
             failed.extend(r['symbol'] for r in batch); continue
         for r,t in zip(batch,tickers):
@@ -118,7 +118,7 @@ def main():
     filters=['rsi','reversal','support','rvol','macd','trend']
     out={
         'generated':datetime.now(timezone.utc).isoformat(),
-        'asof':'2026-08-07','end':'2026-09-04',
+        'asof':'2026-05-01','end':'2026-05-29',
         'universe':len(rows),'tested':len(tested),'failed':len(set(failed)),
         'score_buckets':summarize(tested),
         'filter_effects':{k:filter_effect(tested,k) for k in filters},
