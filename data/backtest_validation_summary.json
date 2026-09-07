@@ -1,0 +1,269 @@
+{
+  "generated": "2026-09-07T22:22:43.815818+00:00",
+  "prototype": "50% volatilité, 20% tendance, 15% RVOL, 10% RSI autour de 40, 5% proximité zone de rebond",
+  "aggregate": {
+    "current_top30": {
+      "avg_peak_pct": 47.7,
+      "avg_final_pct": 19.83,
+      "peak_50": 8.8,
+      "peak_80": 3.2,
+      "peak_100": 2.2,
+      "peak_200": 0.6,
+      "peak_lt_10": 2.6
+    },
+    "potential_top30": {
+      "avg_peak_pct": 187.19,
+      "avg_final_pct": 96.7,
+      "peak_50": 20.2,
+      "peak_80": 16.6,
+      "peak_100": 15.6,
+      "peak_200": 9.4,
+      "peak_lt_10": 2.0
+    },
+    "current_top100": {
+      "avg_peak_pct": 48.32,
+      "avg_final_pct": 24.19,
+      "peak_50": 28.0,
+      "peak_80": 14.2,
+      "peak_100": 10.6,
+      "peak_200": 2.2,
+      "peak_lt_10": 13.2
+    },
+    "potential_top100": {
+      "avg_peak_pct": 148.06,
+      "avg_final_pct": 75.19,
+      "peak_50": 63.4,
+      "peak_80": 48.0,
+      "peak_100": 43.2,
+      "peak_200": 22.2,
+      "peak_lt_10": 7.8
+    }
+  },
+  "windows": [
+    {
+      "asof": "2023-02-14",
+      "end": "2024-02-14",
+      "tested": 909,
+      "current_top30": {
+        "n": 30,
+        "avg_peak_pct": 22.39,
+        "avg_final_pct": -19.22,
+        "peak_50": 3,
+        "peak_80": 0,
+        "peak_100": 0,
+        "peak_200": 0,
+        "peak_lt_10": 7
+      },
+      "potential_top30": {
+        "n": 30,
+        "avg_peak_pct": 92.06,
+        "avg_final_pct": 44.88,
+        "peak_50": 12,
+        "peak_80": 8,
+        "peak_100": 7,
+        "peak_200": 2,
+        "peak_lt_10": 4
+      },
+      "current_top100": {
+        "n": 100,
+        "avg_peak_pct": 24.18,
+        "avg_final_pct": -5.18,
+        "peak_50": 10,
+        "peak_80": 4,
+        "peak_100": 3,
+        "peak_200": 0,
+        "peak_lt_10": 33
+      },
+      "potential_top100": {
+        "n": 100,
+        "avg_peak_pct": 54.86,
+        "avg_final_pct": 7.12,
+        "peak_50": 31,
+        "peak_80": 16,
+        "peak_100": 11,
+        "peak_200": 4,
+        "peak_lt_10": 22
+      }
+    },
+    {
+      "asof": "2023-08-21",
+      "end": "2024-08-21",
+      "tested": 912,
+      "current_top30": {
+        "n": 30,
+        "avg_peak_pct": 37.14,
+        "avg_final_pct": 25.06,
+        "peak_50": 8,
+        "peak_80": 4,
+        "peak_100": 1,
+        "peak_200": 0,
+        "peak_lt_10": 3
+      },
+      "potential_top30": {
+        "n": 30,
+        "avg_peak_pct": 114.61,
+        "avg_final_pct": 55.91,
+        "peak_50": 20,
+        "peak_80": 14,
+        "peak_100": 11,
+        "peak_200": 7,
+        "peak_lt_10": 1
+      },
+      "current_top100": {
+        "n": 100,
+        "avg_peak_pct": 35.02,
+        "avg_final_pct": 19.78,
+        "peak_50": 20,
+        "peak_80": 9,
+        "peak_100": 4,
+        "peak_200": 0,
+        "peak_lt_10": 11
+      },
+      "potential_top100": {
+        "n": 100,
+        "avg_peak_pct": 101.63,
+        "avg_final_pct": 51.61,
+        "peak_50": 64,
+        "peak_80": 42,
+        "peak_100": 33,
+        "peak_200": 13,
+        "peak_lt_10": 7
+      }
+    },
+    {
+      "asof": "2024-01-11",
+      "end": "2025-01-11",
+      "tested": 916,
+      "current_top30": {
+        "n": 30,
+        "avg_peak_pct": 46.02,
+        "avg_final_pct": 17.74,
+        "peak_50": 7,
+        "peak_80": 3,
+        "peak_100": 3,
+        "peak_200": 0,
+        "peak_lt_10": 1
+      },
+      "potential_top30": {
+        "n": 30,
+        "avg_peak_pct": 253.84,
+        "avg_final_pct": 100.73,
+        "peak_50": 19,
+        "peak_80": 17,
+        "peak_100": 16,
+        "peak_200": 9,
+        "peak_lt_10": 0
+      },
+      "current_top100": {
+        "n": 100,
+        "avg_peak_pct": 46.8,
+        "avg_final_pct": 20.85,
+        "peak_50": 25,
+        "peak_80": 15,
+        "peak_100": 11,
+        "peak_200": 1,
+        "peak_lt_10": 7
+      },
+      "potential_top100": {
+        "n": 100,
+        "avg_peak_pct": 162.57,
+        "avg_final_pct": 75.86,
+        "peak_50": 69,
+        "peak_80": 52,
+        "peak_100": 46,
+        "peak_200": 20,
+        "peak_lt_10": 2
+      }
+    },
+    {
+      "asof": "2024-07-23",
+      "end": "2025-07-23",
+      "tested": 922,
+      "current_top30": {
+        "n": 30,
+        "avg_peak_pct": 52.6,
+        "avg_final_pct": 29.07,
+        "peak_50": 12,
+        "peak_80": 5,
+        "peak_100": 3,
+        "peak_200": 1,
+        "peak_lt_10": 0
+      },
+      "potential_top30": {
+        "n": 30,
+        "avg_peak_pct": 181.6,
+        "avg_final_pct": 122.63,
+        "peak_50": 22,
+        "peak_80": 18,
+        "peak_100": 18,
+        "peak_200": 9,
+        "peak_lt_10": 5
+      },
+      "current_top100": {
+        "n": 100,
+        "avg_peak_pct": 58.68,
+        "avg_final_pct": 38.39,
+        "peak_50": 41,
+        "peak_80": 22,
+        "peak_100": 18,
+        "peak_200": 3,
+        "peak_lt_10": 8
+      },
+      "potential_top100": {
+        "n": 100,
+        "avg_peak_pct": 133.9,
+        "avg_final_pct": 88.74,
+        "peak_50": 64,
+        "peak_80": 45,
+        "peak_100": 44,
+        "peak_200": 20,
+        "peak_lt_10": 8
+      }
+    },
+    {
+      "asof": "2025-03-17",
+      "end": "2026-03-17",
+      "tested": 927,
+      "current_top30": {
+        "n": 30,
+        "avg_peak_pct": 80.33,
+        "avg_final_pct": 46.49,
+        "peak_50": 14,
+        "peak_80": 4,
+        "peak_100": 4,
+        "peak_200": 2,
+        "peak_lt_10": 2
+      },
+      "potential_top30": {
+        "n": 30,
+        "avg_peak_pct": 293.82,
+        "avg_final_pct": 159.33,
+        "peak_50": 28,
+        "peak_80": 26,
+        "peak_100": 26,
+        "peak_200": 20,
+        "peak_lt_10": 0
+      },
+      "current_top100": {
+        "n": 100,
+        "avg_peak_pct": 76.9,
+        "avg_final_pct": 47.13,
+        "peak_50": 44,
+        "peak_80": 21,
+        "peak_100": 17,
+        "peak_200": 7,
+        "peak_lt_10": 7
+      },
+      "potential_top100": {
+        "n": 100,
+        "avg_peak_pct": 287.36,
+        "avg_final_pct": 152.62,
+        "peak_50": 89,
+        "peak_80": 85,
+        "peak_100": 82,
+        "peak_200": 54,
+        "peak_lt_10": 0
+      }
+    }
+  ]
+}
