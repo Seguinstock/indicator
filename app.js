@@ -12,6 +12,12 @@ async function loadResults(){
   if(saved&&portfolios.some(p=>p.id===saved))sel.value=saved;
   showSell();
   sel.addEventListener('change',()=>{localStorage.setItem('sellPortfolio',sel.value);showSell()});
+  const refresh=document.getElementById('forceRefresh');
+  if(refresh)refresh.addEventListener('click',()=>{
+    const body=`STOCK_INDICATOR_REFRESH\n\nDemande de mise à jour forcée depuis Stock Indicator.`;
+    const url=`https://github.com/Seguinstock/indicator/issues/new?title=${encodeURIComponent('Refresh: Stock Indicator')}&body=${encodeURIComponent(body)}`;
+    window.open(url,'_blank','noopener');
+  });
 }
 
 function showSell(){
