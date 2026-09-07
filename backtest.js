@@ -2,7 +2,6 @@ const LABELS={rsi:'RSI',reversal:'Rebond RSI',support:'Zone de rebond',rvol:'RVO
 let POLL_TIMER=null;
 let REQUESTED_ASOF=null;
 let REQUESTED_END=null;
-let PRINT_OPEN_STATE=[];
 
 function fmt(v,d=1){return v==null||Number.isNaN(Number(v))?'—':Number(v).toFixed(d)}
 function pct(v){return v==null||Number.isNaN(Number(v))?'—':`${Number(v)>=0?'+':''}${Number(v).toFixed(2)} %`}
@@ -113,25 +112,47 @@ function stopPolling(){
   if(POLL_TIMER){clearInterval(POLL_TIMER);POLL_TIMER=null;}
 }
 
-function exportPdf(){
+async function saveBacktest(){
   const rows=[...document.querySelectorAll('#btList details.stock')];
+  const notice=document.getElementById('reloadNotice');
   if(!rows.length){
-    const n=document.getElementById('reloadNotice');
-    n.textContent='Aucun résultat à exporter.';
-    n.className='notice bad';
+    notice.textContent='Aucun résultat à enregistrer.';
+    notice.className='notice bad';
     return;
   }
-  PRINT_OPEN_STATE=rows.map(x=>x.open);
-  rows.forEach(x=>x.open=true);
-  document.body.classList.add('printing-backtest');
-  window.print();
-}
-
-function restoreAfterPrint(){
-  const rows=[...document.querySelectorAll('#btList details.stock')];
-  rows.forEach((x,i)=>x.open=Boolean(PRINT_OPEN_STATE[i]));
-  PRINT_OPEN_STATE=[];
-  document.body.classList.remove('printing-backtest');
+  const button=document.getElementById('exportBacktest');
+  button.disabled=true;
+  button.textContent='⇩ Préparation…';
+  try{
+    const cssResponse=await fetch('style.css?'+Date.now(),{cache:'no-store'});
+    const css=cssResponse.ok?await cssResponse.text():'';
+    const clone=document.querySelector('.wrap').cloneNode(true);
+    clone.querySelectorAll('.nav,.manage-card,.backtest-actions,#reloadNotice,footer').forEach(x=>x.remove());
+    clone.querySelectorAll('#btList details.stock').forEach(x=>x.open=true);
+    const meta=clone.querySelector('#btMeta')?.textContent||'Backtest historique';
+    const match=meta.match(/Photo du ([0-9-]+) · observation jusqu’au ([0-9-]+)/);
+    const asof=match?.[1]||'historique';
+    const end=match?.[2]||'resultat';
+    const extraCss='body{min-height:100vh}.wrap{max-width:920px;margin:auto;padding:18px}.card{margin-bottom:16px}details.stock>.detail{display:grid!important}.backtest-actions,.nav,.manage-card,#reloadNotice,footer{display:none!important}';
+    const html=`<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stock Indicator · Backtest ${asof} à ${end}</title><style>${css}\n${extraCss}</style></head><body>${clone.outerHTML}</body></html>`;
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=`Stock-Indicator_Backtest_${asof}_${end}.html`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    notice.textContent=`✓ Test enregistré : ${asof} → ${end}`;
+    notice.className='notice';
+  }catch(e){
+    notice.textContent='Impossible d’enregistrer le test pour le moment.';
+    notice.className='notice bad';
+  }finally{
+    button.disabled=false;
+    button.textContent='⇩ Enregistrer le test';
+  }
 }
 
 function launch(){
@@ -151,6 +172,5 @@ function launch(){
 
 document.getElementById('runBacktest').addEventListener('click',launch);
 document.getElementById('reloadBacktest').addEventListener('click',()=>loadBacktest(true));
-document.getElementById('exportBacktest').addEventListener('click',exportPdf);
-window.addEventListener('afterprint',restoreAfterPrint);
+document.getElementById('exportBacktest').addEventListener('click',saveBacktest);
 setDefaults(); loadBacktest(false);
