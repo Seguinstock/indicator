@@ -1,0 +1,44 @@
+name: Manual market refresh
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: manual-market-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.actor == 'Seguinstock' && github.event.issue.title == 'Refresh: Stock Indicator'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run full market scan
+        run: python engine/scanner.py
+      - name: Publish refreshed results
+        run: |
+          git config user.name "stock-indicator-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/results.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Manual market refresh"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Close refresh request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Mise à jour forcée terminée. Les nouvelles données seront publiées automatiquement sur Stock Indicator."
