@@ -1,6 +1,6 @@
 [
   {"id":"michel","name":"Michel","file":"config/holdings.csv","active":true},
-  {"id":"fils","name":"Fils","file":"config/holdings_fils.csv","active":true},
+  {"id":"fils","name":"Loïc","file":"config/holdings_fils.csv","active":true},
   {"id":"portfolio3","name":"Portefeuille 3","file":"config/holdings_3.csv","active":true},
   {"id":"portfolio4","name":"Portefeuille 4","file":"config/holdings_4.csv","active":true},
   {"id":"portfolio5","name":"Portefeuille 5","file":"config/holdings_5.csv","active":true}
