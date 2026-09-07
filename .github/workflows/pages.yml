@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Update market data"]
+    workflows: ["Update market data", "Historical backtest"]
     types: [completed]
 
 permissions:
