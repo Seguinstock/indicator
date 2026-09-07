@@ -43,8 +43,8 @@ def forward_stats(h, entry):
     return {
         'end_price': round(end_price, 4),
         'return_pct': round((end_price / entry - 1) * 100, 2),
-        'max_drawdown_pct': round((float(np.min(lows)) / entry - 1) * 100, 2),
-        'max_upside_pct': round((float(np.max(highs)) / entry - 1) * 100, 2),
+        'max_drawdown_pct': round((float(np.nanmin(lows)) / entry - 1) * 100, 2) if np.isfinite(lows).any() else None,
+        'max_upside_pct': round((float(np.nanmax(highs)) / entry - 1) * 100, 2) if np.isfinite(highs).any() else None,
     }
 
 
@@ -57,31 +57,48 @@ def bucket(v):
     return '<40'
 
 
+def stats(a):
+    if not a:
+        return None
+    rets=np.array([r['return_pct'] for r in a],dtype=float)
+    dds=np.array([r['max_drawdown_pct'] for r in a if r['max_drawdown_pct'] is not None and np.isfinite(r['max_drawdown_pct'])],dtype=float)
+    return {
+        'n':len(a),
+        'avg_return_pct':round(float(np.mean(rets)),2),
+        'median_return_pct':round(float(np.median(rets)),2),
+        'win_rate_pct':round(float(np.mean(rets>0)*100),1),
+        'avg_max_drawdown_pct':round(float(np.mean(dds)),2) if len(dds) else None,
+    }
+
+
 def summarize(rows):
     out = {}
     for name in ['80-100','70-79.9','60-69.9','50-59.9','40-49.9','<40']:
         a=[r for r in rows if r['bucket']==name]
-        if not a: continue
-        rets=np.array([r['return_pct'] for r in a],dtype=float)
-        dds=np.array([r['max_drawdown_pct'] for r in a],dtype=float)
-        out[name]={
-            'n':len(a),
-            'avg_return_pct':round(float(np.mean(rets)),2),
-            'median_return_pct':round(float(np.median(rets)),2),
-            'win_rate_pct':round(float(np.mean(rets>0)*100),1),
-            'avg_max_drawdown_pct':round(float(np.mean(dds)),2),
-        }
+        if a: out[name]=stats(a)
     return out
 
 
 def filter_effect(rows, key):
     yes=[r for r in rows if r['filters'].get(key) is True]
     no=[r for r in rows if r['filters'].get(key) is False]
-    def s(a):
-        if not a: return None
-        x=np.array([r['return_pct'] for r in a],dtype=float)
-        return {'n':len(a),'avg_return_pct':round(float(np.mean(x)),2),'median_return_pct':round(float(np.median(x)),2),'win_rate_pct':round(float(np.mean(x>0)*100),1)}
-    return {'pass':s(yes),'fail':s(no)}
+    return {'pass':stats(yes),'fail':stats(no)}
+
+
+def combination_effects(rows):
+    defs={
+        'macd+rvol': lambda r: r['filters'].get('macd') is True and r['filters'].get('rvol') is True,
+        'macd+rsi': lambda r: r['filters'].get('macd') is True and r['filters'].get('rsi') is True,
+        'rvol+rsi': lambda r: r['filters'].get('rvol') is True and r['filters'].get('rsi') is True,
+        'macd+rvol+rsi': lambda r: r['filters'].get('macd') is True and r['filters'].get('rvol') is True and r['filters'].get('rsi') is True,
+        'macd+rvol+rsi+reversal': lambda r: r['filters'].get('macd') is True and r['filters'].get('rvol') is True and r['filters'].get('rsi') is True and r['filters'].get('reversal') is True,
+    }
+    out={}
+    for name,fn in defs.items():
+        yes=[r for r in rows if fn(r)]
+        no=[r for r in rows if not fn(r)]
+        out[name]={'match':stats(yes),'others':stats(no)}
+    return out
 
 
 def main():
@@ -93,7 +110,7 @@ def main():
         batch=rows[i:i+75]
         tickers=[scanner.yahoo_symbol(r['symbol'],r['market']) for r in batch]
         try:
-            raw=yf.download(tickers,start='2024-12-01',end='2026-05-30',interval='1d',group_by='ticker',auto_adjust=True,threads=True,progress=False)
+            raw=yf.download(tickers,start='2025-03-01',end='2026-09-05',interval='1d',group_by='ticker',auto_adjust=True,threads=True,progress=False)
         except Exception:
             failed.extend(r['symbol'] for r in batch); continue
         for r,t in zip(batch,tickers):
@@ -118,15 +135,16 @@ def main():
     filters=['rsi','reversal','support','rvol','macd','trend']
     out={
         'generated':datetime.now(timezone.utc).isoformat(),
-        'asof':'2026-05-01','end':'2026-05-29',
+        'asof':ASOF.strftime('%Y-%m-%d'),'end':END.strftime('%Y-%m-%d'),
         'universe':len(rows),'tested':len(tested),'failed':len(set(failed)),
         'score_buckets':summarize(tested),
         'filter_effects':{k:filter_effect(tested,k) for k in filters},
+        'combination_effects':combination_effects(tested),
         'strict_pass':summarize([r for r in tested if r['passed']]),
         'top_by_score':tested[:50],
         'all_rows':tested,
     }
-    (ROOT/'data/backtest.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+    (ROOT/'data/backtest.json').write_text(json.dumps(out,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     print(f"Backtest {len(tested)}/{len(rows)}")
 
 if __name__=='__main__':
