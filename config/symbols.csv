@@ -1,5 +1,5 @@
 symbol,market,country,enabled
-ATD,XTSE,CA,true
-CNQ,XTSE,CA,true
-NVDA,XNAS,US,true
-DE,XNYS,US,true
+DOV,XNYS,US,true
+SPG,XNYS,US,true
+RL,XNYS,US,true
+TT,XNYS,US,true
