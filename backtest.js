@@ -121,7 +121,7 @@ function launch(){
   REQUESTED_ASOF=asof; REQUESTED_END=end;
   const body=`STOCK_INDICATOR_BACKTEST\n\nBACKTEST_ASOF=${asof}\nBACKTEST_END=${end}\n\nDemande créée depuis la page Backtest de Stock Indicator.`;
   const url=`https://github.com/Seguinstock/indicator/issues/new?title=${encodeURIComponent('Run Stock Indicator Backtest')}&body=${encodeURIComponent(body)}`;
-  notice.textContent='Après avoir confirmé la demande GitHub, cette page vérifiera automatiquement le résultat toutes les 15 secondes.';
+  notice.textContent='Après avoir confirmé la demande GitHub, cette page vérifiera automatiquement le résultat toutes les 15 secondes. Le calcul complet prend généralement environ 15 à 20 minutes.';
   notice.className='notice';
   startPolling();
   window.open(url,'_blank','noopener');
