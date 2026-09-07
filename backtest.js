@@ -1,11 +1,22 @@
 const LABELS={rsi:'RSI',reversal:'Rebond RSI',support:'Zone de rebond',rvol:'RVOL',macd:'MACD',trend:'Tendance'};
+let POLL_TIMER=null;
+let REQUESTED_ASOF=null;
+let REQUESTED_END=null;
 
 function fmt(v,d=1){return v==null||Number.isNaN(Number(v))?'—':Number(v).toFixed(d)}
 function pct(v){return v==null||Number.isNaN(Number(v))?'—':`${Number(v)>=0?'+':''}${Number(v).toFixed(2)} %`}
 function tone(v){if(v==null)return 'neutral';return v?'ok':'no'}
 
-async function loadBacktest(){
+async function loadBacktest(showFeedback=false){
   const meta=document.getElementById('btMeta');
+  const reload=document.getElementById('reloadBacktest');
+  const reloadNotice=document.getElementById('reloadNotice');
+  if(showFeedback){
+    reload.disabled=true;
+    reload.textContent='↻ Actualisation…';
+    reloadNotice.textContent='Vérification du dernier résultat…';
+    reloadNotice.className='notice';
+  }
   try{
     const r=await fetch('data/backtest.json?'+Date.now(),{cache:'no-store'});
     if(!r.ok)throw new Error('Aucun résultat');
@@ -13,10 +24,31 @@ async function loadBacktest(){
     meta.textContent=`Photo du ${d.asof} · observation jusqu’au ${d.end} · ${d.tested||0}/${d.universe||0} titres`;
     renderSummary(d);
     renderRows(d.all_rows||d.top_by_score||[]);
+    if(showFeedback){
+      reloadNotice.textContent=`Résultat chargé : ${d.asof} → ${d.end}`;
+      reloadNotice.className='notice';
+    }
+    if(REQUESTED_ASOF&&d.asof===REQUESTED_ASOF&&d.end===REQUESTED_END){
+      const n=document.getElementById('requestNotice');
+      n.textContent='✓ Backtest terminé. Les résultats ci-dessous sont à jour.';
+      n.className='notice';
+      stopPolling();
+    }
+    return d;
   }catch(e){
     meta.textContent='Aucun backtest disponible.';
     document.getElementById('btSummary').innerHTML='';
     document.getElementById('btList').innerHTML='<div class="empty">Lance un premier backtest.</div>';
+    if(showFeedback){
+      reloadNotice.textContent='Impossible de charger le résultat pour le moment.';
+      reloadNotice.className='notice bad';
+    }
+    return null;
+  }finally{
+    if(showFeedback){
+      reload.disabled=false;
+      reload.textContent='↻ Actualiser maintenant';
+    }
   }
 }
 
@@ -58,18 +90,29 @@ function setDefaults(){
   });
 }
 
+function startPolling(){
+  stopPolling();
+  POLL_TIMER=setInterval(()=>loadBacktest(false),15000);
+}
+function stopPolling(){
+  if(POLL_TIMER){clearInterval(POLL_TIMER);POLL_TIMER=null;}
+}
+
 function launch(){
   const asof=document.getElementById('asof').value;
   const end=document.getElementById('end').value;
   const notice=document.getElementById('requestNotice');
   if(!asof||!end){notice.textContent='Choisis les deux dates.';notice.className='notice bad';return}
   if(end<=asof){notice.textContent='La date d’observation doit être après la date historique.';notice.className='notice bad';return}
+  REQUESTED_ASOF=asof; REQUESTED_END=end;
   const body=`STOCK_INDICATOR_BACKTEST\n\nBACKTEST_ASOF=${asof}\nBACKTEST_END=${end}\n\nDemande créée depuis la page Backtest de Stock Indicator.`;
   const url=`https://github.com/Seguinstock/indicator/issues/new?title=${encodeURIComponent('Run Stock Indicator Backtest')}&body=${encodeURIComponent(body)}`;
-  notice.textContent='La demande va s’ouvrir dans GitHub. Après validation, reviens ici et utilise « Actualiser ».';notice.className='notice';
+  notice.textContent='Après avoir confirmé la demande GitHub, cette page vérifiera automatiquement le résultat toutes les 15 secondes.';
+  notice.className='notice';
+  startPolling();
   window.open(url,'_blank','noopener');
 }
 
 document.getElementById('runBacktest').addEventListener('click',launch);
-document.getElementById('reloadBacktest').addEventListener('click',loadBacktest);
-setDefaults(); loadBacktest();
+document.getElementById('reloadBacktest').addEventListener('click',()=>loadBacktest(true));
+setDefaults(); loadBacktest(false);
