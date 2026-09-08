@@ -9,6 +9,10 @@ function formatLocalUpdate(value){
   return new Intl.DateTimeFormat('fr-CA',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(date);
 }
 
+function escapeHtml(value){
+  return String(value??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
 function marketRisk(x){
   // Indicateur informatif seulement : il n'entre dans aucun calcul de potentiel, timing ou classement.
   const vol=Number(x.volatility_pct);
@@ -83,7 +87,7 @@ function render(id,rows,type){
     const risk=marketRisk(x);
     const riskText=`Risque ${risk.toFixed(0)}`;
     const buyScoreText=`Potentiel ${Number.isFinite(potential)?potential.toFixed(1):'—'} <span class="score-separator">·</span> Timing ${Number.isFinite(timing)?timing.toFixed(1):'—'} <span class="score-separator">·</span> ${riskText}`;
-    row.innerHTML=`<summary><span class="symbol ${cls}">${x.symbol}</span><span class="score">${sale?`Score vente ${Number(x.score).toFixed(1)}`:buyScoreText}</span></summary><div class="detail"><div>Prix <b>${x.price??'—'}</b></div><div>RSI <b>${x.rsi??'—'}</b></div><div>Δ RSI <b>${x.delta_rsi??'—'}</b></div><div>RVOL <b>${x.rvol??'—'}</b></div><div>Distance de la zone de rebond <b>${x.support_distance_pct??'—'} %</b></div><div>MACD <b>${x.macd_momentum??'—'}</b></div><div>Tendance <b>${x.trend??'—'}</b></div><div>Volatilité <b>${x.volatility_pct??'—'} %</b></div>${sale?`<div>Timing vente <b>${x.sell_timing_v14??'—'}</b></div><div>Signal <b>${x.sell_signal??'—'}</b></div>`:`<div>Score potentiel <b>${x.potential_score??x.score??'—'}</b></div><div>Timing actuel <b>${x.buy_timing??x.timing_v14??'—'}</b></div><div>Risque de marché <b>${risk.toFixed(0)}/100 — ${riskLabel(risk)}</b></div><div class="hint">Risque = indicateur indépendant basé actuellement sur volatilité, faible prix et comportement du volume. Il n'influence ni le potentiel, ni le timing, ni le classement. Les données fondamentales (dette, bénéfices, valorisation) ne sont pas encore incluses.</div>${componentText}<div class="checks">${checks}</div><div class="hint">Les voyants sont maintenant des diagnostics de timing : ils ne bloquent plus le classement potentiel.</div>`}</div>`;
+    row.innerHTML=`<summary><span class="symbol ${cls}">${x.symbol}</span><span class="score">${sale?`Score vente ${Number(x.score).toFixed(1)}`:buyScoreText}</span></summary><div class="detail"><div>Nom <b>${escapeHtml(x.name)}</b></div><div>Prix <b>${x.price??'—'}</b></div><div>RSI <b>${x.rsi??'—'}</b></div><div>Δ RSI <b>${x.delta_rsi??'—'}</b></div><div>RVOL <b>${x.rvol??'—'}</b></div><div>Distance de la zone de rebond <b>${x.support_distance_pct??'—'} %</b></div><div>MACD <b>${x.macd_momentum??'—'}</b></div><div>Tendance <b>${x.trend??'—'}</b></div><div>Volatilité <b>${x.volatility_pct??'—'} %</b></div>${sale?`<div>Timing vente <b>${x.sell_timing_v14??'—'}</b></div><div>Signal <b>${x.sell_signal??'—'}</b></div>`:`<div>Score potentiel <b>${x.potential_score??x.score??'—'}</b></div><div>Timing actuel <b>${x.buy_timing??x.timing_v14??'—'}</b></div><div>Risque de marché <b>${risk.toFixed(0)}/100 — ${riskLabel(risk)}</b></div><div class="hint">Risque = indicateur indépendant basé actuellement sur volatilité, faible prix et comportement du volume. Il n'influence ni le potentiel, ni le timing, ni le classement. Les données fondamentales (dette, bénéfices, valorisation) ne sont pas encore incluses.</div>${componentText}<div class="checks">${checks}</div><div class="hint">Les voyants sont maintenant des diagnostics de timing : ils ne bloquent plus le classement potentiel.</div>`}</div>`;
     el.appendChild(row);
   });
 }
