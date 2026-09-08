@@ -65,6 +65,22 @@ def ensure_scannable_symbol(symbol):
     write_csv(path,rows,fields)
 
 
+def apply_parameter_change(cfg, defaults, path_key, raw_value):
+    path_key=str(path_key or '')
+    if path_key not in defaults:
+        raise ValueError(f'Parameter is not editable: {path_key}')
+    meta=defaults[path_key]
+    value=float(raw_value)
+    if value < float(meta['min']) or value > float(meta['max']):
+        raise ValueError(f'Parameter outside allowed range: {path_key}')
+    if float(meta.get('step',1)).is_integer() and value.is_integer():
+        value=int(value)
+    parts=path_key.split('.'); target=cfg
+    for key in parts[:-1]:
+        target=target[key]
+    target[parts[-1]]=value
+
+
 if action in ('add_symbol','remove_symbol'):
     path = ROOT/'config/symbols.csv'; fields=['symbol','market','country','enabled']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
     rows=[r for r in rows if r.get('symbol','').upper()!=symbol]
@@ -82,17 +98,26 @@ elif action in ('add_holding','remove_holding'):
         rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
     write_csv(path,rows,fields)
 
-elif action=='set_parameter':
-    path_key=str(req.get('path','')); value=req.get('value')
+elif action in ('set_parameter','set_parameters'):
     defaults=json.loads((ROOT/'config/parameter_defaults.json').read_text(encoding='utf-8'))
-    if path_key not in defaults: raise ValueError('Parameter is not editable')
-    meta=defaults[path_key]; value=float(value)
-    if value < float(meta['min']) or value > float(meta['max']): raise ValueError('Parameter outside allowed range')
-    if float(meta.get('step',1)).is_integer() and value.is_integer(): value=int(value)
     path=ROOT/'config/parameters.json'; cfg=json.loads(path.read_text(encoding='utf-8'))
-    parts=path_key.split('.'); target=cfg
-    for key in parts[:-1]: target=target[key]
-    target[parts[-1]]=value
+    if action=='set_parameter':
+        changes=[{'path':req.get('path'),'value':req.get('value')}]
+    else:
+        changes=req.get('changes')
+        if not isinstance(changes,list) or not changes:
+            raise ValueError('No parameter changes supplied')
+        if len(changes)>100:
+            raise ValueError('Too many parameter changes')
+    seen=set()
+    for change in changes:
+        if not isinstance(change,dict):
+            raise ValueError('Invalid parameter change')
+        path_key=str(change.get('path',''))
+        if path_key in seen:
+            raise ValueError(f'Duplicate parameter change: {path_key}')
+        seen.add(path_key)
+        apply_parameter_change(cfg,defaults,path_key,change.get('value'))
     path.write_text(json.dumps(cfg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 else:
     raise ValueError('Unsupported action')
