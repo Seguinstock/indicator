@@ -31,6 +31,28 @@ jobs:
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: python engine/apply_config_change.py
+      - name: Choose recalculation mode
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python - <<'PY'
+          import json, os, re
+          body=os.environ.get('ISSUE_BODY','')
+          m=re.search(r'```json\s*(\{.*?\})\s*```',body,re.S)
+          payload=json.loads(m.group(1)) if m else {}
+          action=payload.get('action')
+          if action=='set_parameter':
+              paths=[payload.get('path','')]
+          elif action=='set_parameters':
+              paths=[str(x.get('path','')) for x in payload.get('changes',[])]
+          else:
+              paths=[]
+          safe=lambda p: p.startswith('buy_model.') or p.startswith('filters.') or p in {'visualisation.min_canada_pct','visualisation.min_usa_pct'}
+          mode='fast' if paths and all(safe(p) for p in paths) else 'full'
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write(f'RECALC_MODE={mode}\n')
+          print('Recalculation mode:',mode,'paths:',paths)
+          PY
       - name: Save configuration immediately
         run: |
           git config user.name "stock-indicator-config-bot"
@@ -43,7 +65,11 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
-      - name: Recalculate Stock Indicator
+      - name: Fast rescore from existing indicators
+        if: env.RECALC_MODE == 'fast'
+        run: python engine/rescore_results.py
+      - name: Full market recalculation
+        if: env.RECALC_MODE == 'full'
         run: python engine/scanner.py
       - name: Publish refreshed results
         run: |
@@ -58,4 +84,4 @@ jobs:
       - name: Close request
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue close "${{ github.event.issue.number }}" --comment "Paramètres enregistrés et nouveau scan terminé. Les résultats affichés utilisent maintenant les nouveaux paramètres."
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Paramètres enregistrés et résultats recalculés. Les changements de score utilisent le recalcul rapide sans retélécharger les cours lorsqu'il est applicable."
