@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   apply:
-    if: github.actor == 'Seguinstock' && startsWith(github.event.issue.title, 'Config:')
+    if: (github.actor == 'Seguinstock' || github.actor == 'c7rrhj86t8-a11y') && startsWith(github.event.issue.title, 'Config:')
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
