@@ -26,8 +26,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Parse requested dates
+        run: |
+          pip install -r requirements.txt
+          pip install pitindex
+      - name: Parse requested dates and universe
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
@@ -37,10 +39,16 @@ jobs:
           body=os.environ.get('ISSUE_BODY','')
           m1=re.search(r'BACKTEST_ASOF=(\d{4}-\d{2}-\d{2})',body)
           m2=re.search(r'BACKTEST_END=(\d{4}-\d{2}-\d{2})',body)
+          mu=re.search(r'BACKTEST_UNIVERSE=([A-Za-z0-9_\-]+)',body)
           if not m1:
               raise SystemExit('Date de départ manquante')
           asof=date.fromisoformat(m1.group(1))
           end=date.fromisoformat(m2.group(1)) if m2 else asof+timedelta(days=28)
+          universe=(mu.group(1).lower() if mu else 'current')
+          if universe not in {'current','sp500_pit'}:
+              raise SystemExit('Univers de backtest invalide')
+          if universe=='sp500_pit' and asof < date(2021,1,1):
+              raise SystemExit('Le S&P 500 historique point-in-time est disponible à partir de 2021')
           if end <= asof:
               raise SystemExit('La date de fin doit être après la date historique')
           if (end-asof).days > 400:
@@ -51,6 +59,7 @@ jobs:
           with open(os.environ['GITHUB_ENV'],'a') as f:
               f.write(f'BACKTEST_ASOF={asof.isoformat()}\n')
               f.write(f'BACKTEST_END={end.isoformat()}\n')
+              f.write(f'BACKTEST_UNIVERSE={universe}\n')
           PY
       - name: Run historical backtest
         run: python engine/backtest.py
@@ -60,7 +69,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/backtest.json
           if ! git diff --cached --quiet; then
-            git commit -m "Run historical backtest $BACKTEST_ASOF"
+            git commit -m "Run historical backtest $BACKTEST_ASOF ($BACKTEST_UNIVERSE)"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
@@ -68,4 +77,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: gh issue close "$ISSUE_NUMBER" --comment "Backtest terminé pour $BACKTEST_ASOF au $BACKTEST_END et enregistré dans data/backtest.json."
+        run: gh issue close "$ISSUE_NUMBER" --comment "Backtest terminé pour $BACKTEST_ASOF au $BACKTEST_END avec l'univers $BACKTEST_UNIVERSE et enregistré dans data/backtest.json."
