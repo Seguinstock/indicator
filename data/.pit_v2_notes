@@ -1,0 +1,1 @@
+Legacy comparator fixed to timing_v14/buy_timing. Historical prices downloaded once with retries and reused across all point-in-time dates. Production formula unchanged.
