@@ -5,18 +5,18 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 10,
-    "trend_weight": 50,
-    "rvol_weight": 10,
+    "volatility_weight": 50,
+    "trend_weight": 20,
+    "rvol_weight": 15,
     "rsi_weight": 10,
     "support_weight": 5,
     "volatility_floor_pct": 15,
     "volatility_full_pct": 70,
     "rvol_floor": 0.5,
     "rvol_full": 2.0,
-    "rsi_target": 29,
+    "rsi_target": 40,
     "rsi_range": 20,
-    "support_max_distance_pct": 10.0
+    "support_max_distance_pct": 10
   },
   "filters": {
     "rsi": {
