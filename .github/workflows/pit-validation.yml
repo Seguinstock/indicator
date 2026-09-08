@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pitindex
+          pip install pitindex scipy
       - name: Run point-in-time validation
         run: python research/pit_backtest.py
       - name: Commit validation results
