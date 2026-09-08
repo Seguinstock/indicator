@@ -10,6 +10,9 @@ if not m:
 req = json.loads(m.group(1))
 action = req.get('action')
 
+ALLOWED_MARKETS={'XTSE','XTSX','XCNQ','XNYS','XNAS','ARCX','XASE','BATS','NEOE'}
+ALLOWED_COUNTRIES={'CA','US',''}
+
 
 def read_csv(path):
     with path.open(encoding='utf-8-sig', newline='') as f:
@@ -29,6 +32,13 @@ def clean_symbol(v):
     return s
 
 
+def validate_market_country(market, country):
+    market=str(market or '').strip().upper(); country=str(country or '').strip().upper()
+    if market not in ALLOWED_MARKETS or country not in ALLOWED_COUNTRIES:
+        raise ValueError('Invalid market/country')
+    return market,country
+
+
 def portfolio_path(pid):
     data = json.loads((ROOT/'config/portfolios.json').read_text(encoding='utf-8'))
     for p in data:
@@ -39,13 +49,27 @@ def portfolio_path(pid):
             return path
     raise ValueError('Unknown portfolio')
 
+
+def ensure_scannable_symbol(symbol):
+    path=ROOT/'config/symbols.csv'; fields=['symbol','market','country','enabled']; rows=read_csv(path)
+    existing=next((r for r in rows if r.get('symbol','').upper()==symbol),None)
+    if existing:
+        if existing.get('enabled','true').lower()!='true':
+            existing['enabled']='true'; write_csv(path,rows,fields)
+        return
+    market=req.get('market'); country=req.get('country')
+    if not market:
+        raise ValueError(f'{symbol} is not in the scan universe; market and country are required when adding this holding')
+    market,country=validate_market_country(market,country)
+    rows.append({'symbol':symbol,'market':market,'country':country,'enabled':'true'})
+    write_csv(path,rows,fields)
+
+
 if action in ('add_symbol','remove_symbol'):
     path = ROOT/'config/symbols.csv'; fields=['symbol','market','country','enabled']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
     rows=[r for r in rows if r.get('symbol','').upper()!=symbol]
     if action=='add_symbol':
-        market=str(req.get('market','')).strip().upper(); country=str(req.get('country','')).strip().upper()
-        allowed={'XTSE','XTSX','XCNQ','XNYS','XNAS','ARCX','XASE','BATS','NEOE'}
-        if market not in allowed or country not in {'CA','US',''}: raise ValueError('Invalid market/country')
+        market,country=validate_market_country(req.get('market'),req.get('country'))
         rows.append({'symbol':symbol,'market':market,'country':country,'enabled':'true'})
     write_csv(path,rows,fields)
 
@@ -53,6 +77,7 @@ elif action in ('add_holding','remove_holding'):
     path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
     rows=[r for r in rows if r.get('symbol','').upper()!=symbol]
     if action=='add_holding':
+        ensure_scannable_symbol(symbol)
         name=str(req.get('name','')).strip()[:100]
         rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
     write_csv(path,rows,fields)
