@@ -2,11 +2,14 @@ const LABELS={rsi:'RSI',reversal:'Rebond RSI',support:'Zone de rebond',rvol:'RVO
 let POLL_TIMER=null;
 let REQUESTED_ASOF=null;
 let REQUESTED_END=null;
+let REQUESTED_UNIVERSE=null;
 let PRINT_OPEN_STATE=[];
 
 function fmt(v,d=1){return v==null||Number.isNaN(Number(v))?'—':Number(v).toFixed(d)}
 function pct(v){return v==null||Number.isNaN(Number(v))?'—':`${Number(v)>=0?'+':''}${Number(v).toFixed(2)} %`}
 function tone(v){if(v==null)return 'neutral';return v?'ok':'no'}
+function universeLabel(mode){return mode==='sp500_pit'?'S&P 500 historique':'Ma liste actuelle'}
+function selectedUniverse(){return document.querySelector('input[name="backtestUniverse"]:checked')?.value||'current'}
 
 async function loadBacktest(showFeedback=false){
   const meta=document.getElementById('btMeta');
@@ -15,10 +18,11 @@ async function loadBacktest(showFeedback=false){
   if(showFeedback){reload.disabled=true;reload.textContent='↻ Actualisation…';reloadNotice.textContent='Vérification du dernier résultat…';reloadNotice.className='notice';}
   try{
     const r=await fetch('data/backtest.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('Aucun résultat');const d=await r.json();
-    meta.textContent=`Photo du ${d.asof} · observation jusqu’au ${d.end} · ${d.tested||0}/${d.universe||0} titres`;
+    const mode=d.universe_mode||'current';
+    meta.textContent=`Photo du ${d.asof} · observation jusqu’au ${d.end} · ${universeLabel(mode)} · ${d.tested||0}/${d.universe||0} titres`;
     renderSummary(d);renderRows(d.all_rows||d.top_by_score||[]);
-    if(showFeedback){reloadNotice.textContent=`Résultat chargé : ${d.asof} → ${d.end}`;reloadNotice.className='notice';}
-    if(REQUESTED_ASOF&&d.asof===REQUESTED_ASOF&&d.end===REQUESTED_END){const n=document.getElementById('requestNotice');n.textContent='✓ Backtest terminé. Les résultats ci-dessous sont à jour.';n.className='notice';stopPolling();}
+    if(showFeedback){reloadNotice.textContent=`Résultat chargé : ${d.asof} → ${d.end} · ${universeLabel(mode)}`;reloadNotice.className='notice';}
+    if(REQUESTED_ASOF&&d.asof===REQUESTED_ASOF&&d.end===REQUESTED_END&&mode===REQUESTED_UNIVERSE){const n=document.getElementById('requestNotice');n.textContent=`✓ Backtest terminé avec ${universeLabel(mode)}. Les résultats ci-dessous sont à jour.`;n.className='notice';stopPolling();}
     return d;
   }catch(e){meta.textContent='Aucun backtest disponible.';document.getElementById('btSummary').innerHTML='';document.getElementById('btList').innerHTML='<div class="empty">Lance un premier backtest.</div>';if(showFeedback){reloadNotice.textContent='Impossible de charger le résultat pour le moment.';reloadNotice.className='notice bad';}return null;}
   finally{if(showFeedback){reload.disabled=false;reload.textContent='↻ Actualiser maintenant';}}
@@ -33,6 +37,7 @@ function startPolling(){stopPolling();POLL_TIMER=setInterval(()=>loadBacktest(fa
 function exportPdf(){const rows=[...document.querySelectorAll('#btList details.stock')];if(!rows.length){const n=document.getElementById('reloadNotice');n.textContent='Aucun résultat à exporter.';n.className='notice bad';return;}PRINT_OPEN_STATE=rows.map(x=>x.open);rows.forEach(x=>x.open=true);document.body.classList.add('printing-backtest');window.print();}
 function restoreAfterPrint(){const rows=[...document.querySelectorAll('#btList details.stock')];rows.forEach((x,i)=>x.open=Boolean(PRINT_OPEN_STATE[i]));PRINT_OPEN_STATE=[];document.body.classList.remove('printing-backtest');}
 
-function launch(){const asof=document.getElementById('asof').value;const end=document.getElementById('end').value;const notice=document.getElementById('requestNotice');if(!asof||!end){notice.textContent='Choisis les deux dates.';notice.className='notice bad';return}if(end<=asof){notice.textContent='La date d’observation doit être après la date historique.';notice.className='notice bad';return}REQUESTED_ASOF=asof;REQUESTED_END=end;const body=`STOCK_INDICATOR_BACKTEST\n\nBACKTEST_ASOF=${asof}\nBACKTEST_END=${end}\n\nDemande créée depuis la page Backtest de Stock Indicator.`;const url=`https://github.com/Seguinstock/indicator/issues/new?title=${encodeURIComponent('Run Stock Indicator Backtest')}&body=${encodeURIComponent(body)}`;notice.textContent='Après avoir confirmé la demande GitHub, cette page vérifiera automatiquement le résultat toutes les 15 secondes. Le calcul complet prend généralement environ 15 à 20 minutes.';notice.className='notice';startPolling();window.open(url,'_blank','noopener');}
+function updateUniverseHint(){const mode=selectedUniverse();const hint=document.getElementById('universeHint');if(mode==='sp500_pit')hint.textContent='Reconstruit les sociétés qui faisaient partie du S&P 500 à la date historique choisie. Disponible pour les dates couvertes par l’historique PIT (2021 et après).';else hint.textContent='Utilise les titres actuellement activés dans Stock Indicator.';}
+function launch(){const asof=document.getElementById('asof').value;const end=document.getElementById('end').value;const universe=selectedUniverse();const notice=document.getElementById('requestNotice');if(!asof||!end){notice.textContent='Choisis les deux dates.';notice.className='notice bad';return}if(end<=asof){notice.textContent='La date d’observation doit être après la date historique.';notice.className='notice bad';return}if(universe==='sp500_pit'&&asof<'2021-01-01'){notice.textContent='Le S&P 500 historique point-in-time est disponible à partir de 2021 dans cette version.';notice.className='notice bad';return}REQUESTED_ASOF=asof;REQUESTED_END=end;REQUESTED_UNIVERSE=universe;const body=`STOCK_INDICATOR_BACKTEST\n\nBACKTEST_ASOF=${asof}\nBACKTEST_END=${end}\nBACKTEST_UNIVERSE=${universe}\n\nDemande créée depuis la page Backtest de Stock Indicator.`;const url=`https://github.com/Seguinstock/indicator/issues/new?title=${encodeURIComponent('Run Stock Indicator Backtest')}&body=${encodeURIComponent(body)}`;notice.textContent=`Après avoir confirmé la demande GitHub, le test utilisera ${universeLabel(universe)}. Cette page vérifiera automatiquement le résultat toutes les 15 secondes. Le calcul complet peut prendre plusieurs minutes.`;notice.className='notice';startPolling();window.open(url,'_blank','noopener');}
 
-document.getElementById('runBacktest').addEventListener('click',launch);document.getElementById('reloadBacktest').addEventListener('click',()=>loadBacktest(true));document.getElementById('exportBacktest').addEventListener('click',exportPdf);window.addEventListener('afterprint',restoreAfterPrint);setDefaults();loadBacktest(false);
+document.getElementById('runBacktest').addEventListener('click',launch);document.getElementById('reloadBacktest').addEventListener('click',()=>loadBacktest(true));document.getElementById('exportBacktest').addEventListener('click',exportPdf);document.querySelectorAll('input[name="backtestUniverse"]').forEach(x=>x.addEventListener('change',updateUniverseHint));window.addEventListener('afterprint',restoreAfterPrint);setDefaults();updateUniverseHint();loadBacktest(false);
