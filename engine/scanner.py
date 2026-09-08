@@ -27,6 +27,19 @@ def yahoo_symbol(symbol, market):
     if market == 'XCNQ': return s + '.CN'
     return s
 
+def yahoo_display_name(symbol, market):
+    ticker=yahoo_symbol(symbol,market)
+    try:
+        quotes=getattr(yf.Search(ticker,max_results=5),'quotes',[]) or []
+        exact=[q for q in quotes if str(q.get('symbol','')).upper()==ticker.upper()]
+        candidates=exact or quotes
+        for q in candidates:
+            name=q.get('longname') or q.get('shortname') or q.get('name')
+            if name: return str(name).strip()
+    except Exception:
+        pass
+    return None
+
 def restrict_v14_history(h):
     h = h.dropna(subset=['Close']).copy()
     if h.empty: return h
@@ -212,11 +225,13 @@ def load_portfolios():
     for p in portfolios:
         if not p.get('active',True): continue
         path=ROOT/p['file']
-        held=set()
+        held=set(); names={}
         if path.exists():
             with open(path,encoding='utf-8-sig') as f:
-                held={r['symbol'] for r in csv.DictReader(f) if r.get('symbol')}
-        out[p['id']]={'name':p['name'],'held':held}
+                entries=[r for r in csv.DictReader(f) if r.get('symbol')]
+            held={r['symbol'] for r in entries}
+            names={r['symbol']:r.get('name','').strip() for r in entries if r.get('name','').strip()}
+        out[p['id']]={'name':p['name'],'held':held,'names':names}
     return out
 
 def main():
@@ -250,8 +265,18 @@ def main():
     for pid,p in portfolios.items():
         sell=sorted([ranked[s] for s in p['held'] if s in ranked],key=lambda x:x['score'],reverse=True)
         sell_by_portfolio[pid]=sell[:cfg['visualisation']['sell_count']]
+
+    buy_display=buy[:cfg['visualisation']['buy_count']]
+    known_names={}
+    for p in portfolios.values(): known_names.update(p.get('names',{}))
+    for x in buy_display:
+        x['name']=known_names.get(x['symbol']) or yahoo_display_name(x['symbol'],x['market'])
+    for pid,p in portfolios.items():
+        for x in sell_by_portfolio[pid]:
+            x['name']=p.get('names',{}).get(x['symbol']) or known_names.get(x['symbol']) or yahoo_display_name(x['symbol'],x['market'])
+
     default_sell=sell_by_portfolio.get('michel',[])
-    out={'updated':datetime.now(timezone.utc).astimezone().strftime('%Y-%m-%d %H:%M'),'universe':len(rows),'analyzed':len(results),'errors':len(errors),'failed_symbols':sorted(set(failed_symbols)),'buy_model':'potential_v1','buy':buy[:cfg['visualisation']['buy_count']],'sell':default_sell,'sell_by_portfolio':sell_by_portfolio,'portfolios':[{'id':pid,'name':p['name']} for pid,p in portfolios.items()]}
+    out={'updated':datetime.now(timezone.utc).astimezone().strftime('%Y-%m-%d %H:%M'),'universe':len(rows),'analyzed':len(results),'errors':len(errors),'failed_symbols':sorted(set(failed_symbols)),'buy_model':'potential_v1','buy':buy_display,'sell':default_sell,'sell_by_portfolio':sell_by_portfolio,'portfolios':[{'id':pid,'name':p['name']} for pid,p in portfolios.items()]}
     (ROOT/'data/results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
     counts=', '.join(f"{pid}={len(v)}" for pid,v in sell_by_portfolio.items())
     print(f"Analyzed {len(results)}/{len(rows)}; buy={len(buy)} sell[{counts}] errors={len(errors)} failed={len(set(failed_symbols))}")
