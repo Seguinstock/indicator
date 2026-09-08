@@ -44,11 +44,41 @@ function riskLabel(score){
   return 'faible';
 }
 
+function applyBuyFilters(){
+  if(!RESULTS)return;
+  const riskMax=Number(document.getElementById('riskMax')?.value??100);
+  const timingMin=Number(document.getElementById('timingMin')?.value??0);
+  const riskOut=document.getElementById('riskMaxValue');
+  const timingOut=document.getElementById('timingMinValue');
+  if(riskOut)riskOut.textContent=riskMax.toFixed(0);
+  if(timingOut)timingOut.textContent=timingMin.toFixed(0);
+  const source=RESULTS.buy||[];
+  const rows=source.filter(x=>{
+    const timing=Number(x.buy_timing??x.timing_v14);
+    return marketRisk(x)<=riskMax && Number.isFinite(timing) && timing>=timingMin;
+  }).slice(0,30);
+  const count=document.getElementById('buyFilterCount');
+  if(count)count.textContent=`${rows.length} titre${rows.length===1?'':'s'} affiché${rows.length===1?'':'s'} sur ${source.length}`;
+  render('buyList',rows,'buy');
+}
+
+function setupBuyFilters(){
+  const risk=document.getElementById('riskMax');
+  const timing=document.getElementById('timingMin');
+  const savedRisk=localStorage.getItem('buyRiskMax');
+  const savedTiming=localStorage.getItem('buyTimingMin');
+  if(risk&&savedRisk!==null)risk.value=savedRisk;
+  if(timing&&savedTiming!==null)timing.value=savedTiming;
+  if(risk)risk.addEventListener('input',()=>{localStorage.setItem('buyRiskMax',risk.value);applyBuyFilters()});
+  if(timing)timing.addEventListener('input',()=>{localStorage.setItem('buyTimingMin',timing.value);applyBuyFilters()});
+  applyBuyFilters();
+}
+
 async function loadResults(){
   const r=await fetch('data/results.json?'+Date.now(),{cache:'no-store'});
   const d=await r.json(); RESULTS=d;
   document.getElementById('updated').textContent=`Mise à jour : ${formatLocalUpdate(d.updated)} · ${d.analyzed||0}/${d.universe||0} titres analysés`;
-  render('buyList',d.buy||[],'buy');
+  setupBuyFilters();
   const sel=document.getElementById('sellPortfolio');
   const portfolios=(d.portfolios&&d.portfolios.length)?d.portfolios:[{id:'michel',name:'Michel'},{id:'fils',name:'Loïc'}];
   sel.innerHTML=portfolios.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
@@ -73,7 +103,7 @@ function showSell(){
 
 function render(id,rows,type){
   const el=document.getElementById(id);el.innerHTML='';
-  if(!rows.length){el.innerHTML=`<div class="empty">${type==='sell'?'Aucun titre détenu analysable dans ce portefeuille.':'Aucun titre analysable.'}</div>`;return}
+  if(!rows.length){el.innerHTML=`<div class="empty">${type==='sell'?'Aucun titre détenu analysable dans ce portefeuille.':'Aucun titre ne respecte les seuils choisis.'}</div>`;return}
   rows.forEach(x=>{
     const row=document.createElement('details');row.className='stock';
     const cls=x.country==='CA'?'canada':x.country==='US'?'usa':'other';
