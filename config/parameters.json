@@ -5,7 +5,7 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 30,
+    "volatility_weight": 34,
     "trend_weight": 35,
     "rvol_weight": 10,
     "rsi_weight": 6,
