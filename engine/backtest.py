@@ -11,6 +11,7 @@ import scanner
 ROOT = Path(__file__).resolve().parents[1]
 ASOF = pd.Timestamp(os.environ.get('BACKTEST_ASOF', '2026-05-01'))
 END = pd.Timestamp(os.environ.get('BACKTEST_END', (ASOF + pd.Timedelta(days=28)).strftime('%Y-%m-%d')))
+UNIVERSE_MODE = os.environ.get('BACKTEST_UNIVERSE', 'current').strip().lower()
 
 
 def restrict_asof(h):
@@ -105,10 +106,38 @@ def clean_json(v):
     return v
 
 
+def current_rows():
+    with open(ROOT/'config/symbols.csv',encoding='utf-8-sig') as f:
+        return [r for r in csv.DictReader(f) if r.get('enabled','true').lower()=='true']
+
+
+def sp500_pit_rows():
+    if ASOF < pd.Timestamp('2021-01-01'):
+        raise ValueError('Historical S&P 500 point-in-time mode is available from 2021 onward')
+    import pitindex
+    members=pitindex.get_constituents(ASOF.strftime('%Y-%m-%d'),index='sp500')
+    tickers=[]
+    seen=set()
+    for ticker in members['ticker'].tolist():
+        symbol=str(ticker).strip().upper().replace('.','-')
+        if symbol and symbol not in seen:
+            seen.add(symbol); tickers.append(symbol)
+    if not tickers:
+        raise ValueError('No historical S&P 500 constituents found for requested date')
+    return [{'symbol':s,'market':'XNYS','country':'US','enabled':'true'} for s in tickers]
+
+
+def universe_rows():
+    if UNIVERSE_MODE == 'sp500_pit':
+        return sp500_pit_rows(), 'S&P 500 historique'
+    if UNIVERSE_MODE != 'current':
+        raise ValueError(f'Unsupported backtest universe: {UNIVERSE_MODE}')
+    return current_rows(), 'Ma liste actuelle'
+
+
 def main():
     cfg=json.loads((ROOT/'config/parameters.json').read_text(encoding='utf-8'))
-    with open(ROOT/'config/symbols.csv',encoding='utf-8-sig') as f:
-        rows=[r for r in csv.DictReader(f) if r.get('enabled','true').lower()=='true']
+    rows,universe_label=universe_rows()
     tested=[]; failed=[]
     download_start=(ASOF-pd.Timedelta(days=650)).strftime('%Y-%m-%d')
     download_end=(END+pd.Timedelta(days=1)).strftime('%Y-%m-%d')
@@ -142,6 +171,7 @@ def main():
     out={
         'generated':datetime.now(timezone.utc).isoformat(),
         'asof':ASOF.strftime('%Y-%m-%d'),'end':END.strftime('%Y-%m-%d'),
+        'universe_mode':UNIVERSE_MODE,'universe_label':universe_label,
         'universe':len(rows),'tested':len(tested),'failed':len(set(failed)),
         'score_buckets':summarize(tested),
         'filter_effects':{k:filter_effect(tested,k) for k in filters},
@@ -150,7 +180,7 @@ def main():
         'all_rows':tested,
     }
     (ROOT/'data/backtest.json').write_text(json.dumps(clean_json(out),ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
-    print(f"Backtest {ASOF.date()} -> {END.date()} : {len(tested)}/{len(rows)}")
+    print(f"Backtest {ASOF.date()} -> {END.date()} [{universe_label}] : {len(tested)}/{len(rows)}")
 
 if __name__=='__main__':
     main()
