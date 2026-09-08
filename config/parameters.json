@@ -28,7 +28,7 @@
     "sell": {"rsi_min": 65, "macd_max": 0, "trend_max": 0}
   },
   "visualisation": {
-    "buy_count": 300,
+    "buy_count": 1000,
     "sell_count": 15,
     "min_canada_pct": 30,
     "min_usa_pct": 30
