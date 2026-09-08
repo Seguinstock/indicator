@@ -63,8 +63,11 @@ def main():
     refreshed.sort(key=lambda x: float(x.get('score') or 0), reverse=True)
     data['buy'] = refreshed[: int(cfg['visualisation'].get('buy_count', len(refreshed)))]
     data['buy_model'] = 'potential_v1'
-    data['updated'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')
+    now = datetime.now(timezone.utc)
+    data['updated'] = now.strftime('%Y-%m-%d %H:%M')
+    data['scored_at'] = now.isoformat(timespec='seconds')
     data['update_mode'] = 'fast_rescore'
+    data['parameter_snapshot'] = cfg
 
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f"Fast rescore: {len(refreshed)} titres recalculés sans téléchargement de marché")
