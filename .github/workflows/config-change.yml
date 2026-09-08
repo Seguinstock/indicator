@@ -71,6 +71,8 @@ jobs:
       - name: Full market recalculation
         if: env.RECALC_MODE == 'full'
         run: python engine/scanner.py
+      - name: Stamp exact parameters used
+        run: python engine/stamp_results.py
       - name: Publish refreshed results
         run: |
           git add data/results.json
@@ -84,4 +86,4 @@ jobs:
       - name: Close request
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue close "${{ github.event.issue.number }}" --comment "Paramètres enregistrés et résultats recalculés. Les changements de score utilisent le recalcul rapide sans retélécharger les cours lorsqu'il est applicable."
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Paramètres enregistrés et résultats recalculés. Le fichier de résultats contient maintenant l'instantané exact des paramètres utilisés pour confirmer la fin du calcul."
