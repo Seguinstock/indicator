@@ -45,9 +45,30 @@ async function initHoldings(){
 function pathGet(obj,path){return path.split('.').reduce((o,k)=>o?.[k],obj)}
 async function initParameters(){
   const current=await getJSON('config/parameters.json'),meta=await getJSON('config/parameter_defaults.json'),root=document.getElementById('parameterRows');
-  root.innerHTML=Object.entries(meta).map(([path,m])=>{const v=pathGet(current,path);return `<article class="param" data-path="${esc(path)}"><div class="param-head"><div><b>${esc(m.label)}</b></div><span>Défaut <strong>${m.default}</strong></span></div><div class="param-edit"><input type="number" value="${v}" min="${m.min}" max="${m.max}" step="${m.step}"><button class="apply">Appliquer</button><button class="secondary reset">Défaut</button></div><div class="effect"></div><details class="param-help"><summary>Explication</summary><div class="param-help-body"><p><b>Ce que ça mesure</b><br>${esc(m.description)}</p><p><b>Logique du filtre</b><br>${esc(m.logic)}</p><p><b>Si tu augmentes</b><br>${esc(m.higher)}</p><p><b>Si tu diminues</b><br>${esc(m.lower)}</p></div></details></article>`}).join('');
+  root.innerHTML=Object.entries(meta).map(([path,m])=>{const v=pathGet(current,path);return `<article class="param" data-path="${esc(path)}"><div class="param-head"><div><b>${esc(m.label)}</b></div><span>Défaut <strong>${m.default}</strong></span></div><div class="param-edit"><input type="number" value="${v}" min="${m.min}" max="${m.max}" step="${m.step}"></div><div class="effect"></div><details class="param-help"><summary>Explication</summary><div class="param-help-body"><p><b>Ce que ça mesure</b><br>${esc(m.description)}</p><p><b>Logique du filtre</b><br>${esc(m.logic)}</p><p><b>Si tu augmentes</b><br>${esc(m.higher)}</p><p><b>Si tu diminues</b><br>${esc(m.lower)}</p></div></details></article>`}).join('');
   function updateCard(card){const path=card.dataset.path,m=meta[path],v=Number(card.querySelector('input').value);let txt='Valeur de référence : réglage standard.';if(v>m.default)txt='Avec cette valeur : '+m.higher;else if(v<m.default)txt='Avec cette valeur : '+m.lower;card.querySelector('.effect').textContent=txt}
-  root.querySelectorAll('.param').forEach(c=>{updateCard(c);c.querySelector('input').addEventListener('input',()=>updateCard(c));c.querySelector('.reset').addEventListener('click',()=>{c.querySelector('input').value=meta[c.dataset.path].default;updateCard(c)});c.querySelector('.apply').addEventListener('click',()=>{const path=c.dataset.path,value=Number(c.querySelector('input').value),m=meta[path];if(!Number.isFinite(value)||value<m.min||value>m.max){notice(`Valeur invalide pour ${m.label}.`,true);return}openChange(`Config: paramètre ${m.label}`,{action:'set_parameter',path,value})})});
+  root.querySelectorAll('.param').forEach(c=>{updateCard(c);c.querySelector('input').addEventListener('input',()=>updateCard(c))});
+
+  document.getElementById('saveParameters').addEventListener('click',()=>{
+    const changes=[];
+    for(const c of root.querySelectorAll('.param')){
+      const path=c.dataset.path,m=meta[path],input=c.querySelector('input'),value=Number(input.value);
+      if(!Number.isFinite(value)||value<m.min||value>m.max){notice(`Valeur invalide pour ${m.label}.`,true);input.focus();return}
+      const before=Number(pathGet(current,path));
+      if(value!==before)changes.push({path,value});
+    }
+    if(!changes.length){notice('Aucun changement à enregistrer.');return}
+    notice(`${changes.length} changement${changes.length===1?'':'s'} prêt${changes.length===1?'':'s'} à être envoyé${changes.length===1?'':'s'} dans une seule demande GitHub.`);
+    openChange('Config: enregistrer les paramètres',{action:'set_parameters',changes});
+  });
+
+  document.getElementById('resetParameters').addEventListener('click',()=>{
+    const changes=Object.entries(meta).map(([path,m])=>({path,value:Number(m.default)}));
+    root.querySelectorAll('.param').forEach(c=>{c.querySelector('input').value=meta[c.dataset.path].default;updateCard(c)});
+    notice('Valeurs par défaut préparées. Une seule demande GitHub va les appliquer ensemble.');
+    openChange('Config: paramètres par défaut',{action:'set_parameters',changes});
+  });
+
   const tech=document.getElementById('technicalReference');tech.innerHTML=`RSI : ${current.indicators.rsi_period} périodes · RVOL : ${current.indicators.rvol_period} périodes · Zone de rebond : ${current.indicators.support_lookback} jours. Ces paramètres techniques restent verrouillés pour l'instant afin de ne pas modifier les formules pendant cette étape.`;
 }
 
