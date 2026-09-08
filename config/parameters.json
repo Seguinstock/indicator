@@ -5,9 +5,9 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 50,
-    "trend_weight": 20,
-    "rvol_weight": 15,
+    "volatility_weight": 30,
+    "trend_weight": 35,
+    "rvol_weight": 10,
     "rsi_weight": 10,
     "support_weight": 5,
     "volatility_floor_pct": 15,
@@ -19,13 +19,35 @@
     "support_max_distance_pct": 10.0
   },
   "filters": {
-    "rsi": {"enabled": true, "buy_max": 40},
-    "reversal": {"enabled": true, "min_delta": 0.5},
-    "support": {"enabled": true, "max_distance_pct": 6.0},
-    "rvol": {"enabled": true, "min": 1.0},
-    "macd": {"enabled": true, "min_momentum": 0},
-    "trend": {"enabled": true, "min": -0.5},
-    "sell": {"rsi_min": 65, "macd_max": 0, "trend_max": 0}
+    "rsi": {
+      "enabled": true,
+      "buy_max": 40
+    },
+    "reversal": {
+      "enabled": true,
+      "min_delta": 0.5
+    },
+    "support": {
+      "enabled": true,
+      "max_distance_pct": 6.0
+    },
+    "rvol": {
+      "enabled": true,
+      "min": 1.0
+    },
+    "macd": {
+      "enabled": true,
+      "min_momentum": 0
+    },
+    "trend": {
+      "enabled": true,
+      "min": -0.5
+    },
+    "sell": {
+      "rsi_min": 65,
+      "macd_max": 0,
+      "trend_max": 0
+    }
   },
   "visualisation": {
     "buy_count": 1000,
