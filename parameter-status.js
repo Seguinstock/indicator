@@ -1,5 +1,6 @@
 let PARAMETER_BASELINE=null;
-let RESULTS_BASELINE=null;
+const PARAM_STATUS_KEY='stockIndicatorParameterStatusV2';
+let PARAM_STATUS_TIMER=null;
 
 function parameterPathGet(obj,path){return path.split('.').reduce((o,k)=>o?.[k],obj)}
 function parameterValuesFromPage(){
@@ -12,7 +13,13 @@ function parameterNotice(msg,bad=false,showButton=false){
   const el=document.getElementById('notice');
   if(!el)return;
   el.className=`notice ${bad?'bad':''}`;
-  el.innerHTML=`<div>${msg}</div>${showButton?'<div style="margin-top:10px"><button id="viewBuyResults" type="button">Actualiser / voir Achat</button></div>':''}`;
+  el.innerHTML=`<div>${msg}</div>${showButton?'<div style="margin-top:10px"><button id="viewBuyResults" type="button">Voir Achat avec ces résultats</button></div>':''}`;
+}
+function saveParameterStatus(state){
+  try{localStorage.setItem(PARAM_STATUS_KEY,JSON.stringify(state))}catch(e){}
+}
+function loadParameterStatus(){
+  try{return JSON.parse(localStorage.getItem(PARAM_STATUS_KEY)||'null')}catch(e){return null}
 }
 async function fetchParameterConfig(){
   const r=await fetch(`config/parameters.json?status=${Date.now()}`,{cache:'no-store'});
@@ -44,45 +51,54 @@ function changedParameterValues(){
   if(!PARAMETER_BASELINE)return values;
   return values.filter(x=>Number(parameterPathGet(PARAMETER_BASELINE,x.path))!==Number(x.value));
 }
-function resultsChangedSinceBaseline(results){
-  if(!RESULTS_BASELINE)return true;
-  const current=results?.scored_at||results?.updated||null;
-  const before=RESULTS_BASELINE?.scored_at||RESULTS_BASELINE?.updated||null;
-  return Boolean(current&&current!==before);
+function renderStoredStatus(state){
+  if(!state)return;
+  if(state.phase==='requested')parameterNotice('Demande envoyée. Enregistrement en cours…');
+  else if(state.phase==='calculating')parameterNotice('✓ Paramètres enregistrés. Calcul des résultats en cours…');
+  else if(state.phase==='done')parameterNotice(`✓ Calcul terminé${state.scoredAt?` à ${new Date(state.scoredAt).toLocaleTimeString('fr-CA',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}`:''}. Les résultats utilisent ces paramètres.`,false,true);
+  else if(state.phase==='timeout')parameterNotice('Le calcul n’est pas encore confirmé. La vérification automatique continue lorsque tu reviens sur cette page.',true);
 }
-function watchParameterPublication(expected){
-  if(!expected.length)return;
-  const started=Date.now();
-  let configApplied=false;
-  parameterNotice('Demande envoyée. Enregistrement en cours…');
-  const timer=setInterval(async()=>{
+function watchParameterPublication(expected,started=Date.now()){
+  if(!expected?.length)return;
+  if(PARAM_STATUS_TIMER)clearInterval(PARAM_STATUS_TIMER);
+  const tick=async()=>{
     try{
       const cfg=await fetchParameterConfig();
-      if(parameterChangesMatch(cfg,expected)){
-        if(!configApplied){
-          configApplied=true;
-          PARAMETER_BASELINE=cfg;
-          syncParameterInputs(cfg);
-          parameterNotice('✓ Paramètres enregistrés. Recalcul des résultats en cours…');
-        }
-        const results=await fetchResultsStatus();
-        if(resultSnapshotMatches(results,expected)||resultsChangedSinceBaseline(results)){
-          clearInterval(timer);
-          RESULTS_BASELINE=results;
-          parameterNotice('✓ Recalcul terminé. Les nouveaux résultats sont publiés.',false,true);
-        }
+      if(!parameterChangesMatch(cfg,expected)){
+        const state={phase:'requested',expected,started};
+        saveParameterStatus(state);renderStoredStatus(state);return;
       }
-      if(Date.now()-started>10*60*1000){
-        clearInterval(timer);
-        parameterNotice('Le traitement n’est pas terminé. Tu peux utiliser Actualiser / voir Achat pour vérifier les derniers résultats publiés.',true,true);
+
+      PARAMETER_BASELINE=cfg;
+      syncParameterInputs(cfg);
+      let state={phase:'calculating',expected,started};
+      saveParameterStatus(state);renderStoredStatus(state);
+
+      const results=await fetchResultsStatus();
+      if(resultSnapshotMatches(results,expected)){
+        if(PARAM_STATUS_TIMER){clearInterval(PARAM_STATUS_TIMER);PARAM_STATUS_TIMER=null}
+        state={phase:'done',expected,started,scoredAt:results.scored_at||results.updated||null};
+        saveParameterStatus(state);renderStoredStatus(state);
+        return;
+      }
+
+      if(Date.now()-started>20*60*1000){
+        state={phase:'timeout',expected,started};
+        saveParameterStatus(state);renderStoredStatus(state);
       }
     }catch(e){/* nouvelle tentative au prochain passage */}
-  },3000);
+  };
+  tick();
+  PARAM_STATUS_TIMER=setInterval(tick,3000);
 }
 
 document.addEventListener('DOMContentLoaded',async()=>{
   try{PARAMETER_BASELINE=await fetchParameterConfig()}catch(e){}
-  try{RESULTS_BASELINE=await fetchResultsStatus()}catch(e){}
+  const stored=loadParameterStatus();
+  if(stored?.expected?.length){
+    renderStoredStatus(stored);
+    if(stored.phase!=='done')watchParameterPublication(stored.expected,stored.started||Date.now());
+  }
 });
 
 document.addEventListener('click',e=>{
@@ -93,5 +109,9 @@ document.addEventListener('click',e=>{
   if(!save&&!reset)return;
   const expected=changedParameterValues();
   if(!expected.length)return;
-  setTimeout(()=>watchParameterPublication(expected),100);
+  const started=Date.now();
+  const state={phase:'requested',expected,started};
+  saveParameterStatus(state);
+  renderStoredStatus(state);
+  setTimeout(()=>watchParameterPublication(expected,started),100);
 });
