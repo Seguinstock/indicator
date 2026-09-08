@@ -1,0 +1,44 @@
+name: Run point-in-time validation
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: stock-indicator-pit-validation
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.actor == 'Seguinstock' && github.event.issue.title == 'Run Stock Indicator PIT Validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pitindex
+      - name: Run point-in-time validation
+        run: python research/pit_backtest.py
+      - name: Commit validation results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/pit_validation.json data/pit_validation.md
+          git commit -m 'Update point-in-time validation results' || exit 0
+          git pull --rebase
+          git push
+      - name: Close request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close ${{ github.event.issue.number }} --comment 'Validation point-in-time terminée. Résultats dans data/pit_validation.json et data/pit_validation.md.'
