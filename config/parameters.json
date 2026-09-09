@@ -5,14 +5,14 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 30,
-    "trend_weight": 20,
+    "volatility_weight": 10,
+    "trend_weight": 30,
     "rvol_weight": 15,
-    "rsi_weight": 30,
-    "support_weight": 5,
+    "rsi_weight": 20,
+    "support_weight": 0,
     "volatility_floor_pct": 15,
-    "volatility_full_pct": 70,
-    "rvol_floor": 0.5,
+    "volatility_full_pct": 50,
+    "rvol_floor": 0.7,
     "rvol_full": 2.0,
     "rsi_target": 33,
     "rsi_range": 20,
@@ -21,7 +21,7 @@
   "filters": {
     "rsi": {
       "enabled": true,
-      "buy_max": 40
+      "buy_max": 35
     },
     "reversal": {
       "enabled": true,
@@ -52,7 +52,7 @@
   "visualisation": {
     "buy_count": 1000,
     "sell_count": 15,
-    "min_canada_pct": 30,
+    "min_canada_pct": 55,
     "min_usa_pct": 30
   }
 }
