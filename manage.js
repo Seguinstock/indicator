@@ -2,24 +2,8 @@ const REPO='Seguinstock/indicator';
 const ISSUE_BASE=`https://github.com/${REPO}/issues/new`;
 
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function parseCSV(text){
-  const rows=[]; let row=[],cell='',q=false;
-  for(let i=0;i<text.length;i++){
-    const c=text[i],n=text[i+1];
-    if(c==='"'&&q&&n==='"'){cell+='"';i++;continue}
-    if(c==='"'){q=!q;continue}
-    if(c===','&&!q){row.push(cell);cell='';continue}
-    if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell);cell='';if(row.some(x=>x!==''))rows.push(row);row=[];continue}
-    cell+=c;
-  }
-  if(cell||row.length){row.push(cell);rows.push(row)}
-  if(!rows.length)return[];
-  const h=rows.shift(); return rows.map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??''])));
-}
-function issueUrl(title,payload){
-  const body=`STOCK_INDICATOR_CONFIG\n\n\`\`\`json\n${JSON.stringify(payload,null,2)}\n\`\`\`\n\nModification demandée depuis Stock Indicator.`;
-  return `${ISSUE_BASE}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-}
+function parseCSV(text){const rows=[];let row=[],cell='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'&&q&&n==='"'){cell+='"';i++;continue}if(c==='"'){q=!q;continue}if(c===','&&!q){row.push(cell);cell='';continue}if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell);cell='';if(row.some(x=>x!==''))rows.push(row);row=[];continue}cell+=c}if(cell||row.length){row.push(cell);rows.push(row)}if(!rows.length)return[];const h=rows.shift();return rows.map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??''])))}
+function issueUrl(title,payload){const body=`STOCK_INDICATOR_CONFIG\n\n\`\`\`json\n${JSON.stringify(payload,null,2)}\n\`\`\`\n\nModification demandée depuis Stock Indicator.`;return `${ISSUE_BASE}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`}
 function openChange(title,payload){window.open(issueUrl(title,payload),'_blank','noopener')}
 async function getText(path){const r=await fetch(`${path}?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error(path);return r.text()}
 async function getJSON(path){return JSON.parse(await getText(path))}
@@ -38,9 +22,10 @@ async function initHoldings(){
   const portfolios=await getJSON('config/portfolios.json'),sel=document.getElementById('portfolioSelect');
   sel.innerHTML=portfolios.filter(x=>x.active).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('');
   async function load(){const p=portfolios.find(x=>x.id===sel.value)||portfolios[0];const rows=parseCSV(await getText(p.file));document.getElementById('holdingCount').textContent=`${rows.length} titres détenus`;document.getElementById('holdingRows').innerHTML=rows.map(x=>`<div class="manage-row"><div><b>${esc(x.symbol)}</b><small>${esc(x.name||'')}</small></div><button class="danger" data-remove="${esc(x.symbol)}">Supprimer</button></div>`).join('')||'<div class="empty">Aucun titre dans ce portefeuille.</div>';document.getElementById('portfolioName').textContent=p.name}
+  window.reloadHoldingsList=load;
   sel.addEventListener('change',load);await load();
-  document.getElementById('holdingRows').addEventListener('click',e=>{const s=e.target.dataset.remove;if(!s)return;const p=portfolios.find(x=>x.id===sel.value);openChange(`Config: retirer ${s} de ${p.name}`,{action:'remove_holding',portfolio:p.id,symbol:s})});
-  document.getElementById('holdingAdd').addEventListener('submit',e=>{e.preventDefault();const p=portfolios.find(x=>x.id===sel.value);const symbol=document.getElementById('holdingSymbol').value.trim().toUpperCase();const name=document.getElementById('holdingName').value.trim();if(!symbol)return;openChange(`Config: ajouter ${symbol} à ${p.name}`,{action:'add_holding',portfolio:p.id,symbol,name})});
+  document.getElementById('holdingRows').addEventListener('click',e=>{const s=e.target.dataset.remove;if(!s)return;const p=portfolios.find(x=>x.id===sel.value);window.dispatchEvent(new CustomEvent('holding-change-requested',{detail:{action:'remove',portfolio:p.id,file:p.file,symbol:s}}));openChange(`Config: retirer ${s} de ${p.name}`,{action:'remove_holding',portfolio:p.id,symbol:s})});
+  document.getElementById('holdingAdd').addEventListener('submit',e=>{e.preventDefault();const p=portfolios.find(x=>x.id===sel.value);const symbol=document.getElementById('holdingSymbol').value.trim().toUpperCase();const name=document.getElementById('holdingName').value.trim();const market=document.getElementById('holdingMarket').value;const country=document.getElementById('holdingCountry').value;if(!symbol)return;window.dispatchEvent(new CustomEvent('holding-change-requested',{detail:{action:'add',portfolio:p.id,file:p.file,symbol}}));openChange(`Config: ajouter ${symbol} à ${p.name}`,{action:'add_holding',portfolio:p.id,symbol,name,market,country})});
 }
 function pathGet(obj,path){return path.split('.').reduce((o,k)=>o?.[k],obj)}
 function parameterNeedsFullScan(path,meta){return meta?.requires_full_scan===true||path.startsWith('indicators.')}
@@ -52,34 +37,9 @@ async function initParameters(){
   function changedParameters(){const out=[];for(const c of root.querySelectorAll('.param')){const path=c.dataset.path,value=Number(c.querySelector('input').value),before=Number(pathGet(current,path));if(Number.isFinite(value)&&value!==before)out.push({path,value})}return out}
   function showTimingNotice(){const changes=changedParameters();if(changes.some(x=>parameterNeedsFullScan(x.path,meta[x.path])))notice('⏳ Ce changement nécessite de recharger et réanalyser les titres. L’actualisation peut prendre plusieurs minutes.');}
   root.querySelectorAll('.param').forEach(c=>{updateCard(c);c.querySelector('input').addEventListener('input',()=>{updateCard(c);showTimingNotice()})});
-
-  document.getElementById('saveParameters').addEventListener('click',()=>{
-    const changes=[];
-    for(const c of root.querySelectorAll('.param')){
-      const path=c.dataset.path,m=meta[path],input=c.querySelector('input'),value=Number(input.value);
-      if(!Number.isFinite(value)||value<m.min||value>m.max){notice(`Valeur invalide pour ${m.label}.`,true);input.focus();return}
-      const before=Number(pathGet(current,path));
-      if(value!==before)changes.push({path,value});
-    }
-    if(!changes.length){notice('Aucun changement à enregistrer.');return}
-    const slow=changes.some(x=>parameterNeedsFullScan(x.path,meta[x.path]));
-    notice(slow?'⏳ Ce changement nécessite de recharger et réanalyser les titres. L’actualisation peut prendre plusieurs minutes.':`${changes.length} changement${changes.length===1?'':'s'} prêt${changes.length===1?'':'s'} à être envoyé${changes.length===1?'':'s'} dans une seule demande GitHub.`);
-    openChange('Config: enregistrer les paramètres',{action:'set_parameters',changes});
-  });
-
-  document.getElementById('resetParameters').addEventListener('click',()=>{
-    const changes=Object.entries(meta).map(([path,m])=>({path,value:Number(m.default)}));
-    root.querySelectorAll('.param').forEach(c=>{c.querySelector('input').value=meta[c.dataset.path].default;updateCard(c)});
-    const slow=changes.some(x=>parameterNeedsFullScan(x.path,meta[x.path])&&Number(pathGet(current,x.path))!==x.value);
-    notice(slow?'⏳ Certaines valeurs par défaut nécessitent de recharger et réanalyser les titres. L’actualisation peut prendre plusieurs minutes.':'Valeurs par défaut préparées. Une seule demande GitHub va les appliquer ensemble.');
-    openChange('Config: paramètres par défaut',{action:'set_parameters',changes});
-  });
-
+  document.getElementById('saveParameters').addEventListener('click',()=>{const changes=[];for(const c of root.querySelectorAll('.param')){const path=c.dataset.path,m=meta[path],input=c.querySelector('input'),value=Number(input.value);if(!Number.isFinite(value)||value<m.min||value>m.max){notice(`Valeur invalide pour ${m.label}.`,true);input.focus();return}const before=Number(pathGet(current,path));if(value!==before)changes.push({path,value})}if(!changes.length){notice('Aucun changement à enregistrer.');return}const slow=changes.some(x=>parameterNeedsFullScan(x.path,meta[x.path]));notice(slow?'⏳ Ce changement nécessite de recharger et réanalyser les titres. L’actualisation peut prendre plusieurs minutes.':`${changes.length} changement${changes.length===1?'':'s'} prêt${changes.length===1?'':'s'} à être envoyé${changes.length===1?'':'s'} dans une seule demande GitHub.`);openChange('Config: enregistrer les paramètres',{action:'set_parameters',changes})});
+  document.getElementById('resetParameters').addEventListener('click',()=>{const changes=Object.entries(meta).map(([path,m])=>({path,value:Number(m.default)}));root.querySelectorAll('.param').forEach(c=>{c.querySelector('input').value=meta[c.dataset.path].default;updateCard(c)});const slow=changes.some(x=>parameterNeedsFullScan(x.path,meta[x.path])&&Number(pathGet(current,x.path))!==x.value);notice(slow?'⏳ Certaines valeurs par défaut nécessitent de recharger et réanalyser les titres. L’actualisation peut prendre plusieurs minutes.':'Valeurs par défaut préparées. Une seule demande GitHub va les appliquer ensemble.');openChange('Config: paramètres par défaut',{action:'set_parameters',changes})});
   const tech=document.getElementById('technicalReference');tech.innerHTML=`RSI : ${current.indicators.rsi_period} périodes · RVOL : ${current.indicators.rvol_period} périodes · Zone de rebond : ${current.indicators.support_lookback} jours. Ces paramètres techniques restent verrouillés pour l'instant afin de ne pas modifier les formules pendant cette étape. Le bassin de candidats du Top 30 filtré est géré automatiquement et n'est plus un paramètre utilisateur.`;
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const page=document.body.dataset.page;
-  const fn=page==='watchlist'?initWatchlist:page==='holdings'?initHoldings:page==='parameters'?initParameters:null;
-  if(fn)fn().catch(e=>{console.error(e);notice('Erreur de chargement de la configuration.',true)})
-});
+document.addEventListener('DOMContentLoaded',()=>{const page=document.body.dataset.page;const fn=page==='watchlist'?initWatchlist:page==='holdings'?initHoldings:page==='parameters'?initParameters:null;if(fn)fn().catch(e=>{console.error(e);notice('Erreur de chargement de la configuration.',true)})});
