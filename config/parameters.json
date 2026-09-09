@@ -5,11 +5,11 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 32,
-    "trend_weight": 35,
-    "rvol_weight": 10,
-    "rsi_weight": 6,
-    "support_weight": 4,
+    "volatility_weight": 30,
+    "trend_weight": 20,
+    "rvol_weight": 15,
+    "rsi_weight": 30,
+    "support_weight": 5,
     "volatility_floor_pct": 15,
     "volatility_full_pct": 70,
     "rvol_floor": 0.5,
