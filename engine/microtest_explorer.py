@@ -59,12 +59,23 @@ def pit_rows(asof):
     return out
 
 def normalize_idx(h):
+    if h is None or h.empty:
+        return pd.DataFrame()
+    h=h.copy()
+    if isinstance(h.columns,pd.MultiIndex):
+        levels=[list(h.columns.get_level_values(i)) for i in range(h.columns.nlevels)]
+        if 'Close' in levels[0]: h.columns=h.columns.get_level_values(0)
+        elif h.columns.nlevels>1 and 'Close' in levels[1]: h.columns=h.columns.get_level_values(1)
+    if 'Close' not in h.columns:
+        return pd.DataFrame()
     h=h.dropna(subset=['Close']).copy(); idx=pd.to_datetime(h.index)
     if getattr(idx,'tz',None): idx=idx.tz_localize(None)
     h.index=idx; return h
 
 def features(row,h,cfg,asof):
-    h=normalize_idx(h); hist=h.loc[h.index<=asof].copy()
+    h=normalize_idx(h)
+    if h.empty:return None
+    hist=h.loc[h.index<=asof].copy()
     if len(hist)<80:return None
     old=scanner.restrict_v14_history
     scanner.restrict_v14_history=lambda z: normalize_idx(z).loc[(normalize_idx(z).index<=asof)&(normalize_idx(z).index>=asof-pd.Timedelta(days=scanner.HISTORY_DAYS))].copy()
@@ -85,13 +96,15 @@ def daily_momentum(close):
     return mom, finite(rsi,50)
 
 def simulate(h,asof,horizon,entry,rule):
-    h=normalize_idx(h); f=h.loc[h.index>asof].head(horizon)
+    h=normalize_idx(h)
+    if h.empty:return None
+    f=h.loc[h.index>asof].head(horizon)
     if f.empty:return None
     peak=entry; peak_gain=0; exit_px=None; exit_i=None; reason='horizon'
     closes=[]
     for i,(_,r) in enumerate(f.iterrows(),1):
         px=float(r['Close']); peak=max(peak,float(r['High']),px); peak_gain=max(peak_gain,(peak/entry-1)*100); closes.append(px)
-        dd=(px/peak-1)*100; gain=(px/entry-1)*100
+        dd=(px/peak-1)*100
         mom,rsi=daily_momentum(([entry]*30)+closes)
         deteriorating=(mom<0 and rsi<48) or (len(closes)>=3 and closes[-1]<closes[-2]<closes[-3])
         trigger=False
@@ -111,9 +124,19 @@ def simulate(h,asof,horizon,entry,rule):
 RULES=['fixed','trail5','trail8','trail12','armed10_5','armed15_8','surge10_5_tech','surge15_6_tech','surge20_8_tech']
 
 def benchmark(asof,horizon):
-    h=yf.download('^SP1500',start=(asof-pd.Timedelta(days=10)).strftime('%Y-%m-%d'),end=(asof+pd.Timedelta(days=160)).strftime('%Y-%m-%d'),auto_adjust=True,progress=False); h=normalize_idx(h)
-    c=h['Close']; c=c.iloc[:,0] if isinstance(c,pd.DataFrame) else c; b=c.loc[c.index<=asof]; a=c.loc[c.index>asof].head(horizon)
-    return float((a.iloc[-1]/b.iloc[-1]-1)*100) if len(b) and len(a) else None
+    start=(asof-pd.Timedelta(days=10)).strftime('%Y-%m-%d')
+    end=(asof+pd.Timedelta(days=160)).strftime('%Y-%m-%d')
+    for symbol in ('^SP1500','^GSPC'):
+        try:
+            h=yf.download(symbol,start=start,end=end,auto_adjust=True,progress=False)
+            h=normalize_idx(h)
+            if h.empty: continue
+            c=h['Close']; c=c.iloc[:,0] if isinstance(c,pd.DataFrame) else c
+            b=c.loc[c.index<=asof]; a=c.loc[c.index>asof].head(horizon)
+            if len(b) and len(a): return float((a.iloc[-1]/b.iloc[-1]-1)*100)
+        except Exception:
+            continue
+    return None
 
 def main():
     cfg=json.loads((ROOT/'config/parameters.json').read_text()); periods=[]
