@@ -17,6 +17,7 @@ jobs:
   backtest:
     if: ${{ github.actor == 'Seguinstock' && github.event.issue.title == 'Run Stock Indicator Backtest' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,29 +41,23 @@ jobs:
           m1=re.search(r'BACKTEST_ASOF=(\d{4}-\d{2}-\d{2})',body)
           m2=re.search(r'BACKTEST_END=(\d{4}-\d{2}-\d{2})',body)
           mu=re.search(r'BACKTEST_UNIVERSE=([A-Za-z0-9_\-]+)',body)
-          if not m1:
-              raise SystemExit('Date de départ manquante')
+          if not m1: raise SystemExit('Date de départ manquante')
           asof=date.fromisoformat(m1.group(1))
           end=date.fromisoformat(m2.group(1)) if m2 else asof+timedelta(days=28)
           universe=(mu.group(1).lower() if mu else 'current')
-          if universe not in {'current','sp500_pit'}:
-              raise SystemExit('Univers de backtest invalide')
-          if universe=='sp500_pit' and asof < date(2021,1,1):
-              raise SystemExit('Le S&P 500 historique point-in-time est disponible à partir de 2021')
-          if end <= asof:
-              raise SystemExit('La date de fin doit être après la date historique')
-          if (end-asof).days > 400:
-              raise SystemExit('Fenêtre maximale : 400 jours')
-          today=date.today()
-          if asof >= today:
-              raise SystemExit('La date historique doit être dans le passé')
+          if universe not in {'current','sp500_pit','sp1500_pit'}: raise SystemExit('Univers de backtest invalide')
+          if universe=='sp500_pit' and asof < date(2005,1,1): raise SystemExit('Le S&P 500 historique point-in-time est disponible à partir de 2005')
+          if universe=='sp1500_pit' and asof < date(2021,3,26): raise SystemExit('Le S&P 1500 historique point-in-time est disponible à partir du 26 mars 2021')
+          if end <= asof: raise SystemExit('La date de fin doit être après la date historique')
+          if (end-asof).days > 400: raise SystemExit('Fenêtre maximale : 400 jours')
+          if asof >= date.today(): raise SystemExit('La date historique doit être dans le passé')
           with open(os.environ['GITHUB_ENV'],'a') as f:
               f.write(f'BACKTEST_ASOF={asof.isoformat()}\n')
               f.write(f'BACKTEST_END={end.isoformat()}\n')
               f.write(f'BACKTEST_UNIVERSE={universe}\n')
           PY
       - name: Run historical backtest
-        run: python engine/backtest.py
+        run: python engine/backtest_v2.py
       - name: Publish backtest results
         run: |
           git config user.name "stock-indicator-bot"
