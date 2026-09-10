@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run full market scan
-        run: python engine/scanner.py
+        run: python engine/defensive_runtime.py
       - name: Publish refreshed results
         run: |
           git config user.name "stock-indicator-bot"
