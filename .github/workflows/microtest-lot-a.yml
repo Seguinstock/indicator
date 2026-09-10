@@ -1,0 +1,43 @@
+name: Explore S&P 1500 microtest Lot A
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  explore:
+    if: github.event.issue.title == 'Run Stock Indicator Microtest Lot A'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pitindex
+      - name: Run Lot A exploratory study
+        env:
+          MICROTEST_SEED: '20260910'
+          MICROTEST_LOT: 'A'
+        run: python engine/microtest_lot.py
+      - name: Publish Lot A result
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data/microtest_lot_a.json
+          git commit -m "Publish S&P1500 microtest Lot A results" || true
+          git pull --rebase
+          git push
+      - name: Close request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "S&P 1500 microtest Lot A completed. Results: data/microtest_lot_a.json"
+          gh issue close "${{ github.event.issue.number }}"
