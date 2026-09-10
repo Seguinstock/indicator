@@ -29,7 +29,7 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - run: python engine/scanner.py
+      - run: python engine/defensive_runtime.py
       - name: Commit refreshed results
         run: |
           git config user.name "stock-indicator-bot"
