@@ -5,18 +5,19 @@
     "support_lookback": 200
   },
   "buy_model": {
-    "volatility_weight": 10,
-    "trend_weight": 30,
-    "rvol_weight": 15,
-    "rsi_weight": 20,
-    "support_weight": 0,
+    "strategy": "defensive",
+    "volatility_weight": 30,
+    "trend_weight": 40,
+    "rvol_weight": 5,
+    "rsi_weight": 10,
+    "support_weight": 15,
     "volatility_floor_pct": 15,
-    "volatility_full_pct": 50,
-    "rvol_floor": 0.7,
-    "rvol_full": 2.0,
-    "rsi_target": 33,
+    "volatility_full_pct": 60,
+    "rvol_floor": 0.6,
+    "rvol_full": 1.8,
+    "rsi_target": 40,
     "rsi_range": 20,
-    "support_max_distance_pct": 10
+    "support_max_distance_pct": 8
   },
   "filters": {
     "rsi": {"enabled": true, "buy_max": 35},
