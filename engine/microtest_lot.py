@@ -6,8 +6,8 @@ import pandas as pd
 import microtest_explorer as base
 
 LOT=os.environ.get('MICROTEST_LOT','A').upper().strip()
-if LOT not in ('A','B'):
-    raise ValueError('MICROTEST_LOT must be A or B')
+if LOT not in ('A','B','B1','B2'):
+    raise ValueError('MICROTEST_LOT must be A, B, B1 or B2')
 
 GENERAL_FAMILIES=list(base.FAMILIES)
 RSI_FAMILIES=[
@@ -33,7 +33,14 @@ def select_all_periods():
     return sorted(out)
 
 ALL_PERIODS=select_all_periods()
-LOT_PERIODS=ALL_PERIODS[:4] if LOT=='A' else ALL_PERIODS[4:]
+if LOT=='A':
+    LOT_PERIODS=ALL_PERIODS[:4]
+elif LOT=='B1':
+    LOT_PERIODS=ALL_PERIODS[4:6]
+elif LOT=='B2':
+    LOT_PERIODS=ALL_PERIODS[6:8]
+else:
+    LOT_PERIODS=ALL_PERIODS[4:8]
 base.N_PERIODS=len(LOT_PERIODS)
 base.pick_periods=lambda: LOT_PERIODS
 
@@ -79,31 +86,25 @@ def score_family(name,x,extra):
     q14=low_rsi_quality(r14)
     q21=low_rsi_quality(r21)
     accel=base.qrebound(d14,-2,4)
-    if name=='rsi14_only':
-        return 100*q14
-    if name=='rsi21_only':
-        return 100*q21
-    if name=='rsi14_rsi21':
-        return base.weighted([(q14,50),(q21,50)])
-    if name=='rsi21_delta14':
-        return base.weighted([(q21,65),(accel,35)])
-    if name=='rsi14_rsi21_delta14':
-        return base.weighted([(q14,35),(q21,35),(accel,30)])
-    if name=='rsi21_low_rsi14_accel':
-        return base.weighted([(q21,60),(accel,40)])
+    if name=='rsi14_only': return 100*q14
+    if name=='rsi21_only': return 100*q21
+    if name=='rsi14_rsi21': return base.weighted([(q14,50),(q21,50)])
+    if name=='rsi21_delta14': return base.weighted([(q21,65),(accel,35)])
+    if name=='rsi14_rsi21_delta14': return base.weighted([(q14,35),(q21,35),(accel,30)])
+    if name=='rsi21_low_rsi14_accel': return base.weighted([(q21,60),(accel,40)])
     return 0
 
 base.features=features_with_rsi21
 base.score_family=score_family
 base.FAMILIES=GENERAL_FAMILIES if LOT=='A' else GENERAL_FAMILIES+RSI_FAMILIES
 
-orig_main=base.main
 
 def main():
-    orig_main()
+    base.main()
     root=Path(__file__).resolve().parents[1]
     src=root/'data/microtest_explorer.json'
-    dst=root/f'data/microtest_lot_{LOT.lower()}.json'
+    suffix=LOT.lower()
+    dst=root/f'data/microtest_lot_{suffix}.json'
     if src.exists():
         src.replace(dst)
         print(f'Published lot {LOT}: {dst.name}')
