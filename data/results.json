@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-12 12:44",
+  "updated": "2026-09-12 12:51",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -45,7 +45,7 @@
       },
       "passed": false,
       "score": 88.7,
-      "name": null
+      "name": "Regency Centers Corporation"
     },
     {
       "symbol": "REI.UN",
@@ -275,7 +275,7 @@
       "country": "CA",
       "price": 22.62,
       "rsi": 44.8,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.94,
       "support": 22.55,
       "support_distance_pct": 0.3,
@@ -284,8 +284,8 @@
       "macd_momentum": -14.2,
       "trend": 1.0,
       "volatility_pct": 15.4,
-      "timing_v14": 41.6,
-      "buy_timing": 41.6,
+      "timing_v14": 46.8,
+      "buy_timing": 46.8,
       "potential_components": {
         "volatility": 29.7,
         "trend": 32.0,
@@ -1044,7 +1044,7 @@
       },
       "passed": false,
       "score": 82.5,
-      "name": "Rogers Sugar Inc."
+      "name": null
     },
     {
       "symbol": "ADP",
@@ -1229,7 +1229,7 @@
       },
       "passed": false,
       "score": 82.0,
-      "name": null
+      "name": "National Bank of Canada"
     },
     {
       "symbol": "PRU",
@@ -2379,43 +2379,6 @@
       "name": "Canadian National Railway Company"
     },
     {
-      "symbol": "WMB",
-      "market": "XNYS",
-      "country": "US",
-      "price": 72.85,
-      "rsi": 49.1,
-      "delta_rsi": 2.1,
-      "rvol": 1.14,
-      "support": 70.14,
-      "support_distance_pct": 3.7,
-      "support_score": 9.0,
-      "support_strength": 102.3,
-      "macd_momentum": -29.0,
-      "trend": 2.0,
-      "volatility_pct": 24.3,
-      "timing_v14": 39.3,
-      "buy_timing": 39.3,
-      "potential_components": {
-        "volatility": 23.8,
-        "trend": 40.0,
-        "rvol": 2.3,
-        "rsi": 5.4,
-        "support": 8.0
-      },
-      "potential_score": 79.5,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 79.5,
-      "name": "The Williams Companies, Inc."
-    },
-    {
       "symbol": "REGN",
       "market": "XNAS",
       "country": "US",
@@ -2488,6 +2451,43 @@
       "passed": false,
       "score": 79.4,
       "name": "AbbVie Inc."
+    },
+    {
+      "symbol": "WMB",
+      "market": "XNYS",
+      "country": "US",
+      "price": 72.85,
+      "rsi": 49.1,
+      "delta_rsi": 2.1,
+      "rvol": 1.14,
+      "support": 70.12,
+      "support_distance_pct": 3.7,
+      "support_score": 9.0,
+      "support_strength": 102.3,
+      "macd_momentum": -29.0,
+      "trend": 2.0,
+      "volatility_pct": 24.3,
+      "timing_v14": 39.3,
+      "buy_timing": 39.3,
+      "potential_components": {
+        "volatility": 23.8,
+        "trend": 40.0,
+        "rvol": 2.3,
+        "rsi": 5.4,
+        "support": 8.0
+      },
+      "potential_score": 79.4,
+      "filters": {
+        "rsi": false,
+        "reversal": true,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 79.4,
+      "name": "The Williams Companies, Inc."
     },
     {
       "symbol": "BNY",
@@ -5632,7 +5632,7 @@
       },
       "passed": false,
       "score": 72.9,
-      "name": null
+      "name": "Firm Capital Mortgage Investment Corporation"
     },
     {
       "symbol": "BEI.UN",
@@ -7186,7 +7186,7 @@
       },
       "passed": false,
       "score": 70.6,
-      "name": null
+      "name": "ExxonMobil Holdings Corporation"
     },
     {
       "symbol": "PSK",
@@ -9258,7 +9258,7 @@
       },
       "passed": false,
       "score": 67.2,
-      "name": null
+      "name": "BTB Real Estate Investment Trust"
     },
     {
       "symbol": "SPG",
@@ -10598,7 +10598,7 @@
       "country": "CA",
       "price": 2.3,
       "rsi": 64.3,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 1.64,
       "support": 2.18,
       "support_distance_pct": 5.2,
@@ -10607,8 +10607,8 @@
       "macd_momentum": 3.6,
       "trend": 2.0,
       "volatility_pct": 37.1,
-      "timing_v14": 30.4,
-      "buy_timing": 30.4,
+      "timing_v14": 35.4,
+      "buy_timing": 35.4,
       "potential_components": {
         "volatility": 15.3,
         "trend": 40.0,
@@ -12181,7 +12181,7 @@
       },
       "passed": false,
       "score": 61.8,
-      "name": null
+      "name": "Delta Air Lines, Inc."
     },
     {
       "symbol": "WAB",
@@ -12263,7 +12263,7 @@
       "country": "CA",
       "price": 7.35,
       "rsi": 29.9,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.52,
       "support": 7.1,
       "support_distance_pct": 3.4,
@@ -12272,8 +12272,8 @@
       "macd_momentum": -3.2,
       "trend": 0.0,
       "volatility_pct": 17.6,
-      "timing_v14": 64.0,
-      "buy_timing": 64.0,
+      "timing_v14": 59.0,
+      "buy_timing": 59.0,
       "potential_components": {
         "volatility": 28.3,
         "trend": 20.0,
@@ -14327,7 +14327,7 @@
       },
       "passed": false,
       "score": 58.9,
-      "name": null
+      "name": "Strathcona Resources Ltd."
     },
     {
       "symbol": "MPC",
@@ -14475,7 +14475,7 @@
       },
       "passed": false,
       "score": 58.8,
-      "name": "CT Real Estate Investment Trust"
+      "name": null
     },
     {
       "symbol": "RL",
@@ -15437,7 +15437,7 @@
       },
       "passed": false,
       "score": 57.6,
-      "name": null
+      "name": "Curaleaf Holdings, Inc."
     },
     {
       "symbol": "MTY",
@@ -20321,7 +20321,7 @@
       },
       "passed": false,
       "score": 48.4,
-      "name": "PepsiCo, Inc."
+      "name": null
     },
     {
       "symbol": "SRE",
@@ -20432,7 +20432,7 @@
       },
       "passed": false,
       "score": 48.4,
-      "name": "STLLR Gold Inc."
+      "name": null
     },
     {
       "symbol": "FEC",
@@ -21172,7 +21172,7 @@
       },
       "passed": false,
       "score": 46.8,
-      "name": null
+      "name": "Cencora, Inc."
     },
     {
       "symbol": "LIF",
@@ -23984,7 +23984,7 @@
       },
       "passed": false,
       "score": 43.0,
-      "name": null
+      "name": "G Mining Ventures Corp."
     },
     {
       "symbol": "CIGI",
@@ -26796,7 +26796,7 @@
       },
       "passed": false,
       "score": 38.3,
-      "name": null
+      "name": "CAE Inc."
     },
     {
       "symbol": "VRSK",
@@ -31828,7 +31828,7 @@
       },
       "passed": false,
       "score": 27.0,
-      "name": "NovaGold Resources Inc."
+      "name": null
     },
     {
       "symbol": "HCA",
@@ -32901,7 +32901,7 @@
       },
       "passed": false,
       "score": 23.0,
-      "name": null
+      "name": "GoldMining Inc."
     },
     {
       "symbol": "VHI",
@@ -33242,7 +33242,7 @@
       "country": "CA",
       "price": 0.55,
       "rsi": 57.3,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.57,
       "support": 0.45,
       "support_distance_pct": 18.2,
@@ -33251,8 +33251,8 @@
       "macd_momentum": -16.9,
       "trend": 0.0,
       "volatility_pct": 65.0,
-      "timing_v14": 5.5,
-      "buy_timing": 5.5,
+      "timing_v14": 10.5,
+      "buy_timing": 10.5,
       "potential_components": {
         "volatility": 0.0,
         "trend": 20.0,
@@ -33456,7 +33456,7 @@
       },
       "passed": false,
       "score": 20.5,
-      "name": null
+      "name": "Brookfield Wealth Solutions Ltd."
     },
     {
       "symbol": "BLDP",
@@ -34122,7 +34122,7 @@
       },
       "passed": false,
       "score": 16.4,
-      "name": "Euro Sun Mining Inc."
+      "name": null
     },
     {
       "symbol": "FSLR",
@@ -34714,7 +34714,7 @@
       },
       "passed": false,
       "score": 9.0,
-      "name": "Coinbase Global, Inc."
+      "name": null
     },
     {
       "symbol": "NANO",
