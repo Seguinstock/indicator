@@ -1,0 +1,1 @@
+Trigger period-level A+B1+B2 merge after merger workflow installation.
