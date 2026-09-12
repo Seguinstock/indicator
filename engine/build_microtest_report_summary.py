@@ -53,15 +53,11 @@ def family_summary(rows):
         buckets[r['family']].append(r)
     out = {}
     for fam, rr in buckets.items():
-        best_robust = sorted(rr, key=lambda r: (r['beat_period_rate_pct'], r['positive_period_rate_pct'], r['median_excess_pct'], r['avg_excess_pct']), reverse=True)[:10]
-        best_excess = sorted(rr, key=lambda r: (r['avg_excess_pct'], r['median_excess_pct']), reverse=True)[:10]
         out[fam] = {
             'overall': summarize_group(rr),
             'by_horizon': grouped(rr, 'horizon'),
             'by_top_n': grouped(rr, 'top_n'),
             'by_exit_rule': grouped(rr, 'exit_rule'),
-            'best_robust': best_robust,
-            'best_excess': best_excess,
         }
     return out
 
@@ -74,47 +70,36 @@ def selected_views(rows):
     return out
 
 
-def period_benchmark(rows):
-    seen = {}
-    for r in rows:
-        for p in r.get('period_detail', []):
-            seen[p['period']] = {'period': p['period'], 'source_lot': p['source_lot'], 'asof': p['asof'], 'benchmark_pct': p['benchmark_pct']}
-    return [seen[k] for k in sorted(seen)]
-
-
 def main():
     data = json.loads(SRC.read_text())
     general = data['all_general_combinations']
     rsi = data['all_rsi_combinations']
+    robust = lambda r: (r['beat_period_rate_pct'], r['positive_period_rate_pct'], r['median_excess_pct'], r['avg_excess_pct'])
+    excess = lambda r: (r['avg_excess_pct'], r['median_excess_pct'], r['beat_period_rate_pct'])
     report = {
-        'source_generated': data['generated'],
-        'method': data['method'],
-        'seed': data['seed'],
-        'horizons': data['horizons'],
-        'top_ns': data['top_ns'],
-        'exit_rules': data['exit_rules'],
-        'general_periods': data['general_periods'],
-        'rsi_periods': data['rsi_periods'],
-        'period_index': data['period_index'],
-        'period_benchmark': period_benchmark(general),
-        'general_overall': summarize_group(general),
-        'general_by_family': family_summary(general),
-        'general_by_horizon': grouped(general, 'horizon'),
-        'general_by_top_n': grouped(general, 'top_n'),
-        'general_by_exit_rule': grouped(general, 'exit_rule'),
-        'general_top_50_robust': sorted(general, key=lambda r: (r['beat_period_rate_pct'], r['positive_period_rate_pct'], r['median_excess_pct'], r['avg_excess_pct']), reverse=True)[:50],
-        'general_top_50_excess': sorted(general, key=lambda r: (r['avg_excess_pct'], r['median_excess_pct'], r['beat_period_rate_pct']), reverse=True)[:50],
+        'source_generated': data['generated'], 'method': data['method'], 'seed': data['seed'],
+        'horizons': data['horizons'], 'top_ns': data['top_ns'], 'exit_rules': data['exit_rules'],
+        'general_periods': data['general_periods'], 'rsi_periods': data['rsi_periods'], 'period_index': data['period_index'],
+        'general_overall': summarize_group(general), 'general_by_family': family_summary(general),
+        'general_by_horizon': grouped(general, 'horizon'), 'general_by_top_n': grouped(general, 'top_n'), 'general_by_exit_rule': grouped(general, 'exit_rule'),
+        'general_top_50_robust': sorted(general, key=robust, reverse=True)[:50], 'general_top_50_excess': sorted(general, key=excess, reverse=True)[:50],
         'selected_general': selected_views(general),
-        'rsi_overall': summarize_group(rsi),
-        'rsi_by_family': family_summary(rsi),
-        'rsi_by_horizon': grouped(rsi, 'horizon'),
-        'rsi_by_top_n': grouped(rsi, 'top_n'),
-        'rsi_by_exit_rule': grouped(rsi, 'exit_rule'),
-        'rsi_top_50_robust': sorted(rsi, key=lambda r: (r['beat_period_rate_pct'], r['positive_period_rate_pct'], r['median_excess_pct'], r['avg_excess_pct']), reverse=True)[:50],
-        'rsi_top_50_excess': sorted(rsi, key=lambda r: (r['avg_excess_pct'], r['median_excess_pct'], r['beat_period_rate_pct']), reverse=True)[:50],
+        'rsi_overall': summarize_group(rsi), 'rsi_by_family': family_summary(rsi),
+        'rsi_by_horizon': grouped(rsi, 'horizon'), 'rsi_by_top_n': grouped(rsi, 'top_n'), 'rsi_by_exit_rule': grouped(rsi, 'exit_rule'),
+        'rsi_top_50_robust': sorted(rsi, key=robust, reverse=True)[:50], 'rsi_top_50_excess': sorted(rsi, key=excess, reverse=True)[:50],
     }
     DST.write_text(json.dumps(report, ensure_ascii=False, indent=2))
-    print(DST)
+    print('REPORT_META', json.dumps({k: report[k] for k in ['method','seed','horizons','top_ns','exit_rules','general_periods','rsi_periods','period_index']}, ensure_ascii=False))
+    for key in ['general_overall','general_by_horizon','general_by_top_n','general_by_exit_rule','rsi_overall','rsi_by_horizon','rsi_by_top_n','rsi_by_exit_rule']:
+        print(key.upper(), json.dumps(report[key], ensure_ascii=False))
+    print('GENERAL_FAMILIES', json.dumps({k:v['overall'] for k,v in report['general_by_family'].items()}, ensure_ascii=False))
+    print('RSI_FAMILIES', json.dumps({k:v['overall'] for k,v in report['rsi_by_family'].items()}, ensure_ascii=False))
+    print('GENERAL_TOP20_ROBUST', json.dumps(sorted(general,key=robust,reverse=True)[:20], ensure_ascii=False))
+    print('GENERAL_TOP20_EXCESS', json.dumps(sorted(general,key=excess,reverse=True)[:20], ensure_ascii=False))
+    print('RSI_TOP20_ROBUST', json.dumps(sorted(rsi,key=robust,reverse=True)[:20], ensure_ascii=False))
+    print('RSI_TOP20_EXCESS', json.dumps(sorted(rsi,key=excess,reverse=True)[:20], ensure_ascii=False))
+    for name, rows in report['selected_general'].items():
+        print('SELECTED_'+name.upper(), json.dumps(rows, ensure_ascii=False))
 
 if __name__ == '__main__':
     main()
