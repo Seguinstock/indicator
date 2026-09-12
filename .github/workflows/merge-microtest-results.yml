@@ -3,6 +3,9 @@ name: Merge microtest A B1 B2 results
 on:
   issues:
     types: [opened]
+  push:
+    paths:
+      - 'engine/merge_trigger.txt'
 
 permissions:
   contents: write
@@ -10,7 +13,7 @@ permissions:
 
 jobs:
   merge:
-    if: github.event.issue.title == 'Merge Stock Indicator Microtest A B1 B2'
+    if: github.event_name == 'push' || github.event.issue.title == 'Merge Stock Indicator Microtest A B1 B2'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,6 +24,8 @@ jobs:
           python-version: '3.11'
       - name: Install merge dependencies
         run: pip install numpy
+      - name: Ensure historical Lot A commit is available
+        run: git fetch origin bc7bc0edea4ecf04bb67ee409e297ad1025d227f || true
       - name: Merge period-level results
         run: python engine/merge_microtest_results.py
       - name: Publish merged result
@@ -39,6 +44,7 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Close request
+        if: github.event_name == 'issues'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
