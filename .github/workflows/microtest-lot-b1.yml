@@ -31,10 +31,17 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+          cp data/microtest_lot_b1.json /tmp/microtest_lot_b1.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/microtest_lot_b1.json data/microtest_lot_b1.json
           git add data/microtest_lot_b1.json
-          git commit -m "Publish S&P1500 microtest Lot B1 RSI results" || true
-          git pull --rebase
-          git push
+          if git diff --cached --quiet; then
+            echo "Lot B1 result already matches main"
+          else
+            git commit -m "Publish S&P1500 microtest Lot B1 RSI results"
+            git push origin HEAD:main
+          fi
       - name: Close request
         env:
           GH_TOKEN: ${{ github.token }}
