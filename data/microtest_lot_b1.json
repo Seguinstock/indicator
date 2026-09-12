@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T01:21:20.849692+00:00",
+  "generated": "2026-09-12T12:13:46.072019+00:00",
   "seed": 20260910,
   "periods": 2,
   "horizons": [
@@ -1153,7 +1153,7 @@
                 "trail12": {
                   "n": 100,
                   "avg_return_pct": 1.001,
-                  "median_return_pct": 1.344,
+                  "median_return_pct": 1.343,
                   "avg_days": 9.5,
                   "avg_best_gain_pct": 4.771,
                   "avg_giveback_pct": 3.77,
@@ -2399,7 +2399,7 @@
                 "trail8": {
                   "n": 100,
                   "avg_return_pct": 0.415,
-                  "median_return_pct": 1.344,
+                  "median_return_pct": 1.343,
                   "avg_days": 8.7,
                   "avg_best_gain_pct": 4.519,
                   "avg_giveback_pct": 4.103,
@@ -5324,7 +5324,7 @@
                 "trail5": {
                   "n": 30,
                   "avg_return_pct": -1.609,
-                  "median_return_pct": -3.079,
+                  "median_return_pct": -3.078,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.559,
                   "avg_giveback_pct": 6.167,
@@ -7252,7 +7252,7 @@
                   "median_return_pct": -2.569,
                   "avg_days": 16.7,
                   "avg_best_gain_pct": 4.876,
-                  "avg_giveback_pct": 5.827,
+                  "avg_giveback_pct": 5.828,
                   "avg_post_exit_pct": -0.074
                 },
                 "trail8": {
@@ -8670,7 +8670,7 @@
                 "trail5": {
                   "n": 100,
                   "avg_return_pct": -2.747,
-                  "median_return_pct": -4.191,
+                  "median_return_pct": -4.19,
                   "avg_days": 7.9,
                   "avg_best_gain_pct": 3.176,
                   "avg_giveback_pct": 5.923,
@@ -8914,7 +8914,7 @@
                   "avg_return_pct": 1.1,
                   "median_return_pct": -0.482,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 8.732,
+                  "avg_best_gain_pct": 8.731,
                   "avg_giveback_pct": 7.631,
                   "avg_post_exit_pct": 0.0
                 },
@@ -9345,7 +9345,7 @@
                 "trail5": {
                   "n": 30,
                   "avg_return_pct": -2.088,
-                  "median_return_pct": -3.079,
+                  "median_return_pct": -3.078,
                   "avg_days": 10.6,
                   "avg_best_gain_pct": 4.651,
                   "avg_giveback_pct": 6.739,
@@ -10106,7 +10106,7 @@
                 },
                 "trail8": {
                   "n": 30,
-                  "avg_return_pct": -2.99,
+                  "avg_return_pct": -2.989,
                   "median_return_pct": -2.998,
                   "avg_days": 25.1,
                   "avg_best_gain_pct": 5.109,
@@ -11687,7 +11687,7 @@
                 "trail5": {
                   "n": 100,
                   "avg_return_pct": -3.202,
-                  "median_return_pct": -4.338,
+                  "median_return_pct": -4.337,
                   "avg_days": 9.3,
                   "avg_best_gain_pct": 3.056,
                   "avg_giveback_pct": 6.259,
@@ -12278,7 +12278,7 @@
                   "avg_days": 6.7,
                   "avg_best_gain_pct": 6.267,
                   "avg_giveback_pct": 6.196,
-                  "avg_post_exit_pct": 1.814
+                  "avg_post_exit_pct": 1.813
                 },
                 "trail8": {
                   "n": 10,
@@ -12780,7 +12780,7 @@
                   "avg_days": 6.7,
                   "avg_best_gain_pct": 6.267,
                   "avg_giveback_pct": 6.196,
-                  "avg_post_exit_pct": 1.814
+                  "avg_post_exit_pct": 1.813
                 },
                 "trail8": {
                   "n": 10,
@@ -12959,7 +12959,7 @@
                 },
                 "trail12": {
                   "n": 100,
-                  "avg_return_pct": -4.808,
+                  "avg_return_pct": -4.809,
                   "median_return_pct": -5.357,
                   "avg_days": 23.8,
                   "avg_best_gain_pct": 6.369,
@@ -13366,7 +13366,7 @@
                 "trail5": {
                   "n": 30,
                   "avg_return_pct": -2.088,
-                  "median_return_pct": -3.079,
+                  "median_return_pct": -3.078,
                   "avg_days": 10.6,
                   "avg_best_gain_pct": 4.651,
                   "avg_giveback_pct": 6.739,
@@ -15708,7 +15708,7 @@
                 "trail5": {
                   "n": 100,
                   "avg_return_pct": -3.0,
-                  "median_return_pct": -4.338,
+                  "median_return_pct": -4.337,
                   "avg_days": 9.6,
                   "avg_best_gain_pct": 3.323,
                   "avg_giveback_pct": 6.323,
@@ -16034,7 +16034,7 @@
               "10": {
                 "fixed": {
                   "n": 10,
-                  "avg_return_pct": 0.092,
+                  "avg_return_pct": 0.091,
                   "median_return_pct": -4.297,
                   "avg_days": 50.0,
                   "avg_best_gain_pct": 15.947,
@@ -16106,7 +16106,7 @@
                 },
                 "surge20_8_tech": {
                   "n": 10,
-                  "avg_return_pct": -2.066,
+                  "avg_return_pct": -2.067,
                   "median_return_pct": -4.297,
                   "avg_days": 41.9,
                   "avg_best_gain_pct": 14.831,
@@ -17387,7 +17387,7 @@
                 "trail5": {
                   "n": 30,
                   "avg_return_pct": -2.088,
-                  "median_return_pct": -3.079,
+                  "median_return_pct": -3.078,
                   "avg_days": 10.6,
                   "avg_best_gain_pct": 4.651,
                   "avg_giveback_pct": 6.739,
@@ -17584,7 +17584,7 @@
                   "avg_return_pct": 7.518,
                   "median_return_pct": 8.943,
                   "avg_days": 49.6,
-                  "avg_best_gain_pct": 17.936,
+                  "avg_best_gain_pct": 17.935,
                   "avg_giveback_pct": 10.417,
                   "avg_post_exit_pct": -9.523
                 },
@@ -19052,7 +19052,7 @@
                 "fixed": {
                   "n": 10,
                   "avg_return_pct": -14.087,
-                  "median_return_pct": -14.269,
+                  "median_return_pct": -14.27,
                   "avg_days": 75.0,
                   "avg_best_gain_pct": 8.7,
                   "avg_giveback_pct": 22.787,
@@ -19124,7 +19124,7 @@
                 "surge20_8_tech": {
                   "n": 10,
                   "avg_return_pct": -14.087,
-                  "median_return_pct": -14.269,
+                  "median_return_pct": -14.27,
                   "avg_days": 75.0,
                   "avg_best_gain_pct": 8.7,
                   "avg_giveback_pct": 22.787,
@@ -19557,7 +19557,7 @@
                   "median_return_pct": -0.807,
                   "avg_days": 75.0,
                   "avg_best_gain_pct": 10.606,
-                  "avg_giveback_pct": 15.714,
+                  "avg_giveback_pct": 15.713,
                   "avg_post_exit_pct": 0.0
                 },
                 "trail5": {
@@ -19593,7 +19593,7 @@
                   "median_return_pct": 2.314,
                   "avg_days": 60.3,
                   "avg_best_gain_pct": 8.023,
-                  "avg_giveback_pct": 10.707,
+                  "avg_giveback_pct": 10.706,
                   "avg_post_exit_pct": -2.283
                 },
                 "armed15_8": {
@@ -19657,7 +19657,7 @@
                   "avg_return_pct": -2.972,
                   "median_return_pct": -6.163,
                   "avg_days": 22.5,
-                  "avg_best_gain_pct": 6.669,
+                  "avg_best_gain_pct": 6.668,
                   "avg_giveback_pct": 9.64,
                   "avg_post_exit_pct": -1.72
                 },
@@ -19729,7 +19729,7 @@
                 "trail5": {
                   "n": 100,
                   "avg_return_pct": -3.027,
-                  "median_return_pct": -4.338,
+                  "median_return_pct": -4.337,
                   "avg_days": 9.6,
                   "avg_best_gain_pct": 3.323,
                   "avg_giveback_pct": 6.35,
@@ -21408,7 +21408,7 @@
                 "trail5": {
                   "n": 30,
                   "avg_return_pct": -2.088,
-                  "median_return_pct": -3.079,
+                  "median_return_pct": -3.078,
                   "avg_days": 10.6,
                   "avg_best_gain_pct": 4.651,
                   "avg_giveback_pct": 6.739,
@@ -23750,7 +23750,7 @@
                 "trail5": {
                   "n": 100,
                   "avg_return_pct": -3.027,
-                  "median_return_pct": -4.338,
+                  "median_return_pct": -4.337,
                   "avg_days": 9.6,
                   "avg_best_gain_pct": 3.323,
                   "avg_giveback_pct": 6.35,
@@ -24021,7 +24021,7 @@
                   "avg_return_pct": -5.773,
                   "median_return_pct": -8.252,
                   "avg_days": 41.5,
-                  "avg_best_gain_pct": 8.987,
+                  "avg_best_gain_pct": 8.986,
                   "avg_giveback_pct": 14.76,
                   "avg_post_exit_pct": -17.698
                 },
@@ -26206,7 +26206,7 @@
                 },
                 "trail12": {
                   "n": 30,
-                  "avg_return_pct": -3.72,
+                  "avg_return_pct": -3.719,
                   "median_return_pct": -2.623,
                   "avg_days": 9.3,
                   "avg_best_gain_pct": 3.288,
@@ -27717,7 +27717,7 @@
                   "avg_days": 6.6,
                   "avg_best_gain_pct": 3.835,
                   "avg_giveback_pct": 12.467,
-                  "avg_post_exit_pct": -0.193
+                  "avg_post_exit_pct": -0.192
                 },
                 "armed10_5": {
                   "n": 30,
@@ -28690,7 +28690,7 @@
                 "fixed": {
                   "n": 30,
                   "avg_return_pct": -9.333,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.605,
                   "avg_giveback_pct": 13.938,
@@ -28726,7 +28726,7 @@
                 "armed10_5": {
                   "n": 30,
                   "avg_return_pct": -10.319,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 9.9,
                   "avg_best_gain_pct": 3.725,
                   "avg_giveback_pct": 14.044,
@@ -28735,7 +28735,7 @@
                 "armed15_8": {
                   "n": 30,
                   "avg_return_pct": -9.333,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.605,
                   "avg_giveback_pct": 13.938,
@@ -28744,7 +28744,7 @@
                 "surge10_5_tech": {
                   "n": 30,
                   "avg_return_pct": -9.333,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.605,
                   "avg_giveback_pct": 13.938,
@@ -28753,7 +28753,7 @@
                 "surge15_6_tech": {
                   "n": 30,
                   "avg_return_pct": -9.333,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.605,
                   "avg_giveback_pct": 13.938,
@@ -28762,7 +28762,7 @@
                 "surge20_8_tech": {
                   "n": 30,
                   "avg_return_pct": -9.333,
-                  "median_return_pct": -11.866,
+                  "median_return_pct": -11.867,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 4.605,
                   "avg_giveback_pct": 13.938,
@@ -28773,7 +28773,7 @@
                 "fixed": {
                   "n": 100,
                   "avg_return_pct": -10.202,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 3.84,
                   "avg_giveback_pct": 14.042,
@@ -28809,7 +28809,7 @@
                 "armed10_5": {
                   "n": 100,
                   "avg_return_pct": -10.448,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 9.9,
                   "avg_best_gain_pct": 3.577,
                   "avg_giveback_pct": 14.025,
@@ -28818,7 +28818,7 @@
                 "armed15_8": {
                   "n": 100,
                   "avg_return_pct": -10.202,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 3.84,
                   "avg_giveback_pct": 14.042,
@@ -28827,7 +28827,7 @@
                 "surge10_5_tech": {
                   "n": 100,
                   "avg_return_pct": -10.144,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 9.9,
                   "avg_best_gain_pct": 3.84,
                   "avg_giveback_pct": 13.985,
@@ -28836,7 +28836,7 @@
                 "surge15_6_tech": {
                   "n": 100,
                   "avg_return_pct": -10.202,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 3.84,
                   "avg_giveback_pct": 14.042,
@@ -28845,7 +28845,7 @@
                 "surge20_8_tech": {
                   "n": 100,
                   "avg_return_pct": -10.202,
-                  "median_return_pct": -10.698,
+                  "median_return_pct": -10.699,
                   "avg_days": 10.0,
                   "avg_best_gain_pct": 3.84,
                   "avg_giveback_pct": 14.042,
@@ -29950,7 +29950,7 @@
                 "fixed": {
                   "n": 30,
                   "avg_return_pct": -2.37,
-                  "median_return_pct": -5.608,
+                  "median_return_pct": -5.607,
                   "avg_days": 20.0,
                   "avg_best_gain_pct": 7.69,
                   "avg_giveback_pct": 10.061,
@@ -29995,7 +29995,7 @@
                 "armed15_8": {
                   "n": 30,
                   "avg_return_pct": -2.509,
-                  "median_return_pct": -5.608,
+                  "median_return_pct": -5.607,
                   "avg_days": 19.7,
                   "avg_best_gain_pct": 7.69,
                   "avg_giveback_pct": 10.199,
@@ -30013,7 +30013,7 @@
                 "surge15_6_tech": {
                   "n": 30,
                   "avg_return_pct": -3.01,
-                  "median_return_pct": -5.608,
+                  "median_return_pct": -5.607,
                   "avg_days": 19.3,
                   "avg_best_gain_pct": 7.129,
                   "avg_giveback_pct": 10.138,
@@ -30022,7 +30022,7 @@
                 "surge20_8_tech": {
                   "n": 30,
                   "avg_return_pct": -2.37,
-                  "median_return_pct": -5.608,
+                  "median_return_pct": -5.607,
                   "avg_days": 20.0,
                   "avg_best_gain_pct": 7.69,
                   "avg_giveback_pct": 10.061,
@@ -30286,7 +30286,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 },
@@ -30313,7 +30313,7 @@
                   "avg_return_pct": -3.952,
                   "median_return_pct": -2.386,
                   "avg_days": 15.3,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 7.491,
                   "avg_post_exit_pct": 2.447
                 },
@@ -30322,7 +30322,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 },
@@ -30331,7 +30331,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 },
@@ -30340,7 +30340,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 },
@@ -30349,7 +30349,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 },
@@ -30358,7 +30358,7 @@
                   "avg_return_pct": -1.77,
                   "median_return_pct": -1.114,
                   "avg_days": 20.0,
-                  "avg_best_gain_pct": 3.54,
+                  "avg_best_gain_pct": 3.539,
                   "avg_giveback_pct": 5.31,
                   "avg_post_exit_pct": 0.0
                 }
@@ -33997,7 +33997,7 @@
                 },
                 "trail12": {
                   "n": 30,
-                  "avg_return_pct": -5.434,
+                  "avg_return_pct": -5.433,
                   "median_return_pct": -11.348,
                   "avg_days": 12.2,
                   "avg_best_gain_pct": 7.07,
@@ -35331,7 +35331,7 @@
                   "avg_days": 5.4,
                   "avg_best_gain_pct": 4.648,
                   "avg_giveback_pct": 11.762,
-                  "avg_post_exit_pct": 17.316
+                  "avg_post_exit_pct": 17.315
                 },
                 "trail12": {
                   "n": 100,
@@ -37036,7 +37036,7 @@
                 },
                 "surge10_5_tech": {
                   "n": 30,
-                  "avg_return_pct": 5.097,
+                  "avg_return_pct": 5.098,
                   "median_return_pct": 5.488,
                   "avg_days": 27.3,
                   "avg_best_gain_pct": 12.61,
@@ -37675,7 +37675,7 @@
                 },
                 "trail8": {
                   "n": 10,
-                  "avg_return_pct": -3.871,
+                  "avg_return_pct": -3.872,
                   "median_return_pct": -4.782,
                   "avg_days": 14.8,
                   "avg_best_gain_pct": 5.598,
@@ -37743,7 +37743,7 @@
                   "avg_return_pct": -1.44,
                   "median_return_pct": -2.015,
                   "avg_days": 50.0,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 8.261,
                   "avg_post_exit_pct": 0.0
                 },
@@ -37779,7 +37779,7 @@
                   "avg_return_pct": -1.053,
                   "median_return_pct": -2.015,
                   "avg_days": 47.4,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 7.874,
                   "avg_post_exit_pct": -0.346
                 },
@@ -37788,7 +37788,7 @@
                   "avg_return_pct": -1.371,
                   "median_return_pct": -2.015,
                   "avg_days": 48.7,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 8.192,
                   "avg_post_exit_pct": -0.063
                 },
@@ -37797,7 +37797,7 @@
                   "avg_return_pct": -1.193,
                   "median_return_pct": -2.015,
                   "avg_days": 47.6,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 8.014,
                   "avg_post_exit_pct": -0.224
                 },
@@ -37806,7 +37806,7 @@
                   "avg_return_pct": -1.255,
                   "median_return_pct": -2.015,
                   "avg_days": 48.5,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 8.076,
                   "avg_post_exit_pct": -0.171
                 },
@@ -37815,7 +37815,7 @@
                   "avg_return_pct": -1.44,
                   "median_return_pct": -2.015,
                   "avg_days": 50.0,
-                  "avg_best_gain_pct": 6.822,
+                  "avg_best_gain_pct": 6.821,
                   "avg_giveback_pct": 8.261,
                   "avg_post_exit_pct": 0.0
                 }
@@ -40083,7 +40083,7 @@
                 "fixed": {
                   "n": 100,
                   "avg_return_pct": 5.141,
-                  "median_return_pct": 6.145,
+                  "median_return_pct": 6.146,
                   "avg_days": 50.0,
                   "avg_best_gain_pct": 14.527,
                   "avg_giveback_pct": 9.386,
@@ -40155,7 +40155,7 @@
                 "surge20_8_tech": {
                   "n": 100,
                   "avg_return_pct": 5.306,
-                  "median_return_pct": 6.145,
+                  "median_return_pct": 6.146,
                   "avg_days": 48.8,
                   "avg_best_gain_pct": 14.527,
                   "avg_giveback_pct": 9.221,
@@ -40585,7 +40585,7 @@
                 "fixed": {
                   "n": 100,
                   "avg_return_pct": 6.009,
-                  "median_return_pct": 6.145,
+                  "median_return_pct": 6.146,
                   "avg_days": 50.0,
                   "avg_best_gain_pct": 15.096,
                   "avg_giveback_pct": 9.087,
@@ -40657,7 +40657,7 @@
                 "surge20_8_tech": {
                   "n": 100,
                   "avg_return_pct": 6.158,
-                  "median_return_pct": 6.145,
+                  "median_return_pct": 6.146,
                   "avg_days": 48.7,
                   "avg_best_gain_pct": 15.096,
                   "avg_giveback_pct": 8.938,
@@ -41298,7 +41298,7 @@
                   "avg_return_pct": 2.041,
                   "median_return_pct": 0.914,
                   "avg_days": 65.6,
-                  "avg_best_gain_pct": 9.234,
+                  "avg_best_gain_pct": 9.235,
                   "avg_giveback_pct": 7.193,
                   "avg_post_exit_pct": -0.25
                 },
@@ -41316,7 +41316,7 @@
                   "avg_return_pct": 1.902,
                   "median_return_pct": 0.914,
                   "avg_days": 65.7,
-                  "avg_best_gain_pct": 9.234,
+                  "avg_best_gain_pct": 9.235,
                   "avg_giveback_pct": 7.333,
                   "avg_post_exit_pct": -0.137
                 },
@@ -42075,7 +42075,7 @@
                 },
                 "surge15_6_tech": {
                   "n": 30,
-                  "avg_return_pct": 4.672,
+                  "avg_return_pct": 4.673,
                   "median_return_pct": 8.222,
                   "avg_days": 63.2,
                   "avg_best_gain_pct": 18.521,
@@ -42158,7 +42158,7 @@
                 },
                 "surge15_6_tech": {
                   "n": 100,
-                  "avg_return_pct": 6.658,
+                  "avg_return_pct": 6.659,
                   "median_return_pct": 7.995,
                   "avg_days": 62.5,
                   "avg_best_gain_pct": 19.403,
@@ -42542,7 +42542,7 @@
                 "trail12": {
                   "n": 30,
                   "avg_return_pct": -4.608,
-                  "median_return_pct": -6.147,
+                  "median_return_pct": -6.148,
                   "avg_days": 52.6,
                   "avg_best_gain_pct": 5.879,
                   "avg_giveback_pct": 10.487,
@@ -44126,7 +44126,7 @@
                   "avg_days": 5.6,
                   "avg_best_gain_pct": 4.395,
                   "avg_giveback_pct": 12.413,
-                  "avg_post_exit_pct": 16.663
+                  "avg_post_exit_pct": 16.662
                 },
                 "trail12": {
                   "n": 100,
@@ -45198,7 +45198,7 @@
                 "fixed": {
                   "n": 10,
                   "avg_return_pct": 3.284,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 100.0,
                   "avg_best_gain_pct": 11.559,
                   "avg_giveback_pct": 8.275,
@@ -45234,7 +45234,7 @@
                 "armed10_5": {
                   "n": 10,
                   "avg_return_pct": 3.231,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 81.3,
                   "avg_best_gain_pct": 10.928,
                   "avg_giveback_pct": 7.697,
@@ -45243,7 +45243,7 @@
                 "armed15_8": {
                   "n": 10,
                   "avg_return_pct": 1.892,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 83.4,
                   "avg_best_gain_pct": 10.928,
                   "avg_giveback_pct": 9.036,
@@ -45252,7 +45252,7 @@
                 "surge10_5_tech": {
                   "n": 10,
                   "avg_return_pct": 2.84,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 81.6,
                   "avg_best_gain_pct": 10.928,
                   "avg_giveback_pct": 8.088,
@@ -45261,7 +45261,7 @@
                 "surge15_6_tech": {
                   "n": 10,
                   "avg_return_pct": 2.24,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 82.8,
                   "avg_best_gain_pct": 10.928,
                   "avg_giveback_pct": 8.688,
@@ -45270,7 +45270,7 @@
                 "surge20_8_tech": {
                   "n": 10,
                   "avg_return_pct": 3.284,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 100.0,
                   "avg_best_gain_pct": 11.559,
                   "avg_giveback_pct": 8.275,
@@ -45700,7 +45700,7 @@
                 "fixed": {
                   "n": 10,
                   "avg_return_pct": 3.221,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 100.0,
                   "avg_best_gain_pct": 10.162,
                   "avg_giveback_pct": 6.941,
@@ -45745,7 +45745,7 @@
                 "armed15_8": {
                   "n": 10,
                   "avg_return_pct": 2.8,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 86.1,
                   "avg_best_gain_pct": 10.162,
                   "avg_giveback_pct": 7.362,
@@ -45757,13 +45757,13 @@
                   "median_return_pct": 4.722,
                   "avg_days": 82.9,
                   "avg_best_gain_pct": 10.162,
-                  "avg_giveback_pct": 6.18,
+                  "avg_giveback_pct": 6.181,
                   "avg_post_exit_pct": -0.705
                 },
                 "surge15_6_tech": {
                   "n": 10,
                   "avg_return_pct": 3.148,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 85.5,
                   "avg_best_gain_pct": 10.162,
                   "avg_giveback_pct": 7.013,
@@ -45772,7 +45772,7 @@
                 "surge20_8_tech": {
                   "n": 10,
                   "avg_return_pct": 3.221,
-                  "median_return_pct": 3.112,
+                  "median_return_pct": 3.111,
                   "avg_days": 100.0,
                   "avg_best_gain_pct": 10.162,
                   "avg_giveback_pct": 6.941,
@@ -47325,7 +47325,7 @@
                 "armed10_5": {
                   "n": 30,
                   "avg_return_pct": 11.019,
-                  "median_return_pct": 7.762,
+                  "median_return_pct": 7.761,
                   "avg_days": 59.1,
                   "avg_best_gain_pct": 17.834,
                   "avg_giveback_pct": 6.815,
@@ -47343,7 +47343,7 @@
                 "surge10_5_tech": {
                   "n": 30,
                   "avg_return_pct": 10.86,
-                  "median_return_pct": 7.762,
+                  "median_return_pct": 7.761,
                   "avg_days": 61.5,
                   "avg_best_gain_pct": 18.26,
                   "avg_giveback_pct": 7.399,
@@ -47426,7 +47426,7 @@
                 "surge10_5_tech": {
                   "n": 100,
                   "avg_return_pct": 9.9,
-                  "median_return_pct": 7.762,
+                  "median_return_pct": 7.761,
                   "avg_days": 62.7,
                   "avg_best_gain_pct": 19.109,
                   "avg_giveback_pct": 9.209,
@@ -48775,7 +48775,7 @@
                 "surge15_6_tech": {
                   "n": 10,
                   "avg_return_pct": 13.022,
-                  "median_return_pct": 11.803,
+                  "median_return_pct": 11.804,
                   "avg_days": 79.1,
                   "avg_best_gain_pct": 24.671,
                   "avg_giveback_pct": 11.649,
