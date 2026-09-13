@@ -1,0 +1,9 @@
+{
+  "mode": "strategy24",
+  "strategy": "breakout",
+  "one_shot": true,
+  "periods": 24,
+  "top_ns": [10, 30],
+  "horizons": [10, 20, 30, 50, 75, 100],
+  "seed": 20260910
+}
