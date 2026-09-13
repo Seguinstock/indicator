@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-12 12:51",
+  "updated": "2026-09-13 01:26",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -1044,7 +1044,7 @@
       },
       "passed": false,
       "score": 82.5,
-      "name": null
+      "name": "Rogers Sugar Inc."
     },
     {
       "symbol": "ADP",
@@ -2379,6 +2379,43 @@
       "name": "Canadian National Railway Company"
     },
     {
+      "symbol": "WMB",
+      "market": "XNYS",
+      "country": "US",
+      "price": 72.85,
+      "rsi": 49.1,
+      "delta_rsi": 2.1,
+      "rvol": 1.14,
+      "support": 70.14,
+      "support_distance_pct": 3.7,
+      "support_score": 9.0,
+      "support_strength": 102.3,
+      "macd_momentum": -29.0,
+      "trend": 2.0,
+      "volatility_pct": 24.3,
+      "timing_v14": 39.3,
+      "buy_timing": 39.3,
+      "potential_components": {
+        "volatility": 23.8,
+        "trend": 40.0,
+        "rvol": 2.3,
+        "rsi": 5.4,
+        "support": 8.0
+      },
+      "potential_score": 79.5,
+      "filters": {
+        "rsi": false,
+        "reversal": true,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 79.5,
+      "name": "The Williams Companies, Inc."
+    },
+    {
       "symbol": "REGN",
       "market": "XNAS",
       "country": "US",
@@ -2451,43 +2488,6 @@
       "passed": false,
       "score": 79.4,
       "name": "AbbVie Inc."
-    },
-    {
-      "symbol": "WMB",
-      "market": "XNYS",
-      "country": "US",
-      "price": 72.85,
-      "rsi": 49.1,
-      "delta_rsi": 2.1,
-      "rvol": 1.14,
-      "support": 70.12,
-      "support_distance_pct": 3.7,
-      "support_score": 9.0,
-      "support_strength": 102.3,
-      "macd_momentum": -29.0,
-      "trend": 2.0,
-      "volatility_pct": 24.3,
-      "timing_v14": 39.3,
-      "buy_timing": 39.3,
-      "potential_components": {
-        "volatility": 23.8,
-        "trend": 40.0,
-        "rvol": 2.3,
-        "rsi": 5.4,
-        "support": 8.0
-      },
-      "potential_score": 79.4,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 79.4,
-      "name": "The Williams Companies, Inc."
     },
     {
       "symbol": "BNY",
@@ -4004,7 +4004,7 @@
       },
       "passed": false,
       "score": 76.2,
-      "name": "Vivmark Residential"
+      "name": "AvalonBay Communities, Inc."
     },
     {
       "symbol": "TRGP",
@@ -8817,6 +8817,43 @@
       "name": "Starbucks Corporation"
     },
     {
+      "symbol": "CI",
+      "market": "XNYS",
+      "country": "US",
+      "price": 280.76,
+      "rsi": 51.6,
+      "delta_rsi": -0.2,
+      "rvol": 0.96,
+      "support": 276.03,
+      "support_distance_pct": 1.7,
+      "support_score": 10.0,
+      "support_strength": 104.7,
+      "macd_momentum": 13.9,
+      "trend": 1.0,
+      "volatility_pct": 32.6,
+      "timing_v14": 35.3,
+      "buy_timing": 35.3,
+      "potential_components": {
+        "volatility": 18.3,
+        "trend": 32.0,
+        "rvol": 1.5,
+        "rsi": 4.2,
+        "support": 11.8
+      },
+      "potential_score": 67.8,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": true,
+        "trend": true
+      },
+      "passed": false,
+      "score": 67.8,
+      "name": "The Cigna Group"
+    },
+    {
       "symbol": "TGT",
       "market": "XNYS",
       "country": "US",
@@ -9962,43 +9999,6 @@
       "passed": false,
       "score": 66.1,
       "name": "American Electric Power Company, Inc."
-    },
-    {
-      "symbol": "CI",
-      "market": "XNYS",
-      "country": "US",
-      "price": 280.76,
-      "rsi": 51.6,
-      "delta_rsi": -0.2,
-      "rvol": 0.96,
-      "support": 273.33,
-      "support_distance_pct": 2.6,
-      "support_score": 9.0,
-      "support_strength": 103.8,
-      "macd_momentum": 13.9,
-      "trend": 1.0,
-      "volatility_pct": 32.6,
-      "timing_v14": 34.2,
-      "buy_timing": 34.2,
-      "potential_components": {
-        "volatility": 18.3,
-        "trend": 32.0,
-        "rvol": 1.5,
-        "rsi": 4.2,
-        "support": 10.0
-      },
-      "potential_score": 66.0,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 66.0,
-      "name": "The Cigna Group"
     },
     {
       "symbol": "TECH",
@@ -12263,25 +12263,25 @@
       "country": "CA",
       "price": 7.35,
       "rsi": 29.9,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.52,
       "support": 7.1,
-      "support_distance_pct": 3.4,
+      "support_distance_pct": 3.5,
       "support_score": 7.0,
-      "support_strength": 65.0,
+      "support_strength": 64.9,
       "macd_momentum": -3.2,
       "trend": 0.0,
       "volatility_pct": 17.6,
-      "timing_v14": 59.0,
-      "buy_timing": 59.0,
+      "timing_v14": 64.0,
+      "buy_timing": 64.0,
       "potential_components": {
         "volatility": 28.3,
         "trend": 20.0,
         "rvol": 0.0,
         "rsi": 4.9,
-        "support": 8.6
+        "support": 8.5
       },
-      "potential_score": 61.8,
+      "potential_score": 61.7,
       "filters": {
         "rsi": true,
         "reversal": false,
@@ -12291,7 +12291,7 @@
         "trend": true
       },
       "passed": false,
-      "score": 61.8,
+      "score": 61.7,
       "name": "Nexus Industrial REIT"
     },
     {
@@ -14475,7 +14475,7 @@
       },
       "passed": false,
       "score": 58.8,
-      "name": null
+      "name": "CT Real Estate Investment Trust"
     },
     {
       "symbol": "RL",
@@ -20321,7 +20321,7 @@
       },
       "passed": false,
       "score": 48.4,
-      "name": null
+      "name": "PepsiCo, Inc."
     },
     {
       "symbol": "SRE",
@@ -20432,7 +20432,7 @@
       },
       "passed": false,
       "score": 48.4,
-      "name": null
+      "name": "STLLR Gold Inc."
     },
     {
       "symbol": "FEC",
@@ -31828,7 +31828,7 @@
       },
       "passed": false,
       "score": 27.0,
-      "name": null
+      "name": "NovaGold Resources Inc."
     },
     {
       "symbol": "HCA",
@@ -32206,7 +32206,7 @@
       "country": "CA",
       "price": 0.53,
       "rsi": 46.3,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.45,
       "support": 0.51,
       "support_distance_pct": 3.5,
@@ -32215,8 +32215,8 @@
       "macd_momentum": -0.5,
       "trend": -0.5,
       "volatility_pct": 68.9,
-      "timing_v14": 32.4,
-      "buy_timing": 32.4,
+      "timing_v14": 36.9,
+      "buy_timing": 36.9,
       "potential_components": {
         "volatility": 0.0,
         "trend": 10.0,
@@ -32872,7 +32872,7 @@
       "country": "CA",
       "price": 1.45,
       "rsi": 48.6,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.54,
       "support": 1.44,
       "support_distance_pct": 0.9,
@@ -32881,8 +32881,8 @@
       "macd_momentum": -26.1,
       "trend": -1.0,
       "volatility_pct": 66.5,
-      "timing_v14": 26.0,
-      "buy_timing": 26.0,
+      "timing_v14": 21.8,
+      "buy_timing": 21.8,
       "potential_components": {
         "volatility": 0.0,
         "trend": 4.0,
@@ -34122,7 +34122,7 @@
       },
       "passed": false,
       "score": 16.4,
-      "name": null
+      "name": "Euro Sun Mining Inc."
     },
     {
       "symbol": "FSLR",
@@ -34714,7 +34714,7 @@
       },
       "passed": false,
       "score": 9.0,
-      "name": null
+      "name": "Coinbase Global, Inc."
     },
     {
       "symbol": "NANO",
