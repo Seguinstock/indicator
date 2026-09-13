@@ -186,4 +186,19 @@ def main():
     leaders=sorted(combos.items(),key=lambda kv:(kv[1]['avg_excess_pct'],kv[1]['beat_periods']),reverse=True)[:100]
     out={'generated':datetime.now(timezone.utc).isoformat(),'seed':SEED,'periods':N_PERIODS,'horizons':HORIZONS,'top_ns':TOP_NS,'families':FAMILIES,'exit_rules':RULES,'leaders':[{'combination':k,**v} for k,v in leaders],'period_results':periods}
     (ROOT/'data/microtest_explorer.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)); print(json.dumps(out['leaders'][:20],indent=2))
-if __name__=='__main__': main()
+
+def run_requested_mode():
+    request_path=ROOT/'data'/'microtest_strategy24_request.json'
+    if request_path.exists():
+        request=json.loads(request_path.read_text())
+        if request.get('mode')=='strategy24':
+            strategy=str(request.get('strategy','')).strip().lower()
+            if strategy not in ('breakout','momentum','relative_strength'):
+                raise ValueError(f'Unsupported strategy24 request: {strategy}')
+            os.environ['MICROTEST_STRATEGY']=strategy
+            import microtest_strategy24
+            microtest_strategy24.main()
+            return
+    main()
+
+if __name__=='__main__': run_requested_mode()
