@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import subprocess
 from pathlib import Path
 
 import pandas as pd
@@ -60,15 +61,24 @@ def main():
     dst = ROOT / 'data' / f'microtest_{STRATEGY}_24.json'
     if not src.exists():
         raise RuntimeError('microtest_explorer.json was not produced')
-    src.replace(dst)
 
-    data = json.loads(dst.read_text())
+    data = json.loads(src.read_text())
     data['study'] = 'strategy24'
     data['strategy'] = STRATEGY
     data['period_selection'] = '24 equal time bins; one seeded business date per bin'
     data['top_ns'] = [10, 30]
     data['periods'] = N_PERIODS
-    dst.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+    text = json.dumps(data, ensure_ascii=False, indent=2)
+    src.write_text(text)
+    dst.write_text(text)
+
+    # The existing Explorer workflow stages microtest_explorer.json itself.
+    # Pre-stage the strategy-specific copy so both files are preserved by the same commit.
+    try:
+        subprocess.run(['git', 'add', str(dst.relative_to(ROOT))], cwd=ROOT, check=True)
+    except Exception as exc:
+        print(f'Warning: could not pre-stage {dst.name}: {exc}')
+
     print(f'Published focused 24-period result: {dst.name}')
 
 
