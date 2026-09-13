@@ -17,6 +17,7 @@ if STRATEGY not in ALLOWED:
 N_PERIODS = 24
 SAFE_START_MIN = pd.Timestamp('2021-04-01')
 SAFE_START_MAX = pd.Timestamp('2026-04-08')
+REQUEST = ROOT / 'data' / 'microtest_strategy24_request.json'
 
 
 def select_24_periods():
@@ -72,12 +73,18 @@ def main():
     src.write_text(text)
     dst.write_text(text)
 
-    # The existing Explorer workflow stages microtest_explorer.json itself.
-    # Pre-stage the strategy-specific copy so both files are preserved by the same commit.
-    try:
-        subprocess.run(['git', 'add', str(dst.relative_to(ROOT))], cwd=ROOT, check=True)
-    except Exception as exc:
-        print(f'Warning: could not pre-stage {dst.name}: {exc}')
+    # Existing Explorer workflow stages microtest_explorer.json itself.
+    # Pre-stage the strategy-specific copy so the same commit preserves it too.
+    subprocess.run(['git', 'add', str(dst.relative_to(ROOT))], cwd=ROOT, check=True)
+
+    # Remove a one-shot request in the same result commit, preventing accidental reruns.
+    if REQUEST.exists():
+        try:
+            request = json.loads(REQUEST.read_text())
+        except Exception:
+            request = {}
+        if request.get('one_shot', True):
+            subprocess.run(['git', 'rm', str(REQUEST.relative_to(ROOT))], cwd=ROOT, check=True)
 
     print(f'Published focused 24-period result: {dst.name}')
 
