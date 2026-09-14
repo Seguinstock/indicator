@@ -22,12 +22,8 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pitindex lxml
-      - name: Run protected-exit variants
-        run: |
-          for rule in fixed armed10_5 armed15_8 surge10_5_tech surge15_6_tech surge20_8_tech; do
-            echo "===== $rule ====="
-            SELL_RULE="$rule" python engine/continuous_rs_3y_protected.py
-          done
+      - name: Run protected-exit variants with shared Yahoo cache
+        run: python engine/run_rs3y_variants.py
       - name: Publish results
         run: |
           git config user.name github-actions
@@ -42,7 +38,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if [ "${{ job.status }}" = "success" ]; then
-            gh issue comment "${{ github.event.issue.number }}" --body "Continuous RS 3Y protected-exit comparison completed. Results: data/backtest_relative_strength_continuous_3y_<rule>.json"
+            gh issue comment "${{ github.event.issue.number }}" --body "Continuous RS 3Y protected-exit comparison completed with shared Yahoo cache and price-audit flags."
           else
             gh issue comment "${{ github.event.issue.number }}" --body "Protected-exit comparison ended with status: ${{ job.status }}. Check the Actions log."
           fi
