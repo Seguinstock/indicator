@@ -1,0 +1,45 @@
+name: Continuous Relative Strength 2Y Backtest
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  backtest:
+    if: github.event.issue.title == 'Run Continuous RS 2Y Backtest'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pitindex lxml
+      - name: Run continuous two-year portfolio backtest
+        run: python engine/continuous_rs_2y.py
+      - name: Publish result
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data/backtest_relative_strength_continuous_2y.json
+          git commit -m "Publish continuous Relative Strength 2Y backtest" || true
+          git pull --rebase origin main
+          git push
+      - name: Close request
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            gh issue comment "${{ github.event.issue.number }}" --body "Continuous RS 2Y backtest completed successfully. Result: data/backtest_relative_strength_continuous_2y.json"
+          else
+            gh issue comment "${{ github.event.issue.number }}" --body "Continuous RS 2Y backtest ended with status: ${{ job.status }}. Check the Actions log for details."
+          fi
+          gh issue close "${{ github.event.issue.number }}"
