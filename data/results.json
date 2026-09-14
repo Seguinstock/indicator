@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-14T03:28:13.000445+00:00",
-  "scored_at": "2026-09-14T03:28:13.000445+00:00",
+  "updated": "2026-09-14T03:39:17.065154+00:00",
+  "scored_at": "2026-09-14T03:39:17.065154+00:00",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -3605,7 +3605,7 @@
       "return_20_pct": 9.84,
       "return_60_pct": 19.96,
       "relative_strength_20_pct": 9.24,
-      "name": "Santacruz Silver Mining Ltd."
+      "name": null
     },
     {
       "symbol": "OXY",
@@ -14885,7 +14885,7 @@
       "return_20_pct": -0.65,
       "return_60_pct": -0.27,
       "relative_strength_20_pct": -1.25,
-      "name": "AvalonBay Communities, Inc."
+      "name": "Vivmark Residential"
     },
     {
       "symbol": "BALL",
@@ -15485,7 +15485,7 @@
       "return_20_pct": 4.52,
       "return_60_pct": -0.25,
       "relative_strength_20_pct": 3.92,
-      "name": "Integra Resources Corp."
+      "name": null
     },
     {
       "symbol": "SLF",
@@ -24415,10 +24415,10 @@
       "rsi": 29.5,
       "delta_rsi": -0.5,
       "rvol": 2.26,
-      "support": 94.34,
-      "support_distance_pct": 3.9,
+      "support": 94.81,
+      "support_distance_pct": 3.4,
       "support_score": 7.0,
-      "support_strength": 67.2,
+      "support_strength": 66.2,
       "macd_momentum": -30.0,
       "trend": 0.0,
       "volatility_pct": 27.6,
@@ -28445,7 +28445,7 @@
       "return_20_pct": -10.59,
       "return_60_pct": -1.83,
       "relative_strength_20_pct": -11.19,
-      "name": "Constellation Software Inc."
+      "name": null
     },
     {
       "symbol": "SIA",
@@ -29845,7 +29845,7 @@
       "return_20_pct": -3.78,
       "return_60_pct": -22.61,
       "relative_strength_20_pct": -4.38,
-      "name": "Ur-Energy Inc."
+      "name": null
     },
     {
       "symbol": "HON",
@@ -31125,7 +31125,7 @@
       "return_20_pct": -15.11,
       "return_60_pct": -18.95,
       "relative_strength_20_pct": -15.71,
-      "name": "Tilray Brands, Inc."
+      "name": null
     },
     {
       "symbol": "FISV",
@@ -34845,7 +34845,7 @@
       "return_20_pct": -15.28,
       "return_60_pct": -34.46,
       "relative_strength_20_pct": -15.88,
-      "name": "Northern Dynasty Minerals Ltd."
+      "name": null
     },
     {
       "symbol": "TTWO",
@@ -37045,7 +37045,7 @@
       "return_20_pct": -4.64,
       "return_60_pct": -37.78,
       "relative_strength_20_pct": -5.24,
-      "name": "Standard Lithium Ltd."
+      "name": null
     },
     {
       "symbol": "TJX",
