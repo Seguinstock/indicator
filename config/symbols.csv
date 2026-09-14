@@ -831,7 +831,6 @@ FVL,XTSE,CA,true
 TMQ,XTSE,CA,true
 SES,XTSE,CA,true
 LGO,XTSE,CA,true
-WRN,XTSE,CA,true
 TLO,XTSE,CA,true
 MAI,XTSE,CA,true
 JOY,XTSE,CA,true
@@ -946,3 +945,4 @@ ARA,XTSE,CA,true
 AMC,XTSE,CA,true
 SYH,XTSX,CA,true
 TLG,XTSE,CA,true
+WRN,XTSE,CA,true
