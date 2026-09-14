@@ -1,0 +1,1 @@
+Validation RS 3Y V2 compares baseline, Opportunity120, Thesis Failure, and Adaptive ATR on a point-in-time S&P 1500 universe with an independent historical S&P 100 benchmark. The test refreshes pitindex and fails if market-data coverage is below defined thresholds. This file documents the validation run only; it does not change live strategy behavior.
