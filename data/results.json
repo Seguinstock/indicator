@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-14T08:04:41.257768+00:00",
-  "scored_at": "2026-09-14T08:04:41.257768+00:00",
+  "updated": "2026-09-14T08:22:48.207911+00:00",
+  "scored_at": "2026-09-14T08:22:48.207911+00:00",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -11335,7 +11335,7 @@
       "rsi": 49.1,
       "delta_rsi": 2.1,
       "rvol": 1.14,
-      "support": 70.12,
+      "support": 70.14,
       "support_distance_pct": 3.7,
       "support_score": 9.0,
       "support_strength": 102.3,
@@ -13845,7 +13845,7 @@
       "return_20_pct": 6.32,
       "return_60_pct": 2.91,
       "relative_strength_20_pct": 5.72,
-      "name": null
+      "name": "Paramount Skydance Corporation"
     },
     {
       "symbol": "ACN",
@@ -14885,7 +14885,7 @@
       "return_20_pct": -0.65,
       "return_60_pct": -0.27,
       "relative_strength_20_pct": -1.25,
-      "name": "Vivmark Residential"
+      "name": "AvalonBay Communities, Inc."
     },
     {
       "symbol": "BALL",
@@ -17205,7 +17205,7 @@
       "return_20_pct": -0.44,
       "return_60_pct": -0.44,
       "relative_strength_20_pct": -1.04,
-      "name": null
+      "name": "Rogers Sugar Inc."
     },
     {
       "symbol": "MTB",
@@ -22165,7 +22165,7 @@
       "return_20_pct": -5.29,
       "return_60_pct": 0.64,
       "relative_strength_20_pct": -5.89,
-      "name": null
+      "name": "Magna International Inc."
     },
     {
       "symbol": "CS",
@@ -24805,7 +24805,7 @@
       "return_20_pct": -6.52,
       "return_60_pct": -3.81,
       "relative_strength_20_pct": -7.12,
-      "name": null
+      "name": "Simon Property Group, Inc."
     },
     {
       "symbol": "EXR",
@@ -25215,15 +25215,15 @@
       "rsi": 29.8,
       "delta_rsi": 3.3,
       "rvol": 1.88,
-      "support": 83.46,
-      "support_distance_pct": 2.0,
-      "support_score": 7.0,
-      "support_strength": 57.3,
+      "support": 84.07,
+      "support_distance_pct": 1.3,
+      "support_score": 8.0,
+      "support_strength": 65.4,
       "macd_momentum": -36.3,
       "trend": 0.0,
       "volatility_pct": 20.1,
-      "timing_v14": 78.7,
-      "buy_timing": 78.7,
+      "timing_v14": 79.7,
+      "buy_timing": 79.7,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 0.0,
@@ -26125,7 +26125,7 @@
       "return_20_pct": -4.15,
       "return_60_pct": -11.76,
       "relative_strength_20_pct": -4.75,
-      "name": null
+      "name": "TC Energy Corporation"
     },
     {
       "symbol": "FDY",
@@ -27325,7 +27325,7 @@
       "return_20_pct": -2.18,
       "return_60_pct": -9.73,
       "relative_strength_20_pct": -2.78,
-      "name": null
+      "name": "Linde plc"
     },
     {
       "symbol": "SPGI",
@@ -30485,7 +30485,7 @@
       "return_20_pct": -11.4,
       "return_60_pct": -26.68,
       "relative_strength_20_pct": -12.0,
-      "name": null
+      "name": "Aritzia Inc."
     },
     {
       "symbol": "COST",
@@ -30645,7 +30645,7 @@
       "return_20_pct": -3.11,
       "return_60_pct": -5.0,
       "relative_strength_20_pct": -3.71,
-      "name": null
+      "name": "Fortis Inc."
     },
     {
       "symbol": "HONA",
@@ -32896,9 +32896,9 @@
       "delta_rsi": 0.0,
       "rvol": 0.52,
       "support": 7.1,
-      "support_distance_pct": 3.5,
+      "support_distance_pct": 3.4,
       "support_score": 7.0,
-      "support_strength": 64.9,
+      "support_strength": 65.0,
       "macd_momentum": -3.2,
       "trend": 0.0,
       "volatility_pct": 17.6,
@@ -33925,7 +33925,7 @@
       "return_20_pct": -15.01,
       "return_60_pct": -2.87,
       "relative_strength_20_pct": -15.6,
-      "name": null
+      "name": "Brookfield Asset Management Ltd."
     },
     {
       "symbol": "IFC",
