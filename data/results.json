@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-14T03:51:20.312114+00:00",
-  "scored_at": "2026-09-14T03:51:20.312114+00:00",
+  "updated": "2026-09-14T04:06:24.767028+00:00",
+  "scored_at": "2026-09-14T04:06:24.767028+00:00",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -2845,7 +2845,7 @@
       "return_20_pct": 3.79,
       "return_60_pct": 28.34,
       "relative_strength_20_pct": 3.2,
-      "name": "Hewlett Packard Enterprise Company"
+      "name": null
     },
     {
       "symbol": "CVX",
@@ -5165,7 +5165,7 @@
       "return_20_pct": 3.09,
       "return_60_pct": 11.01,
       "relative_strength_20_pct": 2.49,
-      "name": "Biogen Inc."
+      "name": null
     },
     {
       "symbol": "ELV",
@@ -9325,7 +9325,7 @@
       "return_20_pct": 0.58,
       "return_60_pct": 8.19,
       "relative_strength_20_pct": -0.02,
-      "name": "Centene Corporation"
+      "name": null
     },
     {
       "symbol": "LH",
@@ -9685,7 +9685,7 @@
       "return_20_pct": -1.25,
       "return_60_pct": 13.26,
       "relative_strength_20_pct": -1.85,
-      "name": "Waters Corporation"
+      "name": null
     },
     {
       "symbol": "RUS",
@@ -13285,7 +13285,7 @@
       "return_20_pct": 2.93,
       "return_60_pct": 2.4,
       "relative_strength_20_pct": 2.33,
-      "name": "Mining Americas Inc."
+      "name": null
     },
     {
       "symbol": "CTSH",
@@ -13965,7 +13965,7 @@
       "return_20_pct": -14.34,
       "return_60_pct": 15.47,
       "relative_strength_20_pct": -14.94,
-      "name": "Expedia Group, Inc."
+      "name": null
     },
     {
       "symbol": "WFG",
@@ -14015,15 +14015,15 @@
       "rsi": 51.6,
       "delta_rsi": -0.2,
       "rvol": 0.96,
-      "support": 276.03,
-      "support_distance_pct": 1.7,
-      "support_score": 10.0,
-      "support_strength": 104.7,
+      "support": 273.33,
+      "support_distance_pct": 2.6,
+      "support_score": 9.0,
+      "support_strength": 103.8,
       "macd_momentum": 13.9,
       "trend": 1.0,
       "volatility_pct": 32.6,
-      "timing_v14": 35.3,
-      "buy_timing": 35.3,
+      "timing_v14": 34.2,
+      "buy_timing": 34.2,
       "potential_components": {
         "relative_strength_20": 11.9,
         "return_60": 1.4,
@@ -14885,7 +14885,7 @@
       "return_20_pct": -0.65,
       "return_60_pct": -0.27,
       "relative_strength_20_pct": -1.25,
-      "name": "AvalonBay Communities, Inc."
+      "name": "Vivmark Residential"
     },
     {
       "symbol": "BALL",
@@ -17085,7 +17085,7 @@
       "return_20_pct": -9.16,
       "return_60_pct": 9.12,
       "relative_strength_20_pct": -9.76,
-      "name": "Amgen Inc."
+      "name": null
     },
     {
       "symbol": "CEG",
@@ -18885,7 +18885,7 @@
       "return_20_pct": -8.02,
       "return_60_pct": 19.48,
       "relative_strength_20_pct": -8.61,
-      "name": "Thomson Reuters Corporation"
+      "name": null
     },
     {
       "symbol": "KIM",
@@ -21365,7 +21365,7 @@
       "return_20_pct": -5.11,
       "return_60_pct": 1.37,
       "relative_strength_20_pct": -5.7,
-      "name": "Synchrony Financial"
+      "name": null
     },
     {
       "symbol": "BKR",
@@ -22445,7 +22445,7 @@
       "return_20_pct": -0.0,
       "return_60_pct": -4.99,
       "relative_strength_20_pct": -0.6,
-      "name": "Rogers Communications Inc."
+      "name": null
     },
     {
       "symbol": "FLEX",
@@ -24205,7 +24205,7 @@
       "return_20_pct": -4.33,
       "return_60_pct": -1.32,
       "relative_strength_20_pct": -4.92,
-      "name": "Aflac Incorporated"
+      "name": null
     },
     {
       "symbol": "TMUS",
@@ -25885,7 +25885,7 @@
       "return_20_pct": -0.68,
       "return_60_pct": 2.11,
       "relative_strength_20_pct": -1.28,
-      "name": "GoldMining Inc."
+      "name": null
     },
     {
       "symbol": "TSCO",
@@ -26405,7 +26405,7 @@
       "return_20_pct": -3.34,
       "return_60_pct": -0.64,
       "relative_strength_20_pct": -3.93,
-      "name": "Vital Infrastructure Property Trust"
+      "name": null
     },
     {
       "symbol": "MCHP",
@@ -28455,7 +28455,7 @@
       "rsi": 25.7,
       "delta_rsi": -0.9,
       "rvol": 1.2,
-      "support": 19.67,
+      "support": 19.66,
       "support_distance_pct": 0.7,
       "support_score": 6.0,
       "support_strength": 31.3,
@@ -31245,7 +31245,7 @@
       "return_20_pct": -6.55,
       "return_60_pct": -2.85,
       "relative_strength_20_pct": -7.15,
-      "name": "BTB Real Estate Investment Trust"
+      "name": null
     },
     {
       "symbol": "RDDT",
