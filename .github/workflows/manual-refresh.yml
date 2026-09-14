@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run full market scan
-        run: python engine/defensive_runtime.py
+        run: python engine/relative_strength_runtime.py
       - name: Publish refreshed results
         run: |
           git config user.name "stock-indicator-bot"
@@ -43,4 +43,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: gh issue close "$ISSUE_NUMBER" --comment "Mise à jour forcée terminée. Les nouvelles données seront publiées automatiquement sur Stock Indicator."
+        run: gh issue close "$ISSUE_NUMBER" --comment "Mise à jour forcée terminée. Les nouvelles données Relative Strength seront publiées automatiquement sur Stock Indicator."
