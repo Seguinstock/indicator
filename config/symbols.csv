@@ -564,7 +564,6 @@ TRP,XTSE,CA,true
 RY,XTSE,CA,true
 CSH.UN,XTSE,CA,true
 ABX,XTSE,CA,true
-TLG,XTSE,CA,true
 GGD,XTSE,CA,true
 ATH,XTSE,CA,true
 BHC,XTSE,CA,true
@@ -946,3 +945,4 @@ PZA,XTSE,CA,true
 ARA,XTSE,CA,true
 AMC,XTSE,CA,true
 SYH,XTSX,CA,true
+TLG,XTSE,CA,true
