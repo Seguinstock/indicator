@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-13 01:26",
+  "updated": "2026-09-14 02:42",
   "universe": 947,
   "analyzed": 944,
   "errors": 0,
@@ -7966,6 +7966,43 @@
       "name": "Cardinal Energy Ltd."
     },
     {
+      "symbol": "GRT.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 85.18,
+      "rsi": 29.8,
+      "delta_rsi": 3.3,
+      "rvol": 1.88,
+      "support": 84.07,
+      "support_distance_pct": 1.3,
+      "support_score": 8.0,
+      "support_strength": 65.4,
+      "macd_momentum": -36.3,
+      "trend": 0.0,
+      "volatility_pct": 20.1,
+      "timing_v14": 79.7,
+      "buy_timing": 79.7,
+      "potential_components": {
+        "volatility": 26.6,
+        "trend": 20.0,
+        "rvol": 5.0,
+        "rsi": 4.9,
+        "support": 12.6
+      },
+      "potential_score": 69.1,
+      "filters": {
+        "rsi": true,
+        "reversal": true,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 69.1,
+      "name": "Granite Real Estate Investment Trust"
+    },
+    {
       "symbol": "WTE",
       "market": "XTSE",
       "country": "CA",
@@ -8817,43 +8854,6 @@
       "name": "Starbucks Corporation"
     },
     {
-      "symbol": "CI",
-      "market": "XNYS",
-      "country": "US",
-      "price": 280.76,
-      "rsi": 51.6,
-      "delta_rsi": -0.2,
-      "rvol": 0.96,
-      "support": 276.03,
-      "support_distance_pct": 1.7,
-      "support_score": 10.0,
-      "support_strength": 104.7,
-      "macd_momentum": 13.9,
-      "trend": 1.0,
-      "volatility_pct": 32.6,
-      "timing_v14": 35.3,
-      "buy_timing": 35.3,
-      "potential_components": {
-        "volatility": 18.3,
-        "trend": 32.0,
-        "rvol": 1.5,
-        "rsi": 4.2,
-        "support": 11.8
-      },
-      "potential_score": 67.8,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 67.8,
-      "name": "The Cigna Group"
-    },
-    {
       "symbol": "TGT",
       "market": "XNYS",
       "country": "US",
@@ -8926,43 +8926,6 @@
       "passed": false,
       "score": 67.8,
       "name": "PHX Energy Services Corp."
-    },
-    {
-      "symbol": "GRT.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 85.18,
-      "rsi": 29.8,
-      "delta_rsi": 3.3,
-      "rvol": 1.88,
-      "support": 83.46,
-      "support_distance_pct": 2.0,
-      "support_score": 7.0,
-      "support_strength": 57.3,
-      "macd_momentum": -36.3,
-      "trend": 0.0,
-      "volatility_pct": 20.1,
-      "timing_v14": 78.7,
-      "buy_timing": 78.7,
-      "potential_components": {
-        "volatility": 26.6,
-        "trend": 20.0,
-        "rvol": 5.0,
-        "rsi": 4.9,
-        "support": 11.2
-      },
-      "potential_score": 67.7,
-      "filters": {
-        "rsi": true,
-        "reversal": true,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 67.7,
-      "name": "Granite Real Estate Investment Trust"
     },
     {
       "symbol": "OMC",
@@ -9570,7 +9533,7 @@
       "support_strength": 66.8,
       "macd_momentum": 14.8,
       "trend": 0.0,
-      "volatility_pct": 16.1,
+      "volatility_pct": 16.2,
       "timing_v14": 72.8,
       "buy_timing": 72.8,
       "potential_components": {
@@ -9999,6 +9962,43 @@
       "passed": false,
       "score": 66.1,
       "name": "American Electric Power Company, Inc."
+    },
+    {
+      "symbol": "CI",
+      "market": "XNYS",
+      "country": "US",
+      "price": 280.76,
+      "rsi": 51.6,
+      "delta_rsi": -0.2,
+      "rvol": 0.96,
+      "support": 273.33,
+      "support_distance_pct": 2.6,
+      "support_score": 9.0,
+      "support_strength": 103.8,
+      "macd_momentum": 13.9,
+      "trend": 1.0,
+      "volatility_pct": 32.6,
+      "timing_v14": 34.2,
+      "buy_timing": 34.2,
+      "potential_components": {
+        "volatility": 18.3,
+        "trend": 32.0,
+        "rvol": 1.5,
+        "rsi": 4.2,
+        "support": 10.0
+      },
+      "potential_score": 66.0,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": true,
+        "trend": true
+      },
+      "passed": false,
+      "score": 66.0,
+      "name": "The Cigna Group"
     },
     {
       "symbol": "TECH",
@@ -13479,6 +13479,43 @@
       "name": "Deere & Company"
     },
     {
+      "symbol": "KMB",
+      "market": "XNAS",
+      "country": "US",
+      "price": 98.15,
+      "rsi": 29.5,
+      "delta_rsi": -0.5,
+      "rvol": 2.26,
+      "support": 94.81,
+      "support_distance_pct": 3.4,
+      "support_score": 7.0,
+      "support_strength": 66.2,
+      "macd_momentum": -30.0,
+      "trend": 0.0,
+      "volatility_pct": 27.6,
+      "timing_v14": 71.3,
+      "buy_timing": 71.3,
+      "potential_components": {
+        "volatility": 21.6,
+        "trend": 20.0,
+        "rvol": 5.0,
+        "rsi": 4.8,
+        "support": 8.6
+      },
+      "potential_score": 60.0,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 60.0,
+      "name": "Kimberly-Clark Corporation"
+    },
+    {
       "symbol": "VLTO",
       "market": "XNYS",
       "country": "US",
@@ -13995,43 +14032,6 @@
       "passed": false,
       "score": 59.2,
       "name": "Cargojet Inc."
-    },
-    {
-      "symbol": "KMB",
-      "market": "XNAS",
-      "country": "US",
-      "price": 98.15,
-      "rsi": 29.5,
-      "delta_rsi": -0.5,
-      "rvol": 2.26,
-      "support": 94.34,
-      "support_distance_pct": 3.9,
-      "support_score": 7.0,
-      "support_strength": 67.2,
-      "macd_momentum": -30.0,
-      "trend": 0.0,
-      "volatility_pct": 27.6,
-      "timing_v14": 71.3,
-      "buy_timing": 71.3,
-      "potential_components": {
-        "volatility": 21.6,
-        "trend": 20.0,
-        "rvol": 5.0,
-        "rsi": 4.8,
-        "support": 7.7
-      },
-      "potential_score": 59.1,
-      "filters": {
-        "rsi": true,
-        "reversal": false,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 59.1,
-      "name": "Kimberly-Clark Corporation"
     },
     {
       "symbol": "CNC",
@@ -32872,7 +32872,7 @@
       "country": "CA",
       "price": 1.45,
       "rsi": 48.6,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.54,
       "support": 1.44,
       "support_distance_pct": 0.9,
@@ -32881,8 +32881,8 @@
       "macd_momentum": -26.1,
       "trend": -1.0,
       "volatility_pct": 66.5,
-      "timing_v14": 21.8,
-      "buy_timing": 21.8,
+      "timing_v14": 26.0,
+      "buy_timing": 26.0,
       "potential_components": {
         "volatility": 0.0,
         "trend": 4.0,
