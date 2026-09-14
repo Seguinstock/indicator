@@ -25,15 +25,17 @@
     });
   }
 
+  function hasResults(){return typeof RESULTS!=='undefined'&&RESULTS;}
   function activate(){
-    if(!window.RESULTS || RESULTS.buy_model!=='relative_strength_v1') return;
+    if(!hasResults()||RESULTS.buy_model!=='relative_strength_v1') return false;
     window.render=rsRender;
     const model=document.getElementById('activeBuyModel');
     if(model) model.textContent='Modèle actif : Relative Strength · 40 % force relative 20 j · 25 % rendement 60 j · 20 % tendance · 10 % RVOL · 5 % RSI';
     if(typeof applyBuyFilters==='function') applyBuyFilters();
     if(typeof showSell==='function') showSell();
+    return true;
   }
 
-  const timer=setInterval(()=>{if(window.RESULTS){clearInterval(timer);activate();}},250);
+  const timer=setInterval(()=>{if(activate())clearInterval(timer);},250);
   window.addEventListener('load',activate);
 })();
