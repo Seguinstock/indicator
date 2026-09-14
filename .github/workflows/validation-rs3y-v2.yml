@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install -U pitindex lxml requests
+          pip install -U 'pitindex[build]' lxml requests
       - name: Run corrected validation
         run: python engine/validation_rs3y_v2.py
       - name: Publish result
