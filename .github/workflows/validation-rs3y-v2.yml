@@ -35,17 +35,22 @@ jobs:
           git -C .pitindex-source checkout 2df030e5c9be7c83cf4b28c3d8597d74d274757e
           pip install -e '.pitindex-source[build]'
           pip install -U lxml requests
-      - name: Verify PIT refresh path
+      - name: Verify PIT data freshness
         run: |
           python - <<'PY'
           import pitindex
           print('pitindex:', pitindex.__file__)
-          print('before:', pitindex.info(index='sp1500'))
-          pitindex.update()
+          before = pitindex.info(index='sp1500')
+          print('before:', before)
+          if before.get('is_stale'):
+              print('Bundled PIT data is stale; attempting upstream rebuild...')
+              pitindex.update()
+          else:
+              print('Bundled PIT data is fresh; upstream rebuild is not required.')
           info = pitindex.info(index='sp1500')
-          print('after:', info)
+          print('verified:', info)
           if info.get('is_stale'):
-              raise SystemExit('pitindex remains stale after refresh')
+              raise SystemExit('pitindex data is stale; refusing to run validation')
           PY
       - name: Run corrected validation
         run: python -u engine/validation_rs3y_v2.py
