@@ -1,0 +1,62 @@
+name: Validation RS 3Y V4
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'config/run-validation-v4.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validation-rs3y-v4
+  cancel-in-progress: true
+
+env:
+  PYTHONPATH: ${{ github.workspace }}/.pitindex-source:${{ github.workspace }}/engine
+
+jobs:
+  validate-v4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          git clone --depth 1 https://github.com/arielNacamulli/pitindex.git .pitindex-source
+          git -C .pitindex-source fetch --depth 1 origin 2df030e5c9be7c83cf4b28c3d8597d74d274757e
+          git -C .pitindex-source checkout 2df030e5c9be7c83cf4b28c3d8597d74d274757e
+          pip install -e '.pitindex-source[build]'
+          pip install -U lxml requests
+      - name: Preflight PIT dataset
+        run: |
+          python - <<'PY'
+          import pitindex
+          info = pitindex.info(index='sp1500')
+          print(info)
+          if info.get('is_stale'):
+              raise SystemExit('Pinned PIT dataset is stale; V4 refuses to backtest with stale membership data')
+          PY
+      - name: Run V4 validation
+        run: python -u engine/validation_rs3y_v4.py
+      - name: Verify result
+        run: |
+          test -s data/backtest_validation_rs3y_v4.json
+          python -m json.tool data/backtest_validation_rs3y_v4.json >/dev/null
+      - name: Publish V4 result
+        run: |
+          git config user.name "stock-indicator-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/backtest_validation_rs3y_v4.json
+          git commit -m "Publish RS 3Y V4 validation"
+          git pull --rebase origin main
+          git push origin HEAD:main
