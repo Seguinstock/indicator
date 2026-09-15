@@ -1,1 +1,13 @@
-{"symbols":[{"symbol":"CRE","market":"XTSX","country":"CA"},{"symbol":"ETL","market":"XTSX","country":"CA"},{"symbol":"FPX","market":"XTSX","country":"CA"},{"symbol":"FMS","market":"XTSX","country":"CA"},{"symbol":"CCM","market":"XTSE","country":"CA"},{"symbol":"NCF","market":"XTSE","country":"CA"},{"symbol":"LIFT","market":"XTSX","country":"CA"},{"symbol":"NEXG","market":"XTSX","country":"CA"},{"symbol":"ABA","market":"XTSX","country":"CA"}]}
+{
+  "symbols": [
+    {"symbol":"CRE","market":"XTSX","country":"CA"},
+    {"symbol":"ETL","market":"XTSX","country":"CA"},
+    {"symbol":"FPX","market":"XTSX","country":"CA"},
+    {"symbol":"FMS","market":"XTSX","country":"CA"},
+    {"symbol":"CCM","market":"XTSE","country":"CA"},
+    {"symbol":"NCF","market":"XTSE","country":"CA"},
+    {"symbol":"LIFT","market":"XTSX","country":"CA"},
+    {"symbol":"NEXG","market":"XTSX","country":"CA"},
+    {"symbol":"ABA","market":"XTSX","country":"CA"}
+  ]
+}
