@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-15T09:27:23.446634+00:00",
-  "scored_at": "2026-09-15T09:27:23.446634+00:00",
+  "updated": "2026-09-15T09:49:29.217493+00:00",
+  "scored_at": "2026-09-15T09:49:29.217493+00:00",
   "universe": 957,
   "analyzed": 954,
   "errors": 0,
@@ -3975,15 +3975,15 @@
       "rsi": 54.9,
       "delta_rsi": -15.8,
       "rvol": 2.58,
-      "support": 17.96,
-      "support_distance_pct": 5.8,
-      "support_score": 5.0,
-      "support_strength": 76.3,
+      "support": 15.85,
+      "support_distance_pct": 16.9,
+      "support_score": 0.0,
+      "support_strength": 74.9,
       "macd_momentum": -27.9,
       "trend": 2.0,
       "volatility_pct": 37.3,
-      "timing_v14": 16.8,
-      "buy_timing": 16.8,
+      "timing_v14": 11.8,
+      "buy_timing": 11.8,
       "potential_components": {
         "relative_strength_20": 8.5,
         "return_60": 24.9,
@@ -3995,7 +3995,7 @@
       "filters": {
         "rsi": false,
         "reversal": false,
-        "support": true,
+        "support": false,
         "rvol": true,
         "macd": false,
         "trend": true
@@ -11485,7 +11485,7 @@
       "return_20_pct": -1.34,
       "return_60_pct": 6.06,
       "relative_strength_20_pct": -1.93,
-      "name": "Power Corporation of Canada"
+      "name": null
     },
     {
       "symbol": "SGD",
@@ -13445,7 +13445,7 @@
       "return_20_pct": -2.97,
       "return_60_pct": 4.26,
       "relative_strength_20_pct": -3.57,
-      "name": "Darden Restaurants, Inc."
+      "name": null
     },
     {
       "symbol": "AGTF",
@@ -13725,7 +13725,7 @@
       "return_20_pct": 0.53,
       "return_60_pct": 3.68,
       "relative_strength_20_pct": -0.07,
-      "name": "AvalonBay Communities, Inc."
+      "name": "Vivmark Residential"
     },
     {
       "symbol": "PG",
@@ -20445,7 +20445,7 @@
       "return_20_pct": -1.62,
       "return_60_pct": -4.36,
       "relative_strength_20_pct": -2.21,
-      "name": "Quebecor Inc."
+      "name": null
     },
     {
       "symbol": "DFY",
@@ -20645,7 +20645,7 @@
       "return_20_pct": -5.61,
       "return_60_pct": -10.09,
       "relative_strength_20_pct": -6.2,
-      "name": "Vista Gold Corp."
+      "name": null
     },
     {
       "symbol": "SYH",
@@ -29525,7 +29525,7 @@
       "return_20_pct": -7.55,
       "return_60_pct": 8.04,
       "relative_strength_20_pct": -8.15,
-      "name": "goeasy Ltd."
+      "name": null
     },
     {
       "symbol": "NXE",
@@ -31645,7 +31645,7 @@
       "return_20_pct": -0.16,
       "return_60_pct": -3.98,
       "relative_strength_20_pct": -0.76,
-      "name": "Zoetis Inc."
+      "name": null
     },
     {
       "symbol": "ELVA",
@@ -32895,7 +32895,7 @@
       "rsi": 29.8,
       "delta_rsi": 4.1,
       "rvol": 0.83,
-      "support": 19.66,
+      "support": 19.67,
       "support_distance_pct": 1.5,
       "support_score": 6.0,
       "support_strength": 30.5,
@@ -33815,10 +33815,10 @@
       "rsi": 35.0,
       "delta_rsi": 4.1,
       "rvol": 0.66,
-      "support": 16.76,
-      "support_distance_pct": 0.8,
+      "support": 16.8,
+      "support_distance_pct": 0.6,
       "support_score": 10.0,
-      "support_strength": 81.7,
+      "support_strength": 73.9,
       "macd_momentum": 28.5,
       "trend": 0.0,
       "volatility_pct": 13.3,
@@ -34135,15 +34135,15 @@
       "rsi": 32.3,
       "delta_rsi": 2.5,
       "rvol": 0.55,
-      "support": 84.07,
-      "support_distance_pct": 1.7,
-      "support_score": 8.0,
-      "support_strength": 64.9,
+      "support": 83.46,
+      "support_distance_pct": 2.4,
+      "support_score": 7.0,
+      "support_strength": 56.8,
       "macd_momentum": -3.5,
       "trend": 0.0,
       "volatility_pct": 20.0,
-      "timing_v14": 63.6,
-      "buy_timing": 63.6,
+      "timing_v14": 62.6,
+      "buy_timing": 62.6,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 0.0,
@@ -35365,7 +35365,7 @@
       "return_20_pct": -11.33,
       "return_60_pct": -18.34,
       "relative_strength_20_pct": -11.92,
-      "name": "Rockpoint Gas Storage Inc."
+      "name": null
     },
     {
       "symbol": "LHX",
@@ -36845,7 +36845,7 @@
       "return_20_pct": -5.72,
       "return_60_pct": -11.46,
       "relative_strength_20_pct": -6.32,
-      "name": "Labrador Iron Ore Royalty Corporation"
+      "name": null
     },
     {
       "symbol": "NOU",
