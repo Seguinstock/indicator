@@ -28,9 +28,24 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install -U 'pitindex[build]' lxml requests
+          # Install pitindex from its source tree, not the PyPI wheel: update()
+          # imports the repository's scripts.build_dataset module, which is not
+          # included in the published wheel.
+          pip install -U 'git+https://github.com/arielNacamulli/pitindex.git@2df030e5c9be7c83cf4b28c3d8597d74d274757e#egg=pitindex[build]' lxml requests
+      - name: Verify PIT refresh path
+        run: |
+          python - <<'PY'
+          import pitindex
+          print('pitindex:', pitindex.__file__)
+          print('before:', pitindex.info(index='sp1500'))
+          pitindex.update()
+          info = pitindex.info(index='sp1500')
+          print('after:', info)
+          if info.get('is_stale'):
+              raise SystemExit('pitindex remains stale after refresh')
+          PY
       - name: Run corrected validation
-        run: python engine/validation_rs3y_v2.py
+        run: python -u engine/validation_rs3y_v2.py
       - name: Publish result
         run: |
           git config user.name "stock-indicator-bot"
