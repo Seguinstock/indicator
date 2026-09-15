@@ -11,6 +11,9 @@ concurrency:
   group: validation-rs3y-v2
   cancel-in-progress: false
 
+env:
+  PYTHONPATH: ${{ github.workspace }}/.pitindex-source
+
 jobs:
   validate:
     if: github.actor == 'Seguinstock' && github.event.issue.title == 'Run Validation RS 3Y V2'
@@ -25,13 +28,13 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
-      - name: Install dependencies
+      - name: Install dependencies and PIT source
         run: |
           pip install -r requirements.txt
-          # Install pitindex from its source tree, not the PyPI wheel: update()
-          # imports the repository's scripts.build_dataset module, which is not
-          # included in the published wheel.
-          pip install -U 'git+https://github.com/arielNacamulli/pitindex.git@2df030e5c9be7c83cf4b28c3d8597d74d274757e#egg=pitindex[build]' lxml requests
+          git clone https://github.com/arielNacamulli/pitindex.git .pitindex-source
+          git -C .pitindex-source checkout 2df030e5c9be7c83cf4b28c3d8597d74d274757e
+          pip install -e '.pitindex-source[build]'
+          pip install -U lxml requests
       - name: Verify PIT refresh path
         run: |
           python - <<'PY'
