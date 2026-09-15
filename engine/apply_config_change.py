@@ -89,6 +89,25 @@ if action in ('add_symbol','remove_symbol'):
         rows.append({'symbol':symbol,'market':market,'country':country,'enabled':'true'})
     write_csv(path,rows,fields)
 
+elif action == 'add_symbols':
+    items=req.get('symbols')
+    if not isinstance(items,list) or not items or len(items)>100:
+        raise ValueError('symbols must be a non-empty list of at most 100 items')
+    path=ROOT/'config/symbols.csv'; fields=['symbol','market','country','enabled']; rows=read_csv(path)
+    additions=[]; seen=set()
+    for item in items:
+        if not isinstance(item,dict):
+            raise ValueError('Invalid symbol item')
+        symbol=clean_symbol(item.get('symbol'))
+        if symbol in seen:
+            raise ValueError(f'Duplicate symbol: {symbol}')
+        seen.add(symbol)
+        market,country=validate_market_country(item.get('market'),item.get('country'))
+        additions.append({'symbol':symbol,'market':market,'country':country,'enabled':'true'})
+    rows=[r for r in rows if r.get('symbol','').upper() not in seen]
+    rows.extend(additions)
+    write_csv(path,rows,fields)
+
 elif action in ('add_holding','remove_holding'):
     path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
     rows=[r for r in rows if r.get('symbol','').upper()!=symbol]
