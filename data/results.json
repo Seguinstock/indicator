@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-15T22:04:08.153241+00:00",
-  "scored_at": "2026-09-15T22:04:08.153241+00:00",
+  "updated": "2026-09-15T23:30:50.283643+00:00",
+  "scored_at": "2026-09-15T23:30:50.283643+00:00",
   "universe": 957,
   "analyzed": 954,
   "errors": 0,
@@ -1365,7 +1365,7 @@
       "return_20_pct": 10.47,
       "return_60_pct": 27.07,
       "relative_strength_20_pct": 12.53,
-      "name": null
+      "name": "Whitecap Resources Inc."
     },
     {
       "symbol": "SLVR",
@@ -4285,7 +4285,7 @@
       "return_20_pct": 8.2,
       "return_60_pct": 43.48,
       "relative_strength_20_pct": 10.25,
-      "name": null
+      "name": "LithiumBank Resources Corp."
     },
     {
       "symbol": "EL",
@@ -8295,10 +8295,10 @@
       "rsi": 59.0,
       "delta_rsi": -1.4,
       "rvol": 0.79,
-      "support": 276.03,
-      "support_distance_pct": 4.5,
+      "support": 273.21,
+      "support_distance_pct": 5.4,
       "support_score": 5.0,
-      "support_strength": 101.8,
+      "support_strength": 101.3,
       "macd_momentum": 49.6,
       "trend": 2.0,
       "volatility_pct": 32.7,
@@ -10725,7 +10725,7 @@
       "return_20_pct": 5.58,
       "return_60_pct": 19.61,
       "relative_strength_20_pct": 7.64,
-      "name": null
+      "name": "Trimble Inc."
     },
     {
       "symbol": "OR",
@@ -11165,7 +11165,7 @@
       "return_20_pct": 3.09,
       "return_60_pct": 3.47,
       "relative_strength_20_pct": 5.15,
-      "name": "Vivmark Residential"
+      "name": "AvalonBay Communities, Inc."
     },
     {
       "symbol": "WRB",
@@ -11886,46 +11886,6 @@
       "return_60_pct": 9.87,
       "relative_strength_20_pct": 0.07,
       "name": "Calfrac Well Services Ltd."
-    },
-    {
-      "symbol": "KHC",
-      "market": "XNAS",
-      "country": "US",
-      "price": 24.6,
-      "rsi": 46.2,
-      "delta_rsi": 2.5,
-      "rvol": 7.68,
-      "support": 23.9,
-      "support_distance_pct": 2.8,
-      "support_score": 9.0,
-      "support_strength": 87.3,
-      "macd_momentum": -12.7,
-      "trend": 1.0,
-      "volatility_pct": 26.9,
-      "timing_v14": 52.2,
-      "buy_timing": 52.2,
-      "potential_components": {
-        "relative_strength_20": 11.1,
-        "return_60": 8.3,
-        "trend": 16.0,
-        "rvol": 10.0,
-        "rsi": 2.3
-      },
-      "potential_score": 47.7,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 47.7,
-      "return_20_pct": -1.52,
-      "return_60_pct": 5.01,
-      "relative_strength_20_pct": 0.53,
-      "name": "The Kraft Heinz Company"
     },
     {
       "symbol": "S",
@@ -12973,7 +12933,7 @@
       "country": "CA",
       "price": 40.63,
       "rsi": 69.2,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.69,
       "support": 39.81,
       "support_distance_pct": 2.0,
@@ -12982,8 +12942,8 @@
       "macd_momentum": -20.0,
       "trend": 2.0,
       "volatility_pct": 19.6,
-      "timing_v14": 12.0,
-      "buy_timing": 12.0,
+      "timing_v14": 17.0,
+      "buy_timing": 17.0,
       "potential_components": {
         "relative_strength_20": 15.9,
         "return_60": 5.6,
@@ -15568,6 +15528,46 @@
       "name": "Birchcliff Energy Ltd."
     },
     {
+      "symbol": "KHC",
+      "market": "XNAS",
+      "country": "US",
+      "price": 24.27,
+      "rsi": 42.9,
+      "delta_rsi": -3.2,
+      "rvol": 0.94,
+      "support": 23.9,
+      "support_distance_pct": 1.5,
+      "support_score": 10.0,
+      "support_strength": 88.6,
+      "macd_momentum": -30.1,
+      "trend": 1.0,
+      "volatility_pct": 26.8,
+      "timing_v14": 40.2,
+      "buy_timing": 40.2,
+      "potential_components": {
+        "relative_strength_20": 7.4,
+        "return_60": 9.4,
+        "trend": 16.0,
+        "rvol": 2.4,
+        "rsi": 1.6
+      },
+      "potential_score": 36.8,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 36.8,
+      "return_20_pct": -3.34,
+      "return_60_pct": 6.28,
+      "relative_strength_20_pct": -1.28,
+      "name": "The Kraft Heinz Company"
+    },
+    {
       "symbol": "PYPL",
       "market": "XNAS",
       "country": "US",
@@ -16645,7 +16645,7 @@
       "return_20_pct": -1.46,
       "return_60_pct": 7.77,
       "relative_strength_20_pct": 0.59,
-      "name": null
+      "name": "OceanaGold Corporation"
     },
     {
       "symbol": "DASH",
@@ -21725,7 +21725,7 @@
       "return_20_pct": 1.43,
       "return_60_pct": -4.05,
       "relative_strength_20_pct": 3.49,
-      "name": null
+      "name": "Critical Elements Lithium Corporation"
     },
     {
       "symbol": "CADY",
@@ -23605,7 +23605,7 @@
       "return_20_pct": -2.52,
       "return_60_pct": -6.92,
       "relative_strength_20_pct": -0.46,
-      "name": null
+      "name": "Yum! Brands, Inc."
     },
     {
       "symbol": "EQB",
@@ -23685,7 +23685,7 @@
       "return_20_pct": -6.64,
       "return_60_pct": -10.5,
       "relative_strength_20_pct": -4.59,
-      "name": null
+      "name": "The Goldman Sachs Group, Inc."
     },
     {
       "symbol": "ACO.X",
@@ -26216,9 +26216,9 @@
       "delta_rsi": -2.5,
       "rvol": 1.89,
       "support": 7.1,
-      "support_distance_pct": 2.7,
+      "support_distance_pct": 2.8,
       "support_score": 7.0,
-      "support_strength": 65.5,
+      "support_strength": 65.4,
       "macd_momentum": -1.1,
       "trend": 0.0,
       "volatility_pct": 17.6,
@@ -26295,15 +26295,15 @@
       "rsi": 32.3,
       "delta_rsi": -0.8,
       "rvol": 1.6,
-      "support": 94.34,
-      "support_distance_pct": 4.4,
-      "support_score": 5.0,
-      "support_strength": 66.5,
+      "support": 94.81,
+      "support_distance_pct": 3.9,
+      "support_score": 7.0,
+      "support_strength": 65.6,
       "macd_momentum": 15.7,
       "trend": 0.0,
       "volatility_pct": 27.6,
-      "timing_v14": 75.6,
-      "buy_timing": 75.6,
+      "timing_v14": 77.6,
+      "buy_timing": 77.6,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 2.0,
@@ -36085,7 +36085,7 @@
       "return_20_pct": -15.13,
       "return_60_pct": -8.3,
       "relative_strength_20_pct": -13.07,
-      "name": null
+      "name": "Stryker Corporation"
     },
     {
       "symbol": "AP.UN",
@@ -37005,7 +37005,7 @@
       "return_20_pct": -5.65,
       "return_60_pct": -5.89,
       "relative_strength_20_pct": -3.59,
-      "name": null
+      "name": "FirstService Corporation"
     },
     {
       "symbol": "FSLR",
@@ -38628,48 +38628,6 @@
       "name": "Cameco Corporation"
     },
     {
-      "symbol": "ATD",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 79.67,
-      "rsi": 31.5,
-      "delta_rsi": -6.6,
-      "rvol": 0.98,
-      "support": 79.02,
-      "support_distance_pct": 0.8,
-      "support_score": 10.0,
-      "support_strength": 89.9,
-      "macd_momentum": -0.8,
-      "trend": 0.0,
-      "volatility_pct": 26.5,
-      "timing_v14": 57.9,
-      "buy_timing": 57.9,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 1.8,
-        "trend": 10.0,
-        "rvol": 2.7,
-        "rsi": 0.0
-      },
-      "potential_score": 14.5,
-      "filters": {},
-      "passed": true,
-      "score": 85.5,
-      "return_20_pct": -11.7,
-      "return_60_pct": -2.88,
-      "relative_strength_20_pct": -9.64,
-      "sell_timing_v14": 85.5,
-      "sell_signal": "VENTE FORTE",
-      "sell_components": {
-        "relative_strength_20": 40.0,
-        "return_60": 23.2,
-        "trend": 10.0,
-        "rvol": 7.3,
-        "rsi": 5.0
-      },
-      "name": "Alimentation-Couche Tard, Inc."
-    },
-    {
       "symbol": "STN",
       "market": "XTSE",
       "country": "CA",
@@ -38710,6 +38668,48 @@
         "rsi": 3.3
       },
       "name": "Stantec Inc"
+    },
+    {
+      "symbol": "ATD",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 79.67,
+      "rsi": 31.5,
+      "delta_rsi": -6.6,
+      "rvol": 0.98,
+      "support": 79.02,
+      "support_distance_pct": 0.8,
+      "support_score": 10.0,
+      "support_strength": 89.9,
+      "macd_momentum": -0.8,
+      "trend": 0.0,
+      "volatility_pct": 26.5,
+      "timing_v14": 57.9,
+      "buy_timing": 57.9,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 1.8,
+        "trend": 10.0,
+        "rvol": 2.7,
+        "rsi": 0.0
+      },
+      "potential_score": 14.5,
+      "filters": {},
+      "passed": true,
+      "score": 85.5,
+      "return_20_pct": -11.7,
+      "return_60_pct": -2.88,
+      "relative_strength_20_pct": -9.64,
+      "sell_timing_v14": 85.5,
+      "sell_signal": "VENTE FORTE",
+      "sell_components": {
+        "relative_strength_20": 40.0,
+        "return_60": 23.2,
+        "trend": 10.0,
+        "rvol": 7.3,
+        "rsi": 5.0
+      },
+      "name": "Alimentation-Couche Tard, Inc."
     },
     {
       "symbol": "LUV",
@@ -39261,48 +39261,6 @@
         "name": "Cameco Corporation"
       },
       {
-        "symbol": "ATD",
-        "market": "XTSE",
-        "country": "CA",
-        "price": 79.67,
-        "rsi": 31.5,
-        "delta_rsi": -6.6,
-        "rvol": 0.98,
-        "support": 79.02,
-        "support_distance_pct": 0.8,
-        "support_score": 10.0,
-        "support_strength": 89.9,
-        "macd_momentum": -0.8,
-        "trend": 0.0,
-        "volatility_pct": 26.5,
-        "timing_v14": 57.9,
-        "buy_timing": 57.9,
-        "potential_components": {
-          "relative_strength_20": 0.0,
-          "return_60": 1.8,
-          "trend": 10.0,
-          "rvol": 2.7,
-          "rsi": 0.0
-        },
-        "potential_score": 14.5,
-        "filters": {},
-        "passed": true,
-        "score": 85.5,
-        "return_20_pct": -11.7,
-        "return_60_pct": -2.88,
-        "relative_strength_20_pct": -9.64,
-        "sell_timing_v14": 85.5,
-        "sell_signal": "VENTE FORTE",
-        "sell_components": {
-          "relative_strength_20": 40.0,
-          "return_60": 23.2,
-          "trend": 10.0,
-          "rvol": 7.3,
-          "rsi": 5.0
-        },
-        "name": "Alimentation-Couche Tard, Inc."
-      },
-      {
         "symbol": "STN",
         "market": "XTSE",
         "country": "CA",
@@ -39343,6 +39301,48 @@
           "rsi": 3.3
         },
         "name": "Stantec Inc"
+      },
+      {
+        "symbol": "ATD",
+        "market": "XTSE",
+        "country": "CA",
+        "price": 79.67,
+        "rsi": 31.5,
+        "delta_rsi": -6.6,
+        "rvol": 0.98,
+        "support": 79.02,
+        "support_distance_pct": 0.8,
+        "support_score": 10.0,
+        "support_strength": 89.9,
+        "macd_momentum": -0.8,
+        "trend": 0.0,
+        "volatility_pct": 26.5,
+        "timing_v14": 57.9,
+        "buy_timing": 57.9,
+        "potential_components": {
+          "relative_strength_20": 0.0,
+          "return_60": 1.8,
+          "trend": 10.0,
+          "rvol": 2.7,
+          "rsi": 0.0
+        },
+        "potential_score": 14.5,
+        "filters": {},
+        "passed": true,
+        "score": 85.5,
+        "return_20_pct": -11.7,
+        "return_60_pct": -2.88,
+        "relative_strength_20_pct": -9.64,
+        "sell_timing_v14": 85.5,
+        "sell_signal": "VENTE FORTE",
+        "sell_components": {
+          "relative_strength_20": 40.0,
+          "return_60": 23.2,
+          "trend": 10.0,
+          "rvol": 7.3,
+          "rsi": 5.0
+        },
+        "name": "Alimentation-Couche Tard, Inc."
       },
       {
         "symbol": "LUV",
