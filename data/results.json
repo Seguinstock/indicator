@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-16T05:06:03.748202+00:00",
-  "scored_at": "2026-09-16T05:06:03.748202+00:00",
+  "updated": "2026-09-16T10:27:21.271482+00:00",
+  "scored_at": "2026-09-16T10:27:21.271482+00:00",
   "universe": 957,
   "analyzed": 954,
   "errors": 0,
@@ -1125,7 +1125,7 @@
       "return_20_pct": 29.93,
       "return_60_pct": 47.61,
       "relative_strength_20_pct": 31.98,
-      "name": null
+      "name": "Tenaz Energy Corp."
     },
     {
       "symbol": "CDW",
@@ -2328,46 +2328,6 @@
       "name": "Franco-Nevada Corporation"
     },
     {
-      "symbol": "LGN",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 1.19,
-      "rsi": 67.3,
-      "delta_rsi": 0.0,
-      "rvol": 0.73,
-      "support": 1.05,
-      "support_distance_pct": 11.8,
-      "support_score": 0.0,
-      "support_strength": 64.1,
-      "macd_momentum": -20.0,
-      "trend": 2.0,
-      "volatility_pct": 39.3,
-      "timing_v14": 12.0,
-      "buy_timing": 12.0,
-      "potential_components": {
-        "relative_strength_20": 31.5,
-        "return_60": 25.0,
-        "trend": 20.0,
-        "rvol": 0.9,
-        "rsi": 2.9
-      },
-      "potential_score": 80.3,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 80.3,
-      "return_20_pct": 8.68,
-      "return_60_pct": 36.78,
-      "relative_strength_20_pct": 10.73,
-      "name": "Logan Energy Corp."
-    },
-    {
       "symbol": "DVN",
       "market": "XNYS",
       "country": "US",
@@ -3448,6 +3408,46 @@
       "name": "Liberty Gold Corp"
     },
     {
+      "symbol": "LGN",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 1.2,
+      "rsi": 68.8,
+      "delta_rsi": 1.5,
+      "rvol": 1.06,
+      "support": 1.05,
+      "support_distance_pct": 12.5,
+      "support_score": 0.0,
+      "support_strength": 64.0,
+      "macd_momentum": -7.9,
+      "trend": 2.0,
+      "volatility_pct": 39.3,
+      "timing_v14": 22.2,
+      "buy_timing": 22.2,
+      "potential_components": {
+        "relative_strength_20": 24.6,
+        "return_60": 25.0,
+        "trend": 20.0,
+        "rvol": 3.3,
+        "rsi": 2.5
+      },
+      "potential_score": 75.5,
+      "filters": {
+        "rsi": false,
+        "reversal": true,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 75.5,
+      "return_20_pct": 5.26,
+      "return_60_pct": 42.86,
+      "relative_strength_20_pct": 7.32,
+      "name": "Logan Energy Corp."
+    },
+    {
       "symbol": "FFIV",
       "market": "XNAS",
       "country": "US",
@@ -3606,46 +3606,6 @@
       "return_60_pct": 5.08,
       "relative_strength_20_pct": 14.82,
       "name": "Alexandria Real Estate Equities, Inc."
-    },
-    {
-      "symbol": "LBNK",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 0.65,
-      "rsi": 49.7,
-      "delta_rsi": -4.9,
-      "rvol": 1.92,
-      "support": 0.59,
-      "support_distance_pct": 9.2,
-      "support_score": 2.0,
-      "support_strength": 64.3,
-      "macd_momentum": -62.9,
-      "trend": 0.5,
-      "volatility_pct": 102.0,
-      "timing_v14": 28.9,
-      "buy_timing": 28.9,
-      "potential_components": {
-        "relative_strength_20": 23.8,
-        "return_60": 25.0,
-        "trend": 13.0,
-        "rvol": 9.4,
-        "rsi": 3.1
-      },
-      "potential_score": 74.3,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 74.3,
-      "return_20_pct": 4.84,
-      "return_60_pct": 44.44,
-      "relative_strength_20_pct": 6.9,
-      "name": "LithiumBank Resources Corp."
     },
     {
       "symbol": "MOS",
@@ -4328,6 +4288,46 @@
       "name": "Gilead Sciences, Inc."
     },
     {
+      "symbol": "LBNK",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 0.66,
+      "rsi": 51.3,
+      "delta_rsi": 1.6,
+      "rvol": 0.29,
+      "support": 0.59,
+      "support_distance_pct": 10.6,
+      "support_score": 0.0,
+      "support_strength": 63.5,
+      "macd_momentum": -36.5,
+      "trend": 0.5,
+      "volatility_pct": 102.0,
+      "timing_v14": 24.5,
+      "buy_timing": 24.5,
+      "potential_components": {
+        "relative_strength_20": 30.5,
+        "return_60": 25.0,
+        "trend": 13.0,
+        "rvol": 0.0,
+        "rsi": 3.5
+      },
+      "potential_score": 72.0,
+      "filters": {
+        "rsi": false,
+        "reversal": true,
+        "support": false,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 72.0,
+      "return_20_pct": 8.2,
+      "return_60_pct": 43.48,
+      "relative_strength_20_pct": 10.25,
+      "name": "LithiumBank Resources Corp."
+    },
+    {
       "symbol": "EL",
       "market": "XNYS",
       "country": "US",
@@ -5005,7 +5005,7 @@
       "return_20_pct": 1.04,
       "return_60_pct": 18.84,
       "relative_strength_20_pct": 3.1,
-      "name": null
+      "name": "Imperial Oil Limited"
     },
     {
       "symbol": "PGR",
@@ -5725,7 +5725,7 @@
       "return_20_pct": 2.64,
       "return_60_pct": 18.72,
       "relative_strength_20_pct": 4.7,
-      "name": "Motorola Solutions, Inc."
+      "name": null
     },
     {
       "symbol": "FRU",
@@ -7005,7 +7005,7 @@
       "return_20_pct": 14.32,
       "return_60_pct": 5.42,
       "relative_strength_20_pct": 16.38,
-      "name": "Coinbase Global, Inc."
+      "name": null
     },
     {
       "symbol": "BTO",
@@ -7725,7 +7725,7 @@
       "return_20_pct": 2.49,
       "return_60_pct": 9.78,
       "relative_strength_20_pct": 4.55,
-      "name": null
+      "name": "Wells Fargo & Company"
     },
     {
       "symbol": "RSG",
@@ -7965,7 +7965,7 @@
       "return_20_pct": 0.92,
       "return_60_pct": 20.68,
       "relative_strength_20_pct": 2.98,
-      "name": "Artemis Gold Inc."
+      "name": null
     },
     {
       "symbol": "BIIB",
@@ -9685,7 +9685,7 @@
       "return_20_pct": -4.04,
       "return_60_pct": 25.08,
       "relative_strength_20_pct": -1.98,
-      "name": null
+      "name": "Southern Cross Gold Consolidated Ltd."
     },
     {
       "symbol": "FOX",
@@ -10245,7 +10245,7 @@
       "return_20_pct": -0.46,
       "return_60_pct": 23.67,
       "relative_strength_20_pct": 1.59,
-      "name": null
+      "name": "Imperial Metals Corporation"
     },
     {
       "symbol": "IAU",
@@ -10326,46 +10326,6 @@
       "return_60_pct": 16.78,
       "relative_strength_20_pct": 2.13,
       "name": "The Allstate Corporation"
-    },
-    {
-      "symbol": "TECK.B",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 92.04,
-      "rsi": 48.5,
-      "delta_rsi": 0.1,
-      "rvol": 1.11,
-      "support": 91.87,
-      "support_distance_pct": 0.2,
-      "support_score": 10.0,
-      "support_strength": 74.3,
-      "macd_momentum": -25.6,
-      "trend": 2.0,
-      "volatility_pct": 45.7,
-      "timing_v14": 38.6,
-      "buy_timing": 38.6,
-      "potential_components": {
-        "relative_strength_20": 23.2,
-        "return_60": 3.6,
-        "trend": 20.0,
-        "rvol": 3.6,
-        "rsi": 2.8
-      },
-      "potential_score": 53.2,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 53.2,
-      "return_20_pct": 4.53,
-      "return_60_pct": -0.72,
-      "relative_strength_20_pct": 6.58,
-      "name": "Teck Resources Limited"
     },
     {
       "symbol": "WTE",
@@ -13165,7 +13125,7 @@
       "return_20_pct": 8.53,
       "return_60_pct": 0.42,
       "relative_strength_20_pct": 10.59,
-      "name": "International Business Machines Corporation"
+      "name": null
     },
     {
       "symbol": "DIS",
@@ -13406,46 +13366,6 @@
       "return_60_pct": 4.71,
       "relative_strength_20_pct": 5.38,
       "name": "Berkshire Hathaway CDR (CAD Hedged)"
-    },
-    {
-      "symbol": "NICE",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 0.49,
-      "rsi": 55.2,
-      "delta_rsi": 0.0,
-      "rvol": 0.98,
-      "support": null,
-      "support_distance_pct": null,
-      "support_score": null,
-      "support_strength": null,
-      "macd_momentum": -2.9,
-      "trend": 0.0,
-      "volatility_pct": 110.5,
-      "timing_v14": 20.3,
-      "buy_timing": 20.3,
-      "potential_components": {
-        "relative_strength_20": 22.6,
-        "return_60": 4.2,
-        "trend": 10.0,
-        "rvol": 2.7,
-        "rsi": 4.4
-      },
-      "potential_score": 43.9,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 43.9,
-      "return_20_pct": 4.26,
-      "return_60_pct": 0.0,
-      "relative_strength_20_pct": 6.31,
-      "name": "NI-Co Energy Inc."
     },
     {
       "symbol": "TPL",
@@ -13845,7 +13765,7 @@
       "return_20_pct": -1.28,
       "return_60_pct": 5.13,
       "relative_strength_20_pct": 0.78,
-      "name": "Cardinal Health, Inc."
+      "name": null
     },
     {
       "symbol": "TFC",
@@ -14005,7 +13925,7 @@
       "return_20_pct": -4.38,
       "return_60_pct": 7.25,
       "relative_strength_20_pct": -2.32,
-      "name": null
+      "name": "Hasbro, Inc."
     },
     {
       "symbol": "RSI",
@@ -14166,6 +14086,46 @@
       "return_60_pct": 16.14,
       "relative_strength_20_pct": 2.01,
       "name": "CGI Inc."
+    },
+    {
+      "symbol": "TECK.B",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 89.99,
+      "rsi": 44.6,
+      "delta_rsi": -3.9,
+      "rvol": 0.76,
+      "support": 87.13,
+      "support_distance_pct": 3.2,
+      "support_score": 9.0,
+      "support_strength": 70.4,
+      "macd_momentum": -41.4,
+      "trend": 2.0,
+      "volatility_pct": 45.8,
+      "timing_v14": 32.9,
+      "buy_timing": 32.9,
+      "potential_components": {
+        "relative_strength_20": 14.4,
+        "return_60": 3.3,
+        "trend": 20.0,
+        "rvol": 1.1,
+        "rsi": 2.0
+      },
+      "potential_score": 40.8,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 40.8,
+      "return_20_pct": 0.15,
+      "return_60_pct": -1.0,
+      "relative_strength_20_pct": 2.2,
+      "name": "Teck Resources Limited"
     },
     {
       "symbol": "AC",
@@ -15206,46 +15166,6 @@
       "return_60_pct": 4.3,
       "relative_strength_20_pct": 4.89,
       "name": "Birchcliff Energy Ltd."
-    },
-    {
-      "symbol": "SASK",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 1.08,
-      "rsi": 41.5,
-      "delta_rsi": -4.5,
-      "rvol": 0.57,
-      "support": 1.06,
-      "support_distance_pct": 1.9,
-      "support_score": 10.0,
-      "support_strength": 71.6,
-      "macd_momentum": -53.2,
-      "trend": 1.0,
-      "volatility_pct": 97.2,
-      "timing_v14": 31.5,
-      "buy_timing": 31.5,
-      "potential_components": {
-        "relative_strength_20": 17.9,
-        "return_60": 3.4,
-        "trend": 16.0,
-        "rvol": 0.0,
-        "rsi": 1.2
-      },
-      "potential_score": 38.5,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 38.5,
-      "return_20_pct": 1.89,
-      "return_60_pct": -0.92,
-      "relative_strength_20_pct": 3.94,
-      "name": "Atha Energy Corp."
     },
     {
       "symbol": "RCI.B",
@@ -17095,7 +17015,7 @@
       "rsi": 44.9,
       "delta_rsi": -1.1,
       "rvol": 0.99,
-      "support": 70.14,
+      "support": 70.12,
       "support_distance_pct": 2.1,
       "support_score": 9.0,
       "support_strength": 103.8,
@@ -17574,16 +17494,16 @@
       "price": 0.1,
       "rsi": 50.4,
       "delta_rsi": 0.0,
-      "rvol": 2.4,
+      "rvol": 3.57,
       "support": 0.08,
       "support_distance_pct": 20.0,
       "support_score": 0.0,
-      "support_strength": 63.7,
-      "macd_momentum": 26.1,
+      "support_strength": 63.6,
+      "macd_momentum": 23.0,
       "trend": 1.0,
-      "volatility_pct": 128.9,
-      "timing_v14": 42.9,
-      "buy_timing": 42.9,
+      "volatility_pct": 128.5,
+      "timing_v14": 35.2,
+      "buy_timing": 35.2,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 4.2,
@@ -17602,9 +17522,9 @@
       },
       "passed": false,
       "score": 33.4,
-      "return_20_pct": -16.67,
+      "return_20_pct": -20.0,
       "return_60_pct": 0.0,
-      "relative_strength_20_pct": -14.61,
+      "relative_strength_20_pct": -17.94,
       "name": "Abasca Resources Inc."
     },
     {
@@ -19895,10 +19815,10 @@
       "rsi": 42.9,
       "delta_rsi": -4.7,
       "rvol": 1.07,
-      "support": 13.09,
-      "support_distance_pct": 3.0,
+      "support": 13.13,
+      "support_distance_pct": 2.8,
       "support_score": 9.0,
-      "support_strength": 103.7,
+      "support_strength": 104.0,
       "macd_momentum": -48.1,
       "trend": 1.0,
       "volatility_pct": 38.7,
@@ -20046,6 +19966,46 @@
       "return_60_pct": 6.35,
       "relative_strength_20_pct": 2.77,
       "name": "S&P Global Inc."
+    },
+    {
+      "symbol": "NICE",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 0.46,
+      "rsi": 47.9,
+      "delta_rsi": -7.3,
+      "rvol": 0.4,
+      "support": null,
+      "support_distance_pct": null,
+      "support_score": null,
+      "support_strength": null,
+      "macd_momentum": -51.5,
+      "trend": 0.0,
+      "volatility_pct": 110.4,
+      "timing_v14": 8.0,
+      "buy_timing": 8.0,
+      "potential_components": {
+        "relative_strength_20": 12.0,
+        "return_60": 4.2,
+        "trend": 10.0,
+        "rvol": 0.0,
+        "rsi": 2.7
+      },
+      "potential_score": 28.8,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": false,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 28.8,
+      "return_20_pct": -1.08,
+      "return_60_pct": 0.0,
+      "relative_strength_20_pct": 0.98,
+      "name": "NI-Co Energy Inc."
     },
     {
       "symbol": "ACQ",
@@ -20931,40 +20891,40 @@
       "symbol": "REI.UN",
       "market": "XTSE",
       "country": "CA",
-      "price": 20.71,
-      "rsi": 38.9,
-      "delta_rsi": 2.6,
-      "rvol": 1.11,
-      "support": 20.4,
-      "support_distance_pct": 1.5,
+      "price": 20.38,
+      "rsi": 32.9,
+      "delta_rsi": -6.0,
+      "rvol": 1.43,
+      "support": 20.37,
+      "support_distance_pct": 0.0,
       "support_score": 10.0,
-      "support_strength": 81.0,
-      "macd_momentum": 24.0,
+      "support_strength": 74.4,
+      "macd_momentum": -35.2,
       "trend": 1.0,
-      "volatility_pct": 15.2,
-      "timing_v14": 60.6,
-      "buy_timing": 60.6,
+      "volatility_pct": 15.3,
+      "timing_v14": 67.7,
+      "buy_timing": 67.7,
       "potential_components": {
-        "relative_strength_20": 6.2,
+        "relative_strength_20": 4.6,
         "return_60": 0.0,
         "trend": 16.0,
-        "rvol": 3.6,
-        "rsi": 0.7
+        "rvol": 5.9,
+        "rsi": 0.0
       },
       "potential_score": 26.5,
       "filters": {
         "rsi": true,
-        "reversal": true,
+        "reversal": false,
         "support": true,
         "rvol": true,
-        "macd": true,
+        "macd": false,
         "trend": true
       },
-      "passed": true,
+      "passed": false,
       "score": 26.5,
-      "return_20_pct": -3.94,
-      "return_60_pct": -7.07,
-      "relative_strength_20_pct": -1.89,
+      "return_20_pct": -4.77,
+      "return_60_pct": -9.47,
+      "relative_strength_20_pct": -2.71,
       "name": "RioCan Real Estate Investment Trust"
     },
     {
@@ -21488,46 +21448,6 @@
       "name": "Definity Financial Corporation"
     },
     {
-      "symbol": "GENM",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 0.7,
-      "rsi": 44.4,
-      "delta_rsi": -0.9,
-      "rvol": 0.64,
-      "support": 0.59,
-      "support_distance_pct": 16.3,
-      "support_score": 0.0,
-      "support_strength": 58.1,
-      "macd_momentum": -37.5,
-      "trend": 2.0,
-      "volatility_pct": 83.9,
-      "timing_v14": 23.2,
-      "buy_timing": 23.2,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 3.6,
-        "trend": 20.0,
-        "rvol": 0.3,
-        "rsi": 1.9
-      },
-      "potential_score": 25.8,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 25.8,
-      "return_20_pct": -10.76,
-      "return_60_pct": -0.7,
-      "relative_strength_20_pct": -8.7,
-      "name": "Generation Mining Limited"
-    },
-    {
       "symbol": "CCI",
       "market": "XNYS",
       "country": "US",
@@ -21565,7 +21485,7 @@
       "return_20_pct": -0.17,
       "return_60_pct": -9.43,
       "relative_strength_20_pct": 1.89,
-      "name": "Crown Castle Inc."
+      "name": null
     },
     {
       "symbol": "RY",
@@ -22328,46 +22248,6 @@
       "name": "The Hershey Company"
     },
     {
-      "symbol": "CSH.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 20.4,
-      "rsi": 40.1,
-      "delta_rsi": 6.0,
-      "rvol": 0.57,
-      "support": 20.21,
-      "support_distance_pct": 0.9,
-      "support_score": 10.0,
-      "support_strength": 105.5,
-      "macd_momentum": 4.4,
-      "trend": 0.0,
-      "volatility_pct": 21.6,
-      "timing_v14": 40.7,
-      "buy_timing": 40.7,
-      "potential_components": {
-        "relative_strength_20": 11.2,
-        "return_60": 2.0,
-        "trend": 10.0,
-        "rvol": 0.0,
-        "rsi": 0.9
-      },
-      "potential_score": 24.2,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": true,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 24.2,
-      "return_20_pct": -1.44,
-      "return_60_pct": -2.58,
-      "relative_strength_20_pct": 0.62,
-      "name": "Chartwell Retirement Residences"
-    },
-    {
       "symbol": "CTC.A",
       "market": "XTSE",
       "country": "CA",
@@ -22968,46 +22848,6 @@
       "name": "Prologis, Inc."
     },
     {
-      "symbol": "BBD.B",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 309.02,
-      "rsi": 43.8,
-      "delta_rsi": 5.3,
-      "rvol": 0.62,
-      "support": 289.88,
-      "support_distance_pct": 6.2,
-      "support_score": 2.0,
-      "support_strength": 84.5,
-      "macd_momentum": 34.9,
-      "trend": 1.0,
-      "volatility_pct": 49.9,
-      "timing_v14": 34.1,
-      "buy_timing": 34.1,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 5.8,
-        "trend": 16.0,
-        "rvol": 0.1,
-        "rsi": 1.8
-      },
-      "potential_score": 23.7,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": false,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 23.7,
-      "return_20_pct": -12.83,
-      "return_60_pct": 1.93,
-      "relative_strength_20_pct": -10.78,
-      "name": "Bombardier Inc."
-    },
-    {
       "symbol": "ETN",
       "market": "XNYS",
       "country": "US",
@@ -23408,6 +23248,46 @@
       "name": "Brown-Forman Corporation"
     },
     {
+      "symbol": "CSH.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 20.21,
+      "rsi": 37.5,
+      "delta_rsi": -2.6,
+      "rvol": 0.37,
+      "support": 19.72,
+      "support_distance_pct": 2.4,
+      "support_score": 9.0,
+      "support_strength": 104.3,
+      "macd_momentum": -9.2,
+      "trend": 0.0,
+      "volatility_pct": 21.6,
+      "timing_v14": 35.4,
+      "buy_timing": 35.4,
+      "potential_components": {
+        "relative_strength_20": 12.7,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 0.0,
+        "rsi": 0.3
+      },
+      "potential_score": 23.0,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 23.0,
+      "return_20_pct": -0.73,
+      "return_60_pct": -5.42,
+      "relative_strength_20_pct": 1.33,
+      "name": "Chartwell Retirement Residences"
+    },
+    {
       "symbol": "DOW",
       "market": "XNYS",
       "country": "US",
@@ -23526,46 +23406,6 @@
       "return_60_pct": 1.95,
       "relative_strength_20_pct": -7.28,
       "name": "EQB Inc."
-    },
-    {
-      "symbol": "BEI.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 62.33,
-      "rsi": 41.7,
-      "delta_rsi": 0.6,
-      "rvol": 0.7,
-      "support": 61.81,
-      "support_distance_pct": 0.8,
-      "support_score": 10.0,
-      "support_strength": 105.6,
-      "macd_momentum": 19.1,
-      "trend": 0.0,
-      "volatility_pct": 17.0,
-      "timing_v14": 56.2,
-      "buy_timing": 56.2,
-      "potential_components": {
-        "relative_strength_20": 8.2,
-        "return_60": 2.7,
-        "trend": 10.0,
-        "rvol": 0.7,
-        "rsi": 1.3
-      },
-      "potential_score": 22.9,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": true,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 22.9,
-      "return_20_pct": -2.97,
-      "return_60_pct": -1.78,
-      "relative_strength_20_pct": -0.91,
-      "name": "Boardwalk Real Estate Investment Trust"
     },
     {
       "symbol": "AXON",
@@ -25048,33 +24888,33 @@
       "name": "TFI International Inc."
     },
     {
-      "symbol": "KMP.UN",
+      "symbol": "BBD.B",
       "market": "XTSE",
       "country": "CA",
-      "price": 17.5,
-      "rsi": 38.2,
-      "delta_rsi": 3.3,
-      "rvol": 0.88,
-      "support": 16.5,
-      "support_distance_pct": 5.7,
-      "support_score": 5.0,
-      "support_strength": 64.2,
-      "macd_momentum": 36.0,
+      "price": 300.11,
+      "rsi": 39.8,
+      "delta_rsi": -4.0,
+      "rvol": 0.66,
+      "support": 289.88,
+      "support_distance_pct": 3.4,
+      "support_score": 9.0,
+      "support_strength": 87.2,
+      "macd_momentum": 2.0,
       "trend": 1.0,
-      "volatility_pct": 16.9,
-      "timing_v14": 48.2,
-      "buy_timing": 48.2,
+      "volatility_pct": 49.6,
+      "timing_v14": 36.2,
+      "buy_timing": 36.2,
       "potential_components": {
-        "relative_strength_20": 2.6,
-        "return_60": 0.0,
+        "relative_strength_20": 0.0,
+        "return_60": 3.8,
         "trend": 16.0,
-        "rvol": 2.0,
-        "rsi": 0.5
+        "rvol": 0.4,
+        "rsi": 0.9
       },
       "potential_score": 21.1,
       "filters": {
         "rsi": true,
-        "reversal": true,
+        "reversal": false,
         "support": true,
         "rvol": false,
         "macd": true,
@@ -25082,10 +24922,10 @@
       },
       "passed": false,
       "score": 21.1,
-      "return_20_pct": -5.76,
-      "return_60_pct": -5.0,
-      "relative_strength_20_pct": -3.7,
-      "name": "Killam Apartment REIT"
+      "return_20_pct": -15.79,
+      "return_60_pct": -0.48,
+      "relative_strength_20_pct": -13.73,
+      "name": "Bombardier Inc."
     },
     {
       "symbol": "GOLD",
@@ -25486,6 +25326,46 @@
       "return_60_pct": 3.32,
       "relative_strength_20_pct": -1.4,
       "name": "Lightspeed Commerce Inc."
+    },
+    {
+      "symbol": "SASK",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 1.07,
+      "rsi": 40.8,
+      "delta_rsi": -0.7,
+      "rvol": 0.34,
+      "support": 1.06,
+      "support_distance_pct": 0.9,
+      "support_score": 8.0,
+      "support_strength": 52.5,
+      "macd_momentum": -35.5,
+      "trend": 1.0,
+      "volatility_pct": 97.1,
+      "timing_v14": 36.5,
+      "buy_timing": 36.5,
+      "potential_components": {
+        "relative_strength_20": 3.5,
+        "return_60": 0.0,
+        "trend": 16.0,
+        "rvol": 0.0,
+        "rsi": 1.1
+      },
+      "potential_score": 20.6,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 20.6,
+      "return_20_pct": -5.31,
+      "return_60_pct": -13.01,
+      "relative_strength_20_pct": -3.25,
+      "name": "Atha Energy Corp."
     },
     {
       "symbol": "DUK",
@@ -25928,6 +25808,86 @@
       "name": "Bausch Health Companies Inc."
     },
     {
+      "symbol": "DIR.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 12.81,
+      "rsi": 28.2,
+      "delta_rsi": -5.1,
+      "rvol": 2.86,
+      "support": 11.92,
+      "support_distance_pct": 6.9,
+      "support_score": 2.0,
+      "support_strength": 53.3,
+      "macd_momentum": -37.8,
+      "trend": 0.0,
+      "volatility_pct": 19.2,
+      "timing_v14": 53.5,
+      "buy_timing": 53.5,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 10.0,
+        "rsi": 0.0
+      },
+      "potential_score": 20.0,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 20.0,
+      "return_20_pct": -8.36,
+      "return_60_pct": -6.75,
+      "relative_strength_20_pct": -6.3,
+      "name": "Dream Industrial Real Estate Investment Trust"
+    },
+    {
+      "symbol": "GENM",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 0.64,
+      "rsi": 34.8,
+      "delta_rsi": -9.6,
+      "rvol": 9.35,
+      "support": 0.59,
+      "support_distance_pct": 7.8,
+      "support_score": 2.0,
+      "support_strength": 60.2,
+      "macd_momentum": -80.1,
+      "trend": 0.0,
+      "volatility_pct": 84.4,
+      "timing_v14": 46.0,
+      "buy_timing": 46.0,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 10.0,
+        "rsi": 0.0
+      },
+      "potential_score": 20.0,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 20.0,
+      "return_20_pct": -18.99,
+      "return_60_pct": -9.86,
+      "relative_strength_20_pct": -16.93,
+      "name": "Generation Mining Limited"
+    },
+    {
       "symbol": "LRCX",
       "market": "XNAS",
       "country": "US",
@@ -26045,7 +26005,7 @@
       "return_20_pct": -16.18,
       "return_60_pct": -19.81,
       "relative_strength_20_pct": -14.12,
-      "name": "Comfort Systems USA, Inc."
+      "name": null
     },
     {
       "symbol": "SEA",
@@ -26208,6 +26168,46 @@
       "name": "BlackBerry Limited"
     },
     {
+      "symbol": "BEI.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 60.93,
+      "rsi": 34.8,
+      "delta_rsi": -6.9,
+      "rvol": 1.22,
+      "support": 58.24,
+      "support_distance_pct": 4.4,
+      "support_score": 5.0,
+      "support_strength": 26.2,
+      "macd_momentum": -46.6,
+      "trend": 0.0,
+      "volatility_pct": 17.1,
+      "timing_v14": 52.3,
+      "buy_timing": 52.3,
+      "potential_components": {
+        "relative_strength_20": 4.7,
+        "return_60": 0.3,
+        "trend": 10.0,
+        "rvol": 4.4,
+        "rsi": 0.0
+      },
+      "potential_score": 19.4,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 19.4,
+      "return_20_pct": -4.72,
+      "return_60_pct": -4.59,
+      "relative_strength_20_pct": -2.66,
+      "name": "Boardwalk Real Estate Investment Trust"
+    },
+    {
       "symbol": "STLR",
       "market": "XTSE",
       "country": "CA",
@@ -26335,15 +26335,15 @@
       "rsi": 32.3,
       "delta_rsi": -0.8,
       "rvol": 1.61,
-      "support": 94.81,
-      "support_distance_pct": 3.9,
-      "support_score": 7.0,
-      "support_strength": 65.6,
+      "support": 94.34,
+      "support_distance_pct": 4.4,
+      "support_score": 5.0,
+      "support_strength": 66.5,
       "macd_momentum": 15.8,
       "trend": 0.0,
       "volatility_pct": 27.6,
-      "timing_v14": 77.6,
-      "buy_timing": 77.6,
+      "timing_v14": 75.6,
+      "buy_timing": 75.6,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 2.0,
@@ -26376,9 +26376,9 @@
       "delta_rsi": -2.5,
       "rvol": 1.89,
       "support": 7.1,
-      "support_distance_pct": 2.7,
+      "support_distance_pct": 2.8,
       "support_score": 7.0,
-      "support_strength": 65.5,
+      "support_strength": 65.4,
       "macd_momentum": -1.1,
       "trend": 0.0,
       "volatility_pct": 17.6,
@@ -26888,46 +26888,6 @@
       "name": "FedEx Corporation"
     },
     {
-      "symbol": "BEP.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 40.98,
-      "rsi": 31.2,
-      "delta_rsi": -4.6,
-      "rvol": 1.81,
-      "support": 37.32,
-      "support_distance_pct": 8.9,
-      "support_score": 2.0,
-      "support_strength": 40.4,
-      "macd_momentum": -49.2,
-      "trend": 0.0,
-      "volatility_pct": 28.2,
-      "timing_v14": 61.1,
-      "buy_timing": 61.1,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 0.0,
-        "trend": 10.0,
-        "rvol": 8.6,
-        "rsi": 0.0
-      },
-      "potential_score": 18.6,
-      "filters": {
-        "rsi": true,
-        "reversal": false,
-        "support": false,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 18.6,
-      "return_20_pct": -14.27,
-      "return_60_pct": -14.32,
-      "relative_strength_20_pct": -12.21,
-      "name": "Brookfield Renewable Partners L.P."
-    },
-    {
       "symbol": "TSK",
       "market": "XTSE",
       "country": "CA",
@@ -27126,46 +27086,6 @@
       "return_60_pct": -3.71,
       "relative_strength_20_pct": -8.74,
       "name": "Magna International Inc."
-    },
-    {
-      "symbol": "CHE.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 14.3,
-      "rsi": 28.1,
-      "delta_rsi": -4.8,
-      "rvol": 1.74,
-      "support": 14.02,
-      "support_distance_pct": 1.9,
-      "support_score": 8.0,
-      "support_strength": 49.3,
-      "macd_momentum": -41.8,
-      "trend": 0.0,
-      "volatility_pct": 33.4,
-      "timing_v14": 71.1,
-      "buy_timing": 71.1,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 0.0,
-        "trend": 10.0,
-        "rvol": 8.1,
-        "rsi": 0.0
-      },
-      "potential_score": 18.1,
-      "filters": {
-        "rsi": true,
-        "reversal": false,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 18.1,
-      "return_20_pct": -13.56,
-      "return_60_pct": -8.86,
-      "relative_strength_20_pct": -11.51,
-      "name": "Chemtrade Logistics Income Fund"
     },
     {
       "symbol": "AMAT",
@@ -28128,6 +28048,46 @@
       "name": "Canadian Utilities Limited"
     },
     {
+      "symbol": "KMP.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 17.12,
+      "rsi": 32.6,
+      "delta_rsi": -5.6,
+      "rvol": 1.48,
+      "support": 16.5,
+      "support_distance_pct": 3.6,
+      "support_score": 7.0,
+      "support_strength": 66.2,
+      "macd_momentum": -17.6,
+      "trend": 0.0,
+      "volatility_pct": 17.0,
+      "timing_v14": 63.2,
+      "buy_timing": 63.2,
+      "potential_components": {
+        "relative_strength_20": 0.8,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 6.3,
+        "rsi": 0.0
+      },
+      "potential_score": 17.1,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 17.1,
+      "return_20_pct": -6.65,
+      "return_60_pct": -8.34,
+      "relative_strength_20_pct": -4.59,
+      "name": "Killam Apartment REIT"
+    },
+    {
       "symbol": "SRU.UN",
       "market": "XTSE",
       "country": "CA",
@@ -28448,44 +28408,44 @@
       "name": "National Bank of Canada"
     },
     {
-      "symbol": "BIP.UN",
+      "symbol": "CHE.UN",
       "market": "XTSE",
       "country": "CA",
-      "price": 49.66,
-      "rsi": 33.8,
-      "delta_rsi": -6.3,
-      "rvol": 1.55,
-      "support": 49.27,
-      "support_distance_pct": 0.8,
-      "support_score": 10.0,
-      "support_strength": 81.8,
-      "macd_momentum": -34.5,
+      "price": 14.59,
+      "rsi": 36.4,
+      "delta_rsi": 8.2,
+      "rvol": 1.5,
+      "support": 14.02,
+      "support_distance_pct": 3.9,
+      "support_score": 7.0,
+      "support_strength": 47.3,
+      "macd_momentum": 17.2,
       "trend": 0.0,
-      "volatility_pct": 20.3,
-      "timing_v14": 70.5,
-      "buy_timing": 70.5,
+      "volatility_pct": 33.4,
+      "timing_v14": 57.7,
+      "buy_timing": 57.7,
       "potential_components": {
         "relative_strength_20": 0.0,
-        "return_60": 0.0,
+        "return_60": 0.3,
         "trend": 10.0,
-        "rvol": 6.8,
-        "rsi": 0.0
+        "rvol": 6.4,
+        "rsi": 0.1
       },
       "potential_score": 16.8,
       "filters": {
         "rsi": true,
-        "reversal": false,
+        "reversal": true,
         "support": true,
         "rvol": true,
-        "macd": false,
+        "macd": true,
         "trend": true
       },
-      "passed": false,
+      "passed": true,
       "score": 16.8,
-      "return_20_pct": -9.29,
-      "return_60_pct": -5.15,
-      "relative_strength_20_pct": -7.23,
-      "name": "Brookfield Infrastructure Partners L.P."
+      "return_20_pct": -7.58,
+      "return_60_pct": -4.61,
+      "relative_strength_20_pct": -5.53,
+      "name": "Chemtrade Logistics Income Fund"
     },
     {
       "symbol": "MDA",
@@ -29048,46 +29008,6 @@
       "name": "CenterPoint Energy, Inc."
     },
     {
-      "symbol": "SUN",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 0.05,
-      "rsi": 44.3,
-      "delta_rsi": 0.0,
-      "rvol": 0.21,
-      "support": 0.04,
-      "support_distance_pct": 11.1,
-      "support_score": 0.0,
-      "support_strength": 43.4,
-      "macd_momentum": -22.3,
-      "trend": -2.0,
-      "volatility_pct": 89.4,
-      "timing_v14": 20.8,
-      "buy_timing": 20.8,
-      "potential_components": {
-        "relative_strength_20": 14.1,
-        "return_60": 0.0,
-        "trend": 0.0,
-        "rvol": 0.0,
-        "rsi": 1.9
-      },
-      "potential_score": 16.0,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": false
-      },
-      "passed": false,
-      "score": 16.0,
-      "return_20_pct": 0.0,
-      "return_60_pct": -30.77,
-      "relative_strength_20_pct": 2.06,
-      "name": "Stardust Solar Energy Inc."
-    },
-    {
       "symbol": "MAS",
       "market": "XNYS",
       "country": "US",
@@ -29166,6 +29086,46 @@
       "return_60_pct": -3.42,
       "relative_strength_20_pct": -4.48,
       "name": "Eversource Energy"
+    },
+    {
+      "symbol": "BEP.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 40.03,
+      "rsi": 28.0,
+      "delta_rsi": -3.2,
+      "rvol": 1.41,
+      "support": 37.32,
+      "support_distance_pct": 6.8,
+      "support_score": 2.0,
+      "support_strength": 42.4,
+      "macd_momentum": -59.0,
+      "trend": 0.0,
+      "volatility_pct": 28.3,
+      "timing_v14": 59.4,
+      "buy_timing": 59.4,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 5.8,
+        "rsi": 0.0
+      },
+      "potential_score": 15.8,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 15.8,
+      "return_20_pct": -15.5,
+      "return_60_pct": -18.95,
+      "relative_strength_20_pct": -13.45,
+      "name": "Brookfield Renewable Partners L.P."
     },
     {
       "symbol": "AFN",
@@ -29768,46 +29728,6 @@
       "name": "Vitalhub Corp."
     },
     {
-      "symbol": "BTB.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 3.64,
-      "rsi": 31.6,
-      "delta_rsi": 1.9,
-      "rvol": 0.89,
-      "support": 3.58,
-      "support_distance_pct": 1.7,
-      "support_score": 8.0,
-      "support_strength": 69.4,
-      "macd_momentum": 18.2,
-      "trend": 0.0,
-      "volatility_pct": 14.4,
-      "timing_v14": 72.8,
-      "buy_timing": 72.8,
-      "potential_components": {
-        "relative_strength_20": 0.6,
-        "return_60": 2.4,
-        "trend": 10.0,
-        "rvol": 2.1,
-        "rsi": 0.0
-      },
-      "potential_score": 15.1,
-      "filters": {
-        "rsi": true,
-        "reversal": true,
-        "support": true,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 15.1,
-      "return_20_pct": -6.77,
-      "return_60_pct": -2.07,
-      "relative_strength_20_pct": -4.71,
-      "name": "BTB Real Estate Investment Trust"
-    },
-    {
       "symbol": "PNW",
       "market": "XNYS",
       "country": "US",
@@ -30168,6 +30088,46 @@
       "name": "Blackstone Inc."
     },
     {
+      "symbol": "BTB.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 3.63,
+      "rsi": 30.7,
+      "delta_rsi": -0.9,
+      "rvol": 1.04,
+      "support": 3.58,
+      "support_distance_pct": 1.4,
+      "support_score": 8.0,
+      "support_strength": 69.6,
+      "macd_momentum": 20.6,
+      "trend": 0.0,
+      "volatility_pct": 14.4,
+      "timing_v14": 67.1,
+      "buy_timing": 67.1,
+      "potential_components": {
+        "relative_strength_20": 0.5,
+        "return_60": 1.2,
+        "trend": 10.0,
+        "rvol": 3.1,
+        "rsi": 0.0
+      },
+      "potential_score": 14.8,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": true,
+        "trend": true
+      },
+      "passed": false,
+      "score": 14.8,
+      "return_20_pct": -6.79,
+      "return_60_pct": -3.61,
+      "relative_strength_20_pct": -4.73,
+      "name": "BTB Real Estate Investment Trust"
+    },
+    {
       "symbol": "SLS",
       "market": "XTSE",
       "country": "CA",
@@ -30526,46 +30486,6 @@
       "return_60_pct": 4.91,
       "relative_strength_20_pct": -4.41,
       "name": "WSP Global Inc."
-    },
-    {
-      "symbol": "DIR.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 13.08,
-      "rsi": 33.3,
-      "delta_rsi": -0.4,
-      "rvol": 0.88,
-      "support": 11.92,
-      "support_distance_pct": 8.8,
-      "support_score": 2.0,
-      "support_strength": 51.5,
-      "macd_momentum": 25.6,
-      "trend": 0.0,
-      "volatility_pct": 19.1,
-      "timing_v14": 57.6,
-      "buy_timing": 57.6,
-      "potential_components": {
-        "relative_strength_20": 2.1,
-        "return_60": 0.1,
-        "trend": 10.0,
-        "rvol": 2.0,
-        "rsi": 0.0
-      },
-      "potential_score": 14.2,
-      "filters": {
-        "rsi": true,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 14.2,
-      "return_20_pct": -6.03,
-      "return_60_pct": -4.85,
-      "relative_strength_20_pct": -3.97,
-      "name": "Dream Industrial Real Estate Investment Trust"
     },
     {
       "symbol": "VRT",
@@ -31015,7 +30935,7 @@
       "rsi": 28.6,
       "delta_rsi": -1.1,
       "rvol": 1.09,
-      "support": 19.66,
+      "support": 19.67,
       "support_distance_pct": 1.0,
       "support_score": 6.0,
       "support_strength": 30.9,
@@ -31046,6 +30966,46 @@
       "return_60_pct": -7.92,
       "relative_strength_20_pct": -5.44,
       "name": "Sienna Senior Living Inc."
+    },
+    {
+      "symbol": "HUBB",
+      "market": "XNYS",
+      "country": "US",
+      "price": 438.53,
+      "rsi": 36.1,
+      "delta_rsi": -1.4,
+      "rvol": 1.07,
+      "support": 419.68,
+      "support_distance_pct": 4.3,
+      "support_score": 5.0,
+      "support_strength": 34.8,
+      "macd_momentum": -34.4,
+      "trend": 0.0,
+      "volatility_pct": 32.0,
+      "timing_v14": 47.6,
+      "buy_timing": 47.6,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 10.0,
+        "rvol": 3.4,
+        "rsi": 0.0
+      },
+      "potential_score": 13.4,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 13.4,
+      "return_20_pct": -12.77,
+      "return_60_pct": -16.0,
+      "relative_strength_20_pct": -10.72,
+      "name": "Hubbell Incorporated"
     },
     {
       "symbol": "PPG",
@@ -31408,44 +31368,44 @@
       "name": "Intact Financial Corporation"
     },
     {
-      "symbol": "HUBB",
-      "market": "XNYS",
-      "country": "US",
-      "price": 442.38,
-      "rsi": 37.5,
-      "delta_rsi": -7.4,
-      "rvol": 0.98,
-      "support": 439.98,
-      "support_distance_pct": 0.5,
-      "support_score": 10.0,
-      "support_strength": 81.9,
-      "macd_momentum": -30.7,
+      "symbol": "BIP.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 48.78,
+      "rsi": 30.5,
+      "delta_rsi": -3.2,
+      "rvol": 1.05,
+      "support": 44.96,
+      "support_distance_pct": 7.8,
+      "support_score": 2.0,
+      "support_strength": 46.1,
+      "macd_momentum": -60.5,
       "trend": 0.0,
-      "volatility_pct": 32.0,
-      "timing_v14": 36.2,
-      "buy_timing": 36.2,
+      "volatility_pct": 20.4,
+      "timing_v14": 49.9,
+      "buy_timing": 49.9,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 0.0,
         "trend": 10.0,
-        "rvol": 2.7,
-        "rsi": 0.3
+        "rvol": 3.2,
+        "rsi": 0.0
       },
-      "potential_score": 13.1,
+      "potential_score": 13.2,
       "filters": {
         "rsi": true,
         "reversal": false,
-        "support": true,
-        "rvol": false,
+        "support": false,
+        "rvol": true,
         "macd": false,
         "trend": true
       },
       "passed": false,
-      "score": 13.1,
-      "return_20_pct": -13.23,
-      "return_60_pct": -12.8,
-      "relative_strength_20_pct": -11.17,
-      "name": "Hubbell Incorporated"
+      "score": 13.2,
+      "return_20_pct": -8.95,
+      "return_60_pct": -7.27,
+      "relative_strength_20_pct": -6.89,
+      "name": "Brookfield Infrastructure Partners L.P."
     },
     {
       "symbol": "RDDT",
@@ -31805,7 +31765,7 @@
       "return_20_pct": -6.41,
       "return_60_pct": 2.33,
       "relative_strength_20_pct": -4.35,
-      "name": "Northrop Grumman Corporation"
+      "name": null
     },
     {
       "symbol": "LNT",
@@ -31846,46 +31806,6 @@
       "return_60_pct": -8.92,
       "relative_strength_20_pct": -4.14,
       "name": "Alliant Energy Corporation"
-    },
-    {
-      "symbol": "CAR.UN",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 32.39,
-      "rsi": 38.0,
-      "delta_rsi": 4.8,
-      "rvol": 1.39,
-      "support": 32.2,
-      "support_distance_pct": 0.6,
-      "support_score": 10.0,
-      "support_strength": 73.8,
-      "macd_momentum": 37.1,
-      "trend": -2.0,
-      "volatility_pct": 17.7,
-      "timing_v14": 42.7,
-      "buy_timing": 42.7,
-      "potential_components": {
-        "relative_strength_20": 6.7,
-        "return_60": 0.0,
-        "trend": 0.0,
-        "rvol": 5.6,
-        "rsi": 0.5
-      },
-      "potential_score": 12.8,
-      "filters": {
-        "rsi": true,
-        "reversal": true,
-        "support": true,
-        "rvol": true,
-        "macd": true,
-        "trend": false
-      },
-      "passed": false,
-      "score": 12.8,
-      "return_20_pct": -3.71,
-      "return_60_pct": -6.14,
-      "relative_strength_20_pct": -1.66,
-      "name": "Canadian Apartment Properties Real Estate Investment Trust"
     },
     {
       "symbol": "ATS",
@@ -32055,10 +31975,10 @@
       "rsi": 33.5,
       "delta_rsi": -1.6,
       "rvol": 0.63,
-      "support": 16.59,
-      "support_distance_pct": 1.4,
+      "support": 16.63,
+      "support_distance_pct": 1.2,
       "support_score": 10.0,
-      "support_strength": 89.4,
+      "support_strength": 97.6,
       "macd_momentum": 14.2,
       "trend": 0.0,
       "volatility_pct": 13.3,
@@ -32525,7 +32445,7 @@
       "return_20_pct": -2.73,
       "return_60_pct": -8.95,
       "relative_strength_20_pct": -0.67,
-      "name": "Galiano Gold Inc."
+      "name": null
     },
     {
       "symbol": "MDI",
@@ -33165,7 +33085,7 @@
       "return_20_pct": -11.29,
       "return_60_pct": -17.91,
       "relative_strength_20_pct": -9.23,
-      "name": "Mega Uranium Ltd."
+      "name": null
     },
     {
       "symbol": "URE",
@@ -34445,7 +34365,7 @@
       "return_20_pct": -7.75,
       "return_60_pct": -5.6,
       "relative_strength_20_pct": -5.69,
-      "name": null
+      "name": "Xcel Energy Inc."
     },
     {
       "symbol": "BYD",
@@ -34726,6 +34646,46 @@
       "return_60_pct": -10.23,
       "relative_strength_20_pct": -5.42,
       "name": "Lennar Corporation"
+    },
+    {
+      "symbol": "CAR.UN",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 31.44,
+      "rsi": 29.3,
+      "delta_rsi": -8.7,
+      "rvol": 1.43,
+      "support": null,
+      "support_distance_pct": null,
+      "support_score": null,
+      "support_strength": null,
+      "macd_momentum": -43.7,
+      "trend": -2.0,
+      "volatility_pct": 17.9,
+      "timing_v14": 39.9,
+      "buy_timing": 39.9,
+      "potential_components": {
+        "relative_strength_20": 2.0,
+        "return_60": 0.0,
+        "trend": 0.0,
+        "rvol": 5.9,
+        "rsi": 0.0
+      },
+      "potential_score": 7.9,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": false
+      },
+      "passed": false,
+      "score": 7.9,
+      "return_20_pct": -6.06,
+      "return_60_pct": -8.74,
+      "relative_strength_20_pct": -4.01,
+      "name": "Canadian Apartment Properties Real Estate Investment Trust"
     },
     {
       "symbol": "LIF",
@@ -35365,7 +35325,7 @@
       "return_20_pct": -11.8,
       "return_60_pct": -1.63,
       "relative_strength_20_pct": -9.75,
-      "name": null
+      "name": "Huntington Ingalls Industries, Inc."
     },
     {
       "symbol": "CLS",
@@ -37325,7 +37285,7 @@
       "return_20_pct": -10.09,
       "return_60_pct": -25.05,
       "relative_strength_20_pct": -8.03,
-      "name": "Tantalus Systems Holding Inc."
+      "name": null
     },
     {
       "symbol": "RGSI",
@@ -37525,7 +37485,7 @@
       "return_20_pct": -7.37,
       "return_60_pct": -10.08,
       "relative_strength_20_pct": -5.31,
-      "name": null
+      "name": "Fair Isaac Corporation"
     },
     {
       "symbol": "CIA",
@@ -37648,6 +37608,46 @@
       "name": "Pentair plc"
     },
     {
+      "symbol": "SUN",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 0.05,
+      "rsi": 44.3,
+      "delta_rsi": 0.0,
+      "rvol": 0.25,
+      "support": 0.04,
+      "support_distance_pct": 11.1,
+      "support_score": 0.0,
+      "support_strength": 43.4,
+      "macd_momentum": -11.7,
+      "trend": -2.0,
+      "volatility_pct": 89.4,
+      "timing_v14": 21.6,
+      "buy_timing": 21.6,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 0.0,
+        "rvol": 0.0,
+        "rsi": 1.9
+      },
+      "potential_score": 1.9,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": false,
+        "rvol": false,
+        "macd": false,
+        "trend": false
+      },
+      "passed": false,
+      "score": 1.9,
+      "return_20_pct": -10.0,
+      "return_60_pct": -30.77,
+      "relative_strength_20_pct": -7.94,
+      "name": "Stardust Solar Energy Inc."
+    },
+    {
       "symbol": "BN",
       "market": "XTSE",
       "country": "CA",
@@ -37725,7 +37725,7 @@
       "return_20_pct": -9.89,
       "return_60_pct": -14.91,
       "relative_strength_20_pct": -7.83,
-      "name": "L3Harris Technologies, Inc."
+      "name": null
     },
     {
       "symbol": "CLX",
@@ -38292,6 +38292,48 @@
       "name": "Brookfield Renewable Corporation"
     },
     {
+      "symbol": "SUN",
+      "market": "XTSX",
+      "country": "CA",
+      "price": 0.05,
+      "rsi": 44.3,
+      "delta_rsi": 0.0,
+      "rvol": 0.25,
+      "support": 0.04,
+      "support_distance_pct": 11.1,
+      "support_score": 0.0,
+      "support_strength": 43.4,
+      "macd_momentum": -11.7,
+      "trend": -2.0,
+      "volatility_pct": 89.4,
+      "timing_v14": 21.6,
+      "buy_timing": 21.6,
+      "potential_components": {
+        "relative_strength_20": 0.0,
+        "return_60": 0.0,
+        "trend": 0.0,
+        "rvol": 0.0,
+        "rsi": 1.9
+      },
+      "potential_score": 1.9,
+      "filters": {},
+      "passed": true,
+      "score": 98.1,
+      "return_20_pct": -10.0,
+      "return_60_pct": -30.77,
+      "relative_strength_20_pct": -7.94,
+      "sell_timing_v14": 98.1,
+      "sell_signal": "VENTE FORTE",
+      "sell_components": {
+        "relative_strength_20": 40.0,
+        "return_60": 25.0,
+        "trend": 20.0,
+        "rvol": 10.0,
+        "rsi": 3.1
+      },
+      "name": "Stardust Solar Energy Inc."
+    },
+    {
       "symbol": "AAON",
       "market": "XNAS",
       "country": "US",
@@ -38712,48 +38754,6 @@
       "name": "Southwest Airlines Co"
     },
     {
-      "symbol": "SUN",
-      "market": "XTSX",
-      "country": "CA",
-      "price": 0.05,
-      "rsi": 44.3,
-      "delta_rsi": 0.0,
-      "rvol": 0.21,
-      "support": 0.04,
-      "support_distance_pct": 11.1,
-      "support_score": 0.0,
-      "support_strength": 43.4,
-      "macd_momentum": -22.3,
-      "trend": -2.0,
-      "volatility_pct": 89.4,
-      "timing_v14": 20.8,
-      "buy_timing": 20.8,
-      "potential_components": {
-        "relative_strength_20": 14.1,
-        "return_60": 0.0,
-        "trend": 0.0,
-        "rvol": 0.0,
-        "rsi": 1.9
-      },
-      "potential_score": 16.0,
-      "filters": {},
-      "passed": true,
-      "score": 84.0,
-      "return_20_pct": 0.0,
-      "return_60_pct": -30.77,
-      "relative_strength_20_pct": 2.06,
-      "sell_timing_v14": 84.0,
-      "sell_signal": "VENTE FORTE",
-      "sell_components": {
-        "relative_strength_20": 25.9,
-        "return_60": 25.0,
-        "trend": 20.0,
-        "rvol": 10.0,
-        "rsi": 3.1
-      },
-      "name": "Stardust Solar Energy Inc."
-    },
-    {
       "symbol": "MDA",
       "market": "XTSE",
       "country": "CA",
@@ -38923,6 +38923,48 @@
           "rsi": 5.0
         },
         "name": "Brookfield Renewable Corporation"
+      },
+      {
+        "symbol": "SUN",
+        "market": "XTSX",
+        "country": "CA",
+        "price": 0.05,
+        "rsi": 44.3,
+        "delta_rsi": 0.0,
+        "rvol": 0.25,
+        "support": 0.04,
+        "support_distance_pct": 11.1,
+        "support_score": 0.0,
+        "support_strength": 43.4,
+        "macd_momentum": -11.7,
+        "trend": -2.0,
+        "volatility_pct": 89.4,
+        "timing_v14": 21.6,
+        "buy_timing": 21.6,
+        "potential_components": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 1.9
+        },
+        "potential_score": 1.9,
+        "filters": {},
+        "passed": true,
+        "score": 98.1,
+        "return_20_pct": -10.0,
+        "return_60_pct": -30.77,
+        "relative_strength_20_pct": -7.94,
+        "sell_timing_v14": 98.1,
+        "sell_signal": "VENTE FORTE",
+        "sell_components": {
+          "relative_strength_20": 40.0,
+          "return_60": 25.0,
+          "trend": 20.0,
+          "rvol": 10.0,
+          "rsi": 3.1
+        },
+        "name": "Stardust Solar Energy Inc."
       },
       {
         "symbol": "AAON",
@@ -39343,48 +39385,6 @@
           "rsi": 4.0
         },
         "name": "Southwest Airlines Co"
-      },
-      {
-        "symbol": "SUN",
-        "market": "XTSX",
-        "country": "CA",
-        "price": 0.05,
-        "rsi": 44.3,
-        "delta_rsi": 0.0,
-        "rvol": 0.21,
-        "support": 0.04,
-        "support_distance_pct": 11.1,
-        "support_score": 0.0,
-        "support_strength": 43.4,
-        "macd_momentum": -22.3,
-        "trend": -2.0,
-        "volatility_pct": 89.4,
-        "timing_v14": 20.8,
-        "buy_timing": 20.8,
-        "potential_components": {
-          "relative_strength_20": 14.1,
-          "return_60": 0.0,
-          "trend": 0.0,
-          "rvol": 0.0,
-          "rsi": 1.9
-        },
-        "potential_score": 16.0,
-        "filters": {},
-        "passed": true,
-        "score": 84.0,
-        "return_20_pct": 0.0,
-        "return_60_pct": -30.77,
-        "relative_strength_20_pct": 2.06,
-        "sell_timing_v14": 84.0,
-        "sell_signal": "VENTE FORTE",
-        "sell_components": {
-          "relative_strength_20": 25.9,
-          "return_60": 25.0,
-          "trend": 20.0,
-          "rvol": 10.0,
-          "rsi": 3.1
-        },
-        "name": "Stardust Solar Energy Inc."
       },
       {
         "symbol": "MDA",
