@@ -1,6 +1,29 @@
 {
   "days": [
     {
+      "date": "2026-09-16",
+      "selected_at": "manual screenshot 09:32",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "open",
+      "average_return_pct": null,
+      "source": "user-provided screenshot; DELL risk treated as 64 by explicit user exception",
+      "picks": [
+        {"symbol":"RVTY","score":97.1,"risk":33,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"BTE","score":96.3,"risk":44,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"VLE","score":96.1,"risk":49,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"SWKS","score":95.9,"risk":43,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"CRWD","score":95.1,"risk":48,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"NTR","score":94.4,"risk":19,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"KEL","score":94.2,"risk":32,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"CF","score":93.8,"risk":30,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"VET","score":93.8,"risk":41,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"CVVY","score":93.2,"risk":58,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"DELL","score":92.8,"risk":64,"risk_observed":65,"start_price":null,"end_price":null,"return_pct":null},
+        {"symbol":"CGG","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":null}
+      ]
+    },
+    {
       "date": "2026-09-15",
       "selected_at": "manual historical import",
       "risk_limit": 65,
