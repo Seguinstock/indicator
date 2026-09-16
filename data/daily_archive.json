@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "partial",
-      "average_return_pct": -0.943,
+      "status": "complete",
+      "average_return_pct": -1.118,
       "source": "user-provided screenshot; DELL risk treated as 64 by explicit user exception",
       "picks": [
         {
@@ -17,23 +17,29 @@
           "risk": 33,
           "start_price": 140.8800048828125,
           "end_price": 145.72999572753906,
-          "return_pct": 3.443
+          "return_pct": 3.443,
+          "market": "XNYS",
+          "timing": 35.5
         },
         {
           "symbol": "BTE",
           "score": 96.3,
           "risk": 44,
-          "start_price": 5.090000152587891,
-          "end_price": 4.889999866485596,
-          "return_pct": -3.929
+          "start_price": 7.119999885559082,
+          "end_price": 6.829999923706055,
+          "return_pct": -4.073,
+          "market": "XTSE",
+          "timing": 11.8
         },
         {
           "symbol": "VLE",
           "score": 96.1,
           "risk": 49,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 15.649999618530273,
+          "end_price": 15.069999694824219,
+          "return_pct": -3.706,
+          "market": "XTSE",
+          "timing": 15.4
         },
         {
           "symbol": "SWKS",
@@ -41,7 +47,9 @@
           "risk": 43,
           "start_price": 89.375,
           "end_price": 85.58999633789062,
-          "return_pct": -4.235
+          "return_pct": -4.235,
+          "market": "XNAS",
+          "timing": 7.6
         },
         {
           "symbol": "CRWD",
@@ -49,23 +57,29 @@
           "risk": 48,
           "start_price": 236.9199981689453,
           "end_price": 241.36000061035156,
-          "return_pct": 1.874
+          "return_pct": 1.874,
+          "market": "XNAS",
+          "timing": 12.0
         },
         {
           "symbol": "NTR",
           "score": 94.4,
           "risk": 19,
-          "start_price": 78.33000183105469,
-          "end_price": 77.68000030517578,
-          "return_pct": -0.83
+          "start_price": 109.26000213623047,
+          "end_price": 108.61000061035156,
+          "return_pct": -0.595,
+          "market": "XTSE",
+          "timing": 5.7
         },
         {
           "symbol": "KEL",
           "score": 94.2,
           "risk": 32,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 11.109999656677246,
+          "end_price": 11.0,
+          "return_pct": -0.99,
+          "market": "XTSE",
+          "timing": 23.3
         },
         {
           "symbol": "CF",
@@ -73,23 +87,29 @@
           "risk": 30,
           "start_price": 133.22999572753906,
           "end_price": 131.99000549316406,
-          "return_pct": -0.931
+          "return_pct": -0.931,
+          "market": "XNYS",
+          "timing": 5.2
         },
         {
           "symbol": "VET",
           "score": 93.8,
           "risk": 41,
-          "start_price": 13.239999771118164,
-          "end_price": 12.619999885559082,
-          "return_pct": -4.683
+          "start_price": 18.540000915527344,
+          "end_price": 17.6299991607666,
+          "return_pct": -4.908,
+          "market": "XTSE",
+          "timing": 23.6
         },
         {
           "symbol": "CVVY",
           "score": 93.2,
           "risk": 58,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 2.2100000381469727,
+          "end_price": 2.240000009536743,
+          "return_pct": 1.357,
+          "market": "XTSE",
+          "timing": 28.9
         },
         {
           "symbol": "DELL",
@@ -98,18 +118,22 @@
           "risk_observed": 65,
           "start_price": 553.625,
           "end_price": 563.2899780273438,
-          "return_pct": 1.746
+          "return_pct": 1.746,
+          "market": "XNYS",
+          "timing": 27.6
         },
         {
           "symbol": "CGG",
           "score": null,
           "risk": null,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 46.220001220703125,
+          "end_price": 45.11000061035156,
+          "return_pct": -2.402,
+          "market": "XTSE",
+          "timing": 27.6
         }
       ],
-      "completed_at": "2026-09-16T17:13:04-04:00"
+      "completed_at": "2026-09-16T17:45:28-04:00"
     },
     {
       "date": "2026-09-15",
