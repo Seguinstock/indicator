@@ -1,6 +1,6 @@
 import json
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -37,10 +37,10 @@ def yahoo_symbol(row):
 def daily_ohlc(symbols, day):
     out={}
     if not symbols: return out
-    # Daily bar gives the official session Open and Close and avoids attributing overnight gaps to the strategy.
+    end=(datetime.fromisoformat(day).date()+timedelta(days=1)).isoformat()
     for s in symbols:
         try:
-            frame=yf.download(s,start=day,end=(datetime.fromisoformat(day).date().fromordinal(datetime.fromisoformat(day).date().toordinal()+1)).isoformat(),interval='1d',auto_adjust=False,progress=False,threads=False)
+            frame=yf.download(s,start=day,end=end,interval='1d',auto_adjust=False,progress=False,threads=False)
             if not frame.empty:
                 def scalar(col):
                     v=frame[col].iloc[0]
@@ -49,6 +49,18 @@ def daily_ohlc(symbols, day):
                 out[s]={'open':scalar('Open'),'close':scalar('Close')}
         except Exception: continue
     return out
+
+
+def result_index():
+    rows=load_json(RESULTS,{}).get('buy',[])
+    return {str(r.get('symbol','')).upper():r for r in rows}
+
+
+def enrich_pick_identity(p, index):
+    r=index.get(str(p.get('symbol','')).upper())
+    if not r: return
+    if not p.get('market'): p['market']=r.get('market')
+    if p.get('timing') is None: p['timing']=r.get('buy_timing',r.get('timing_v14'))
 
 
 def morning():
@@ -64,13 +76,15 @@ def morning():
 def evening():
     archive=load_json(ARCHIVE,{'days':[]}); day=datetime.now(TZ).date().isoformat(); entry=next((d for d in archive.get('days',[]) if d.get('date')==day),None)
     if not entry: return
+    idx=result_index()
+    for p in entry.get('picks',[]): enrich_pick_identity(p,idx)
     bars=daily_ohlc([yahoo_symbol(p) for p in entry.get('picks',[])],day); returns=[]
     for p in entry.get('picks',[]):
-        bar=bars.get(yahoo_symbol(p));
+        bar=bars.get(yahoo_symbol(p))
         if not bar: continue
         start=bar['open']; end=bar['close']; p['start_price']=start; p['end_price']=end
         if start and end: p['return_pct']=round((end/start-1)*100,3); returns.append(p['return_pct'])
-    entry['entry_method']='official_open'; entry['exit_method']='official_close'; entry['average_return_pct']=round(sum(returns)/len(returns),3) if returns else None; entry['completed_at']=datetime.now(TZ).isoformat(timespec='seconds'); entry['status']='complete' if len(returns)==len(entry.get('picks',[])) else ('partial' if returns else 'no_prices')
+    entry['entry_method']='official_open'; entry['exit_method']='official_close'; entry['average_return_pct']=round(sum(returns)/len(returns),3) if len(returns)==len(entry.get('picks',[])) else None; entry['completed_at']=datetime.now(TZ).isoformat(timespec='seconds'); entry['status']='complete' if len(returns)==len(entry.get('picks',[])) else ('partial' if returns else 'no_prices')
     ARCHIVE.write_text(json.dumps(archive,ensure_ascii=False,indent=2),encoding='utf-8')
 
 
