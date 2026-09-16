@@ -7,25 +7,323 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "partial",
+      "average_return_pct": -0.943,
       "source": "user-provided screenshot; DELL risk treated as 64 by explicit user exception",
       "picks": [
-        {"symbol":"RVTY","score":97.1,"risk":33,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"BTE","score":96.3,"risk":44,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"VLE","score":96.1,"risk":49,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"SWKS","score":95.9,"risk":43,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"CRWD","score":95.1,"risk":48,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"NTR","score":94.4,"risk":19,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"KEL","score":94.2,"risk":32,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"CF","score":93.8,"risk":30,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"VET","score":93.8,"risk":41,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"CVVY","score":93.2,"risk":58,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"DELL","score":92.8,"risk":64,"risk_observed":65,"start_price":null,"end_price":null,"return_pct":null},
-        {"symbol":"CGG","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":null}
+        {
+          "symbol": "RVTY",
+          "score": 97.1,
+          "risk": 33,
+          "start_price": 140.8800048828125,
+          "end_price": 145.72999572753906,
+          "return_pct": 3.443
+        },
+        {
+          "symbol": "BTE",
+          "score": 96.3,
+          "risk": 44,
+          "start_price": 5.090000152587891,
+          "end_price": 4.889999866485596,
+          "return_pct": -3.929
+        },
+        {
+          "symbol": "VLE",
+          "score": 96.1,
+          "risk": 49,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "SWKS",
+          "score": 95.9,
+          "risk": 43,
+          "start_price": 89.375,
+          "end_price": 85.58999633789062,
+          "return_pct": -4.235
+        },
+        {
+          "symbol": "CRWD",
+          "score": 95.1,
+          "risk": 48,
+          "start_price": 236.9199981689453,
+          "end_price": 241.36000061035156,
+          "return_pct": 1.874
+        },
+        {
+          "symbol": "NTR",
+          "score": 94.4,
+          "risk": 19,
+          "start_price": 78.33000183105469,
+          "end_price": 77.68000030517578,
+          "return_pct": -0.83
+        },
+        {
+          "symbol": "KEL",
+          "score": 94.2,
+          "risk": 32,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CF",
+          "score": 93.8,
+          "risk": 30,
+          "start_price": 133.22999572753906,
+          "end_price": 131.99000549316406,
+          "return_pct": -0.931
+        },
+        {
+          "symbol": "VET",
+          "score": 93.8,
+          "risk": 41,
+          "start_price": 13.239999771118164,
+          "end_price": 12.619999885559082,
+          "return_pct": -4.683
+        },
+        {
+          "symbol": "CVVY",
+          "score": 93.2,
+          "risk": 58,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "DELL",
+          "score": 92.8,
+          "risk": 64,
+          "risk_observed": 65,
+          "start_price": 553.625,
+          "end_price": 563.2899780273438,
+          "return_pct": 1.746
+        },
+        {
+          "symbol": "CGG",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        }
+      ],
+      "completed_at": "2026-09-16T17:13:04-04:00"
+    },
+    {
+      "date": "2026-09-15",
+      "selected_at": "manual historical import",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "complete",
+      "average_return_pct": 1.6775,
+      "source": "user-provided PDF",
+      "picks": [
+        {
+          "symbol": "OBE",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 2.13
+        },
+        {
+          "symbol": "SGY",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 2.96
+        },
+        {
+          "symbol": "VET",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 2.1
+        },
+        {
+          "symbol": "VLE",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 4.01
+        },
+        {
+          "symbol": "CVVY",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.36
+        },
+        {
+          "symbol": "HPQ",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": -0.59
+        },
+        {
+          "symbol": "TNZ",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.94
+        },
+        {
+          "symbol": "BTE",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 3.63
+        },
+        {
+          "symbol": "CGG",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": -1.87
+        },
+        {
+          "symbol": "VLO",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 3.66
+        },
+        {
+          "symbol": "ARG",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": -2.62
+        },
+        {
+          "symbol": "KEL",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 3.42
+        }
       ]
     },
-    {"date":"2026-09-15","selected_at":"manual historical import","risk_limit":65,"count":12,"status":"complete","average_return_pct":1.6775,"source":"user-provided PDF","picks":[{"symbol":"OBE","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":2.13},{"symbol":"SGY","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":2.96},{"symbol":"VET","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":2.10},{"symbol":"VLE","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":4.01},{"symbol":"CVVY","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.36},{"symbol":"HPQ","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":-0.59},{"symbol":"TNZ","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.94},{"symbol":"BTE","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":3.63},{"symbol":"CGG","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":-1.87},{"symbol":"VLO","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":3.66},{"symbol":"ARG","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":-2.62},{"symbol":"KEL","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":3.42}]},
-    {"date":"2026-09-14","selected_at":"manual historical import","risk_limit":65,"count":12,"status":"complete","average_return_pct":2.494167,"source":"user-provided results","picks":[{"symbol":"IFP","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":6.32},{"symbol":"TOU","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.58},{"symbol":"CDW","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":-1.36},{"symbol":"BNS","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":0.25},{"symbol":"SCR","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":2.31},{"symbol":"KO","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.23},{"symbol":"CRWD","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":13.98},{"symbol":"ABBV","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.85},{"symbol":"CI","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":3.30},{"symbol":"TECH","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":1.71},{"symbol":"CPAY","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":0.97},{"symbol":"IGM","score":null,"risk":null,"start_price":null,"end_price":null,"return_pct":-2.21}]}
+    {
+      "date": "2026-09-14",
+      "selected_at": "manual historical import",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "complete",
+      "average_return_pct": 2.494167,
+      "source": "user-provided results",
+      "picks": [
+        {
+          "symbol": "IFP",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 6.32
+        },
+        {
+          "symbol": "TOU",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.58
+        },
+        {
+          "symbol": "CDW",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": -1.36
+        },
+        {
+          "symbol": "BNS",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 0.25
+        },
+        {
+          "symbol": "SCR",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 2.31
+        },
+        {
+          "symbol": "KO",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.23
+        },
+        {
+          "symbol": "CRWD",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 13.98
+        },
+        {
+          "symbol": "ABBV",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.85
+        },
+        {
+          "symbol": "CI",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 3.3
+        },
+        {
+          "symbol": "TECH",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 1.71
+        },
+        {
+          "symbol": "CPAY",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": 0.97
+        },
+        {
+          "symbol": "IGM",
+          "score": null,
+          "risk": null,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": -2.21
+        }
+      ]
+    }
   ]
 }
