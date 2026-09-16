@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-16T10:27:21.271482+00:00",
-  "scored_at": "2026-09-16T10:27:21.271482+00:00",
+  "updated": "2026-09-16T13:24:33.194492+00:00",
+  "scored_at": "2026-09-16T13:24:33.194492+00:00",
   "universe": 957,
   "analyzed": 954,
   "errors": 0,
@@ -1645,7 +1645,7 @@
       "return_20_pct": 17.03,
       "return_60_pct": 18.54,
       "relative_strength_20_pct": 19.09,
-      "name": "Alkane Resources Ltd"
+      "name": null
     },
     {
       "symbol": "CJ",
@@ -1685,7 +1685,7 @@
       "return_20_pct": 7.94,
       "return_60_pct": 20.7,
       "relative_strength_20_pct": 10.0,
-      "name": "Cardinal Energy Ltd."
+      "name": null
     },
     {
       "symbol": "ARX",
@@ -1725,7 +1725,7 @@
       "return_20_pct": 12.27,
       "return_60_pct": 32.52,
       "relative_strength_20_pct": 14.32,
-      "name": "ARC Resources Ltd."
+      "name": null
     },
     {
       "symbol": "BBY",
@@ -2085,7 +2085,7 @@
       "return_20_pct": 5.49,
       "return_60_pct": 25.96,
       "relative_strength_20_pct": 7.55,
-      "name": "Interfor Corporation"
+      "name": null
     },
     {
       "symbol": "NOW",
@@ -3645,7 +3645,7 @@
       "return_20_pct": 20.94,
       "return_60_pct": 12.12,
       "relative_strength_20_pct": 23.0,
-      "name": "The Mosaic Company"
+      "name": null
     },
     {
       "symbol": "JAG",
@@ -4125,7 +4125,7 @@
       "return_20_pct": 5.19,
       "return_60_pct": 19.16,
       "relative_strength_20_pct": 7.25,
-      "name": "EOG Resources, Inc."
+      "name": null
     },
     {
       "symbol": "POU",
@@ -4165,7 +4165,7 @@
       "return_20_pct": 2.85,
       "return_60_pct": 22.89,
       "relative_strength_20_pct": 4.91,
-      "name": "Paramount Resources Ltd."
+      "name": null
     },
     {
       "symbol": "YGR",
@@ -4725,7 +4725,7 @@
       "return_20_pct": 10.34,
       "return_60_pct": 19.33,
       "relative_strength_20_pct": 12.39,
-      "name": "Ulta Beauty, Inc."
+      "name": null
     },
     {
       "symbol": "SOLV",
@@ -5725,7 +5725,7 @@
       "return_20_pct": 2.64,
       "return_60_pct": 18.72,
       "relative_strength_20_pct": 4.7,
-      "name": null
+      "name": "Motorola Solutions, Inc."
     },
     {
       "symbol": "FRU",
@@ -6645,7 +6645,7 @@
       "return_20_pct": 4.13,
       "return_60_pct": 24.73,
       "relative_strength_20_pct": 6.19,
-      "name": "Heliostar Metals Ltd."
+      "name": null
     },
     {
       "symbol": "EDV",
@@ -7005,7 +7005,7 @@
       "return_20_pct": 14.32,
       "return_60_pct": 5.42,
       "relative_strength_20_pct": 16.38,
-      "name": null
+      "name": "Coinbase Global, Inc."
     },
     {
       "symbol": "BTO",
@@ -7845,7 +7845,7 @@
       "return_20_pct": 6.9,
       "return_60_pct": 16.71,
       "relative_strength_20_pct": 8.96,
-      "name": "The Descartes Systems Group Inc."
+      "name": null
     },
     {
       "symbol": "KO",
@@ -7885,7 +7885,7 @@
       "return_20_pct": 2.6,
       "return_60_pct": 12.41,
       "relative_strength_20_pct": 4.65,
-      "name": "The Coca-Cola Company"
+      "name": null
     },
     {
       "symbol": "MET",
@@ -7965,7 +7965,7 @@
       "return_20_pct": 0.92,
       "return_60_pct": 20.68,
       "relative_strength_20_pct": 2.98,
-      "name": null
+      "name": "Artemis Gold Inc."
     },
     {
       "symbol": "BIIB",
@@ -8368,46 +8368,6 @@
       "name": "The J. M. Smucker Company"
     },
     {
-      "symbol": "AEM",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 273.76,
-      "rsi": 52.7,
-      "delta_rsi": -0.5,
-      "rvol": 0.69,
-      "support": 268.68,
-      "support_distance_pct": 1.9,
-      "support_score": 10.0,
-      "support_strength": 72.5,
-      "macd_momentum": -9.1,
-      "trend": 0.5,
-      "volatility_pct": 47.8,
-      "timing_v14": 20.7,
-      "buy_timing": 20.7,
-      "potential_components": {
-        "relative_strength_20": 23.8,
-        "return_60": 17.7,
-        "trend": 13.0,
-        "rvol": 0.6,
-        "rsi": 3.8
-      },
-      "potential_score": 58.9,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 58.9,
-      "return_20_pct": 4.85,
-      "return_60_pct": 16.23,
-      "relative_strength_20_pct": 6.91,
-      "name": "Agnico Eagle Mines Limited"
-    },
-    {
       "symbol": "MTL",
       "market": "XTSE",
       "country": "CA",
@@ -8446,6 +8406,46 @@
       "return_60_pct": 21.6,
       "relative_strength_20_pct": 0.78,
       "name": "Mullen Group Ltd."
+    },
+    {
+      "symbol": "AEM",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 274.59,
+      "rsi": 53.2,
+      "delta_rsi": -2.2,
+      "rvol": 0.66,
+      "support": 268.68,
+      "support_distance_pct": 2.2,
+      "support_score": 9.0,
+      "support_strength": 72.2,
+      "macd_momentum": -8.9,
+      "trend": 0.5,
+      "volatility_pct": 47.8,
+      "timing_v14": 16.7,
+      "buy_timing": 16.7,
+      "potential_components": {
+        "relative_strength_20": 26.7,
+        "return_60": 14.4,
+        "trend": 13.0,
+        "rvol": 0.4,
+        "rsi": 3.9
+      },
+      "potential_score": 58.5,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 58.5,
+      "return_20_pct": 6.32,
+      "return_60_pct": 12.33,
+      "relative_strength_20_pct": 8.37,
+      "name": "Agnico Eagle Mines Limited"
     },
     {
       "symbol": "LYB",
@@ -8765,7 +8765,7 @@
       "return_20_pct": 3.48,
       "return_60_pct": 19.23,
       "relative_strength_20_pct": 5.53,
-      "name": "Medtronic plc"
+      "name": null
     },
     {
       "symbol": "SLB",
@@ -10205,7 +10205,7 @@
       "return_20_pct": -3.0,
       "return_60_pct": 17.87,
       "relative_strength_20_pct": -0.95,
-      "name": "Hewlett Packard Enterprise Company"
+      "name": null
     },
     {
       "symbol": "III",
@@ -11165,7 +11165,7 @@
       "return_20_pct": 0.74,
       "return_60_pct": 5.86,
       "relative_strength_20_pct": 2.8,
-      "name": "E-L Financial Corporation Limited"
+      "name": null
     },
     {
       "symbol": "MARI",
@@ -11365,7 +11365,7 @@
       "return_20_pct": 3.09,
       "return_60_pct": 3.47,
       "relative_strength_20_pct": 5.15,
-      "name": "Vivmark Residential"
+      "name": "AvalonBay Communities, Inc."
     },
     {
       "symbol": "WRB",
@@ -11688,6 +11688,46 @@
       "name": "Adobe Inc."
     },
     {
+      "symbol": "DPM",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 58.55,
+      "rsi": 44.0,
+      "delta_rsi": -4.6,
+      "rvol": 0.53,
+      "support": 45.6,
+      "support_distance_pct": 22.1,
+      "support_score": 0.0,
+      "support_strength": 74.0,
+      "macd_momentum": -14.4,
+      "trend": 2.0,
+      "volatility_pct": 53.1,
+      "timing_v14": 20.6,
+      "buy_timing": 20.6,
+      "potential_components": {
+        "relative_strength_20": 2.0,
+        "return_60": 24.6,
+        "trend": 20.0,
+        "rvol": 0.0,
+        "rsi": 1.8
+      },
+      "potential_score": 48.5,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": false,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 48.5,
+      "return_20_pct": -6.05,
+      "return_60_pct": 24.54,
+      "relative_strength_20_pct": -3.99,
+      "name": "DPM Metals Inc."
+    },
+    {
       "symbol": "CDE",
       "market": "XTSE",
       "country": "CA",
@@ -11965,7 +12005,7 @@
       "return_20_pct": 1.98,
       "return_60_pct": 15.09,
       "relative_strength_20_pct": 4.04,
-      "name": "Lundin Gold Inc."
+      "name": null
     },
     {
       "symbol": "S",
@@ -12408,46 +12448,6 @@
       "name": "Chubb Limited"
     },
     {
-      "symbol": "DPM",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 58.07,
-      "rsi": 42.9,
-      "delta_rsi": -1.2,
-      "rvol": 0.63,
-      "support": 45.6,
-      "support_distance_pct": 21.5,
-      "support_score": 0.0,
-      "support_strength": 73.9,
-      "macd_momentum": -11.8,
-      "trend": 2.0,
-      "volatility_pct": 53.1,
-      "timing_v14": 29.1,
-      "buy_timing": 29.1,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 25.0,
-        "trend": 20.0,
-        "rvol": 0.2,
-        "rsi": 1.6
-      },
-      "potential_score": 46.8,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 46.8,
-      "return_20_pct": -8.57,
-      "return_60_pct": 28.8,
-      "relative_strength_20_pct": -6.51,
-      "name": "DPM Metals Inc."
-    },
-    {
       "symbol": "HTO",
       "market": "XNAS",
       "country": "US",
@@ -12605,7 +12605,7 @@
       "return_20_pct": -0.79,
       "return_60_pct": 6.43,
       "relative_strength_20_pct": 1.27,
-      "name": "Arch Capital Group Ltd."
+      "name": null
     },
     {
       "symbol": "WELL",
@@ -12965,7 +12965,7 @@
       "return_20_pct": -2.42,
       "return_60_pct": 11.31,
       "relative_strength_20_pct": -0.36,
-      "name": "Marsh & McLennan Companies, Inc."
+      "name": null
     },
     {
       "symbol": "CINF",
@@ -13125,7 +13125,7 @@
       "return_20_pct": 8.53,
       "return_60_pct": 0.42,
       "relative_strength_20_pct": 10.59,
-      "name": null
+      "name": "International Business Machines Corporation"
     },
     {
       "symbol": "DIS",
@@ -13525,7 +13525,7 @@
       "return_20_pct": -3.55,
       "return_60_pct": 8.26,
       "relative_strength_20_pct": -1.5,
-      "name": "Fastenal Company"
+      "name": null
     },
     {
       "symbol": "QTRH",
@@ -13648,6 +13648,46 @@
       "name": "The Toronto-Dominion Bank"
     },
     {
+      "symbol": "ABX",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 58.95,
+      "rsi": 46.4,
+      "delta_rsi": -4.2,
+      "rvol": 1.07,
+      "support": 54.91,
+      "support_distance_pct": 6.9,
+      "support_score": 2.0,
+      "support_strength": 62.3,
+      "macd_momentum": -30.1,
+      "trend": 0.5,
+      "volatility_pct": 48.6,
+      "timing_v14": 29.0,
+      "buy_timing": 29.0,
+      "potential_components": {
+        "relative_strength_20": 18.9,
+        "return_60": 5.2,
+        "trend": 13.0,
+        "rvol": 3.4,
+        "rsi": 2.4
+      },
+      "potential_score": 42.8,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": false,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 42.8,
+      "return_20_pct": 2.38,
+      "return_60_pct": 1.28,
+      "relative_strength_20_pct": 4.44,
+      "name": "Barrick Mining Corporation"
+    },
+    {
       "symbol": "ABNB",
       "market": "XNAS",
       "country": "US",
@@ -13765,7 +13805,7 @@
       "return_20_pct": -1.28,
       "return_60_pct": 5.13,
       "relative_strength_20_pct": 0.78,
-      "name": null
+      "name": "Cardinal Health, Inc."
     },
     {
       "symbol": "TFC",
@@ -14085,7 +14125,7 @@
       "return_20_pct": -0.05,
       "return_60_pct": 16.14,
       "relative_strength_20_pct": 2.01,
-      "name": "CGI Inc."
+      "name": null
     },
     {
       "symbol": "TECK.B",
@@ -14205,7 +14245,7 @@
       "return_20_pct": -6.04,
       "return_60_pct": 14.61,
       "relative_strength_20_pct": -3.98,
-      "name": "Montage Gold Corp."
+      "name": null
     },
     {
       "symbol": "QCN",
@@ -14568,46 +14608,6 @@
       "name": "Intuit Inc."
     },
     {
-      "symbol": "ABX",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 59.33,
-      "rsi": 47.6,
-      "delta_rsi": 1.1,
-      "rvol": 0.65,
-      "support": 54.91,
-      "support_distance_pct": 7.4,
-      "support_score": 2.0,
-      "support_strength": 61.7,
-      "macd_momentum": -11.1,
-      "trend": 0.5,
-      "volatility_pct": 48.6,
-      "timing_v14": 29.1,
-      "buy_timing": 29.1,
-      "potential_components": {
-        "relative_strength_20": 16.1,
-        "return_60": 7.8,
-        "trend": 13.0,
-        "rvol": 0.4,
-        "rsi": 2.6
-      },
-      "potential_score": 39.9,
-      "filters": {
-        "rsi": false,
-        "reversal": true,
-        "support": false,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 39.9,
-      "return_20_pct": 1.0,
-      "return_60_pct": 4.34,
-      "relative_strength_20_pct": 3.05,
-      "name": "Barrick Mining Corporation"
-    },
-    {
       "symbol": "NICU",
       "market": "XTSE",
       "country": "CA",
@@ -14645,7 +14645,7 @@
       "return_20_pct": -3.0,
       "return_60_pct": 18.26,
       "relative_strength_20_pct": -0.94,
-      "name": "Magna Mining Inc."
+      "name": null
     },
     {
       "symbol": "BCE",
@@ -15765,7 +15765,7 @@
       "return_20_pct": -4.29,
       "return_60_pct": 16.16,
       "relative_strength_20_pct": -2.23,
-      "name": "Allegion plc"
+      "name": null
     },
     {
       "symbol": "PYPL",
@@ -17015,7 +17015,7 @@
       "rsi": 44.9,
       "delta_rsi": -1.1,
       "rvol": 0.99,
-      "support": 70.12,
+      "support": 70.14,
       "support_distance_pct": 2.1,
       "support_score": 9.0,
       "support_strength": 103.8,
@@ -18445,7 +18445,7 @@
       "return_20_pct": 1.53,
       "return_60_pct": -7.46,
       "relative_strength_20_pct": 3.59,
-      "name": "Trican Well Service Ltd."
+      "name": null
     },
     {
       "symbol": "PRL",
@@ -21485,7 +21485,7 @@
       "return_20_pct": -0.17,
       "return_60_pct": -9.43,
       "relative_strength_20_pct": 1.89,
-      "name": null
+      "name": "Crown Castle Inc."
     },
     {
       "symbol": "RY",
@@ -22085,7 +22085,7 @@
       "return_20_pct": -5.78,
       "return_60_pct": -7.42,
       "relative_strength_20_pct": -3.72,
-      "name": "Interactive Brokers Group, Inc."
+      "name": null
     },
     {
       "symbol": "SAP",
@@ -22206,6 +22206,46 @@
       "return_60_pct": -1.66,
       "relative_strength_20_pct": 0.4,
       "name": "BlackRock iShares Global Water Index ETF"
+    },
+    {
+      "symbol": "ACO.X",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 71.38,
+      "rsi": 38.1,
+      "delta_rsi": -0.9,
+      "rvol": 0.74,
+      "support": 70.69,
+      "support_distance_pct": 1.0,
+      "support_score": 10.0,
+      "support_strength": 73.6,
+      "macd_momentum": -29.1,
+      "trend": 1.0,
+      "volatility_pct": 17.6,
+      "timing_v14": 43.5,
+      "buy_timing": 43.5,
+      "potential_components": {
+        "relative_strength_20": 1.1,
+        "return_60": 6.0,
+        "trend": 16.0,
+        "rvol": 1.0,
+        "rsi": 0.5
+      },
+      "potential_score": 24.5,
+      "filters": {
+        "rsi": true,
+        "reversal": false,
+        "support": true,
+        "rvol": false,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 24.5,
+      "return_20_pct": -6.51,
+      "return_60_pct": 2.16,
+      "relative_strength_20_pct": -4.45,
+      "name": "ATCO Ltd."
     },
     {
       "symbol": "HSY",
@@ -23205,7 +23245,7 @@
       "return_20_pct": -3.69,
       "return_60_pct": 11.35,
       "relative_strength_20_pct": -1.63,
-      "name": "General Mills, Inc."
+      "name": null
     },
     {
       "symbol": "BF.B",
@@ -23888,46 +23928,6 @@
       "name": "The Goldman Sachs Group, Inc."
     },
     {
-      "symbol": "ACO.X",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 70.52,
-      "rsi": 35.2,
-      "delta_rsi": -2.9,
-      "rvol": 0.87,
-      "support": 66.77,
-      "support_distance_pct": 5.3,
-      "support_score": 5.0,
-      "support_strength": 58.2,
-      "macd_momentum": -42.0,
-      "trend": 1.0,
-      "volatility_pct": 17.7,
-      "timing_v14": 41.8,
-      "buy_timing": 41.8,
-      "potential_components": {
-        "relative_strength_20": 0.0,
-        "return_60": 4.2,
-        "trend": 16.0,
-        "rvol": 1.9,
-        "rsi": 0.0
-      },
-      "potential_score": 22.2,
-      "filters": {
-        "rsi": true,
-        "reversal": false,
-        "support": true,
-        "rvol": false,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 22.2,
-      "return_20_pct": -7.09,
-      "return_60_pct": 0.09,
-      "relative_strength_20_pct": -5.03,
-      "name": "ATCO Ltd."
-    },
-    {
       "symbol": "DLTR",
       "market": "XNAS",
       "country": "US",
@@ -24005,7 +24005,7 @@
       "return_20_pct": -7.34,
       "return_60_pct": -4.06,
       "relative_strength_20_pct": -5.28,
-      "name": "Steel Dynamics, Inc."
+      "name": null
     },
     {
       "symbol": "PRV.UN",
@@ -25205,7 +25205,7 @@
       "return_20_pct": -7.82,
       "return_60_pct": -7.36,
       "relative_strength_20_pct": -5.76,
-      "name": "Equinix, Inc."
+      "name": null
     },
     {
       "symbol": "SPG",
@@ -25725,7 +25725,7 @@
       "return_20_pct": -4.41,
       "return_60_pct": -1.44,
       "relative_strength_20_pct": -2.35,
-      "name": "FirstEnergy Corp."
+      "name": null
     },
     {
       "symbol": "TAP",
@@ -26005,7 +26005,7 @@
       "return_20_pct": -16.18,
       "return_60_pct": -19.81,
       "relative_strength_20_pct": -14.12,
-      "name": null
+      "name": "Comfort Systems USA, Inc."
     },
     {
       "symbol": "SEA",
@@ -26085,7 +26085,7 @@
       "return_20_pct": -3.02,
       "return_60_pct": 2.28,
       "relative_strength_20_pct": -0.97,
-      "name": "Waste Connections, Inc."
+      "name": null
     },
     {
       "symbol": "GE",
@@ -26165,7 +26165,7 @@
       "return_20_pct": -10.4,
       "return_60_pct": -8.21,
       "relative_strength_20_pct": -8.35,
-      "name": "BlackBerry Limited"
+      "name": null
     },
     {
       "symbol": "BEI.UN",
@@ -27365,7 +27365,7 @@
       "return_20_pct": -4.68,
       "return_60_pct": -4.83,
       "relative_strength_20_pct": -2.62,
-      "name": "American Electric Power Company, Inc."
+      "name": null
     },
     {
       "symbol": "RCH",
@@ -27445,7 +27445,7 @@
       "return_20_pct": -13.64,
       "return_60_pct": -13.7,
       "relative_strength_20_pct": -11.59,
-      "name": "Exchange Income Corporation"
+      "name": null
     },
     {
       "symbol": "FTV",
@@ -28005,7 +28005,7 @@
       "return_20_pct": -0.33,
       "return_60_pct": -4.47,
       "relative_strength_20_pct": 1.73,
-      "name": "Insulet Corporation"
+      "name": null
     },
     {
       "symbol": "CU",
@@ -28325,7 +28325,7 @@
       "return_20_pct": -6.21,
       "return_60_pct": -11.72,
       "relative_strength_20_pct": -4.15,
-      "name": "Rockwell Automation, Inc."
+      "name": null
     },
     {
       "symbol": "BKR",
@@ -30935,7 +30935,7 @@
       "rsi": 28.6,
       "delta_rsi": -1.1,
       "rvol": 1.09,
-      "support": 19.67,
+      "support": 19.66,
       "support_distance_pct": 1.0,
       "support_score": 6.0,
       "support_strength": 30.9,
@@ -31765,7 +31765,7 @@
       "return_20_pct": -6.41,
       "return_60_pct": 2.33,
       "relative_strength_20_pct": -4.35,
-      "name": null
+      "name": "Northrop Grumman Corporation"
     },
     {
       "symbol": "LNT",
@@ -31805,7 +31805,7 @@
       "return_20_pct": -6.2,
       "return_60_pct": -8.92,
       "relative_strength_20_pct": -4.14,
-      "name": "Alliant Energy Corporation"
+      "name": null
     },
     {
       "symbol": "ATS",
@@ -32445,7 +32445,7 @@
       "return_20_pct": -2.73,
       "return_60_pct": -8.95,
       "relative_strength_20_pct": -0.67,
-      "name": null
+      "name": "Galiano Gold Inc."
     },
     {
       "symbol": "MDI",
@@ -32965,7 +32965,7 @@
       "return_20_pct": -4.05,
       "return_60_pct": -4.17,
       "relative_strength_20_pct": -1.99,
-      "name": "Atmos Energy Corporation"
+      "name": null
     },
     {
       "symbol": "CPKR",
@@ -33085,7 +33085,7 @@
       "return_20_pct": -11.29,
       "return_60_pct": -17.91,
       "relative_strength_20_pct": -9.23,
-      "name": null
+      "name": "Mega Uranium Ltd."
     },
     {
       "symbol": "URE",
@@ -33405,7 +33405,7 @@
       "return_20_pct": -4.62,
       "return_60_pct": -5.78,
       "relative_strength_20_pct": -2.57,
-      "name": "VICI Properties Inc."
+      "name": null
     },
     {
       "symbol": "KKR",
@@ -33845,7 +33845,7 @@
       "return_20_pct": -14.67,
       "return_60_pct": -5.88,
       "relative_strength_20_pct": -12.61,
-      "name": "Aftermath Silver Ltd."
+      "name": null
     },
     {
       "symbol": "GLO",
@@ -35045,7 +35045,7 @@
       "return_20_pct": -5.42,
       "return_60_pct": -6.09,
       "relative_strength_20_pct": -3.36,
-      "name": "Cogeco Communications Inc."
+      "name": null
     },
     {
       "symbol": "PEG",
@@ -35085,7 +35085,7 @@
       "return_20_pct": -6.02,
       "return_60_pct": -11.05,
       "relative_strength_20_pct": -3.96,
-      "name": "Public Service Enterprise Group Incorporated"
+      "name": null
     },
     {
       "symbol": "AOS",
@@ -36125,7 +36125,7 @@
       "return_20_pct": -15.13,
       "return_60_pct": -8.3,
       "relative_strength_20_pct": -13.07,
-      "name": "Stryker Corporation"
+      "name": null
     },
     {
       "symbol": "AP.UN",
@@ -36925,7 +36925,7 @@
       "return_20_pct": -8.13,
       "return_60_pct": -2.26,
       "relative_strength_20_pct": -6.07,
-      "name": "Pet Valu Holdings Ltd."
+      "name": null
     },
     {
       "symbol": "DOO",
@@ -37285,7 +37285,7 @@
       "return_20_pct": -10.09,
       "return_60_pct": -25.05,
       "relative_strength_20_pct": -8.03,
-      "name": null
+      "name": "Tantalus Systems Holding Inc."
     },
     {
       "symbol": "RGSI",
@@ -37405,7 +37405,7 @@
       "return_20_pct": -6.51,
       "return_60_pct": -7.0,
       "relative_strength_20_pct": -4.46,
-      "name": "Exelon Corporation"
+      "name": null
     },
     {
       "symbol": "CGO",
@@ -37445,7 +37445,7 @@
       "return_20_pct": -6.19,
       "return_60_pct": -9.75,
       "relative_strength_20_pct": -4.14,
-      "name": "Cogeco Inc."
+      "name": null
     },
     {
       "symbol": "FICO",
@@ -37725,7 +37725,7 @@
       "return_20_pct": -9.89,
       "return_60_pct": -14.91,
       "relative_strength_20_pct": -7.83,
-      "name": null
+      "name": "L3Harris Technologies, Inc."
     },
     {
       "symbol": "CLX",
