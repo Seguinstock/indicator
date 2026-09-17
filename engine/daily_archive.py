@@ -63,6 +63,31 @@ def enrich_pick_identity(p, index):
     if p.get('timing') is None: p['timing']=r.get('buy_timing',r.get('timing_v14'))
 
 
+def benchmark_for(entry, day):
+    """Open-to-close benchmark matching the strategy holding window.
+
+    Canadian picks are compared with the S&P/TSX Composite; US picks with the
+    S&P 500. The combined benchmark is weighted by the number of picks in each
+    market so it mirrors the day's geographic mix.
+    """
+    bars=daily_ohlc(['^GSPTSE','^GSPC'],day)
+    def ret(symbol):
+        b=bars.get(symbol)
+        if not b or not b.get('open') or not b.get('close'): return None
+        return round((b['close']/b['open']-1)*100,3)
+    tsx=ret('^GSPTSE'); sp=ret('^GSPC')
+    ca=sum(1 for p in entry.get('picks',[]) if p.get('market') in ('XTSE','XTSX'))
+    us=len(entry.get('picks',[]))-ca
+    weighted=None
+    parts=[]
+    if ca and tsx is not None: parts.append((ca,tsx))
+    if us and sp is not None: parts.append((us,sp))
+    covered=sum(n for n,_ in parts)
+    if covered==len(entry.get('picks',[])) and covered:
+        weighted=round(sum(n*r for n,r in parts)/covered,3)
+    return {'method':'open_to_close_weighted_by_pick_market','tsx_composite_return_pct':tsx,'sp500_return_pct':sp,'canada_picks':ca,'usa_picks':us,'return_pct':weighted}
+
+
 def morning():
     results=load_json(RESULTS,{}); rows=results.get('buy',[])
     eligible=[r for r in rows if market_risk(r)<65]
@@ -84,7 +109,12 @@ def evening():
         if not bar: continue
         start=bar['open']; end=bar['close']; p['start_price']=start; p['end_price']=end
         if start and end: p['return_pct']=round((end/start-1)*100,3); returns.append(p['return_pct'])
-    entry['entry_method']='official_open'; entry['exit_method']='official_close'; entry['average_return_pct']=round(sum(returns)/len(returns),3) if len(returns)==len(entry.get('picks',[])) else None; entry['completed_at']=datetime.now(TZ).isoformat(timespec='seconds'); entry['status']='complete' if len(returns)==len(entry.get('picks',[])) else ('partial' if returns else 'no_prices')
+    entry['entry_method']='official_open'; entry['exit_method']='official_close'; entry['average_return_pct']=round(sum(returns)/len(returns),3) if len(returns)==len(entry.get('picks',[])) else None
+    entry['benchmark']=benchmark_for(entry,day)
+    if entry['average_return_pct'] is not None and entry['benchmark'].get('return_pct') is not None:
+        entry['vs_benchmark_pct']=round(entry['average_return_pct']-entry['benchmark']['return_pct'],3)
+    else: entry['vs_benchmark_pct']=None
+    entry['completed_at']=datetime.now(TZ).isoformat(timespec='seconds'); entry['status']='complete' if len(returns)==len(entry.get('picks',[])) else ('partial' if returns else 'no_prices')
     ARCHIVE.write_text(json.dumps(archive,ensure_ascii=False,indent=2),encoding='utf-8')
 
 
