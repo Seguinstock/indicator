@@ -1,6 +1,17 @@
 {
   "days": [
     {
+      "date": "2026-09-17",
+      "selected_at": "2026-09-17T08:08:36-04:00",
+      "entry_method": "official_open",
+      "exit_method": "official_close",
+      "risk_limit": 65,
+      "count": 0,
+      "status": "selected",
+      "average_return_pct": null,
+      "picks": []
+    },
+    {
       "date": "2026-09-16",
       "selected_at": "manual screenshot 09:32",
       "entry_method": "official_open",
