@@ -1,6 +1,138 @@
 {
   "days": [
     {
+      "date": "2026-09-18",
+      "selected_at": "2026-09-18T08:08:06-04:00",
+      "entry_method": "official_open",
+      "exit_method": "official_close",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "selected",
+      "average_return_pct": null,
+      "picks": [
+        {
+          "symbol": "VLE",
+          "market": "XTSE",
+          "score": 93.1,
+          "risk": 38.5,
+          "timing": 27.1,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CRM",
+          "market": "XNYS",
+          "score": 92.8,
+          "risk": 35.1,
+          "timing": 20.6,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "HPE",
+          "market": "XNYS",
+          "score": 92.5,
+          "risk": 45.6,
+          "timing": 19.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "KEL",
+          "market": "XTSE",
+          "score": 92.5,
+          "risk": 31.6,
+          "timing": 22.3,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "RVTY",
+          "market": "XNYS",
+          "score": 92.1,
+          "risk": 25.7,
+          "timing": 33.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "ARG",
+          "market": "XTSE",
+          "score": 92.1,
+          "risk": 52.0,
+          "timing": 16.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "TNZ",
+          "market": "XTSE",
+          "score": 91.6,
+          "risk": 47.0,
+          "timing": 2.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CRWD",
+          "market": "XNAS",
+          "score": 91.3,
+          "risk": 43.9,
+          "timing": 25.7,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "HPQ",
+          "market": "XNYS",
+          "score": 91.0,
+          "risk": 33.0,
+          "timing": 10.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "MSA",
+          "market": "XTSE",
+          "score": 91.0,
+          "risk": 54.4,
+          "timing": 20.3,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "DELL",
+          "market": "XNYS",
+          "score": 90.7,
+          "risk": 64.8,
+          "timing": 15.7,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "NTR",
+          "market": "XTSE",
+          "score": 90.3,
+          "risk": 19.3,
+          "timing": 11.9,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        }
+      ]
+    },
+    {
       "date": "2026-09-17",
       "selected_at": "2026-09-17T08:08:36-04:00",
       "entry_method": "official_open",
