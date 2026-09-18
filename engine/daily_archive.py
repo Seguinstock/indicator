@@ -18,12 +18,25 @@ def load_json(path, default):
 
 
 def market_risk(x):
-    vol=float(x.get('volatility_pct') or 0); price=float(x.get('price') or x.get('close') or 0); rvol=x.get('rvol')
-    risk=min(70,max(0,vol)*7)
-    if price>0: risk+=min(20,max(0,20-price))
-    try:
-        rv=float(rvol); risk+=min(10,max(0,rv-1)*10) if rv>=1 else 5
-    except (TypeError,ValueError): pass
+    # Keep archive eligibility identical to the dashboard's marketRisk().
+    try: vol=float(x.get('volatility_pct'))
+    except (TypeError,ValueError): vol=None
+    try: price=float(x.get('price') or x.get('close'))
+    except (TypeError,ValueError): price=None
+    try: rvol=float(x.get('rvol'))
+    except (TypeError,ValueError): rvol=None
+    risk=max(0,min(70,(vol-15)/65*70)) if vol is not None else 35
+    if price is not None:
+        if price<1: risk+=20
+        elif price<2: risk+=17
+        elif price<5: risk+=13
+        elif price<10: risk+=8
+        elif price<20: risk+=4
+    if rvol is not None:
+        if rvol>=3: risk+=10
+        elif rvol>=2: risk+=7
+        elif rvol>=1.5: risk+=4
+        elif rvol<0.5: risk+=5
     return round(min(100,max(0,risk)),1)
 
 
