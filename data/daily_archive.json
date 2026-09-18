@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": -1.211,
       "picks": [
         {
           "symbol": "VLE",
@@ -16,9 +16,9 @@
           "score": 93.1,
           "risk": 38.5,
           "timing": 27.1,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 15.329999923706055,
+          "end_price": 15.720000267028809,
+          "return_pct": 2.544
         },
         {
           "symbol": "CRM",
@@ -26,9 +26,9 @@
           "score": 92.8,
           "risk": 35.1,
           "timing": 20.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 244.25,
+          "end_price": 237.9199981689453,
+          "return_pct": -2.592
         },
         {
           "symbol": "HPE",
@@ -36,9 +36,9 @@
           "score": 92.5,
           "risk": 45.6,
           "timing": 19.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 61.70000076293945,
+          "end_price": 60.7599983215332,
+          "return_pct": -1.524
         },
         {
           "symbol": "KEL",
@@ -46,9 +46,9 @@
           "score": 92.5,
           "risk": 31.6,
           "timing": 22.3,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 11.1899995803833,
+          "end_price": 10.789999961853027,
+          "return_pct": -3.575
         },
         {
           "symbol": "RVTY",
@@ -56,9 +56,9 @@
           "score": 92.1,
           "risk": 25.7,
           "timing": 33.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 146.5,
+          "end_price": 143.4499969482422,
+          "return_pct": -2.082
         },
         {
           "symbol": "ARG",
@@ -66,9 +66,9 @@
           "score": 92.1,
           "risk": 52.0,
           "timing": 16.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 8.729999542236328,
+          "end_price": 8.930000305175781,
+          "return_pct": 2.291
         },
         {
           "symbol": "TNZ",
@@ -76,9 +76,9 @@
           "score": 91.6,
           "risk": 47.0,
           "timing": 2.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 70.95999908447266,
+          "end_price": 72.25,
+          "return_pct": 1.818
         },
         {
           "symbol": "CRWD",
@@ -86,9 +86,9 @@
           "score": 91.3,
           "risk": 43.9,
           "timing": 25.7,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 247.41000366210938,
+          "end_price": 237.64999389648438,
+          "return_pct": -3.945
         },
         {
           "symbol": "HPQ",
@@ -96,9 +96,9 @@
           "score": 91.0,
           "risk": 33.0,
           "timing": 10.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 34.7400016784668,
+          "end_price": 34.400001525878906,
+          "return_pct": -0.979
         },
         {
           "symbol": "MSA",
@@ -106,9 +106,9 @@
           "score": 91.0,
           "risk": 54.4,
           "timing": 20.3,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 9.149999618530273,
+          "end_price": 9.199999809265137,
+          "return_pct": 0.546
         },
         {
           "symbol": "DELL",
@@ -116,9 +116,9 @@
           "score": 90.7,
           "risk": 64.8,
           "timing": 15.7,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 593.1500244140625,
+          "end_price": 568.0599975585938,
+          "return_pct": -4.23
         },
         {
           "symbol": "NTR",
@@ -126,11 +126,21 @@
           "score": 90.3,
           "risk": 19.3,
           "timing": 11.9,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 111.06999969482422,
+          "end_price": 107.94999694824219,
+          "return_pct": -2.809
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -0.163,
+        "sp500_return_pct": -0.087,
+        "canada_picks": 6,
+        "usa_picks": 6,
+        "return_pct": -0.125
+      },
+      "vs_benchmark_pct": -1.086,
+      "completed_at": "2026-09-18T19:12:42-04:00"
     },
     {
       "date": "2026-09-17",
