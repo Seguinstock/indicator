@@ -6,10 +6,141 @@
       "entry_method": "official_open",
       "exit_method": "official_close",
       "risk_limit": 65,
-      "count": 0,
-      "status": "selected",
-      "average_return_pct": null,
-      "picks": []
+      "count": 12,
+      "status": "complete",
+      "average_return_pct": 1.404,
+      "picks": [
+        {
+          "symbol": "VLE",
+          "market": "XTSE",
+          "score": 97.3,
+          "risk": 45.6,
+          "timing": 15.4,
+          "start_price": 14.94,
+          "end_price": 15.34,
+          "return_pct": 2.677
+        },
+        {
+          "symbol": "KEL",
+          "market": "XTSE",
+          "score": 96.3,
+          "risk": 35.5,
+          "timing": 23.3,
+          "start_price": 10.9,
+          "end_price": 11.19,
+          "return_pct": 2.661
+        },
+        {
+          "symbol": "MSA",
+          "market": "XTSE",
+          "score": 95.7,
+          "risk": 58.5,
+          "timing": 32.3,
+          "start_price": 8.95,
+          "end_price": 9.05,
+          "return_pct": 1.117
+        },
+        {
+          "symbol": "RVTY",
+          "market": "XNYS",
+          "score": 95.6,
+          "risk": 29.7,
+          "timing": 35.5,
+          "start_price": 147.75,
+          "end_price": 146.73,
+          "return_pct": -0.69
+        },
+        {
+          "symbol": "TOT",
+          "market": "XTSE",
+          "score": 95.4,
+          "risk": 29.3,
+          "timing": 18.8,
+          "start_price": 36.56,
+          "end_price": 36,
+          "return_pct": -1.532
+        },
+        {
+          "symbol": "DELL",
+          "market": "XNYS",
+          "score": 94.5,
+          "risk": 64.7,
+          "timing": 27.6,
+          "start_price": 570.4,
+          "end_price": 588.4,
+          "return_pct": 3.156
+        },
+        {
+          "symbol": "CVVY",
+          "market": "XTSE",
+          "score": 94.2,
+          "risk": 57.4,
+          "timing": 28.9,
+          "start_price": 2.25,
+          "end_price": 2.28,
+          "return_pct": 1.333
+        },
+        {
+          "symbol": "CRWD",
+          "market": "XNAS",
+          "score": 91.4,
+          "risk": 43.9,
+          "timing": 12,
+          "start_price": 236.04,
+          "end_price": 245.7,
+          "return_pct": 4.093
+        },
+        {
+          "symbol": "TNZ",
+          "market": "XTSE",
+          "score": 91,
+          "risk": 47,
+          "timing": 3.3,
+          "start_price": 71.05,
+          "end_price": 70.45,
+          "return_pct": -0.844
+        },
+        {
+          "symbol": "VLO",
+          "market": "XNYS",
+          "score": 90.8,
+          "risk": 22.9,
+          "timing": 33.1,
+          "start_price": 398.45,
+          "end_price": 412.53,
+          "return_pct": 3.534
+        },
+        {
+          "symbol": "IQV",
+          "market": "XNYS",
+          "score": 90.7,
+          "risk": 28.2,
+          "timing": 24.8,
+          "start_price": 273.15,
+          "end_price": 269.44,
+          "return_pct": -1.358
+        },
+        {
+          "symbol": "ARG",
+          "market": "XTSE",
+          "score": 90.5,
+          "risk": 51.8,
+          "timing": 38.3,
+          "start_price": 8.5,
+          "end_price": 8.73,
+          "return_pct": 2.706
+        }
+      ],
+      "completed_at": "manual recovery 2026-09-18",
+      "source": "recovered from 2026-09-17 07:44 ET scan commit be021f1b8eec978f9cf5db46c877629aab5fce50; official open/close independently checked after close",
+      "benchmark": {
+        "tsx_composite_return_pct": 0.321,
+        "sp500_return_pct": 0.083,
+        "canada_picks": 7,
+        "usa_picks": 5,
+        "return_pct": 0.222,
+        "method": "open_to_close_weighted_by_pick_market"
+      }
     },
     {
       "date": "2026-09-16",
@@ -70,7 +201,7 @@
           "end_price": 241.36000061035156,
           "return_pct": 1.874,
           "market": "XNAS",
-          "timing": 12.0
+          "timing": 12
         },
         {
           "symbol": "NTR",
@@ -87,7 +218,7 @@
           "score": 94.2,
           "risk": 32,
           "start_price": 11.109999656677246,
-          "end_price": 11.0,
+          "end_price": 11,
           "return_pct": -0.99,
           "market": "XTSE",
           "timing": 23.3
