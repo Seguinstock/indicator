@@ -81,38 +81,19 @@ def relative_strength_score(rsi, rvol, trend, ret20, ret60, rel20, cfg):
     return float(np.clip(score, 0, 100)), components
 
 
-def sell_deterioration_score(x, cfg):
-    m = cfg.get('sell_model', {})
-    rv0 = float(m.get('rvol_floor', cfg.get('buy_model', {}).get('rvol_floor', 0.6)))
-    rv1 = max(float(m.get('rvol_full', cfg.get('buy_model', {}).get('rvol_full', 2.0))), rv0 + 0.0001)
-    rt = float(m.get('rsi_target', cfg.get('buy_model', {}).get('rsi_target', 58)))
-    rr = max(float(m.get('rsi_range', cfg.get('buy_model', {}).get('rsi_range', 22))), 0.0001)
-
-    rvol = x.get('rvol')
-    quality = {
-        'relative_strength_20': _clip01((float(x.get('relative_strength_20_pct', 0.0)) + 5.0) / 20.0),
-        'return_60': _clip01((float(x.get('return_60_pct', 0.0)) + 5.0) / 30.0),
-        'trend': scanner.TREND_POTENTIAL.get(float(x.get('trend', 0.0)), 0.5),
-        'rvol': 0.0 if rvol is None or not np.isfinite(rvol) else _clip01((float(rvol) - rv0) / (rv1 - rv0)),
-        'rsi': _clip01(1.0 - abs(float(x.get('rsi', 50.0)) - rt) / rr),
-    }
-    weights = {
-        'relative_strength_20': max(float(m.get('relative_strength_20_weight', 40)), 0.0),
-        'return_60': max(float(m.get('return_60_weight', 25)), 0.0),
-        'trend': max(float(m.get('trend_weight', 20)), 0.0),
-        'rvol': max(float(m.get('rvol_weight', 10)), 0.0),
-        'rsi': max(float(m.get('rsi_weight', 5)), 0.0),
-    }
-    total = sum(weights.values())
-    if total <= 0:
-        return 0.0, {k: 0.0 for k in quality}
-    deterioration = {k: 1.0 - quality[k] for k in quality}
-    points = {k: weights[k] * deterioration[k] for k in deterioration}
-    score = 100.0 * sum(points.values()) / total
-    components = {k: round(100.0 * points[k] / total, 1) for k in points}
-    return float(np.clip(score, 0, 100)), components
-
-
+def sell_v14_score(x, volatility_values):
+    r=x['rsi']; dr=x['delta_rsi']; rv=x['rvol']; ss=x['support_score']
+    macd=x.get('macd_momentum') or 0.0; trend=x['trend']
+    raw = scanner.rsi_points(100-r) + scanner.delta_rsi_points(-dr)
+    if rv is not None and np.isfinite(rv):
+        raw += scanner.rvol_points(rv)
+    if ss is not None and np.isfinite(ss):
+        raw += 10-ss
+    timing = float(np.clip(raw - macd/100*10, 0, 100))
+    corrected = float(np.clip(timing * scanner.TREND_SELL_FACTORS.get(trend, 1), 0, 100))
+    potential = scanner.percentrank(volatility_values, x['volatility_pct']) * 100 if x.get('volatility_pct') is not None else 0
+    opportunity = corrected if corrected < 50 else float(np.clip(corrected*.65 + potential*.35, 0, 100))
+    return opportunity, corrected, potential
 def main():
     cfg = json.loads((ROOT / 'config/parameters.json').read_text(encoding='utf-8'))
     with open(ROOT / 'config/symbols.csv', encoding='utf-8-sig') as f:
@@ -154,12 +135,14 @@ def main():
 
     buy = sorted(results, key=lambda x: x['score'], reverse=True)
     ranked = {}
+    volatility_values = [x['volatility_pct'] for x in results if x.get('volatility_pct') is not None]
     for x in results:
-        sell_score, sell_components = sell_deterioration_score(x, cfg)
+        sell_score, sell_timing, sell_potential = sell_v14_score(x, volatility_values)
         y = dict(x)
-        y['sell_timing_v14'] = round(sell_score, 1)
-        y['sell_signal'] = scanner.sell_signal(sell_score)
-        y['sell_components'] = sell_components
+        y['sell_timing_v14'] = round(sell_timing, 1)
+        y['potential_v14'] = round(sell_potential, 1)
+        y['sell_signal'] = scanner.sell_signal(sell_timing)
+        y.pop('sell_components', None)
         y['score'] = round(sell_score, 1)
         y['filters'] = {}
         y['passed'] = True
@@ -190,7 +173,7 @@ def main():
         'errors': len(errors),
         'failed_symbols': sorted(set(failed_symbols)),
         'buy_model': 'relative_strength_v1',
-        'sell_model': 'relative_strength_deterioration_v1',
+        'sell_model': 'v14',
         'benchmark_20d_symbol': benchmark_symbol,
         'benchmark_20d_return_pct': round(market20, 3),
         'parameter_snapshot': cfg,
