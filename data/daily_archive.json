@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": -0.62,
       "picks": [
         {
           "symbol": "HPQ",
@@ -16,9 +16,9 @@
           "score": 99.0,
           "risk": 40.0,
           "timing": 20.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 33.400001525878906,
+          "end_price": 32.95000076293945,
+          "return_pct": -1.347
         },
         {
           "symbol": "TNZ",
@@ -26,9 +26,9 @@
           "score": 98.1,
           "risk": 57.0,
           "timing": 13.9,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 71.30000305175781,
+          "end_price": 69.30999755859375,
+          "return_pct": -2.791
         },
         {
           "symbol": "SWKS",
@@ -36,9 +36,9 @@
           "score": 97.9,
           "risk": 49.4,
           "timing": 8.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 89.66000366210938,
+          "end_price": 88.73999786376953,
+          "return_pct": -1.026
         },
         {
           "symbol": "ARG",
@@ -46,9 +46,9 @@
           "score": 97.2,
           "risk": 56.0,
           "timing": 37.1,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 8.75,
+          "end_price": 8.640000343322754,
+          "return_pct": -1.257
         },
         {
           "symbol": "CRWD",
@@ -56,9 +56,9 @@
           "score": 96.6,
           "risk": 46.5,
           "timing": 21.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 231.6199951171875,
+          "end_price": 249.35000610351562,
+          "return_pct": 7.655
         },
         {
           "symbol": "MSA",
@@ -66,9 +66,9 @@
           "score": 95.9,
           "risk": 64.5,
           "timing": 21.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 9.300000190734863,
+          "end_price": 9.699999809265137,
+          "return_pct": 4.301
         },
         {
           "symbol": "CVVY",
@@ -76,9 +76,9 @@
           "score": 95.8,
           "risk": 61.4,
           "timing": 35.9,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 2.299999952316284,
+          "end_price": 2.2699999809265137,
+          "return_pct": -1.304
         },
         {
           "symbol": "MATR",
@@ -86,9 +86,9 @@
           "score": 95.7,
           "risk": 44.4,
           "timing": 34.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 21.170000076293945,
+          "end_price": 20.81999969482422,
+          "return_pct": -1.653
         },
         {
           "symbol": "RVTY",
@@ -96,9 +96,9 @@
           "score": 95.2,
           "risk": 29.7,
           "timing": 21.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 144.52999877929688,
+          "end_price": 143.58999633789062,
+          "return_pct": -0.65
         },
         {
           "symbol": "VLO",
@@ -106,9 +106,9 @@
           "score": 95.0,
           "risk": 33.0,
           "timing": 22.5,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 409.5899963378906,
+          "end_price": 393.2699890136719,
+          "return_pct": -3.984
         },
         {
           "symbol": "MPC",
@@ -116,9 +116,9 @@
           "score": 95.0,
           "risk": 30.9,
           "timing": 28.3,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 419.010009765625,
+          "end_price": 402.3800048828125,
+          "return_pct": -3.969
         },
         {
           "symbol": "CRM",
@@ -126,11 +126,21 @@
           "score": 94.3,
           "risk": 35.1,
           "timing": 18.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 239.8000030517578,
+          "end_price": 236.4199981689453,
+          "return_pct": -1.41
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": 0.317,
+        "sp500_return_pct": 0.934,
+        "canada_picks": 5,
+        "usa_picks": 7,
+        "return_pct": 0.677
+      },
+      "vs_benchmark_pct": -1.297,
+      "completed_at": "2026-09-21T19:12:33-04:00"
     },
     {
       "date": "2026-09-18",
