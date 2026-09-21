@@ -1,6 +1,138 @@
 {
   "days": [
     {
+      "date": "2026-09-21",
+      "selected_at": "2026-09-21T08:07:35-04:00",
+      "entry_method": "official_open",
+      "exit_method": "official_close",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "selected",
+      "average_return_pct": null,
+      "picks": [
+        {
+          "symbol": "HPQ",
+          "market": "XNYS",
+          "score": 99.0,
+          "risk": 40.0,
+          "timing": 20.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "TNZ",
+          "market": "XTSE",
+          "score": 98.1,
+          "risk": 57.0,
+          "timing": 13.9,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "SWKS",
+          "market": "XNAS",
+          "score": 97.9,
+          "risk": 49.4,
+          "timing": 8.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "ARG",
+          "market": "XTSE",
+          "score": 97.2,
+          "risk": 56.0,
+          "timing": 37.1,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CRWD",
+          "market": "XNAS",
+          "score": 96.6,
+          "risk": 46.5,
+          "timing": 21.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "MSA",
+          "market": "XTSE",
+          "score": 95.9,
+          "risk": 64.5,
+          "timing": 21.6,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CVVY",
+          "market": "XTSE",
+          "score": 95.8,
+          "risk": 61.4,
+          "timing": 35.9,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "MATR",
+          "market": "XTSE",
+          "score": 95.7,
+          "risk": 44.4,
+          "timing": 34.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "RVTY",
+          "market": "XNYS",
+          "score": 95.2,
+          "risk": 29.7,
+          "timing": 21.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "VLO",
+          "market": "XNYS",
+          "score": 95.0,
+          "risk": 33.0,
+          "timing": 22.5,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "MPC",
+          "market": "XNYS",
+          "score": 95.0,
+          "risk": 30.9,
+          "timing": 28.3,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CRM",
+          "market": "XNYS",
+          "score": 94.3,
+          "risk": 35.1,
+          "timing": 18.6,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        }
+      ]
+    },
+    {
       "date": "2026-09-18",
       "selected_at": "2026-09-18T08:08:06-04:00",
       "entry_method": "official_open",
