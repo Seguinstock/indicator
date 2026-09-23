@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": 0.156,
       "picks": [
         {
           "symbol": "MATR",
@@ -16,9 +16,9 @@
           "score": 96.7,
           "risk": 47.4,
           "timing": 24.0,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 21.530000686645508,
+          "end_price": 21.219999313354492,
+          "return_pct": -1.44
         },
         {
           "symbol": "TOT",
@@ -26,9 +26,9 @@
           "score": 93.6,
           "risk": 29.3,
           "timing": 31.1,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 35.83000183105469,
+          "end_price": 36.29999923706055,
+          "return_pct": 1.312
         },
         {
           "symbol": "VLE",
@@ -36,9 +36,9 @@
           "score": 93.5,
           "risk": 38.6,
           "timing": 16.3,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 15.140000343322754,
+          "end_price": 15.039999961853027,
+          "return_pct": -0.661
         },
         {
           "symbol": "CVVY",
@@ -46,9 +46,9 @@
           "score": 92.3,
           "risk": 57.3,
           "timing": 21.3,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 2.4100000858306885,
+          "end_price": 2.380000114440918,
+          "return_pct": -1.245
         },
         {
           "symbol": "CRWD",
@@ -56,9 +56,9 @@
           "score": 91.7,
           "risk": 42.8,
           "timing": 17.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 251.9759979248047,
+          "end_price": 262.489990234375,
+          "return_pct": 4.173
         },
         {
           "symbol": "DELL",
@@ -66,9 +66,9 @@
           "score": 90.1,
           "risk": 64.9,
           "timing": 18.0,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 559.0,
+          "end_price": 549.8300170898438,
+          "return_pct": -1.64
         },
         {
           "symbol": "HPE",
@@ -76,9 +76,9 @@
           "score": 89.3,
           "risk": 45.6,
           "timing": 24.0,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 62.22999954223633,
+          "end_price": 62.33000183105469,
+          "return_pct": 0.161
         },
         {
           "symbol": "BDT",
@@ -86,9 +86,9 @@
           "score": 88.8,
           "risk": 30.7,
           "timing": 24.1,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 83.0,
+          "end_price": 81.77999877929688,
+          "return_pct": -1.47
         },
         {
           "symbol": "META",
@@ -96,9 +96,9 @@
           "score": 88.5,
           "risk": 35.2,
           "timing": 17.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 747.9500122070312,
+          "end_price": 744.0999755859375,
+          "return_pct": -0.515
         },
         {
           "symbol": "SWKS",
@@ -106,9 +106,9 @@
           "score": 88.5,
           "risk": 39.3,
           "timing": 2.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 90.54000091552734,
+          "end_price": 91.44999694824219,
+          "return_pct": 1.005
         },
         {
           "symbol": "TWM",
@@ -116,9 +116,9 @@
           "score": 87.9,
           "risk": 42.0,
           "timing": 2.5,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 24.260000228881836,
+          "end_price": 24.84000015258789,
+          "return_pct": 2.391
         },
         {
           "symbol": "RVTY",
@@ -126,11 +126,21 @@
           "score": 87.8,
           "risk": 25.7,
           "timing": 17.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 142.39999389648438,
+          "end_price": 142.11000061035156,
+          "return_pct": -0.204
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -1.221,
+        "sp500_return_pct": -0.72,
+        "canada_picks": 6,
+        "usa_picks": 6,
+        "return_pct": -0.971
+      },
+      "vs_benchmark_pct": 1.127,
+      "completed_at": "2026-09-23T19:10:54-04:00"
     },
     {
       "date": "2026-09-22",
