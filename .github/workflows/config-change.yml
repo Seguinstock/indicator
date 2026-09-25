@@ -91,4 +91,10 @@ jobs:
       - name: Close request
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue close "${{ github.event.issue.number }}" --comment "Paramètres enregistrés et résultats recalculés. Le fichier de résultats contient maintenant l'instantané exact des paramètres utilisés pour confirmer la fin du calcul."
+        run: |
+          if [ "$RECALC_MODE" = "none" ]; then
+            MSG="Portefeuille enregistré. Aucun recalcul automatique n'a été lancé; utilisez l'actualisation manuelle au besoin."
+          else
+            MSG="Configuration enregistrée et résultats recalculés."
+          fi
+          gh issue close "${{ github.event.issue.number }}" --comment "$MSG"
