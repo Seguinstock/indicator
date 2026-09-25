@@ -41,17 +41,20 @@ jobs:
           m=re.search(r'```json\s*(\{.*?\})\s*```',body,re.S)
           payload=json.loads(m.group(1)) if m else {}
           action=payload.get('action')
-          if action=='set_parameter':
-              paths=[payload.get('path','')]
-          elif action=='set_parameters':
-              paths=[str(x.get('path','')) for x in payload.get('changes',[])]
+          if action in {'add_holding','remove_holding','update_holdings'}:
+              mode='none'
           else:
-              paths=[]
-          safe=lambda p: p.startswith('buy_model.') or p.startswith('filters.') or p in {'visualisation.min_canada_pct','visualisation.min_usa_pct'}
-          mode='fast' if paths and all(safe(p) for p in paths) else 'full'
+              if action=='set_parameter':
+                  paths=[payload.get('path','')]
+              elif action=='set_parameters':
+                  paths=[str(x.get('path','')) for x in payload.get('changes',[])]
+              else:
+                  paths=[]
+              safe=lambda p: p.startswith('buy_model.') or p.startswith('filters.') or p in {'visualisation.min_canada_pct','visualisation.min_usa_pct'}
+              mode='fast' if paths and all(safe(p) for p in paths) else 'full'
           with open(os.environ['GITHUB_ENV'],'a') as f:
               f.write(f'RECALC_MODE={mode}\n')
-          print('Recalculation mode:',mode,'paths:',paths)
+          print('Recalculation mode:',mode)
           PY
       - name: Save configuration immediately
         run: |
@@ -72,8 +75,10 @@ jobs:
         if: env.RECALC_MODE == 'full'
         run: python engine/scanner.py
       - name: Stamp exact parameters used
+        if: env.RECALC_MODE != 'none'
         run: python engine/stamp_results.py
       - name: Publish refreshed results
+        if: env.RECALC_MODE != 'none'
         run: |
           git add data/results.json
           if git diff --cached --quiet; then
