@@ -1,6 +1,138 @@
 {
   "days": [
     {
+      "date": "2026-09-25",
+      "selected_at": "2026-09-25T08:08:28-04:00",
+      "entry_method": "official_open",
+      "exit_method": "official_close",
+      "risk_limit": 65,
+      "count": 12,
+      "status": "selected",
+      "average_return_pct": null,
+      "picks": [
+        {
+          "symbol": "CGX",
+          "market": "XTSE",
+          "score": 98.6,
+          "risk": 29.7,
+          "timing": 26.6,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "BB",
+          "market": "XTSE",
+          "score": 97.4,
+          "risk": 60.4,
+          "timing": 21.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "POW",
+          "market": "XTSE",
+          "score": 94.5,
+          "risk": 12.7,
+          "timing": 36.5,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "NTR",
+          "market": "XTSE",
+          "score": 94.2,
+          "risk": 26.6,
+          "timing": 26.9,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "WPM",
+          "market": "XTSE",
+          "score": 94.0,
+          "risk": 41.9,
+          "timing": 46.0,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "VBNK",
+          "market": "XTSE",
+          "score": 94.0,
+          "risk": 34.2,
+          "timing": 20.9,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "FAST",
+          "market": "XNAS",
+          "score": 92.3,
+          "risk": 15.3,
+          "timing": 32.8,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "GEI",
+          "market": "XTSE",
+          "score": 91.9,
+          "risk": 11.9,
+          "timing": 56.2,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CRL",
+          "market": "XNYS",
+          "score": 90.7,
+          "risk": 37.3,
+          "timing": 33.1,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "VTRS",
+          "market": "XNAS",
+          "score": 90.6,
+          "risk": 26.2,
+          "timing": 34.6,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "CHR",
+          "market": "XTSE",
+          "score": 89.9,
+          "risk": 18.5,
+          "timing": 29.0,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        },
+        {
+          "symbol": "WAT",
+          "market": "XNYS",
+          "score": 89.4,
+          "risk": 26.5,
+          "timing": 30.7,
+          "start_price": null,
+          "end_price": null,
+          "return_pct": null
+        }
+      ]
+    },
+    {
       "date": "2026-09-24",
       "selected_at": "2026-09-24T08:08:15-04:00",
       "entry_method": "official_open",
