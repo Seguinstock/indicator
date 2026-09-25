@@ -1,4 +1,4 @@
-import csv, re
+import csv, json, re
 from pathlib import Path
 import pandas as pd
 import pitindex
@@ -34,7 +34,24 @@ def canada(exchange,market):
             break
     return rows
 
+def portfolio_symbols(existing):
+    extra=[]
+    portfolios=json.loads((ROOT/'config/portfolios.json').read_text(encoding='utf-8'))
+    for p in portfolios:
+        path=ROOT/p['file']
+        if not p.get('active',True) or not path.exists(): continue
+        with open(path,encoding='utf-8-sig') as f:
+            for row in csv.DictReader(f):
+                s=str(row.get('symbol','')).strip().upper()
+                if s and s in existing: extra.append(existing[s])
+    return extra
+
 def main():
+    existing={}
+    if OUT.exists():
+        with open(OUT,encoding='utf-8-sig') as f:
+            for r in csv.DictReader(f):
+                if r.get('symbol'): existing[r['symbol'].upper()]=(r['symbol'],r['market'],r['country'],r.get('enabled','true'))
     members=pitindex.get_constituents(pd.Timestamp.utcnow().date().isoformat(),index='sp1500')
     us=[]; seen=set()
     for ticker in members['ticker'].tolist():
@@ -49,8 +66,11 @@ def main():
     ca_top=sorted(best.values(),reverse=True)[:CANADA_N]
 
     rows=us+[(s,m,c,e) for _,s,m,c,e in ca_top]
+    present={r[0] for r in rows}
+    extras=[r for r in portfolio_symbols(existing) if r[0] not in present]
+    rows+=extras
     with open(OUT,'w',newline='',encoding='utf-8') as f:
         w=csv.writer(f); w.writerow(['symbol','market','country','enabled']); w.writerows(rows)
-    print(f'Universe: {len(us)} S&P 1500 + {len(ca_top)} Canada = {len(rows)}')
+    print(f'Universe: {len(us)} S&P 1500 + {len(ca_top)} Canada + {len(extras)} portfolio extras = {len(rows)}')
 
 if __name__=='__main__': main()
