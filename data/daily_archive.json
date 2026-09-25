@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": -0.3,
       "picks": [
         {
           "symbol": "CGX",
@@ -16,9 +16,9 @@
           "score": 98.6,
           "risk": 29.7,
           "timing": 26.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.890000343322754,
+          "end_price": 12.979999542236328,
+          "return_pct": 0.698
         },
         {
           "symbol": "BB",
@@ -26,9 +26,9 @@
           "score": 97.4,
           "risk": 60.4,
           "timing": 21.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.350000381469727,
+          "end_price": 11.569999694824219,
+          "return_pct": -6.316
         },
         {
           "symbol": "POW",
@@ -36,9 +36,9 @@
           "score": 94.5,
           "risk": 12.7,
           "timing": 36.5,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 93.29000091552734,
+          "end_price": 94.27999877929688,
+          "return_pct": 1.061
         },
         {
           "symbol": "NTR",
@@ -46,9 +46,9 @@
           "score": 94.2,
           "risk": 26.6,
           "timing": 26.9,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 104.04000091552734,
+          "end_price": 102.19000244140625,
+          "return_pct": -1.778
         },
         {
           "symbol": "WPM",
@@ -56,9 +56,9 @@
           "score": 94.0,
           "risk": 41.9,
           "timing": 46.0,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 204.30999755859375,
+          "end_price": 202.1199951171875,
+          "return_pct": -1.072
         },
         {
           "symbol": "VBNK",
@@ -66,9 +66,9 @@
           "score": 94.0,
           "risk": 34.2,
           "timing": 20.9,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 32.939998626708984,
+          "end_price": 33.25,
+          "return_pct": 0.941
         },
         {
           "symbol": "FAST",
@@ -76,9 +76,9 @@
           "score": 92.3,
           "risk": 15.3,
           "timing": 32.8,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 50.529998779296875,
+          "end_price": 50.43000030517578,
+          "return_pct": -0.198
         },
         {
           "symbol": "GEI",
@@ -86,9 +86,9 @@
           "score": 91.9,
           "risk": 11.9,
           "timing": 56.2,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 31.170000076293945,
+          "end_price": 30.770000457763672,
+          "return_pct": -1.283
         },
         {
           "symbol": "CRL",
@@ -96,9 +96,9 @@
           "score": 90.7,
           "risk": 37.3,
           "timing": 33.1,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 293.19000244140625,
+          "end_price": 292.8399963378906,
+          "return_pct": -0.119
         },
         {
           "symbol": "VTRS",
@@ -106,9 +106,9 @@
           "score": 90.6,
           "risk": 26.2,
           "timing": 34.6,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 17.520000457763672,
+          "end_price": 17.829999923706055,
+          "return_pct": 1.769
         },
         {
           "symbol": "CHR",
@@ -116,9 +116,9 @@
           "score": 89.9,
           "risk": 18.5,
           "timing": 29.0,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 30.510000228881836,
+          "end_price": 30.989999771118164,
+          "return_pct": 1.573
         },
         {
           "symbol": "WAT",
@@ -126,11 +126,21 @@
           "score": 89.4,
           "risk": 26.5,
           "timing": 30.7,
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 428.7099914550781,
+          "end_price": 433.5400085449219,
+          "return_pct": 1.127
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": 0.153,
+        "sp500_return_pct": 0.435,
+        "canada_picks": 8,
+        "usa_picks": 4,
+        "return_pct": 0.247
+      },
+      "vs_benchmark_pct": -0.547,
+      "completed_at": "2026-09-25T19:11:49-04:00"
     },
     {
       "date": "2026-09-24",
