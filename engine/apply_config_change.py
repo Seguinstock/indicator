@@ -117,6 +117,28 @@ elif action in ('add_holding','remove_holding'):
         rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
     write_csv(path,rows,fields)
 
+elif action == 'update_holdings':
+    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account']; rows=read_csv(path)
+    additions=req.get('add',[]); removals=req.get('remove',[])
+    if not isinstance(additions,list) or not isinstance(removals,list) or len(additions)+len(removals)>100:
+        raise ValueError('add/remove must be lists with at most 100 total changes')
+    remove_symbols={clean_symbol(x) for x in removals}
+    add_symbols=set(); clean_add=[]
+    for item in additions:
+        if not isinstance(item,dict): raise ValueError('Invalid holding item')
+        symbol=clean_symbol(item.get('symbol'))
+        if symbol in add_symbols: raise ValueError(f'Duplicate holding: {symbol}')
+        add_symbols.add(symbol)
+        market,country=validate_market_country(item.get('market'),item.get('country'))
+        clean_add.append((symbol,str(item.get('name','')).strip()[:100],market,country))
+    if remove_symbols & add_symbols: raise ValueError('A symbol cannot be both added and removed')
+    rows=[r for r in rows if r.get('symbol','').upper() not in remove_symbols and r.get('symbol','').upper() not in add_symbols]
+    for symbol,name,market,country in clean_add:
+        req['market']=market; req['country']=country
+        ensure_scannable_symbol(symbol)
+        rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
+    write_csv(path,rows,fields)
+
 elif action in ('set_parameter','set_parameters'):
     defaults=json.loads((ROOT/'config/parameter_defaults.json').read_text(encoding='utf-8'))
     path=ROOT/'config/parameters.json'; cfg=json.loads(path.read_text(encoding='utf-8'))
