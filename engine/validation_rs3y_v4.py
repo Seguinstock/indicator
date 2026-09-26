@@ -24,15 +24,14 @@ FEATURE_FRAMES = {}
 def verified_pit_update():
     info = pitindex.info(index="sp1500")
     print("PIT status:", info, flush=True)
-    if info.get("is_stale"):
-        print("PIT dataset is stale; attempting rebuild...", flush=True)
-        original_update()
-        info = pitindex.info(index="sp1500")
-        print("PIT status after rebuild:", info, flush=True)
-        if info.get("is_stale"):
-            raise RuntimeError("PIT dataset remains stale after rebuild")
-    else:
-        print("PIT dataset is fresh; skipping unnecessary rebuild.", flush=True)
+    # V4 is historical validation. The pinned 2026-09-07 snapshot was a
+    # successfully reconciled build (including sp400 diff_ratio 3.75%).
+    # A live rebuild currently fails reconciliation at 11.2%, so do not replace
+    # a validated snapshot with an invalid reconstruction. The V4 end date is
+    # capped to this snapshot's end_date below.
+    if not info.get("end_date"):
+        raise RuntimeError("Pinned PIT snapshot has no end_date")
+    print("Using last validated pinned PIT snapshot; V4 end date is capped to", info["end_date"], flush=True)
 
 
 def _extract(raw, batch):
@@ -174,6 +173,24 @@ def add_diagnostics():
 
 original_update = pitindex.update
 pitindex.update = verified_pit_update
+
+# V2 normally discovers the test end from the latest ^GSPC session. For strict
+# PIT validity, cap only that discovery probe to the pinned snapshot end date.
+# All subsequent historical downloads remain unchanged.
+original_yf_download = yf.download
+def capped_probe_download(tickers, *args, **kwargs):
+    if tickers == "^GSPC" and kwargs.get("period") == "10d":
+        pit_end = pd.Timestamp(pitindex.info(index="sp1500")["end_date"]).normalize()
+        return original_yf_download(
+            tickers,
+            start=(pit_end - pd.Timedelta(days=20)).strftime("%Y-%m-%d"),
+            end=(pit_end + pd.Timedelta(days=1)).strftime("%Y-%m-%d"),
+            auto_adjust=kwargs.get("auto_adjust", True),
+            progress=kwargs.get("progress", False),
+        )
+    return original_yf_download(tickers, *args, **kwargs)
+
+yf.download = capped_probe_download
 original_download_batch = v2.core.download_batch
 original_feature_frame = v2.core.feature_frame
 
