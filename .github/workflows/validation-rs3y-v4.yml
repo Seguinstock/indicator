@@ -37,21 +37,27 @@ jobs:
           git -C .pitindex-source checkout 2df030e5c9be7c83cf4b28c3d8597d74d274757e
           pip install -e '.pitindex-source[build]'
           pip install -U lxml requests
-      - name: Preflight PIT dataset
+      - name: PIT dataset status
         run: |
           python - <<'PY'
           import pitindex
           info = pitindex.info(index='sp1500')
           print(info)
-          if info.get('is_stale'):
-              raise SystemExit('Pinned PIT dataset is stale; V4 refuses to backtest with stale membership data')
+          print('V4 will refresh PIT inside the validation if this pinned snapshot is stale.')
           PY
       - name: Run V4 validation
         run: python -u engine/validation_rs3y_v4.py
-      - name: Verify result
+      - name: Verify result and diagnostics
         run: |
           test -s data/backtest_validation_rs3y_v4.json
           python -m json.tool data/backtest_validation_rs3y_v4.json >/dev/null
+          python - <<'PY'
+          import json
+          p='data/backtest_validation_rs3y_v4.json'
+          d=json.load(open(p))
+          assert d.get('formula_diagnostics'), 'missing V4 formula diagnostics'
+          print({k:v.get('closed_round_trips_analyzed') for k,v in d['formula_diagnostics'].items()})
+          PY
       - name: Publish V4 result
         run: |
           git config user.name "stock-indicator-bot"
