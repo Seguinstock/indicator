@@ -76,6 +76,32 @@ def enrich_pick_identity(p, index):
     if p.get('timing') is None: p['timing']=r.get('buy_timing',r.get('timing_v14'))
 
 
+def pick_snapshot(r):
+    """Freeze the decision inputs used by the model when a pick is selected."""
+    components=r.get('potential_components') or {}
+    return {
+        'symbol':r.get('symbol'),
+        'market':r.get('market'),
+        'score':r.get('score') or r.get('buy_potential'),
+        'risk':market_risk(r),
+        'timing':r.get('buy_timing',r.get('timing_v14')),
+        'relative_strength_20_pct':r.get('relative_strength_20_pct'),
+        'return_20_pct':r.get('return_20_pct'),
+        'return_60_pct':r.get('return_60_pct'),
+        'rsi':r.get('rsi'),
+        'delta_rsi':r.get('delta_rsi'),
+        'rvol':r.get('rvol'),
+        'trend':r.get('trend'),
+        'volatility_pct':r.get('volatility_pct'),
+        'support_score':r.get('support_score'),
+        'macd_momentum':r.get('macd_momentum'),
+        'potential_components':components,
+        'start_price':None,
+        'end_price':None,
+        'return_pct':None,
+    }
+
+
 def benchmark_for(entry, day):
     """Open-to-close benchmark matching the strategy holding window.
 
@@ -107,7 +133,7 @@ def morning():
     eligible.sort(key=lambda r:float(r.get('score') or r.get('buy_potential') or 0),reverse=True)
     picks=eligible[:12]; now=datetime.now(TZ); day=now.date().isoformat()
     archive=load_json(ARCHIVE,{'days':[]}); archive['days']=[d for d in archive.get('days',[]) if d.get('date')!=day]
-    archive['days'].append({'date':day,'selected_at':now.isoformat(timespec='seconds'),'entry_method':'official_open','exit_method':'official_close','risk_limit':65,'count':len(picks),'status':'selected','average_return_pct':None,'picks':[{'symbol':r.get('symbol'),'market':r.get('market'),'score':r.get('score') or r.get('buy_potential'),'risk':market_risk(r),'timing':r.get('buy_timing',r.get('timing_v14')),'start_price':None,'end_price':None,'return_pct':None} for r in picks]})
+    archive['days'].append({'date':day,'selected_at':now.isoformat(timespec='seconds'),'entry_method':'official_open','exit_method':'official_close','risk_limit':65,'count':len(picks),'status':'selected','average_return_pct':None,'picks':[pick_snapshot(r) for r in picks]})
     archive['days'].sort(key=lambda d:d.get('date',''),reverse=True); ARCHIVE.write_text(json.dumps(archive,ensure_ascii=False,indent=2),encoding='utf-8')
 
 
