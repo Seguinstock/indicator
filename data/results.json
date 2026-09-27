@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-27T15:53:56.143800+00:00",
-  "scored_at": "2026-09-27T15:53:56.143800+00:00",
+  "updated": "2026-09-27T17:33:55.973153+00:00",
+  "scored_at": "2026-09-27T17:33:55.973153+00:00",
   "universe": 1546,
   "analyzed": 1530,
   "errors": 0,
@@ -4138,7 +4138,7 @@
       "return_20_pct": 5.46,
       "return_60_pct": 13.14,
       "relative_strength_20_pct": 5.3,
-      "name": "Fortrea Holdings Inc."
+      "name": null
     },
     {
       "symbol": "DOCU",
@@ -4618,7 +4618,7 @@
       "return_20_pct": 0.62,
       "return_60_pct": 36.95,
       "relative_strength_20_pct": 0.46,
-      "name": "Safety Insurance Group, Inc."
+      "name": null
     },
     {
       "symbol": "WAT",
@@ -5498,7 +5498,7 @@
       "return_20_pct": -1.55,
       "return_60_pct": 22.27,
       "relative_strength_20_pct": -1.71,
-      "name": "Talos Energy Inc."
+      "name": null
     },
     {
       "symbol": "PARR",
@@ -11018,7 +11018,7 @@
       "return_20_pct": -0.82,
       "return_60_pct": 8.67,
       "relative_strength_20_pct": -0.98,
-      "name": "The Coca-Cola Company"
+      "name": null
     },
     {
       "symbol": "HNI",
@@ -12298,7 +12298,7 @@
       "return_20_pct": -6.12,
       "return_60_pct": 27.32,
       "relative_strength_20_pct": -6.28,
-      "name": "Royal Gold, Inc."
+      "name": null
     },
     {
       "symbol": "VET",
@@ -26618,7 +26618,7 @@
       "return_20_pct": -4.22,
       "return_60_pct": 3.98,
       "relative_strength_20_pct": -4.38,
-      "name": "Enact Holdings, Inc."
+      "name": null
     },
     {
       "symbol": "ICHR",
@@ -26778,7 +26778,7 @@
       "return_20_pct": 1.05,
       "return_60_pct": -14.1,
       "relative_strength_20_pct": 0.89,
-      "name": "YETI Holdings, Inc."
+      "name": null
     },
     {
       "symbol": "ADEA",
@@ -29418,7 +29418,7 @@
       "return_20_pct": -17.17,
       "return_60_pct": 0.0,
       "relative_strength_20_pct": -17.33,
-      "name": "Expedia Group, Inc."
+      "name": null
     },
     {
       "symbol": "GL",
@@ -30828,10 +30828,10 @@
       "rsi": 42.9,
       "delta_rsi": 2.1,
       "rvol": 0.78,
-      "support": 143.15,
-      "support_distance_pct": 12.6,
+      "support": 142.16,
+      "support_distance_pct": 13.2,
       "support_score": 0.0,
-      "support_strength": 49.6,
+      "support_strength": 41.6,
       "macd_momentum": 19.6,
       "trend": -2.0,
       "volatility_pct": 29.1,
@@ -37898,7 +37898,7 @@
       "return_20_pct": -6.38,
       "return_60_pct": -12.86,
       "relative_strength_20_pct": -6.54,
-      "name": "Bank of Hawaii Corporation"
+      "name": null
     },
     {
       "symbol": "EVTC",
@@ -38378,7 +38378,7 @@
       "return_20_pct": -11.84,
       "return_60_pct": -15.42,
       "relative_strength_20_pct": -12.0,
-      "name": "Mobility Global Inc."
+      "name": "Mobility Global, Inc."
     },
     {
       "symbol": "UTL",
