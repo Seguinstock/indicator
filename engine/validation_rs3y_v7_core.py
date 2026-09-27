@@ -36,7 +36,10 @@ INITIAL = 100.0
 PORTFOLIO_N = 10
 MIN_DAILY_COVERAGE = 0.95
 MIN_SP100_COVERAGE = 0.98
-VARIANTS = ["baseline_thesis", "adaptive_atr_thesis"]\nRSI_TIMING = False\nSCORE_TIE_BAND = 2.0\nfeatures = {}
+VARIANTS = ["baseline_thesis", "adaptive_atr_thesis"]
+RSI_TIMING = False
+SCORE_TIE_BAND = 2.0
+features = {}
 
 
 def sp100_snapshot(asof: pd.Timestamp):
