@@ -46,11 +46,15 @@ jobs:
           print('V7 will refresh PIT inside the validation if this pinned snapshot is stale.')
           PY
       - name: Run V7 validation
-        run: |\n          python -u engine/validation_rs3y_v7_soft.py\n          python -u engine/validation_rs3y_v7_timing.py
+        run: |
+          python -u engine/validation_rs3y_v7_soft.py
+          python -u engine/validation_rs3y_v7_timing.py
       - name: Verify result and diagnostics
         run: |
-          test -s data/backtest_validation_rs3y_v7_soft.json\n          test -s data/backtest_validation_rs3y_v7_timing.json
-          python -m json.tool data/backtest_validation_rs3y_v7.json >/dev/null
+          test -s data/backtest_validation_rs3y_v7_soft.json
+          test -s data/backtest_validation_rs3y_v7_timing.json
+          python -m json.tool data/backtest_validation_rs3y_v7_soft.json >/dev/null
+          python -m json.tool data/backtest_validation_rs3y_v7_timing.json >/dev/null
           python - <<'PY'
           import json
           p='data/backtest_validation_rs3y_v7_soft.json'
