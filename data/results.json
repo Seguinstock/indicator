@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-26T20:00:39.360570+00:00",
-  "scored_at": "2026-09-26T20:00:39.360570+00:00",
+  "updated": "2026-09-27T10:08:31.777012+00:00",
+  "scored_at": "2026-09-27T10:08:31.777012+00:00",
   "universe": 1546,
   "analyzed": 1530,
   "errors": 0,
@@ -2018,7 +2018,7 @@
       "return_20_pct": 6.07,
       "return_60_pct": 24.14,
       "relative_strength_20_pct": 5.91,
-      "name": "Impinj, Inc."
+      "name": null
     },
     {
       "symbol": "RGEN",
@@ -24418,7 +24418,7 @@
       "return_20_pct": -3.26,
       "return_60_pct": -6.93,
       "relative_strength_20_pct": -3.42,
-      "name": "Krystal Biotech, Inc."
+      "name": null
     },
     {
       "symbol": "WELL",
@@ -29188,10 +29188,10 @@
       "rsi": 39.0,
       "delta_rsi": 3.0,
       "rvol": 0.74,
-      "support": 32.0,
-      "support_distance_pct": 17.2,
+      "support": 32.86,
+      "support_distance_pct": 15.0,
       "support_score": 0.0,
-      "support_strength": 60.2,
+      "support_strength": 61.1,
       "macd_momentum": 20.0,
       "trend": 1.0,
       "volatility_pct": 26.2,
@@ -30828,10 +30828,10 @@
       "rsi": 42.9,
       "delta_rsi": 2.1,
       "rvol": 0.78,
-      "support": 142.16,
-      "support_distance_pct": 13.2,
+      "support": 143.15,
+      "support_distance_pct": 12.6,
       "support_score": 0.0,
-      "support_strength": 41.6,
+      "support_strength": 49.6,
       "macd_momentum": 19.6,
       "trend": -2.0,
       "volatility_pct": 29.1,
@@ -31458,7 +31458,7 @@
       "return_20_pct": -9.51,
       "return_60_pct": -4.62,
       "relative_strength_20_pct": -9.67,
-      "name": "HA Sustainable Infrastructure Capital, Inc."
+      "name": null
     },
     {
       "symbol": "EME",
@@ -31898,7 +31898,7 @@
       "return_20_pct": -9.23,
       "return_60_pct": 10.67,
       "relative_strength_20_pct": -9.39,
-      "name": "Abbott Laboratories"
+      "name": null
     },
     {
       "symbol": "UNH",
@@ -32458,7 +32458,7 @@
       "return_20_pct": -10.27,
       "return_60_pct": -12.65,
       "relative_strength_20_pct": -10.43,
-      "name": "NETSTREIT Corp."
+      "name": null
     },
     {
       "symbol": "SCHL",
@@ -35418,7 +35418,7 @@
       "return_20_pct": -7.85,
       "return_60_pct": -1.6,
       "relative_strength_20_pct": -8.01,
-      "name": "Kirby Corporation"
+      "name": null
     },
     {
       "symbol": "RELY",
@@ -38378,7 +38378,7 @@
       "return_20_pct": -11.84,
       "return_60_pct": -15.42,
       "relative_strength_20_pct": -12.0,
-      "name": "Mobility Global Inc."
+      "name": "Mobility Global, Inc."
     },
     {
       "symbol": "UTL",
@@ -40540,7 +40540,7 @@
       "country": "CA",
       "price": 0.05,
       "rsi": 44.4,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.04,
       "support": 0.04,
       "support_distance_pct": 11.1,
@@ -40549,8 +40549,8 @@
       "macd_momentum": -11.1,
       "trend": -2.0,
       "volatility_pct": 88.0,
-      "timing_v14": 21.6,
-      "buy_timing": 21.6,
+      "timing_v14": 18.1,
+      "buy_timing": 18.1,
       "potential_components": {
         "relative_strength_20": 0.0,
         "return_60": 0.0,
@@ -41083,7 +41083,7 @@
         "country": "CA",
         "price": 0.05,
         "rsi": 44.4,
-        "delta_rsi": 0.0,
+        "delta_rsi": -0.0,
         "rvol": 0.04,
         "support": 0.04,
         "support_distance_pct": 11.1,
@@ -41092,8 +41092,8 @@
         "macd_momentum": -11.1,
         "trend": -2.0,
         "volatility_pct": 88.0,
-        "timing_v14": 21.6,
-        "buy_timing": 21.6,
+        "timing_v14": 18.1,
+        "buy_timing": 18.1,
         "potential_components": {
           "relative_strength_20": 0.0,
           "return_60": 0.0,
