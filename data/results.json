@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-27T10:08:31.777012+00:00",
-  "scored_at": "2026-09-27T10:08:31.777012+00:00",
+  "updated": "2026-09-27T13:02:38.190895+00:00",
+  "scored_at": "2026-09-27T13:02:38.190895+00:00",
   "universe": 1546,
   "analyzed": 1530,
   "errors": 0,
@@ -2018,7 +2018,7 @@
       "return_20_pct": 6.07,
       "return_60_pct": 24.14,
       "relative_strength_20_pct": 5.91,
-      "name": null
+      "name": "Impinj, Inc."
     },
     {
       "symbol": "RGEN",
@@ -24418,7 +24418,7 @@
       "return_20_pct": -3.26,
       "return_60_pct": -6.93,
       "relative_strength_20_pct": -3.42,
-      "name": null
+      "name": "Krystal Biotech, Inc."
     },
     {
       "symbol": "WELL",
@@ -31458,7 +31458,7 @@
       "return_20_pct": -9.51,
       "return_60_pct": -4.62,
       "relative_strength_20_pct": -9.67,
-      "name": null
+      "name": "HA Sustainable Infrastructure Capital, Inc."
     },
     {
       "symbol": "EME",
@@ -31898,7 +31898,7 @@
       "return_20_pct": -9.23,
       "return_60_pct": 10.67,
       "relative_strength_20_pct": -9.39,
-      "name": null
+      "name": "Abbott Laboratories"
     },
     {
       "symbol": "UNH",
@@ -32458,7 +32458,7 @@
       "return_20_pct": -10.27,
       "return_60_pct": -12.65,
       "relative_strength_20_pct": -10.43,
-      "name": null
+      "name": "NETSTREIT Corp."
     },
     {
       "symbol": "SCHL",
@@ -35418,7 +35418,7 @@
       "return_20_pct": -7.85,
       "return_60_pct": -1.6,
       "relative_strength_20_pct": -8.01,
-      "name": null
+      "name": "Kirby Corporation"
     },
     {
       "symbol": "RELY",
@@ -38378,7 +38378,7 @@
       "return_20_pct": -11.84,
       "return_60_pct": -15.42,
       "relative_strength_20_pct": -12.0,
-      "name": "Mobility Global, Inc."
+      "name": "Mobility Global Inc."
     },
     {
       "symbol": "UTL",
