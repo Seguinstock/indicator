@@ -198,10 +198,11 @@ def main():
     def best_candidate(d, prior, positions):
         candidates = [t for t in daily_members[d] if t in histories and t not in positions]
         ranked = sorted(((rank_key(t, prior), t) for t in candidates), reverse=True)
-        for s, t in ranked:
+        for key, t in ranked:
             op = px(t, d, "Open")
-            if np.isfinite(s) and np.isfinite(op) and op > 0:
-                return t, float(s), float(op)
+            score = score_on(t, prior)
+            if np.isfinite(score) and np.isfinite(op) and op > 0:
+                return t, float(score), float(op)
         return None
 
     def simulate(variant):
