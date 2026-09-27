@@ -235,7 +235,8 @@ def feature_and_remember(h, market_ret20, cfg):
 v2.core.download_batch = download_and_remember
 v2.core.feature_frame = feature_and_remember
 v2.OUT = v2.ROOT / "data" / "backtest_validation_rs3y_v7_timing.json"
-v2.MIN_DAILY_COVERAGE = 0.80\nv2.RSI_TIMING = True
+v2.MIN_DAILY_COVERAGE = 0.80
+v2.RSI_TIMING = True
 
 if __name__ == "__main__":
     v2.main()
