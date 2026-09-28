@@ -1,0 +1,68 @@
+name: Validation RS 3Y V8 Clean
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'config/run-validation-v8-clean.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validation-rs3y-v8-clean
+  cancel-in-progress: true
+
+env:
+  PYTHONPATH: ${{ github.workspace }}/.pitindex-source:${{ github.workspace }}/engine
+
+jobs:
+  validate-v8-clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v8-clean
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          git clone --depth 1 https://github.com/arielNacamulli/pitindex.git .pitindex-source
+          git -C .pitindex-source fetch --depth 1 origin 2df030e5c9be7c83cf4b28c3d8597d74d274757e
+          git -C .pitindex-source checkout 2df030e5c9be7c83cf4b28c3d8597d74d274757e
+          pip install -e '.pitindex-source[build]'
+          pip install -U lxml requests
+      - name: PIT dataset status
+        run: |
+          python - <<'PY'
+          import pitindex
+          info = pitindex.info(index='sp1500')
+          print(info)
+          print('V8 Clean will refresh PIT inside the validation if this pinned snapshot is stale.')
+          PY
+      - name: Run V8 Clean validation
+        run: python -u engine/validation_rs3y_v8_clean.py
+      - name: Verify result and diagnostics
+        run: |
+          test -s data/backtest_validation_rs3y_v8_clean.json
+          python -m json.tool data/backtest_validation_rs3y_v8_clean.json >/dev/null
+          python - <<'PY'
+          import json
+          p='data/backtest_validation_rs3y_v8_clean.json'
+          d=json.load(open(p))
+          assert d.get('formula_diagnostics'), 'missing V8 Clean formula diagnostics'
+          print({k:v.get('closed_round_trips_analyzed') for k,v in d['formula_diagnostics'].items()})
+          PY
+      - name: Publish V8 Clean result
+        run: |
+          git config user.name "stock-indicator-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/backtest_validation_rs3y_v8_clean.json
+          git commit -m "Publish RS 3Y V8 Clean validation"
+          git pull --rebase origin main
+          git push origin HEAD:main
