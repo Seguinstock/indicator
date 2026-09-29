@@ -3,11 +3,34 @@ function buildAiPrompt(){
   if(!rows.length)return null;
   const stocks=rows.map(row=>{
     const symbol=row.querySelector('.symbol')?.textContent?.trim()||'';
-    const score=row.querySelector('.score')?.textContent?.replace(/\s+/g,' ')?.trim()||'';
     const name=[...row.querySelectorAll('.detail>div')].find(x=>x.textContent.trim().startsWith('Nom '))?.querySelector('b')?.textContent?.trim()||'';
-    return `- ${symbol}${name&&name!=='—'?` — ${name}`:''} — ${score}`;
+    const market=row.querySelector('.symbol')?.classList.contains('canada')?'Canada':row.querySelector('.symbol')?.classList.contains('usa')?'États-Unis':'Marché à vérifier';
+    return `- ${symbol}${name&&name!=='—'?` — ${name}`:''} — ${market}`;
   }).join('\n');
-  return `Analyse les ${rows.length} titres boursiers ci-dessous. Je veux une validation INDÉPENDANTE du classement technique de Stock Indicator.\n\nPour chaque entreprise :\n1. identifie correctement l’entreprise et son secteur;\n2. recherche l’actualité boursière et corporative la plus récente disponible;\n3. analyse sa santé financière et opérationnelle : revenus, bénéfices, marges, dette, liquidités, flux de trésorerie, dilution éventuelle et tendance des derniers résultats connus;\n4. analyse résultats, guidance, contrats majeurs, acquisitions, poursuites, réglementation, changements de direction, analystes et événements sectoriels;\n5. sépare clairement la santé de l’ENTREPRISE de l’attrait de l’ACTION;\n6. donne une cote Santé entreprise de 0 à 100 et un statut parmi Très sain / Sain / À surveiller / Préoccupant / Données insuffisantes;\n7. donne une cote Actualité récente de -2 à +2;\n8. indique au maximum 3 points positifs, 2 risques et le principal catalyseur;\n9. classe finalement les titres du plus rassurant au plus préoccupant.\n\nIMPORTANT : utilise l’information la plus récente à laquelle tu as réellement accès. Si tu n’as pas accès au Web ou à l’actualité en temps réel, dis-le clairement au début et N’INVENTE aucune nouvelle récente, aucun résultat financier ni aucune source.\n\nTitres actuellement affichés dans Stock Indicator :\n${stocks}`;
+  return `Analyse les ${rows.length} titres boursiers ci-dessous comme des OPPORTUNITÉS D'ACHAT À COURT / MOYEN TERME.
+
+IMPORTANT : fais une analyse indépendante. Ignore complètement le score, le potentiel, le risque et le classement calculés par Stock Indicator. Ne critique pas sa formule et ne cherche pas à valider ou invalider son score. Les titres transmis servent uniquement de liste de candidats à analyser.
+
+Pour chaque titre :
+1. identifie correctement l'entreprise, son marché et son secteur;
+2. recherche l'actualité boursière et corporative la plus récente disponible;
+3. analyse les derniers résultats connus : revenus, bénéfices, marges, dette, liquidités, flux de trésorerie, guidance et changements importants;
+4. recherche les catalyseurs à court/moyen terme : résultats à venir, guidance, contrats, acquisitions, lancements, réglementation, analystes et événements sectoriels;
+5. analyse le TIMING d'achat avec une importance élevée : tendance récente du cours, momentum, réaction aux nouvelles/résultats, proximité d'un catalyseur, risque de mouvement déjà trop avancé et éléments techniques disponibles;
+6. distingue une bonne entreprise d'une bonne opportunité d'achat MAINTENANT. Une excellente entreprise peut être moins bien classée si le timing d'entrée paraît défavorable;
+7. indique brièvement pour chaque titre : thèse d'achat, principal catalyseur, principal risque et horizon probable;
+8. utilise l'information la plus récente à laquelle tu as réellement accès. Si une donnée n'est pas disponible, indique-le et n'invente rien.
+
+PRÉSENTATION OBLIGATOIRE :
+- Produis exactement deux tableaux principaux : CANADA et ÉTATS-UNIS.
+- Dans chacun, classe les titres de la meilleure à la moins bonne opportunité d'achat selon ton analyse indépendante.
+- Colonnes : Rang | Titre | Opportunité / timing | Catalyseur | Risque principal | Horizon.
+- Le rang doit refléter surtout l'opportunité d'achat actuelle et le timing, et non seulement la qualité fondamentale à long terme.
+- Après les deux tableaux, ajoute une courte section « Points à surveiller » uniquement pour les événements imminents susceptibles de modifier rapidement le classement.
+- Ne reproduis pas et ne commente pas le score Stock Indicator.
+
+Titres actuellement affichés :
+${stocks}`;
 }
 function copyTextFallback(text){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}ta.remove();return ok;}
 async function launchAi(provider){
