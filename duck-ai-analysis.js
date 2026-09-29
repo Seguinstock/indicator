@@ -4,15 +4,15 @@ function buildAiPrompt(){
   const stocks=rows.map(row=>{
     const symbol=row.querySelector('.symbol')?.textContent?.trim()||'';
     const name=[...row.querySelectorAll('.detail>div')].find(x=>x.textContent.trim().startsWith('Nom '))?.querySelector('b')?.textContent?.trim()||'';
-    const market=row.querySelector('.symbol')?.classList.contains('canada')?'Canada':row.querySelector('.symbol')?.classList.contains('usa')?'États-Unis':'Marché à vérifier';
-    return `- ${symbol}${name&&name!=='—'?` — ${name}`:''} — ${market}`;
+    const currency=row.querySelector('.symbol')?.classList.contains('canada')?'CAD':row.querySelector('.symbol')?.classList.contains('usa')?'USD':'Devise à vérifier';
+    return `- ${symbol}${name&&name!=='—'?` — ${name}`:''} — ${currency}`;
   }).join('\n');
   return `Analyse les ${rows.length} titres boursiers ci-dessous comme des OPPORTUNITÉS D'ACHAT, en combinant le potentiel fondamental à long terme, les catalyseurs à court/moyen terme et la qualité du point d'entrée actuel.
 
 IMPORTANT : fais une analyse indépendante. Ignore complètement le score, le potentiel, le risque et le classement calculés par Stock Indicator. Ne critique pas sa formule et ne cherche pas à valider ou invalider son score. Les titres transmis servent uniquement de liste de candidats à analyser.
 
 Pour chaque titre :
-1. identifie correctement l'entreprise, son marché et son secteur;
+1. identifie correctement l'entreprise, son titre coté, sa devise de négociation et son secteur. Classe selon la DEVISE DU TITRE FOURNI, et non selon le pays d'origine ou le siège social de l'entreprise;
 2. recherche l'actualité boursière et corporative la plus récente disponible;
 3. analyse les derniers résultats connus : revenus, bénéfices, marges, dette, liquidités, flux de trésorerie, guidance et changements importants;
 4. recherche les catalyseurs à court/moyen terme : résultats à venir, guidance, contrats, acquisitions, lancements, réglementation, analystes et événements sectoriels;
@@ -22,7 +22,7 @@ Pour chaque titre :
 8. utilise l'information la plus récente à laquelle tu as réellement accès. Si une donnée n'est pas disponible, indique-le et n'invente rien.
 
 PRÉSENTATION OBLIGATOIRE :
-- Produis exactement deux tableaux principaux : CANADA et ÉTATS-UNIS.
+- Produis exactement deux tableaux principaux : DEVISE CAD et DEVISE USD. La séparation est fondée exclusivement sur la devise de négociation du titre fourni, PAS sur la nationalité de l'entreprise. Ainsi, une société américaine cotée en CAD (par exemple un CDR canadien) doit être dans le tableau CAD.
 - Dans chacun, classe les titres de la meilleure à la moins bonne opportunité d'achat selon ton analyse indépendante.
 - Colonnes : Rang | Titre | Opportunité / timing | Catalyseur | Risque principal | Horizon.
 - Le rang doit rechercher le meilleur équilibre entre : (1) qualité et potentiel fondamental à long terme, (2) catalyseurs à court/moyen terme et (3) qualité du timing/point d'entrée actuel. Le timing compte beaucoup, mais ne doit pas dominer au point d'écarter une excellente opportunité structurelle.
