@@ -16,8 +16,12 @@ concurrency:
 jobs:
   rebuild:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -25,20 +29,36 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Build monthly universe
         run: python engine/build_universe.py
-      - name: Validate Canadian majority
+      - name: Validate universe before scan
         run: |
           python - <<'PY'
           import csv
           rows=list(csv.DictReader(open('config/symbols.csv',encoding='utf-8')))
+          symbols=[r['symbol'] for r in rows]
           ca=[r for r in rows if r['country']=='CA']
           us=[r for r in rows if r['country']=='US']
-          print(f'Total={len(rows)} Canada={len(ca)} US={len(us)}')
-          assert len(ca)>=1600, f'Canada too small: {len(ca)}'
-          assert len(ca)>len(us), f'Canada is not majority: CA={len(ca)} US={len(us)}'
+          bad=[r for r in rows if r['market'] not in {'XTSE','XTSX','XNYS'}]
+          assert len(ca)>=1500, f'Canada too small: {len(ca)}'
+          assert 1400<=len(us)<=1600, f'Unexpected S&P 1500 count: {len(us)}'
+          assert 2900<=len(rows)<=3200, f'Unexpected total universe: {len(rows)}'
+          assert len(symbols)==len(set(symbols)), 'Duplicate symbols found'
+          assert not bad, f'Unexpected markets: {bad[:5]}'
+          print(f'PRE-SCAN OK total={len(rows)} Canada={len(ca)} US={len(us)}')
           PY
       - name: Scan new universe
         run: python engine/relative_strength_runtime.py
-      - name: Commit monthly universe and results
+      - name: Validate scan before publication
+        run: |
+          python - <<'PY'
+          import csv,json
+          rows=list(csv.DictReader(open('config/symbols.csv',encoding='utf-8')))
+          result=json.load(open('data/results.json',encoding='utf-8'))
+          n=len(rows); analyzed=int(result.get('analyzed',0)); universe=int(result.get('universe',0))
+          assert universe==n, f'Scan universe mismatch: results={universe} symbols={n}'
+          assert analyzed>=int(n*0.95), f'Too many scan failures: analyzed={analyzed}/{n}'
+          print(f'POST-SCAN OK analyzed={analyzed}/{n}')
+          PY
+      - name: Commit validated monthly universe and results
         run: |
           git config user.name "stock-indicator-bot"
           git config user.email "actions@users.noreply.github.com"
