@@ -18,7 +18,7 @@ def stockanalysis_companies(slug, market):
     """
     rows=[]; seen=set()
     for page in range(1, 80):
-        url=f'https://stockanalysis.com/list/{slug}/?p={page}'
+        url=f'https://stockanalysis.com/list/{slug}/?page={page}'
         req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'text/html'})
         try:
             with urllib.request.urlopen(req,timeout=30) as r:
