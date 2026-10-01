@@ -25,3 +25,20 @@ jobs:
         run: |
           gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body "Mise à jour du marché lancée. Le tableau se rechargera automatiquement lorsque les nouveaux résultats seront publiés."
           gh issue close "${{ github.event.issue.number }}" --repo "${{ github.repository }}"
+
+  monthly-universe:
+    if: >-
+      contains(github.event.issue.body, 'STOCK_INDICATOR_MONTHLY_UNIVERSE') &&
+      (github.actor == 'Seguinstock' || github.actor == 'c7rrhj86t8-a11y')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Launch monthly universe rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run monthly-universe.yml --repo "${{ github.repository }}"
+      - name: Close request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body "Reconstruction mensuelle de l'univers lancée: cible 1500 actions canadiennes TSX/TSXV + S&P 1500. La publication est bloquée si les validations échouent."
+          gh issue close "${{ github.event.issue.number }}" --repo "${{ github.repository }}"
