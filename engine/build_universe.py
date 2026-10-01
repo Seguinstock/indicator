@@ -6,8 +6,8 @@ import yfinance as yf
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'config/symbols.csv'
-CANADA_PER_EXCHANGE=500
-MIN_CANADA_PER_EXCHANGE=500
+CANADA_PER_EXCHANGE=800
+MIN_CANADA_PER_EXCHANGE=800
 
 def stockanalysis_companies(slug, market):
     """Load Canadian listings sorted by market cap from StockAnalysis.
