@@ -1,0 +1,27 @@
+name: Refresh request
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: write
+  issues: write
+
+jobs:
+  refresh:
+    if: >-
+      contains(github.event.issue.body, 'STOCK_INDICATOR_REFRESH') &&
+      (github.actor == 'Seguinstock' || github.actor == 'c7rrhj86t8-a11y')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Launch market data refresh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-data.yml --repo "${{ github.repository }}"
+      - name: Close request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body "Mise à jour du marché lancée. Le tableau se rechargera automatiquement lorsque les nouveaux résultats seront publiés."
+          gh issue close "${{ github.event.issue.number }}" --repo "${{ github.repository }}"
