@@ -2,9 +2,6 @@ name: Refresh monthly analysis universe
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 6 1 * *'
-      timezone: 'America/Toronto'
 
 permissions:
   contents: write
