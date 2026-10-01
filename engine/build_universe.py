@@ -1,38 +1,66 @@
-import csv, json, re
+import csv, json, re, urllib.request
 from pathlib import Path
 import pandas as pd
 import pitindex
+import yfinance as yf
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'config/symbols.csv'
-CANADA_N=1000
+CANADA_PER_EXCHANGE=500
 
-def cap_value(v):
-    s=str(v).strip().replace(',','').replace('$','')
-    if not s or s in {'-','nan','None'}: return -1.0
-    m=re.fullmatch(r'([0-9.]+)\s*([KMBT]?)',s,re.I)
-    if not m: return -1.0
-    mult={'':1,'K':1e3,'M':1e6,'B':1e9,'T':1e12}
-    return float(m.group(1))*mult[m.group(2).upper()]
-
-def canada(exchange,market):
+def tmx_companies(exchange, market):
+    url=f'https://www.tsx.com/json/company-directory/search/{exchange}/%5E'
+    req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+    with urllib.request.urlopen(req,timeout=30) as r:
+        payload=json.loads(r.read().decode('utf-8'))
     rows=[]
-    base={'XTSE':'https://stockanalysis.com/list/toronto-stock-exchange/',
-          'XTSX':'https://stockanalysis.com/list/tsx-venture-exchange/'}[market]
-    for page in range(1,5):
-        url=base if page==1 else f'{base}?page={page}'
-        try: tables=pd.read_html(url)
-        except Exception: continue
-        for df in tables:
-            cols={str(c).strip().lower():c for c in df.columns}
-            if 'symbol' not in cols or 'market cap' not in cols: continue
-            for _,r in df.iterrows():
-                symbol=str(r[cols['symbol']]).strip().upper()
-                cap=cap_value(r[cols['market cap']])
-                if symbol and symbol!='NAN' and cap>=0:
-                    rows.append((cap,symbol,market,'CA','true'))
-            break
+    for item in payload.get('results',[]):
+        symbol=str(item.get('symbol','')).strip().upper()
+        name=str(item.get('name','')).strip()
+        if not symbol or not name:
+            continue
+        # Keep operating-company style primary listings; exclude obvious exchange products.
+        upper=name.upper()
+        if ' CDR ' in f' {upper} ' or upper.endswith(' CDR') or 'EXCHANGE TRADED FUND' in upper or upper.endswith(' ETF'):
+            continue
+        if any(x in symbol for x in ['.WT','.DB','.PR','.RT']):
+            continue
+        rows.append((symbol,market,'CA','true',name))
     return rows
+
+def yahoo_symbol(symbol, market):
+    s=symbol.replace('.','-')
+    return s+'.TO' if market=='XTSE' else s+'.V'
+
+def liquid_top(rows, n):
+    if len(rows)<=n:
+        return rows
+    lookup={yahoo_symbol(s,m):(s,m,c,e,name) for s,m,c,e,name in rows}
+    tickers=list(lookup)
+    scores={}
+    for start in range(0,len(tickers),100):
+        batch=tickers[start:start+100]
+        try:
+            data=yf.download(batch,period='3mo',interval='1d',auto_adjust=True,progress=False,threads=True,group_by='column')
+        except Exception:
+            continue
+        for t in batch:
+            try:
+                if len(batch)==1:
+                    close=data['Close']; volume=data['Volume']
+                else:
+                    close=data['Close'][t]; volume=data['Volume'][t]
+                dv=(close*volume).dropna()
+                if len(dv)>=10:
+                    scores[t]=float(dv.tail(60).median())
+            except Exception:
+                pass
+    ranked=sorted(tickers,key=lambda t:scores.get(t,-1),reverse=True)
+    selected=[lookup[t] for t in ranked[:n] if scores.get(t,-1)>=0]
+    if len(selected)<n:
+        used={r[0] for r in selected}
+        selected += [r for r in rows if r[0] not in used][:n-len(selected)]
+    return selected[:n]
 
 def portfolio_symbols(existing):
     extra=[]
@@ -52,6 +80,7 @@ def main():
         with open(OUT,encoding='utf-8-sig') as f:
             for r in csv.DictReader(f):
                 if r.get('symbol'): existing[r['symbol'].upper()]=(r['symbol'],r['market'],r['country'],r.get('enabled','true'))
+
     members=pitindex.get_constituents(pd.Timestamp.utcnow().date().isoformat(),index='sp1500')
     us=[]; seen=set()
     for ticker in members['ticker'].tolist():
@@ -59,18 +88,20 @@ def main():
         if s and s not in seen:
             seen.add(s); us.append((s,'XNYS','US','true'))
 
-    ca=canada('TSX','XTSE')+canada('TSXV','XTSX')
-    best={}
-    for cap,s,m,c,e in ca:
-        if s not in best or cap>best[s][0]: best[s]=(cap,s,m,c,e)
-    ca_top=sorted(best.values(),reverse=True)[:CANADA_N]
+    tsx=liquid_top(tmx_companies('tsx','XTSE'),CANADA_PER_EXCHANGE)
+    tsxv=liquid_top(tmx_companies('tsxv','XTSX'),CANADA_PER_EXCHANGE)
+    ca=[(s,m,c,e) for s,m,c,e,_ in tsx+tsxv]
 
-    rows=us+[(s,m,c,e) for _,s,m,c,e in ca_top]
+    rows=us+ca
     present={r[0] for r in rows}
     extras=[r for r in portfolio_symbols(existing) if r[0] not in present]
-    rows+=extras
+    # Deduplicate portfolio extras too.
+    for r in extras:
+        if r[0] not in present:
+            rows.append(r); present.add(r[0])
+
     with open(OUT,'w',newline='',encoding='utf-8') as f:
         w=csv.writer(f); w.writerow(['symbol','market','country','enabled']); w.writerows(rows)
-    print(f'Universe: {len(us)} S&P 1500 + {len(ca_top)} Canada + {len(extras)} portfolio extras = {len(rows)}')
+    print(f'Universe: {len(us)} S&P 1500 + {len(tsx)} TSX + {len(tsxv)} TSXV + {len(rows)-len(us)-len(ca)} portfolio extras = {len(rows)}')
 
 if __name__=='__main__': main()
