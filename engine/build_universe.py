@@ -7,26 +7,43 @@ import yfinance as yf
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'config/symbols.csv'
 CANADA_PER_EXCHANGE=500
+MIN_CANADA_PER_EXCHANGE=500
 
-def tmx_companies(exchange, market):
-    url=f'https://www.tsx.com/json/company-directory/search/{exchange}/%5E'
-    req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
-    with urllib.request.urlopen(req,timeout=30) as r:
-        payload=json.loads(r.read().decode('utf-8'))
-    rows=[]
-    for item in payload.get('results',[]):
-        symbol=str(item.get('symbol','')).strip().upper()
-        name=str(item.get('name','')).strip()
-        if not symbol or not name:
+def stockanalysis_companies(slug, market):
+    """Load Canadian listings sorted by market cap from StockAnalysis.
+
+    StockAnalysis exposes 800+ TSX and 1,500+ TSXV active listings.  Pagination
+    is ?p=N.  We deliberately fetch enough pages and refuse to publish a short
+    universe, so a source/layout failure cannot silently shrink Canada again.
+    """
+    rows=[]; seen=set()
+    for page in range(1, 80):
+        url=f'https://stockanalysis.com/list/{slug}/?p={page}'
+        req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'text/html'})
+        try:
+            with urllib.request.urlopen(req,timeout=30) as r:
+                tables=pd.read_html(r.read())
+        except Exception as exc:
+            print(f'WARN {market} page {page}: {exc}')
             continue
-        # Keep operating-company style primary listings; exclude obvious exchange products.
-        upper=name.upper()
-        if ' CDR ' in f' {upper} ' or upper.endswith(' CDR') or 'EXCHANGE TRADED FUND' in upper or upper.endswith(' ETF'):
-            continue
-        if any(x in symbol for x in ['.WT','.DB','.PR','.RT']):
-            continue
-        rows.append((symbol,market,'CA','true',name))
-    return rows
+        table=next((t for t in tables if 'Symbol' in t.columns and 'Company Name' in t.columns),None)
+        if table is None or table.empty:
+            break
+        added=0
+        for _,item in table.iterrows():
+            symbol=str(item.get('Symbol','')).strip().upper()
+            name=str(item.get('Company Name','')).strip()
+            if not symbol or symbol=='NAN' or symbol in seen: continue
+            upper=name.upper()
+            if ' CDR ' in f' {upper} ' or upper.endswith(' CDR') or 'EXCHANGE TRADED FUND' in upper or upper.endswith(' ETF'):
+                continue
+            if any(x in symbol for x in ['.WT','.DB','.PR','.RT']): continue
+            seen.add(symbol); rows.append((symbol,market,'CA','true',name)); added+=1
+        if len(rows)>=CANADA_PER_EXCHANGE: break
+        if added==0: break
+    if len(rows)<MIN_CANADA_PER_EXCHANGE:
+        raise RuntimeError(f'{market}: only {len(rows)} eligible listings found; refusing to publish short Canadian universe')
+    return rows[:CANADA_PER_EXCHANGE]
 
 def yahoo_symbol(symbol, market):
     s=symbol.replace('.','-')
@@ -88,8 +105,8 @@ def main():
         if s and s not in seen:
             seen.add(s); us.append((s,'XNYS','US','true'))
 
-    tsx=liquid_top(tmx_companies('tsx','XTSE'),CANADA_PER_EXCHANGE)
-    tsxv=liquid_top(tmx_companies('tsxv','XTSX'),CANADA_PER_EXCHANGE)
+    tsx=stockanalysis_companies('toronto-stock-exchange','XTSE')
+    tsxv=stockanalysis_companies('tsx-venture-exchange','XTSX')
     ca=[(s,m,c,e) for s,m,c,e,_ in tsx+tsxv]
 
     rows=us+ca
