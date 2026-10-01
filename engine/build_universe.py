@@ -6,8 +6,8 @@ import yfinance as yf
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'config/symbols.csv'
-CANADA_TARGET=1600
-MIN_CANADA=1600
+CANADA_TARGET=1500
+MIN_CANADA=1500
 
 def cap_value(v):
     if pd.isna(v): return 0.0
