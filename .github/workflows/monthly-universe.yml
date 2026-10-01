@@ -1,0 +1,50 @@
+name: Refresh monthly analysis universe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 6 1 * *'
+      timezone: 'America/Toronto'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-data-update
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Build monthly universe
+        run: python engine/build_universe.py
+      - name: Validate Canadian majority
+        run: |
+          python - <<'PY'
+          import csv
+          rows=list(csv.DictReader(open('config/symbols.csv',encoding='utf-8')))
+          ca=[r for r in rows if r['country']=='CA']
+          us=[r for r in rows if r['country']=='US']
+          print(f'Total={len(rows)} Canada={len(ca)} US={len(us)}')
+          assert len(ca)>=1600, f'Canada too small: {len(ca)}'
+          assert len(ca)>len(us), f'Canada is not majority: CA={len(ca)} US={len(us)}'
+          PY
+      - name: Scan new universe
+        run: python engine/relative_strength_runtime.py
+      - name: Commit monthly universe and results
+        run: |
+          git config user.name "stock-indicator-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add config/symbols.csv data/results.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh monthly analysis universe"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
