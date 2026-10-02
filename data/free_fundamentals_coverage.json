@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-10-02T11:02:44.864627+00:00",
+  "source": "Yahoo Finance via yfinance, no paid API key",
+  "universe": 3006,
+  "summary": {
+    "ALL": {
+      "n": 3006,
+      "market_cap": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "cash": {
+        "count": 2923,
+        "pct": 97.2
+      },
+      "total_debt": {
+        "count": 2592,
+        "pct": 86.2
+      },
+      "net_debt": {
+        "count": 1981,
+        "pct": 65.9
+      },
+      "ebitda": {
+        "count": 2665,
+        "pct": 88.7
+      },
+      "free_cash_flow": {
+        "count": 2893,
+        "pct": 96.2
+      },
+      "revenue": {
+        "count": 2899,
+        "pct": 96.4
+      },
+      "equity": {
+        "count": 2936,
+        "pct": 97.7
+      }
+    },
+    "US": {
+      "n": 1506,
+      "market_cap": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "cash": {
+        "count": 1496,
+        "pct": 99.3
+      },
+      "total_debt": {
+        "count": 1487,
+        "pct": 98.7
+      },
+      "net_debt": {
+        "count": 1221,
+        "pct": 81.1
+      },
+      "ebitda": {
+        "count": 1307,
+        "pct": 86.8
+      },
+      "free_cash_flow": {
+        "count": 1496,
+        "pct": 99.3
+      },
+      "revenue": {
+        "count": 1497,
+        "pct": 99.4
+      },
+      "equity": {
+        "count": 1497,
+        "pct": 99.4
+      }
+    },
+    "TSX": {
+      "n": 709,
+      "market_cap": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "cash": {
+        "count": 647,
+        "pct": 91.3
+      },
+      "total_debt": {
+        "count": 590,
+        "pct": 83.2
+      },
+      "net_debt": {
+        "count": 439,
+        "pct": 61.9
+      },
+      "ebitda": {
+        "count": 584,
+        "pct": 82.4
+      },
+      "free_cash_flow": {
+        "count": 624,
+        "pct": 88.0
+      },
+      "revenue": {
+        "count": 624,
+        "pct": 88.0
+      },
+      "equity": {
+        "count": 657,
+        "pct": 92.7
+      }
+    },
+    "TSXV": {
+      "n": 791,
+      "market_cap": {
+        "count": 0,
+        "pct": 0.0
+      },
+      "cash": {
+        "count": 780,
+        "pct": 98.6
+      },
+      "total_debt": {
+        "count": 515,
+        "pct": 65.1
+      },
+      "net_debt": {
+        "count": 321,
+        "pct": 40.6
+      },
+      "ebitda": {
+        "count": 774,
+        "pct": 97.9
+      },
+      "free_cash_flow": {
+        "count": 773,
+        "pct": 97.7
+      },
+      "revenue": {
+        "count": 778,
+        "pct": 98.4
+      },
+      "equity": {
+        "count": 782,
+        "pct": 98.9
+      }
+    }
+  },
+  "request_errors": 0,
+  "error_sample": []
+}
