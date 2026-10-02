@@ -1,0 +1,130 @@
+import json, math
+from datetime import datetime, timezone
+from pathlib import Path
+import numpy as np, pandas as pd, yfinance as yf
+import scanner
+from relative_strength_runtime import relative_strength_score, market_return_20, _period_return
+
+ROOT=Path(__file__).resolve().parents[1]
+SAMPLE=[
+("AAPL","XNYS","US"),("AMD","XNYS","US"),("AMZN","XNYS","US"),("BA","XNYS","US"),("BAC","XNYS","US"),
+("CAT","XNYS","US"),("ADBE","XNYS","US"),("ABBV","XNYS","US"),("ABNB","XNYS","US"),("AVGO","XNYS","US"),
+("AEM","XTSE","CA"),("AC","XTSE","CA"),("ATD","XTSE","CA"),("AQN","XTSE","CA"),("WSP","XTSE","CA"),
+("WCP","XTSE","CA"),("WPM","XTSE","CA"),("ATZ","XTSE","CA"),("ACB","XTSE","CA"),("ATH","XTSE","CA"),
+("ONE","XTSX","CA"),("EFF","XTSX","CA"),("AUMB","XTSX","CA"),("ACL","XTSX","CA"),("AIS","XTSX","CA"),
+("AUAU","XTSX","CA"),("AME","XTSX","CA"),("ABA","XTSX","CA"),("ACDC","XTSX","CA"),("AAG","XTSX","CA")]
+def clip(x,a=-1,b=1): return float(np.clip(x,a,b))
+def conf(avail,total): 
+    p=100*avail/total if total else 0
+    return "A" if p>66.7 else "B" if p>=33.3 else "C"
+def atr(h,n=14):
+    tr=pd.concat([(h.High-h.Low),(h.High-h.Close.shift()).abs(),(h.Low-h.Close.shift()).abs()],axis=1).max(axis=1)
+    return float(tr.tail(n).mean())
+def timing(h):
+    c=h.Close.dropna(); hi=h.High; lo=h.Low; p=float(c.iloc[-1]); a=atr(h)
+    # Location: 20d support/resistance + 52w high. Reward nearby support and useful overhead room.
+    sup=float(lo.tail(20).min()); res=float(hi.tail(60).max()); high52=float(hi.tail(252).max())
+    d_sup=(p-sup)/a if a>0 else np.nan; d_res=(res-p)/a if a>0 else np.nan
+    loc=clip((1.5-d_sup)/1.5)*0.65 + clip((d_res-1.0)/2.0)*0.35
+    # Extension: distance from 20d EMA in ATR; >2 ATR increasingly bad.
+    ema=float(c.ewm(span=20,adjust=False).mean().iloc[-1]); ext=(p-ema)/a if a>0 else 0
+    extension=clip((1.25-abs(ext))/1.75)
+    # Structure: recent 10d range contraction vs prior 30d + controlled pullback from 20d high.
+    r10=(float(hi.tail(10).max())-float(lo.tail(10).min()))/p
+    prior=h.iloc[-40:-10]; r30=(float(prior.High.max())-float(prior.Low.min()))/float(prior.Close.iloc[-1]) if len(prior) else r10
+    contraction=clip((r30-r10)/max(r30,1e-9)*2)
+    pull=(p/float(hi.tail(20).max())-1)*100
+    pullq=1 if -8<=pull<=-1 else (0 if -12<=pull<=2 else -1)
+    structure=.6*contraction+.4*pullq
+    # Confirmation ONLY after a favorable location/structure exists.
+    ret3=(p/float(c.iloc[-4])-1)*100 if len(c)>=4 else 0
+    v=h.Volume.dropna(); vr=float(v.tail(3).mean()/v.iloc[-23:-3].mean()) if len(v)>=23 and v.iloc[-23:-3].mean()>0 else 1
+    eligible=max(loc,structure)>0.15
+    confirmation=(clip(ret3/4)*.6+clip((vr-1)/1.0)*.4) if eligible else 0
+    # Immediate 1-3 day gap/chase only.
+    gaps=(h.Open/h.Close.shift()-1).tail(3).abs()*100
+    gapmax=float(gaps.max()) if len(gaps) else 0
+    ret3abs=abs(ret3)
+    immediate=-clip(max(gapmax-2,ret3abs-5)/8,0,1)
+    parts={"location":15*loc,"extension":12*extension,"structure":10*structure,"confirmation":8*confirmation,"immediate":5*immediate}
+    return round(np.clip(50+sum(parts.values()),0,100),1),{k:round(v,1) for k,v in parts.items()},{"atr":round(a,3),"support20":round(sup,3),"resistance60":round(res,3),"high52":round(high52,3),"extension_atr":round(ext,2),"pullback20_pct":round(pull,2),"gap3_max_pct":round(gapmax,2)}
+def risk(h):
+    c=h.Close.dropna(); r=c.pct_change().dropna(); neg=r[r<0]
+    downside=float(neg.std()*math.sqrt(252)) if len(neg)>10 else np.nan
+    rollmax=c.cummax(); dd=(c/rollmax-1); maxdd=abs(float(dd.min()))
+    dv=(h.Close*h.Volume).dropna(); adv=float(dv.tail(60).median()) if len(dv) else np.nan
+    gaps=(h.Open/h.Close.shift()-1).dropna(); neg_gap=abs(float(gaps.quantile(.02))) if len(gaps)>30 else np.nan
+    s_down=clip((downside-.20)/.35) if np.isfinite(downside) else 0
+    s_dd=clip((maxdd-.25)/.40) if np.isfinite(maxdd) else 0
+    s_liq=clip((6-math.log10(max(adv,1)))/2) if np.isfinite(adv) else 0
+    s_gap=clip((neg_gap-.03)/.07) if np.isfinite(neg_gap) else 0
+    # beta intentionally omitted in pilot if benchmark alignment unavailable => neutral/missing
+    s_hist=-1 if len(c)>=450 else (0 if len(c)>=252 else 1)
+    parts={"downside_vol":14*s_down,"drawdown":12*s_dd,"liquidity":10*s_liq,"gaps_history":7*s_gap,"market_sensitivity":0,"history":3*s_hist}
+    available=14+12+10+7+3
+    return round(np.clip(50+sum(parts.values()),0,100),1),conf(available,50),{k:round(v,1) for k,v in parts.items()},{"downside_vol_pct":round(downside*100,1) if np.isfinite(downside) else None,"max_drawdown_pct":round(maxdd*100,1),"median_dollar_volume_60":round(adv) if np.isfinite(adv) else None,"bad_gap_p02_pct":round(neg_gap*100,1) if np.isfinite(neg_gap) else None}
+def firstval(df,names):
+    if df is None or df.empty:return None
+    for n in names:
+        if n in df.index:
+            x=pd.to_numeric(df.loc[n],errors="coerce").dropna()
+            if len(x): return float(x.iloc[0])
+    return None
+def health(t):
+    try: bs=t.quarterly_balance_sheet
+    except: bs=pd.DataFrame()
+    try: inc=t.quarterly_income_stmt
+    except: inc=pd.DataFrame()
+    try: cf=t.quarterly_cashflow
+    except: cf=pd.DataFrame()
+    cash=firstval(bs,["Cash Cash Equivalents And Short Term Investments","Cash And Cash Equivalents"])
+    debt=firstval(bs,["Total Debt"])
+    equity=firstval(bs,["Stockholders Equity","Total Equity Gross Minority Interest"])
+    assets=firstval(bs,["Total Assets"])
+    curA=firstval(bs,["Current Assets"]); curL=firstval(bs,["Current Liabilities"])
+    ebitda=firstval(inc,["EBITDA","Normalized EBITDA"])
+    rev=firstval(inc,["Total Revenue"])
+    ni=firstval(inc,["Net Income"])
+    fcf=firstval(cf,["Free Cash Flow"])
+    # Six fixed families; missing = zero displacement, never redistributed.
+    vals={}
+    if debt is not None and cash is not None and ebitda not in (None,0):
+        nde=(debt-cash)/abs(ebitda); vals["solvency"]=clip((3-nde)/3)
+    if curA is not None and curL not in (None,0):
+        cr=curA/curL; vals["balance_liquidity"]=clip((cr-1.2)/1.0)
+    if fcf is not None and rev not in (None,0): vals["cashflow"]=clip((fcf/rev-.03)/.10)
+    if ni is not None and equity not in (None,0): vals["profitability"]=clip((ni/equity-.02)/.08)
+    # Stability needs history: quarterly revenue coefficient of variation (lower better)
+    if inc is not None and not inc.empty and "Total Revenue" in inc.index:
+        rv=pd.to_numeric(inc.loc["Total Revenue"],errors="coerce").dropna()
+        if len(rv)>=4 and abs(rv.mean())>0: vals["stability"]=clip((.30-float(rv.std()/abs(rv.mean())))/.25)
+    # Structural robustness: equity/assets only; no stock-market liquidity.
+    if equity is not None and assets not in (None,0): vals["structural"]=clip(((equity/assets)-.25)/.35)
+    weights={"solvency":13,"balance_liquidity":9,"cashflow":9,"profitability":7,"stability":5,"structural":7}
+    parts={k:(weights[k]*vals[k] if k in vals else 0) for k in weights}; av=sum(weights[k] for k in vals)
+    raw={"cash":cash,"debt":debt,"equity":equity,"assets":assets,"ebitda":ebitda,"revenue":rev,"free_cash_flow":fcf}
+    return round(np.clip(50+sum(parts.values()),0,100),1),conf(av,50),{k:round(v,1) for k,v in parts.items()}, {k:(round(v,2) if v is not None else None) for k,v in raw.items()}
+def main():
+    cfg=json.loads((ROOT/"config/parameters.json").read_text())
+    mkt,_=market_return_20(); out=[]; errors=[]
+    for sym,market,country in SAMPLE:
+        y=scanner.yahoo_symbol(sym,market)
+        try:
+            h=yf.download(y,period="2y",interval="1d",auto_adjust=True,progress=False)
+            if isinstance(h.columns,pd.MultiIndex): h.columns=h.columns.get_level_values(0)
+            h=h.dropna(subset=["Close"])
+            if len(h)<80: raise ValueError("insufficient price history")
+            row={"symbol":sym,"market":market,"country":country}
+            base=scanner.calc(row,h,cfg)
+            c=h.Close.dropna().astype(float); ret20=_period_return(c,20); ret60=_period_return(c,60)
+            score,comp=relative_strength_score(base["rsi"],base["rvol"],base["trend"],ret20,ret60,ret20-mkt,cfg)
+            ti,tip,ti_raw=timing(h); ri,rc,rip,ri_raw=risk(h); he,hc,hep,he_raw=health(yf.Ticker(y))
+            out.append({"symbol":sym,"market":market,"yahoo":y,"score":round(score,1),"timing":ti,"timing_confidence":"A","risk":ri,"risk_confidence":rc,"health":he,"health_confidence":hc,"components":{"score":comp,"timing":tip,"risk":rip,"health":hep},"raw":{"timing":ti_raw,"risk":ri_raw,"health":he_raw}})
+            print(sym,round(score,1),ti,ri,he,hc)
+        except Exception as e: errors.append({"symbol":sym,"error":str(e)}); print("ERROR",sym,e)
+    # correlations only as diagnostic, never part of scores
+    df=pd.DataFrame(out)
+    corr=df[["score","timing","risk","health"]].corr().round(3).to_dict() if len(df)>=4 else {}
+    payload={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"EXPERIMENTAL - no production formula changed","sample_target":30,"completed":len(out),"errors":errors,"correlations":corr,"results":out}
+    (ROOT/"data/filter_pilot_30.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
+if __name__=="__main__": main()
