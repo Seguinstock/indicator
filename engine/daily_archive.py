@@ -83,8 +83,12 @@ def pick_snapshot(r):
         'symbol':r.get('symbol'),
         'market':r.get('market'),
         'score':r.get('score') or r.get('buy_potential'),
-        'risk':market_risk(r),
-        'timing':r.get('buy_timing',r.get('timing_v14')),
+        'risk':r.get('risk',market_risk(r)),
+        'risk_confidence':r.get('risk_confidence'),
+        'timing':r.get('timing',r.get('buy_timing',r.get('timing_v14'))),
+        'timing_confidence':r.get('timing_confidence'),
+        'health':r.get('health'),
+        'health_confidence':r.get('health_confidence'),
         'relative_strength_20_pct':r.get('relative_strength_20_pct'),
         'return_20_pct':r.get('return_20_pct'),
         'return_60_pct':r.get('return_60_pct'),
@@ -129,7 +133,7 @@ def benchmark_for(entry, day):
 
 def morning():
     results=load_json(RESULTS,{}); rows=results.get('buy',[])
-    eligible=[r for r in rows if market_risk(r)<65]
+    eligible=[r for r in rows if float(r.get('risk',market_risk(r)))<65]
     eligible.sort(key=lambda r:float(r.get('score') or r.get('buy_potential') or 0),reverse=True)
     picks=eligible[:12]; now=datetime.now(TZ); day=now.date().isoformat()
     archive=load_json(ARCHIVE,{'days':[]}); archive['days']=[d for d in archive.get('days',[]) if d.get('date')!=day]
