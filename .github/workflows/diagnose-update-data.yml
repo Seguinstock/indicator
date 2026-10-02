@@ -1,0 +1,38 @@
+name: Diagnose market data failure
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: read
+  issues: write
+
+jobs:
+  diagnose:
+    if: contains(github.event.issue.body, 'STOCK_INDICATOR_DIAGNOSE_UPDATE_DATA') && github.actor == 'Seguinstock'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect latest Update market data run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RUN_ID=$(gh run list --repo "${{ github.repository }}" --workflow update-data.yml --limit 1 --json databaseId --jq '.[0].databaseId')
+          echo "Latest run: $RUN_ID"
+          gh run view "$RUN_ID" --repo "${{ github.repository }}" --json databaseId,status,conclusion,event,createdAt,updatedAt,headSha,jobs > /tmp/run.json
+          gh run view "$RUN_ID" --repo "${{ github.repository }}" --log-failed > /tmp/failed.log 2>&1 || true
+          {
+            echo 'Diagnostic automatique du dernier Update market data:'
+            echo
+            echo '~~~json'
+            cat /tmp/run.json
+            echo
+            echo '~~~'
+            echo
+            echo '~~~text'
+            tail -c 50000 /tmp/failed.log
+            echo
+            echo '~~~'
+          } > /tmp/comment.txt
+          gh issue comment "${{ github.event.issue.number }}" --repo "${{ github.repository }}" --body-file /tmp/comment.txt
+          gh issue close "${{ github.event.issue.number }}" --repo "${{ github.repository }}"
