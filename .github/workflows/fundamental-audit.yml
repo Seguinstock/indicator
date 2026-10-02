@@ -1,0 +1,39 @@
+name: Audit free fundamental coverage
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  audit:
+    if: contains(github.event.issue.body, 'STOCK_INDICATOR_FUNDAMENTAL_AUDIT') && (github.actor == 'Seguinstock' || github.actor == 'c7rrhj86t8-a11y')
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python engine/audit_free_fundamentals.py
+      - name: Commit audit only
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data/free_fundamentals_coverage.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Audit free fundamentals coverage"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Close request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Fundamental coverage audit finished."
