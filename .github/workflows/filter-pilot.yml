@@ -1,0 +1,33 @@
+name: Filter formula pilot
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+jobs:
+  pilot:
+    if: contains(github.event.issue.body, 'STOCK_INDICATOR_FILTER_PILOT') && (github.actor == 'Seguinstock' || github.actor == 'c7rrhj86t8-a11y')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements.txt
+      - run: python engine/test_filter_formulas.py
+      - name: Publish isolated pilot report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/filter_pilot_30.json
+          git commit -m "Publish 30-stock filter formula pilot" || exit 0
+          git pull --rebase origin main
+          git push origin main
+      - uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            await github.rest.issues.createComment({owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body: 'Banc d’essai des filtres terminé ou arrêté. Vérifier data/filter_pilot_30.json et le journal Actions.'});
+            await github.rest.issues.update({owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, state: 'closed'});
