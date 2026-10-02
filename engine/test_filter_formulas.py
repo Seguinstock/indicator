@@ -62,7 +62,7 @@ def risk(h):
     s_hist=-1 if len(c)>=450 else (0 if len(c)>=252 else 1)
     parts={"downside_vol":14*s_down,"drawdown":12*s_dd,"liquidity":10*s_liq,"gaps_history":7*s_gap,"market_sensitivity":0,"history":3*s_hist}
     available=14+12+10+7+3
-    return round(np.clip(50+sum(parts.values()),0,100),1),conf(available,50),{k:round(v,1) for k,v in parts.items()},{"downside_vol_pct":round(downside*100,1) if np.isfinite(downside) else None,"max_drawdown_pct":round(maxdd*100,1),"median_dollar_volume_60":round(adv) if np.isfinite(adv) else None,"bad_gap_p02_pct":round(neg_gap*100,1) if np.isfinite(neg_gap) else None}
+    return round(np.clip(50+sum(parts.values()),0,100),1),conf(available,50),{k:round(v,1) for k,v in parts.items()},{"downside_vol_pct":round(downside*100,1) if np.isfinite(downside) else None,"max_drawdown_pct":round(maxdd*100,1),"median_dollar_volume_60":round(adv) if np.isfinite(adv) else None,"bad_gap_p02_pct":round(neg_gap*100,1) if np.isfinite(neg_gap) else None,"downside_beta":round(beta_down,2) if np.isfinite(beta_down) else None}
 def firstval(df,names):
     if df is None or df.empty:return None
     for n in names:
@@ -92,8 +92,12 @@ def health(t):
         nde=(debt-cash)/abs(ebitda); vals["solvency"]=clip((3-nde)/3)
     if curA is not None and curL not in (None,0):
         cr=curA/curL; vals["balance_liquidity"]=clip((cr-1.2)/1.0)
-    if fcf is not None and rev not in (None,0): vals["cashflow"]=clip((fcf/rev-.03)/.10)
-    if ni is not None and equity not in (None,0): vals["profitability"]=clip((ni/equity-.02)/.08)
+    if fcf is not None and rev not in (None,0) and not prerevenue: vals["cashflow"]=clip((fcf/rev-.03)/.10)
+    elif prerevenue and fcf is not None and cash is not None and cash>0:
+        # Approximate quarterly cash runway from current FCF burn. Positive FCF is neutral here.
+        vals["cashflow"]=0.0 if fcf>=0 else clip((cash/max(abs(fcf),1)-4)/4)
+    if ni is not None and equity not in (None,0) and not prerevenue: vals["profitability"]=clip((ni/equity-.02)/.08)
+    elif prerevenue and ni is not None: vals["profitability"]=-1.0 if ni<0 else 0.0
     # Stability needs history: quarterly revenue coefficient of variation (lower better)
     if inc is not None and not inc.empty and "Total Revenue" in inc.index:
         rv=pd.to_numeric(inc.loc["Total Revenue"],errors="coerce").dropna()
@@ -102,11 +106,14 @@ def health(t):
     if equity is not None and assets not in (None,0): vals["structural"]=clip(((equity/assets)-.25)/.35)
     weights={"solvency":13,"balance_liquidity":9,"cashflow":9,"profitability":7,"stability":5,"structural":7}
     parts={k:(weights[k]*vals[k] if k in vals else 0) for k in weights}; av=sum(weights[k] for k in vals)
-    raw={"cash":cash,"debt":debt,"equity":equity,"assets":assets,"ebitda":ebitda,"revenue":rev,"free_cash_flow":fcf}
+    raw={"cash":cash,"debt":debt,"equity":equity,"assets":assets,"ebitda":ebitda,"revenue":rev,"free_cash_flow":fcf,"prerevenue_regime":prerevenue}
     return round(np.clip(50+sum(parts.values()),0,100),1),conf(av,50),{k:round(v,1) for k,v in parts.items()}, {k:(round(v,2) if v is not None else None) for k,v in raw.items()}
 def main():
     cfg=json.loads((ROOT/"config/parameters.json").read_text())
     mkt,_=market_return_20(); out=[]; errors=[]
+    bench=yf.download("^GSPC",period="2y",interval="1d",auto_adjust=True,progress=False)
+    if isinstance(bench.columns,pd.MultiIndex): bench.columns=bench.columns.get_level_values(0)
+    bench_ret=bench.Close.dropna().astype(float).pct_change().dropna()
     for sym,market,country in SAMPLE:
         y=scanner.yahoo_symbol(sym,market)
         try:
@@ -118,13 +125,13 @@ def main():
             base=scanner.calc(row,h,cfg)
             c=h.Close.dropna().astype(float); ret20=_period_return(c,20); ret60=_period_return(c,60)
             score,comp=relative_strength_score(base["rsi"],base["rvol"],base["trend"],ret20,ret60,ret20-mkt,cfg)
-            ti,tip,ti_raw=timing(h); ri,rc,rip,ri_raw=risk(h); he,hc,hep,he_raw=health(yf.Ticker(y))
-            out.append({"symbol":sym,"market":market,"yahoo":y,"score":round(score,1),"timing":ti,"timing_confidence":"A","risk":ri,"risk_confidence":rc,"health":he,"health_confidence":hc,"components":{"score":comp,"timing":tip,"risk":rip,"health":hep},"raw":{"timing":ti_raw,"risk":ri_raw,"health":he_raw}})
+            ti,tip,ti_raw,tc=timing(h); ri,rc,rip,ri_raw=risk(h,bench_ret); he,hc,hep,he_raw=health(yf.Ticker(y))
+            out.append({"symbol":sym,"market":market,"yahoo":y,"score":round(score,1),"timing":ti,"timing_confidence":tc,"risk":ri,"risk_confidence":rc,"health":he,"health_confidence":hc,"components":{"score":comp,"timing":tip,"risk":rip,"health":hep},"raw":{"timing":ti_raw,"risk":ri_raw,"health":he_raw}})
             print(sym,round(score,1),ti,ri,he,hc)
         except Exception as e: errors.append({"symbol":sym,"error":str(e)}); print("ERROR",sym,e)
     # correlations only as diagnostic, never part of scores
     df=pd.DataFrame(out)
     corr=df[["score","timing","risk","health"]].corr().round(3).to_dict() if len(df)>=4 else {}
-    payload={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"EXPERIMENTAL - no production formula changed","sample_target":30,"completed":len(out),"errors":errors,"correlations":corr,"results":out}
+    payload={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"EXPERIMENTAL V2 - ATR zero handling + prerevenue health + downside beta; no production formula changed","sample_target":30,"completed":len(out),"errors":errors,"correlations":corr,"results":out}
     (ROOT/"data/filter_pilot_30.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
 if __name__=="__main__": main()
