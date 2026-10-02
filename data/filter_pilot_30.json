@@ -1,130 +1,2195 @@
 {
-  "generated_at": "2026-10-02T13:53:00.071620+00:00",
+  "generated_at": "2026-10-02T13:57:34.790519+00:00",
   "status": "EXPERIMENTAL V2 - ATR zero handling + prerevenue health + downside beta; no production formula changed",
   "sample_target": 30,
-  "completed": 0,
-  "errors": [
+  "completed": 30,
+  "errors": [],
+  "correlations": {
+    "score": {
+      "score": 1.0,
+      "timing": -0.358,
+      "risk": 0.011,
+      "health": 0.381
+    },
+    "timing": {
+      "score": -0.358,
+      "timing": 1.0,
+      "risk": -0.477,
+      "health": 0.011
+    },
+    "risk": {
+      "score": 0.011,
+      "timing": -0.477,
+      "risk": 1.0,
+      "health": -0.272
+    },
+    "health": {
+      "score": 0.381,
+      "timing": 0.011,
+      "risk": -0.272,
+      "health": 1.0
+    }
+  },
+  "results": [
     {
       "symbol": "AAPL",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "AAPL",
+      "score": 44.3,
+      "timing": 61.3,
+      "timing_confidence": "A",
+      "risk": 40.2,
+      "risk_confidence": "A",
+      "health": 78.0,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 12.4,
+          "return_60": 8.2,
+          "trend": 20.0,
+          "rvol": 0.0,
+          "rsi": 3.7
+        },
+        "timing": {
+          "location": -6.6,
+          "extension": 8.5,
+          "structure": 9.7,
+          "confirmation": -0.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 0.5,
+          "drawdown": 2.5,
+          "liquidity": -10.0,
+          "gaps_history": -0.8,
+          "market_sensitivity": 1.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 10.6,
+          "balance_liquidity": -1.8,
+          "cashflow": 9.0,
+          "profitability": 7.0,
+          "stability": 2.6,
+          "structural": 0.6
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 6.423,
+          "support20": 309.9,
+          "resistance60": 345.34,
+          "high52": 345.34,
+          "extension_atr": 0.01,
+          "pullback20_pct": -4.11,
+          "gap3_max_pct": 0.91
+        },
+        "risk": {
+          "downside_vol_pct": 21.3,
+          "max_drawdown_pct": 33.4,
+          "median_dollar_volume_60": 12909174103,
+          "bad_gap_p02_pct": 2.2,
+          "downside_beta": 1.2
+        },
+        "health": {
+          "cash": 62399000000.0,
+          "debt": 84344000000.0,
+          "equity": 107520000000.0,
+          "assets": 383266000000.0,
+          "ebitda": 39015000000.0,
+          "revenue": 109417000000.0,
+          "free_cash_flow": 31914000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AMD",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "AMD",
+      "score": 80.2,
+      "timing": 38.4,
+      "timing_confidence": "A",
+      "risk": 59.9,
+      "risk_confidence": "A",
+      "health": 92.3,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 40.0,
+          "return_60": 18.1,
+          "trend": 20.0,
+          "rvol": 0.0,
+          "rsi": 2.1
+        },
+        "timing": {
+          "location": -11.9,
+          "extension": -8.3,
+          "structure": 6.0,
+          "confirmation": 3.5,
+          "immediate": -0.9
+        },
+        "risk": {
+          "downside_vol": 6.9,
+          "drawdown": 8.9,
+          "liquidity": -10.0,
+          "gaps_history": 3.0,
+          "market_sensitivity": 4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 13.0,
+          "balance_liquidity": 9.0,
+          "cashflow": 9.0,
+          "profitability": 1.2,
+          "stability": 3.1,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 25.05,
+          "support20": 458.0,
+          "resistance60": 642.777,
+          "high52": 642.777,
+          "extension_atr": 2.46,
+          "pullback20_pct": -0.7,
+          "gap3_max_pct": 3.37
+        },
+        "risk": {
+          "downside_vol_pct": 37.3,
+          "max_drawdown_pct": 54.7,
+          "median_dollar_volume_60": 11547224454,
+          "bad_gap_p02_pct": 6.0,
+          "downside_beta": 2.02
+        },
+        "health": {
+          "cash": 13111000000.0,
+          "debt": 4276000000.0,
+          "equity": 67224000000.0,
+          "assets": 84464000000.0,
+          "ebitda": 3353000000.0,
+          "revenue": 11536000000.0,
+          "free_cash_flow": 1558000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AMZN",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "AMZN",
+      "score": 28.7,
+      "timing": 76.0,
+      "timing_confidence": "A",
+      "risk": 41.0,
+      "risk_confidence": "A",
+      "health": 61.4,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 4.5,
+          "return_60": 5.5,
+          "trend": 16.0,
+          "rvol": 0.0,
+          "rsi": 2.7
+        },
+        "timing": {
+          "location": 6.9,
+          "extension": 7.6,
+          "structure": 10.0,
+          "confirmation": 1.5,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 0.3,
+          "drawdown": 1.8,
+          "liquidity": -10.0,
+          "gaps_history": -0.2,
+          "market_sensitivity": 2.1,
+          "history": -3
+        },
+        "health": {
+          "solvency": 8.1,
+          "balance_liquidity": -0.2,
+          "cashflow": -9.0,
+          "profitability": 4.2,
+          "stability": 3.6,
+          "structural": 4.6
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 5.371,
+          "support20": 244.3,
+          "resistance60": 287.2,
+          "high52": 287.2,
+          "extension_atr": -0.14,
+          "pullback20_pct": -3.88,
+          "gap3_max_pct": 1.23
+        },
+        "risk": {
+          "downside_vol_pct": 20.7,
+          "max_drawdown_pct": 30.9,
+          "median_dollar_volume_60": 8541976567,
+          "bad_gap_p02_pct": 2.8,
+          "downside_beta": 1.43
+        },
+        "health": {
+          "cash": 143089000000.0,
+          "debt": 209888000000.0,
+          "equity": 441914000000.0,
+          "assets": 916630000000.0,
+          "ebitda": 59579000000.0,
+          "revenue": 181519000000.0,
+          "free_cash_flow": -18171000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "BA",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "BA",
+      "score": 10.6,
+      "timing": 68.4,
+      "timing_confidence": "A",
+      "risk": 38.6,
+      "risk_confidence": "A",
+      "health": 26.6,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 0.6
+        },
+        "timing": {
+          "location": 8.6,
+          "extension": 1.3,
+          "structure": 6.0,
+          "confirmation": 2.7,
+          "immediate": -0.2
+        },
+        "risk": {
+          "downside_vol": 1.3,
+          "drawdown": 0.6,
+          "liquidity": -10.0,
+          "gaps_history": -0.6,
+          "market_sensitivity": 0.4,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -0.2,
+          "cashflow": -8.6,
+          "profitability": -1.8,
+          "stability": 4.5,
+          "structural": -4.3
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 7.065,
+          "support20": 184.01,
+          "resistance60": 241.09,
+          "high52": 254.35,
+          "extension_atr": -1.06,
+          "pullback20_pct": -11.31,
+          "gap3_max_pct": 2.33
+        },
+        "risk": {
+          "downside_vol_pct": 23.2,
+          "max_drawdown_pct": 26.9,
+          "median_dollar_volume_60": 1108674229,
+          "bad_gap_p02_pct": 2.4,
+          "downside_beta": 1.07
+        },
+        "health": {
+          "cash": 20905000000.0,
+          "debt": 47209000000.0,
+          "equity": 5987000000.0,
+          "assets": 164787000000.0,
+          "ebitda": 1215000000.0,
+          "revenue": 22217000000.0,
+          "free_cash_flow": -1454000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "BAC",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "BAC",
+      "score": 10.0,
+      "timing": 44.9,
+      "timing_confidence": "A",
+      "risk": 38.0,
+      "risk_confidence": "A",
+      "health": 61.4,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 0.0
+        },
+        "timing": {
+          "location": 11.5,
+          "extension": -12.0,
+          "structure": -1.0,
+          "confirmation": -3.6,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 0.1,
+          "drawdown": 0.8,
+          "liquidity": -10.0,
+          "gaps_history": -0.9,
+          "market_sensitivity": 1.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": 0,
+          "cashflow": 9.0,
+          "profitability": 0.7,
+          "stability": 4.9,
+          "structural": -3.3
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 1.101,
+          "support20": 52.89,
+          "resistance60": 64.899,
+          "high52": 64.899,
+          "extension_atr": -3.41,
+          "pullback20_pct": -16.22,
+          "gap3_max_pct": 0.96
+        },
+        "risk": {
+          "downside_vol_pct": 20.4,
+          "max_drawdown_pct": 27.5,
+          "median_dollar_volume_60": 1823398775,
+          "bad_gap_p02_pct": 2.1,
+          "downside_beta": 1.2
+        },
+        "health": {
+          "cash": 249865000000.0,
+          "debt": 383594000000.0,
+          "equity": 300668000000.0,
+          "assets": 3496186000000.0,
+          "ebitda": null,
+          "revenue": 30272000000.0,
+          "free_cash_flow": 41770000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "CAT",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "CAT",
+      "score": 46.1,
+      "timing": 56.3,
+      "timing_confidence": "A",
+      "risk": 42.5,
+      "risk_confidence": "A",
+      "health": 57.6,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 21.1,
+          "return_60": 0.0,
+          "trend": 20.0,
+          "rvol": 0.0,
+          "rsi": 5.0
+        },
+        "timing": {
+          "location": -4.5,
+          "extension": 0.1,
+          "structure": 9.6,
+          "confirmation": 1.1,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 1.1,
+          "drawdown": 2.7,
+          "liquidity": -10.0,
+          "gaps_history": 0.3,
+          "market_sensitivity": 1.3,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": 1.5,
+          "cashflow": 9.0,
+          "profitability": 7.0,
+          "stability": 4.3,
+          "structural": -1.2
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 20.729,
+          "support20": 772.86,
+          "resistance60": 962.844,
+          "high52": 1071.472,
+          "extension_atr": 1.23,
+          "pullback20_pct": -1.96,
+          "gap3_max_pct": 1.75
+        },
+        "risk": {
+          "downside_vol_pct": 22.7,
+          "max_drawdown_pct": 34.0,
+          "median_dollar_volume_60": 1957489600,
+          "bad_gap_p02_pct": 3.3,
+          "downside_beta": 1.26
+        },
+        "health": {
+          "cash": 6713000000.0,
+          "debt": 45146000000.0,
+          "equity": 19395000000.0,
+          "assets": 102609000000.0,
+          "ebitda": 5309000000.0,
+          "revenue": 20543000000.0,
+          "free_cash_flow": 3260000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ADBE",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "ADBE",
+      "score": 12.6,
+      "timing": 55.6,
+      "timing_confidence": "A",
+      "risk": 52.9,
+      "risk_confidence": "A",
+      "health": 81.1,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 11.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 1.6
+        },
+        "timing": {
+          "location": 1.7,
+          "extension": 3.2,
+          "structure": 1.0,
+          "confirmation": 0,
+          "immediate": -0.3
+        },
+        "risk": {
+          "downside_vol": 3.9,
+          "drawdown": 12.0,
+          "liquidity": -10.0,
+          "gaps_history": 0.9,
+          "market_sensitivity": -1.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 11.2,
+          "balance_liquidity": -3.9,
+          "cashflow": 9.0,
+          "profitability": 7.0,
+          "stability": 5.0,
+          "structural": 2.8
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 7.956,
+          "support20": 224.67,
+          "resistance60": 294.53,
+          "high52": 363.7,
+          "extension_atr": -0.78,
+          "pullback20_pct": -12.68,
+          "gap3_max_pct": 2.5
+        },
+        "risk": {
+          "downside_vol_pct": 29.9,
+          "max_drawdown_pct": 65.0,
+          "median_dollar_volume_60": 1172610646,
+          "bad_gap_p02_pct": 3.9,
+          "downside_beta": 0.81
+        },
+        "health": {
+          "cash": 5639000000.0,
+          "debt": 6762000000.0,
+          "equity": 11764000000.0,
+          "assets": 29981000000.0,
+          "ebitda": 2638000000.0,
+          "revenue": 6760000000.0,
+          "free_cash_flow": 2438000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ABBV",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "ABBV",
+      "score": 40.9,
+      "timing": 57.5,
+      "timing_confidence": "A",
+      "risk": 32.6,
+      "risk_confidence": "A",
+      "health": 34.6,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 10.2,
+          "return_60": 8.0,
+          "trend": 20.0,
+          "rvol": 0.0,
+          "rsi": 2.7
+        },
+        "timing": {
+          "location": -5.6,
+          "extension": 5.8,
+          "structure": 10.0,
+          "confirmation": -2.7,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 0.4,
+          "drawdown": -1.3,
+          "liquidity": -10.0,
+          "gaps_history": -1.1,
+          "market_sensitivity": -2.3,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -3.5,
+          "cashflow": 9.0,
+          "profitability": -7.0,
+          "stability": 5.0,
+          "structural": -5.9
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 4.547,
+          "support20": 246.77,
+          "resistance60": 269.39,
+          "high52": 269.39,
+          "extension_atr": -0.41,
+          "pullback20_pct": -3.63,
+          "gap3_max_pct": 0.5
+        },
+        "risk": {
+          "downside_vol_pct": 20.9,
+          "max_drawdown_pct": 20.7,
+          "median_dollar_volume_60": 1134597165,
+          "bad_gap_p02_pct": 1.9,
+          "downside_beta": 0.53
+        },
+        "health": {
+          "cash": 6569000000.0,
+          "debt": 70822000000.0,
+          "equity": -5935000000.0,
+          "assets": 135115000000.0,
+          "ebitda": 6907000000.0,
+          "revenue": 16990000000.0,
+          "free_cash_flow": 3114000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ABNB",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "ABNB",
+      "score": 31.7,
+      "timing": 62.1,
+      "timing_confidence": "A",
+      "risk": 42.2,
+      "risk_confidence": "A",
+      "health": 83.6,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 13.3,
+          "trend": 16.0,
+          "rvol": 0.0,
+          "rsi": 2.5
+        },
+        "timing": {
+          "location": -2.0,
+          "extension": 7.2,
+          "structure": 3.6,
+          "confirmation": 3.5,
+          "immediate": -0.2
+        },
+        "risk": {
+          "downside_vol": 1.9,
+          "drawdown": 2.9,
+          "liquidity": -10.0,
+          "gaps_history": -0.8,
+          "market_sensitivity": 1.2,
+          "history": -3
+        },
+        "health": {
+          "solvency": 13.0,
+          "balance_liquidity": 1.9,
+          "cashflow": 9.0,
+          "profitability": 7.0,
+          "stability": 2.3,
+          "structural": 0.4
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 5.344,
+          "support20": 149.0,
+          "resistance60": 193.453,
+          "high52": 193.453,
+          "extension_atr": -0.2,
+          "pullback20_pct": -11.67,
+          "gap3_max_pct": 2.28
+        },
+        "risk": {
+          "downside_vol_pct": 24.8,
+          "max_drawdown_pct": 34.5,
+          "median_dollar_volume_60": 691271860,
+          "bad_gap_p02_pct": 2.2,
+          "downside_beta": 1.23
+        },
+        "health": {
+          "cash": 12069000000.0,
+          "debt": 2496000000.0,
+          "equity": 7799000000.0,
+          "assets": 28754000000.0,
+          "ebitda": 934000000.0,
+          "revenue": 3608000000.0,
+          "free_cash_flow": 1270000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AVGO",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XNYS",
+      "yahoo": "AVGO",
+      "score": 15.4,
+      "timing": 67.7,
+      "timing_confidence": "A",
+      "risk": 52.5,
+      "risk_confidence": "A",
+      "health": 86.1,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 8.1,
+          "return_60": 0.0,
+          "trend": 5.0,
+          "rvol": 0.0,
+          "rsi": 2.2
+        },
+        "timing": {
+          "location": 3.8,
+          "extension": 6.2,
+          "structure": 10.0,
+          "confirmation": -2.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 5.9,
+          "drawdown": 4.8,
+          "liquidity": -10.0,
+          "gaps_history": 0.8,
+          "market_sensitivity": 4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 4.6,
+          "balance_liquidity": 9.0,
+          "cashflow": 9.0,
+          "profitability": 7.0,
+          "stability": 1.0,
+          "structural": 5.6
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 9.741,
+          "support20": 335.2,
+          "resistance60": 431.943,
+          "high52": 493.32,
+          "extension_atr": -0.34,
+          "pullback20_pct": -5.38,
+          "gap3_max_pct": 1.84
+        },
+        "risk": {
+          "downside_vol_pct": 34.8,
+          "max_drawdown_pct": 41.1,
+          "median_dollar_volume_60": 7586893566,
+          "bad_gap_p02_pct": 3.8,
+          "downside_beta": 1.98
+        },
+        "health": {
+          "cash": 23975000000.0,
+          "debt": 59419000000.0,
+          "equity": 99690000000.0,
+          "assets": 188148000000.0,
+          "ebitda": 18266000000.0,
+          "revenue": 29591000000.0,
+          "free_cash_flow": 13665000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AEM",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "AEM.TO",
+      "score": 42.0,
+      "timing": 66.8,
+      "timing_confidence": "A",
+      "risk": 45.7,
+      "risk_confidence": "A",
+      "health": 94.1,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 3.3,
+          "return_60": 23.5,
+          "trend": 13.0,
+          "rvol": 0.0,
+          "rsi": 2.1
+        },
+        "timing": {
+          "location": 10.7,
+          "extension": 2.4,
+          "structure": 6.0,
+          "confirmation": -2.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 3.9,
+          "drawdown": 5.8,
+          "liquidity": -10.0,
+          "gaps_history": 0.9,
+          "market_sensitivity": -1.9,
+          "history": -3
+        },
+        "health": {
+          "solvency": 13.0,
+          "balance_liquidity": 9.0,
+          "cashflow": 9.0,
+          "profitability": 3.1,
+          "stability": 3.0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 8.809,
+          "support20": 256.39,
+          "resistance60": 309.603,
+          "high52": 347.311,
+          "extension_atr": -0.9,
+          "pullback20_pct": -8.89,
+          "gap3_max_pct": 1.95
+        },
+        "risk": {
+          "downside_vol_pct": 29.6,
+          "max_drawdown_pct": 44.3,
+          "median_dollar_volume_60": 203603986,
+          "bad_gap_p02_pct": 3.9,
+          "downside_beta": 0.62
+        },
+        "health": {
+          "cash": 3477915000.0,
+          "debt": 320350000.0,
+          "equity": 28603730000.0,
+          "assets": 37795043000.0,
+          "ebitda": 2762150000.0,
+          "revenue": 3802818000.0,
+          "free_cash_flow": 1328511000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AC",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "AC.TO",
+      "score": 24.7,
+      "timing": 63.6,
+      "timing_confidence": "A",
+      "risk": 45.9,
+      "risk_confidence": "A",
+      "health": 22.5,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 7.9,
+          "trend": 16.0,
+          "rvol": 0.0,
+          "rsi": 0.8
+        },
+        "timing": {
+          "location": 14.2,
+          "extension": -0.7,
+          "structure": 5.4,
+          "confirmation": -5.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 1.8,
+          "drawdown": 7.6,
+          "liquidity": -9.0,
+          "gaps_history": -0.7,
+          "market_sensitivity": -0.9,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -5.4,
+          "cashflow": -3.3,
+          "profitability": -7.0,
+          "stability": 4.7,
+          "structural": -3.4
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 1.044,
+          "support20": 25.82,
+          "resistance60": 31.45,
+          "high52": 31.45,
+          "extension_atr": -1.35,
+          "pullback20_pct": -10.79,
+          "gap3_max_pct": 0.87
+        },
+        "risk": {
+          "downside_vol_pct": 24.5,
+          "max_drawdown_pct": 50.5,
+          "median_dollar_volume_60": 62734362,
+          "bad_gap_p02_pct": 2.3,
+          "downside_beta": 0.82
+        },
+        "health": {
+          "cash": 7011000000.0,
+          "debt": 12794000000.0,
+          "equity": 2676000000.0,
+          "assets": 33725000000.0,
+          "ebitda": 365000000.0,
+          "revenue": 6266000000.0,
+          "free_cash_flow": -44000000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ATD",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "ATD.TO",
+      "score": 10.0,
+      "timing": 62.0,
+      "timing_confidence": "A",
+      "risk": 26.6,
+      "risk_confidence": "A",
+      "health": 48.9,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 0.0
+        },
+        "timing": {
+          "location": 12.0,
+          "extension": -6.5,
+          "structure": 10.0,
+          "confirmation": -3.4,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": -2.8,
+          "drawdown": -1.6,
+          "liquidity": -10.0,
+          "gaps_history": -2.0,
+          "market_sensitivity": -4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": 0.6,
+          "cashflow": 2.1,
+          "profitability": 2.6,
+          "stability": 3.9,
+          "structural": 2.8
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 1.194,
+          "support20": 76.43,
+          "resistance60": 93.428,
+          "high52": 94.675,
+          "extension_atr": -2.21,
+          "pullback20_pct": -6.85,
+          "gap3_max_pct": 0.39
+        },
+        "risk": {
+          "downside_vol_pct": 13.0,
+          "max_drawdown_pct": 19.7,
+          "median_dollar_volume_60": 110964451,
+          "bad_gap_p02_pct": 1.0,
+          "downside_beta": 0.16
+        },
+        "health": {
+          "cash": 3242900000.0,
+          "debt": 15379200000.0,
+          "equity": 16682000000.0,
+          "assets": 42730800000.0,
+          "ebitda": 1824000000.0,
+          "revenue": 21704800000.0,
+          "free_cash_flow": 1160500000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "AQN",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "AQN.TO",
+      "score": 4.7,
+      "timing": 65.0,
+      "timing_confidence": "A",
+      "risk": 36.1,
+      "risk_confidence": "A",
+      "health": 45.7,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 2.5,
+          "return_60": 0.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 2.2
+        },
+        "timing": {
+          "location": -2.7,
+          "extension": 7.9,
+          "structure": 9.4,
+          "confirmation": 0.5,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": -0.4,
+          "drawdown": -0.2,
+          "liquidity": -6.5,
+          "gaps_history": -1.6,
+          "market_sensitivity": -2.1,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -2.8,
+          "cashflow": 9.0,
+          "profitability": -1.7,
+          "stability": 2.5,
+          "structural": 1.6
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.132,
+          "support20": 6.929,
+          "resistance60": 8.607,
+          "high52": 9.361,
+          "extension_atr": -0.09,
+          "pullback20_pct": -6.51,
+          "gap3_max_pct": 0.42
+        },
+        "risk": {
+          "downside_vol_pct": 19.0,
+          "max_drawdown_pct": 24.4,
+          "median_dollar_volume_60": 20011862,
+          "bad_gap_p02_pct": 1.4,
+          "downside_beta": 0.57
+        },
+        "health": {
+          "cash": 55000000.0,
+          "debt": 6635700000.0,
+          "equity": 4620900000.0,
+          "assets": 13923200000.0,
+          "ebitda": 191300000.0,
+          "revenue": 543900000.0,
+          "free_cash_flow": 123700000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "WSP",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "WSP.TO",
+      "score": 3.1,
+      "timing": 61.8,
+      "timing_confidence": "A",
+      "risk": 41.7,
+      "risk_confidence": "A",
+      "health": 48.4,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 2.2,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 1.0
+        },
+        "timing": {
+          "location": 12.3,
+          "extension": -0.3,
+          "structure": 0.1,
+          "confirmation": -0.5,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 1.2,
+          "drawdown": 5.9,
+          "liquidity": -9.9,
+          "gaps_history": -1.3,
+          "market_sensitivity": -1.2,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": 0.0,
+          "cashflow": 3.8,
+          "profitability": 0.3,
+          "stability": 4.3,
+          "structural": 3.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 5.972,
+          "support20": 169.26,
+          "resistance60": 199.428,
+          "high52": 288.074,
+          "extension_atr": -1.29,
+          "pullback20_pct": -10.64,
+          "gap3_max_pct": 1.01
+        },
+        "risk": {
+          "downside_vol_pct": 22.9,
+          "max_drawdown_pct": 44.5,
+          "median_dollar_volume_60": 95887985,
+          "bad_gap_p02_pct": 1.7,
+          "downside_beta": 0.77
+        },
+        "health": {
+          "cash": 941700000.0,
+          "debt": 8715100000.0,
+          "equity": 10440500000.0,
+          "assets": 26024100000.0,
+          "ebitda": 701000000.0,
+          "revenue": 5404400000.0,
+          "free_cash_flow": 388900000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "WCP",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "WCP.TO",
+      "score": 46.0,
+      "timing": 71.5,
+      "timing_confidence": "A",
+      "risk": 44.4,
+      "risk_confidence": "A",
+      "health": 70.2,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 6.8,
+          "return_60": 16.8,
+          "trend": 20.0,
+          "rvol": 0.0,
+          "rsi": 2.4
+        },
+        "timing": {
+          "location": 11.1,
+          "extension": 4.7,
+          "structure": 6.0,
+          "confirmation": -0.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 2.8,
+          "drawdown": 2.5,
+          "liquidity": -9.8,
+          "gaps_history": 0.6,
+          "market_sensitivity": 1.3,
+          "history": -3
+        },
+        "health": {
+          "solvency": 6.2,
+          "balance_liquidity": -5.8,
+          "cashflow": 9.0,
+          "profitability": 5.0,
+          "stability": -1.2,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.514,
+          "support20": 17.4,
+          "resistance60": 19.324,
+          "high52": 19.324,
+          "extension_atr": -0.57,
+          "pullback20_pct": -8.35,
+          "gap3_max_pct": 1.3
+        },
+        "risk": {
+          "downside_vol_pct": 27.0,
+          "max_drawdown_pct": 33.2,
+          "median_dollar_volume_60": 89136132,
+          "bad_gap_p02_pct": 3.6,
+          "downside_beta": 1.26
+        },
+        "health": {
+          "cash": 4400000.0,
+          "debt": 2773800000.0,
+          "equity": 11489300000.0,
+          "assets": 19214000000.0,
+          "ebitda": 1767800000.0,
+          "revenue": 2698500000.0,
+          "free_cash_flow": 1096100000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "WPM",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "WPM.TO",
+      "score": 42.8,
+      "timing": 59.7,
+      "timing_confidence": "A",
+      "risk": 44.5,
+      "risk_confidence": "A",
+      "health": 47.2,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 25.0,
+          "trend": 16.0,
+          "rvol": 0.0,
+          "rsi": 1.8
+        },
+        "timing": {
+          "location": 8.9,
+          "extension": 1.6,
+          "structure": -0.7,
+          "confirmation": -0.1,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 4.5,
+          "drawdown": 3.2,
+          "liquidity": -10.0,
+          "gaps_history": 1.1,
+          "market_sensitivity": -1.3,
+          "history": -3
+        },
+        "health": {
+          "solvency": 2.8,
+          "balance_liquidity": -6.6,
+          "cashflow": -9.0,
+          "profitability": 3.2,
+          "stability": -0.1,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 7.109,
+          "support20": 187.01,
+          "resistance60": 226.61,
+          "high52": 226.61,
+          "extension_atr": -1.01,
+          "pullback20_pct": -12.56,
+          "gap3_max_pct": 1.59
+        },
+        "risk": {
+          "downside_vol_pct": 31.3,
+          "max_drawdown_pct": 35.6,
+          "median_dollar_volume_60": 137541803,
+          "bad_gap_p02_pct": 4.1,
+          "downside_beta": 0.73
+        },
+        "health": {
+          "cash": 100192000.0,
+          "debt": 1976750000.0,
+          "equity": 9690445000.0,
+          "assets": 12161186000.0,
+          "ebitda": 798250000.0,
+          "revenue": 929201000.0,
+          "free_cash_flow": -3851585000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ATZ",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "ATZ.TO",
+      "score": 16.2,
+      "timing": 69.1,
+      "timing_confidence": "A",
+      "risk": 49.7,
+      "risk_confidence": "A",
+      "health": 63.2,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 4.0,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 2.2
+        },
+        "timing": {
+          "location": 4.6,
+          "extension": 7.0,
+          "structure": 9.7,
+          "confirmation": -2.3,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 5.3,
+          "drawdown": 6.6,
+          "liquidity": -9.6,
+          "gaps_history": -0.5,
+          "market_sensitivity": 0.9,
+          "history": -3
+        },
+        "health": {
+          "solvency": 2.1,
+          "balance_liquidity": 1.7,
+          "cashflow": -1.9,
+          "profitability": 5.5,
+          "stability": 1.9,
+          "structural": 3.8
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 4.394,
+          "support20": 114.9,
+          "resistance60": 164.04,
+          "high52": 174.52,
+          "extension_atr": -0.22,
+          "pullback20_pct": -6.35,
+          "gap3_max_pct": 0.89
+        },
+        "risk": {
+          "downside_vol_pct": 33.3,
+          "max_drawdown_pct": 46.8,
+          "median_dollar_volume_60": 82316790,
+          "bad_gap_p02_pct": 2.5,
+          "downside_beta": 1.19
+        },
+        "health": {
+          "cash": 471932000.0,
+          "debt": 1080450000.0,
+          "equity": 1415081000.0,
+          "assets": 3226091000.0,
+          "ebitda": 242256000.0,
+          "revenue": 951009000.0,
+          "free_cash_flow": 8765000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ACB",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "ACB.TO",
+      "score": 59.1,
+      "timing": 57.7,
+      "timing_confidence": "A",
+      "risk": 67.5,
+      "risk_confidence": "A",
+      "health": 67.4,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 19.6,
+          "return_60": 25.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 4.5
+        },
+        "timing": {
+          "location": -5.5,
+          "extension": 6.4,
+          "structure": 10.0,
+          "confirmation": -3.2,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 7.9,
+          "drawdown": 11.0,
+          "liquidity": -0.9,
+          "gaps_history": -0.3,
+          "market_sensitivity": 2.8,
+          "history": -3
+        },
+        "health": {
+          "solvency": 13.0,
+          "balance_liquidity": 9.0,
+          "cashflow": -9.0,
+          "profitability": -2.4,
+          "stability": -0.1,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.173,
+          "support20": 5.095,
+          "resistance60": 6.055,
+          "high52": 9.33,
+          "extension_atr": 0.32,
+          "pullback20_pct": -7.35,
+          "gap3_max_pct": 1.23
+        },
+        "risk": {
+          "downside_vol_pct": 39.8,
+          "max_drawdown_pct": 61.7,
+          "median_dollar_volume_60": 1528438,
+          "bad_gap_p02_pct": 2.7,
+          "downside_beta": 1.56
+        },
+        "health": {
+          "cash": 100029000.0,
+          "debt": 22684000.0,
+          "equity": 527131000.0,
+          "assets": 620877000.0,
+          "ebitda": 799000.0,
+          "revenue": 67554000.0,
+          "free_cash_flow": -9856000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ATH",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSE",
+      "yahoo": "ATH.TO",
+      "score": 23.5,
+      "timing": 69.3,
+      "timing_confidence": "A",
+      "risk": 46.8,
+      "risk_confidence": "A",
+      "health": 90.6,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 3.3,
+          "return_60": 1.7,
+          "trend": 16.0,
+          "rvol": 0.0,
+          "rsi": 2.5
+        },
+        "timing": {
+          "location": 5.3,
+          "extension": 7.1,
+          "structure": 6.0,
+          "confirmation": 0.9,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 3.6,
+          "drawdown": 0.1,
+          "liquidity": -6.3,
+          "gaps_history": 0.8,
+          "market_sensitivity": 1.6,
+          "history": -3
+        },
+        "health": {
+          "solvency": 13.0,
+          "balance_liquidity": 6.3,
+          "cashflow": 9.0,
+          "profitability": 1.3,
+          "stability": 4.0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.351,
+          "support20": 9.87,
+          "resistance60": 11.51,
+          "high52": 12.86,
+          "extension_atr": -0.22,
+          "pullback20_pct": -9.69,
+          "gap3_max_pct": 1.35
+        },
+        "risk": {
+          "downside_vol_pct": 28.9,
+          "max_drawdown_pct": 25.5,
+          "median_dollar_volume_60": 18095604,
+          "bad_gap_p02_pct": 3.8,
+          "downside_beta": 1.32
+        },
+        "health": {
+          "cash": 291726000.0,
+          "debt": 205580000.0,
+          "equity": 1877250000.0,
+          "assets": 2649359000.0,
+          "ebitda": 129571000.0,
+          "revenue": 342612000.0,
+          "free_cash_flow": 49838000.0,
+          "prerevenue_regime": 0
+        }
+      }
     },
     {
       "symbol": "ONE",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "ONE.V",
+      "score": 78.3,
+      "timing": 36.8,
+      "timing_confidence": "A",
+      "risk": 90.5,
+      "risk_confidence": "A",
+      "health": 63.0,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 40.0,
+          "return_60": 25.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 3.3
+        },
+        "timing": {
+          "location": -8.4,
+          "extension": -3.2,
+          "structure": -0.7,
+          "confirmation": 0,
+          "immediate": -0.8
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 12.0,
+          "liquidity": 8.5,
+          "gaps_history": 5.0,
+          "market_sensitivity": 4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0.0,
+          "balance_liquidity": 9.0,
+          "cashflow": 9.0,
+          "profitability": -7.0,
+          "stability": -5.0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.053,
+          "support20": 0.43,
+          "resistance60": 0.7,
+          "high52": 1.39,
+          "extension_atr": 1.72,
+          "pullback20_pct": -11.43,
+          "gap3_max_pct": 3.28
+        },
+        "risk": {
+          "downside_vol_pct": 86.7,
+          "max_drawdown_pct": 72.1,
+          "median_dollar_volume_60": 19645,
+          "bad_gap_p02_pct": 8.0,
+          "downside_beta": 2.11
+        },
+        "health": {
+          "cash": 2877629.0,
+          "debt": 74879.0,
+          "equity": 3153329.0,
+          "assets": 3408200.0,
+          "ebitda": -880022.0,
+          "revenue": 64410.0,
+          "free_cash_flow": -144043.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "EFF",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "EFF.V",
+      "score": 22.5,
+      "timing": 50.0,
+      "timing_confidence": "C",
+      "risk": 83.9,
+      "risk_confidence": "A",
+      "health": 24.2,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 10.6,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 1.8
+        },
+        "timing": {
+          "location": 0,
+          "extension": 0,
+          "structure": 0,
+          "confirmation": 0,
+          "immediate": 0
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 7.5,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -1.6,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": -8.5,
+          "cashflow": -3.3,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": -7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.0,
+          "support20": null,
+          "resistance60": null,
+          "high52": null,
+          "extension_atr": null,
+          "pullback20_pct": null,
+          "gap3_max_pct": null
+        },
+        "risk": {
+          "downside_vol_pct": 79.8,
+          "max_drawdown_pct": 50.0,
+          "median_dollar_volume_60": 67,
+          "bad_gap_p02_pct": 33.3,
+          "downside_beta": 0.69
+        },
+        "health": {
+          "cash": 212962.0,
+          "debt": null,
+          "equity": -541537.0,
+          "assets": 400893.0,
+          "ebitda": -96485.0,
+          "revenue": 0.0,
+          "free_cash_flow": -84242.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "AUMB",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "AUMB.V",
+      "score": 20.5,
+      "timing": 52.4,
+      "timing_confidence": "A",
+      "risk": 79.4,
+      "risk_confidence": "A",
+      "health": 18.3,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 19.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 1.5
+        },
+        "timing": {
+          "location": 12.0,
+          "extension": 0.1,
+          "structure": -2.7,
+          "confirmation": -6.5,
+          "immediate": -0.5
+        },
+        "risk": {
+          "downside_vol": 12.4,
+          "drawdown": 10.3,
+          "liquidity": 1.7,
+          "gaps_history": 4.2,
+          "market_sensitivity": 3.8,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -8.1,
+          "cashflow": -8.6,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 5.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.044,
+          "support20": 0.71,
+          "resistance60": 0.91,
+          "high52": 1.54,
+          "extension_atr": -1.24,
+          "pullback20_pct": -17.98,
+          "gap3_max_pct": 2.82
+        },
+        "risk": {
+          "downside_vol_pct": 50.9,
+          "max_drawdown_pct": 59.3,
+          "median_dollar_volume_60": 452378,
+          "bad_gap_p02_pct": 7.2,
+          "downside_beta": 1.76
+        },
+        "health": {
+          "cash": 4173000.0,
+          "debt": 17798000.0,
+          "equity": 35743000.0,
+          "assets": 71392000.0,
+          "ebitda": -6061000.0,
+          "revenue": 0.0,
+          "free_cash_flow": -21273000.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "ACL",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "ACL.V",
+      "score": 10.8,
+      "timing": 47.5,
+      "timing_confidence": "A",
+      "risk": 92.0,
+      "risk_confidence": "A",
+      "health": 21.3,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 10.0,
+          "rvol": 0.8,
+          "rsi": 0.0
+        },
+        "timing": {
+          "location": 8.0,
+          "extension": -7.8,
+          "structure": 2.0,
+          "confirmation": -1.6,
+          "immediate": -3.1
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 12.0,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -4.0,
+          "history": 3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -5.7,
+          "cashflow": 0.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": -3.1
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.009,
+          "support20": 0.08,
+          "resistance60": 0.2,
+          "high52": 0.45,
+          "extension_atr": -2.39,
+          "pullback20_pct": -48.57,
+          "gap3_max_pct": 5.0
+        },
+        "risk": {
+          "downside_vol_pct": 91.2,
+          "max_drawdown_pct": 82.2,
+          "median_dollar_volume_60": 773,
+          "bad_gap_p02_pct": 16.7,
+          "downside_beta": -0.29
+        },
+        "health": {
+          "cash": 1575021.0,
+          "debt": 8456033.0,
+          "equity": 1530324.0,
+          "assets": 15726855.0,
+          "ebitda": -2308619.0,
+          "revenue": 1077917.0,
+          "free_cash_flow": 881946.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "AIS",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "AIS.V",
+      "score": 27.2,
+      "timing": 56.1,
+      "timing_confidence": "A",
+      "risk": 86.0,
+      "risk_confidence": "A",
+      "health": 53.0,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 3.5,
+          "return_60": 0.0,
+          "trend": 16.0,
+          "rvol": 4.3,
+          "rsi": 3.4
+        },
+        "timing": {
+          "location": -4.5,
+          "extension": 5.2,
+          "structure": 6.0,
+          "confirmation": 4.3,
+          "immediate": -5.0
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 12.0,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0.0,
+          "balance_liquidity": 9.0,
+          "cashflow": -6.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.008,
+          "support20": 0.11,
+          "resistance60": 0.2,
+          "high52": 0.22,
+          "extension_atr": 0.48,
+          "pullback20_pct": -10.0,
+          "gap3_max_pct": 16.67
+        },
+        "risk": {
+          "downside_vol_pct": 124.7,
+          "max_drawdown_pct": 66.7,
+          "median_dollar_volume_60": 1673,
+          "bad_gap_p02_pct": 20.0,
+          "downside_beta": -0.57
+        },
+        "health": {
+          "cash": 1372843.0,
+          "debt": 222978.0,
+          "equity": 1944307.0,
+          "assets": 2391629.0,
+          "ebitda": -905844.0,
+          "revenue": 0.0,
+          "free_cash_flow": -1039681.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "AUAU",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "AUAU.V",
+      "score": 0.5,
+      "timing": 55.3,
+      "timing_confidence": "A",
+      "risk": 73.8,
+      "risk_confidence": "A",
+      "health": 59.0,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 0.5
+        },
+        "timing": {
+          "location": 12.9,
+          "extension": -2.4,
+          "structure": 1.4,
+          "confirmation": -4.5,
+          "immediate": -2.0
+        },
+        "risk": {
+          "downside_vol": 10.3,
+          "drawdown": 10.3,
+          "liquidity": 7.8,
+          "gaps_history": 2.4,
+          "market_sensitivity": -4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": 9.0,
+          "cashflow": 0.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.031,
+          "support20": 0.57,
+          "resistance60": 0.82,
+          "high52": 1.46,
+          "extension_atr": -1.61,
+          "pullback20_pct": -29.27,
+          "gap3_max_pct": 5.26
+        },
+        "risk": {
+          "downside_vol_pct": 45.7,
+          "max_drawdown_pct": 59.3,
+          "median_dollar_volume_60": 27191,
+          "bad_gap_p02_pct": 5.4,
+          "downside_beta": 0.17
+        },
+        "health": {
+          "cash": 11366828.0,
+          "debt": null,
+          "equity": 58231128.0,
+          "assets": 59783541.0,
+          "ebitda": -1208050.0,
+          "revenue": 0.0,
+          "free_cash_flow": 101183.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "AME",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "AME.V",
+      "score": 2.4,
+      "timing": 70.3,
+      "timing_confidence": "A",
+      "risk": 84.5,
+      "risk_confidence": "A",
+      "health": 11.0,
+      "health_confidence": "A",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 0.0,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 2.4
+        },
+        "timing": {
+          "location": 15.0,
+          "extension": 6.0,
+          "structure": 2.0,
+          "confirmation": -2.7,
+          "immediate": -0.0
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 10.5,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": -13.0,
+          "balance_liquidity": -9.0,
+          "cashflow": -3.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": -7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.002,
+          "support20": 0.02,
+          "resistance60": 0.03,
+          "high52": 0.05,
+          "extension_atr": -0.38,
+          "pullback20_pct": -33.33,
+          "gap3_max_pct": 0.0
+        },
+        "risk": {
+          "downside_vol_pct": 78.9,
+          "max_drawdown_pct": 60.0,
+          "median_dollar_volume_60": 22,
+          "bad_gap_p02_pct": 33.3,
+          "downside_beta": -0.32
+        },
+        "health": {
+          "cash": 182353.0,
+          "debt": 37829102.0,
+          "equity": -29334823.0,
+          "assets": 8881798.0,
+          "ebitda": -347264.0,
+          "revenue": 0.0,
+          "free_cash_flow": -68727.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "ABA",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "ABA.V",
+      "score": 24.1,
+      "timing": 59.7,
+      "timing_confidence": "A",
+      "risk": 86.2,
+      "risk_confidence": "A",
+      "health": 42.3,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 10.6,
+          "return_60": 0.2,
+          "trend": 10.0,
+          "rvol": 0.0,
+          "rsi": 3.3
+        },
+        "timing": {
+          "location": -3.2,
+          "extension": 7.3,
+          "structure": 6.0,
+          "confirmation": 1.7,
+          "immediate": -2.0
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 12.0,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -3.8,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": 4.4,
+          "cashflow": -8.2,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 3.1
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.005,
+          "support20": 0.085,
+          "resistance60": 0.125,
+          "high52": 0.125,
+          "extension_atr": 0.19,
+          "pullback20_pct": -9.09,
+          "gap3_max_pct": 5.26
+        },
+        "risk": {
+          "downside_vol_pct": 103.7,
+          "max_drawdown_pct": 71.0,
+          "median_dollar_volume_60": 284,
+          "bad_gap_p02_pct": 20.0,
+          "downside_beta": 0.23
+        },
+        "health": {
+          "cash": 1498646.0,
+          "debt": null,
+          "equity": 857948.0,
+          "assets": 2105856.0,
+          "ebitda": -4531667.0,
+          "revenue": 0.0,
+          "free_cash_flow": -4229531.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "ACDC",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "ACDC.V",
+      "score": 17.5,
+      "timing": 46.3,
+      "timing_confidence": "A",
+      "risk": 85.9,
+      "risk_confidence": "A",
+      "health": 68.0,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 10.6,
+          "return_60": 0.0,
+          "trend": 2.0,
+          "rvol": 0.0,
+          "rsi": 4.8
+        },
+        "timing": {
+          "location": -4.5,
+          "extension": -2.1,
+          "structure": 6.0,
+          "confirmation": 1.9,
+          "immediate": -5.0
+        },
+        "risk": {
+          "downside_vol": 14.0,
+          "drawdown": 11.9,
+          "liquidity": 10.0,
+          "gaps_history": 7.0,
+          "market_sensitivity": -4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": 9.0,
+          "cashflow": 9.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.003,
+          "support20": 0.03,
+          "resistance60": 0.065,
+          "high52": 0.09,
+          "extension_atr": 1.56,
+          "pullback20_pct": 0.0,
+          "gap3_max_pct": 14.29
+        },
+        "risk": {
+          "downside_vol_pct": 91.1,
+          "max_drawdown_pct": 64.7,
+          "median_dollar_volume_60": 109,
+          "bad_gap_p02_pct": 21.4,
+          "downside_beta": -0.69
+        },
+        "health": {
+          "cash": 1059315.0,
+          "debt": null,
+          "equity": 1421213.0,
+          "assets": 1434808.0,
+          "ebitda": -80231.0,
+          "revenue": 0.0,
+          "free_cash_flow": -69002.0,
+          "prerevenue_regime": 1
+        }
+      }
     },
     {
       "symbol": "AAG",
-      "error": "name 'prerevenue' is not defined"
+      "market": "XTSX",
+      "yahoo": "AAG.V",
+      "score": 5.6,
+      "timing": 60.2,
+      "timing_confidence": "A",
+      "risk": 75.1,
+      "risk_confidence": "A",
+      "health": 63.0,
+      "health_confidence": "B",
+      "components": {
+        "score": {
+          "relative_strength_20": 0.0,
+          "return_60": 4.2,
+          "trend": 0.0,
+          "rvol": 0.0,
+          "rsi": 1.4
+        },
+        "timing": {
+          "location": 11.6,
+          "extension": 2.2,
+          "structure": 0.3,
+          "confirmation": -2.2,
+          "immediate": -1.8
+        },
+        "risk": {
+          "downside_vol": 9.6,
+          "drawdown": 8.3,
+          "liquidity": 3.3,
+          "gaps_history": 3.0,
+          "market_sensitivity": 4.0,
+          "history": -3
+        },
+        "health": {
+          "solvency": 0,
+          "balance_liquidity": 9.0,
+          "cashflow": 4.0,
+          "profitability": -7.0,
+          "stability": 0,
+          "structural": 7.0
+        }
+      },
+      "raw": {
+        "timing": {
+          "atr": 0.039,
+          "support20": 0.62,
+          "resistance60": 0.84,
+          "high52": 1.42,
+          "extension_atr": -0.93,
+          "pullback20_pct": -17.95,
+          "gap3_max_pct": 4.84
+        },
+        "risk": {
+          "downside_vol_pct": 44.0,
+          "max_drawdown_pct": 52.7,
+          "median_dollar_volume_60": 222139,
+          "bad_gap_p02_pct": 6.0,
+          "downside_beta": 1.96
+        },
+        "health": {
+          "cash": 25181056.0,
+          "debt": null,
+          "equity": 51709428.0,
+          "assets": 52731381.0,
+          "ebitda": -4544892.0,
+          "revenue": 0.0,
+          "free_cash_flow": -4355635.0,
+          "prerevenue_regime": 1
+        }
+      }
     }
-  ],
-  "correlations": {},
-  "results": []
+  ]
 }
