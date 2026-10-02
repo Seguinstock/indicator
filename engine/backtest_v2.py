@@ -8,6 +8,7 @@ import yfinance as yf
 
 import scanner
 import relative_strength_runtime as rs_runtime
+import filter_metrics
 
 ROOT = Path(__file__).resolve().parents[1]
 ASOF = pd.Timestamp(os.environ.get('BACKTEST_ASOF', '2026-05-01'))
@@ -139,6 +140,9 @@ def main():
     cfg=json.loads((ROOT/'config/parameters.json').read_text(encoding='utf-8'))
     rows,universe_label=universe_rows(); tested=[]; failed=[]
     market20,benchmark_symbol=market_return_20_asof()
+    bstart=(ASOF-pd.Timedelta(days=650)).strftime('%Y-%m-%d'); bend=(ASOF+pd.Timedelta(days=1)).strftime('%Y-%m-%d')
+    bh=yf.download('^GSPC',start=bstart,end=bend,interval='1d',auto_adjust=True,progress=False)
+    benchmark_returns=rs_runtime._close_series(bh).pct_change().dropna()
     download_start=(ASOF-pd.Timedelta(days=650)).strftime('%Y-%m-%d'); download_end=(END+pd.Timedelta(days=1)).strftime('%Y-%m-%d')
     for i in range(0,len(rows),75):
         batch=rows[i:i+75]; tickers=[scanner.yahoo_symbol(r['symbol'],r['market']) for r in batch]
@@ -155,11 +159,13 @@ def main():
                 entry=float(hist['Close'].astype(float).iloc[-1]); fwd=forward_stats(h,entry)
                 if not fwd:failed.append(r['symbol']);continue
                 keys=['symbol','market','country','price','rsi','delta_rsi','rvol','support_distance_pct','support_score','macd_momentum','trend','volatility_pct','return_20_pct','return_60_pct','relative_strength_20_pct','potential_components','score']
-                y={k:x[k] for k in keys}; y['filters']={k:bool(v) for k,v in x['filters'].items()}; y['passed']=bool(x['passed']); y.update(fwd); y['bucket']=bucket(float(x['score'])); tested.append(clean_json(y))
+                y={k:x[k] for k in keys}; y['filters']={k:bool(v) for k,v in x['filters'].items()}; y['passed']=bool(x['passed']); y.update(fwd); y['bucket']=bucket(float(x['score']))
+                ti,tc,tip,tiraw=filter_metrics.timing(hist); ri,rc,rip,riraw=filter_metrics.risk(hist,benchmark_returns); he,hc,hep,heraw=filter_metrics.health(yf.Ticker(t),ASOF)
+                y.update({'timing':ti,'timing_confidence':tc,'risk':ri,'risk_confidence':rc,'health':he,'health_confidence':hc,'filter_components':{'timing':tip,'risk':rip,'health':hep}}); tested.append(clean_json(y))
             except Exception:failed.append(r['symbol'])
         time.sleep(.5)
     tested.sort(key=lambda r:r['score'],reverse=True); filters=['rsi','reversal','support','rvol','macd','trend']
-    out={'generated':datetime.now(timezone.utc).isoformat(),'asof':ASOF.strftime('%Y-%m-%d'),'end':END.strftime('%Y-%m-%d'),'universe_mode':UNIVERSE_MODE,'universe_label':universe_label,'universe':len(rows),'tested':len(tested),'failed':len(set(failed)),'buy_model':'relative_strength_v1','benchmark_20d_symbol':benchmark_symbol,'benchmark_20d_return_pct':round(market20,3),'parameter_snapshot':cfg,'score_buckets':summarize(tested),'filter_effects':{k:filter_effect(tested,k) for k in filters},'strict_pass':summarize([r for r in tested if r['passed']]),'top_by_score':tested[:50],'all_rows':tested}
+    out={'generated':datetime.now(timezone.utc).isoformat(),'asof':ASOF.strftime('%Y-%m-%d'),'end':END.strftime('%Y-%m-%d'),'universe_mode':UNIVERSE_MODE,'universe_label':universe_label,'universe':len(rows),'tested':len(tested),'failed':len(set(failed)),'buy_model':'relative_strength_v1','filter_model':'trs_v2_neutral50','benchmark_20d_symbol':benchmark_symbol,'benchmark_20d_return_pct':round(market20,3),'parameter_snapshot':cfg,'score_buckets':summarize(tested),'filter_effects':{k:filter_effect(tested,k) for k in filters},'strict_pass':summarize([r for r in tested if r['passed']]),'top_by_score':tested[:50],'all_rows':tested}
     (ROOT/'data/backtest.json').write_text(json.dumps(clean_json(out),ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     print(f"Backtest Tableau RS {ASOF.date()} -> {END.date()} [{universe_label}] : {len(tested)}/{len(rows)} benchmark20={market20:.2f}% ({benchmark_symbol})")
 
