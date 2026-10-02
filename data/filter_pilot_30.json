@@ -1,128 +1,128 @@
 {
-  "generated_at": "2026-10-02T13:28:29.154417+00:00",
+  "generated_at": "2026-10-02T13:39:21.907091+00:00",
   "status": "EXPERIMENTAL V2 - ATR zero handling + prerevenue health + downside beta; no production formula changed",
   "sample_target": 30,
   "completed": 0,
   "errors": [
     {
       "symbol": "AAPL",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AMD",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AMZN",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "BA",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "BAC",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "CAT",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ADBE",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ABBV",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ABNB",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AVGO",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AEM",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AC",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ATD",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AQN",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "WSP",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "WCP",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "WPM",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ATZ",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ACB",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ATH",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ONE",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "EFF",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AUMB",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ACL",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AIS",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AUAU",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AME",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ABA",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "ACDC",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     },
     {
       "symbol": "AAG",
-      "error": "not enough values to unpack (expected 4, got 3)"
+      "error": "risk() takes 1 positional argument but 2 were given"
     }
   ],
   "correlations": {},
