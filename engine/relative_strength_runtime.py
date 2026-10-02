@@ -12,6 +12,23 @@ import filter_metrics
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _json_safe(value):
+    """Convert numpy/pandas values to strict JSON-native types."""
+    if isinstance(value, dict):
+        return {str(k): _json_safe(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe(v) for v in value]
+    if isinstance(value, np.ndarray):
+        return [_json_safe(v) for v in value.tolist()]
+    if isinstance(value, np.generic):
+        return _json_safe(value.item())
+    if isinstance(value, float) and not np.isfinite(value):
+        return None
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    return value
+
+
 def _clip01(x):
     return float(np.clip(x, 0, 1))
 
@@ -191,7 +208,7 @@ def main():
         'sell_by_portfolio': sell_by_portfolio,
         'portfolios': [{'id': pid, 'name': p['name']} for pid, p in portfolios.items()],
     }
-    (ROOT / 'data/results.json').write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding='utf-8')
+    (ROOT / 'data/results.json').write_text(json.dumps(_json_safe(out), ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
     counts = ', '.join(f"{pid}={len(v)}" for pid, v in sell_by_portfolio.items())
     print(f"Relative Strength scan: analyzed {len(results)}/{len(rows)}; buy={len(buy)} sell[{counts}] benchmark20={market20:.2f}% ({benchmark_symbol}) errors={len(errors)}")
 
