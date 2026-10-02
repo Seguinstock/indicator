@@ -7,6 +7,7 @@ import pandas as pd
 import yfinance as yf
 
 import scanner
+import filter_metrics
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -100,6 +101,9 @@ def main():
         rows = [r for r in csv.DictReader(f) if r.get('enabled', 'true').lower() == 'true']
     portfolios = scanner.load_portfolios()
     market20, benchmark_symbol = market_return_20()
+    bench = yf.download('^GSPC', period='2y', interval='1d', auto_adjust=True, progress=False)
+    bench_close = _close_series(bench)
+    benchmark_returns = bench_close.pct_change().dropna()
 
     results = []
     errors = []
@@ -128,6 +132,10 @@ def main():
                 x['potential_components'] = components
                 x['potential_score'] = round(score, 1)
                 x['score'] = round(score, 1)
+                timing, tc, timing_parts, timing_raw = filter_metrics.timing(h)
+                risk, rc, risk_parts, risk_raw = filter_metrics.risk(h, benchmark_returns)
+                health, hc, health_parts, health_raw = filter_metrics.health(yf.Ticker(ticker))
+                x.update({'timing':timing,'timing_confidence':tc,'risk':risk,'risk_confidence':rc,'health':health,'health_confidence':hc,'filter_components':{'timing':timing_parts,'risk':risk_parts,'health':health_parts},'filter_raw':{'timing':timing_raw,'risk':risk_raw,'health':health_raw}})
                 results.append(x)
             except Exception as e:
                 errors.append(f"{r['symbol']}: {e}"); failed_symbols.append(r['symbol'])
@@ -153,7 +161,7 @@ def main():
         sell = sorted([ranked[s] for s in p['held'] if s in ranked], key=lambda x: x['score'], reverse=True)
         sell_by_portfolio[pid] = sell[:cfg['visualisation']['sell_count']]
 
-    buy_display = buy[:cfg['visualisation']['buy_count']]
+    buy_display = buy
     known_names = {}
     for p in portfolios.values():
         known_names.update(p.get('names', {}))
@@ -173,6 +181,7 @@ def main():
         'errors': len(errors),
         'failed_symbols': sorted(set(failed_symbols)),
         'buy_model': 'relative_strength_v1',
+        'filter_model': 'trs_v2_neutral50',
         'sell_model': 'v14',
         'benchmark_20d_symbol': benchmark_symbol,
         'benchmark_20d_return_pct': round(market20, 3),
