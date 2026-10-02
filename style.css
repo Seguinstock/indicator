@@ -2,5 +2,8 @@
 .confidence{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:999px;font-size:10px;font-weight:800;line-height:1;color:#0d1117;vertical-align:1px}.confidence-a{background:#3fb950}.confidence-b{background:#d6a84b}.confidence-c{background:#f85149;color:#fff}.score .confidence{margin-left:1px}.buy-filter-controls label{min-width:0}@media(max-width:650px){.stock summary .score{white-space:normal;line-height:1.55}.confidence{min-width:16px;height:16px;font-size:9px}.buy-filter-controls{gap:8px}}
 
 /* Dashboard filter presentation only: reversed visual direction; formulas/values unchanged. */
-.buy-filter-controls .timing-filter{grid-column:1/-1}.buy-filter-controls .range-reversed{direction:rtl}
+.buy-filter-controls .timing-filter{grid-column:1/-1}.buy-filter-controls .range-reversed{direction:rtl;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:linear-gradient(to right,#2f81f7 0%,#2f81f7 50%,#fff 50%,#fff 100%);accent-color:#2f81f7}
+.buy-filter-controls .range-reversed::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:#2f81f7;border:2px solid #fff;cursor:pointer}
+.buy-filter-controls .range-reversed::-moz-range-track{height:6px;border:0;border-radius:999px;background:linear-gradient(to right,#2f81f7 0%,#2f81f7 50%,#fff 50%,#fff 100%)}
+.buy-filter-controls .range-reversed::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#2f81f7;border:2px solid #fff;cursor:pointer}
 @media(max-width:650px){.buy-filter-controls .timing-filter{grid-column:1}}
