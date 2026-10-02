@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-02T10:42:26.366694+00:00",
-  "scored_at": "2026-10-02T10:42:26.366694+00:00",
+  "updated": "2026-10-02T13:11:04.531713+00:00",
+  "scored_at": "2026-10-02T13:11:04.531713+00:00",
   "universe": 3006,
   "analyzed": 2978,
   "errors": 0,
@@ -1030,7 +1030,7 @@
       "return_20_pct": 27.55,
       "return_60_pct": 28.48,
       "relative_strength_20_pct": 27.56,
-      "name": null
+      "name": "Signet Jewelers Limited"
     },
     {
       "symbol": "WJX",
@@ -3310,7 +3310,7 @@
       "return_20_pct": 14.38,
       "return_60_pct": 15.97,
       "relative_strength_20_pct": 14.39,
-      "name": "Evolution PowerX Corp."
+      "name": "Enterprise Group, Inc."
     },
     {
       "symbol": "FCI",
@@ -9240,10 +9240,10 @@
       "rsi": 60.4,
       "delta_rsi": 0.4,
       "rvol": 0.99,
-      "support": 10.46,
-      "support_distance_pct": 16.7,
+      "support": 10.45,
+      "support_distance_pct": 16.8,
       "support_score": 0.0,
-      "support_strength": 96.0,
+      "support_strength": 88.0,
       "macd_momentum": 35.2,
       "trend": 2.0,
       "volatility_pct": 73.9,
@@ -11078,7 +11078,7 @@
       "country": "CA",
       "price": 0.64,
       "rsi": 60.8,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.0,
       "support": 0.6,
       "support_distance_pct": 6.2,
@@ -11087,8 +11087,8 @@
       "macd_momentum": 44.6,
       "trend": 2.0,
       "volatility_pct": 72.2,
-      "timing_v14": 13.7,
-      "buy_timing": 13.7,
+      "timing_v14": 18.7,
+      "buy_timing": 18.7,
       "potential_components": {
         "relative_strength_20": 16.5,
         "return_60": 25.0,
@@ -16430,7 +16430,7 @@
       "return_20_pct": -0.36,
       "return_60_pct": 41.72,
       "relative_strength_20_pct": -0.36,
-      "name": null
+      "name": "Swiss Water Decaffeinated Coffee Inc."
     },
     {
       "symbol": "CG",
@@ -16558,7 +16558,7 @@
       "country": "CA",
       "price": 0.56,
       "rsi": 52.8,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.46,
       "support": 0.53,
       "support_distance_pct": 5.4,
@@ -16567,8 +16567,8 @@
       "macd_momentum": -15.2,
       "trend": 2.0,
       "volatility_pct": 65.2,
-      "timing_v14": 15.1,
-      "buy_timing": 15.1,
+      "timing_v14": 20.1,
+      "buy_timing": 20.1,
       "potential_components": {
         "relative_strength_20": 10.0,
         "return_60": 22.3,
@@ -17430,7 +17430,7 @@
       "return_20_pct": 0.59,
       "return_60_pct": 15.6,
       "relative_strength_20_pct": 0.59,
-      "name": null
+      "name": "Cardinal Energy Ltd."
     },
     {
       "symbol": "TOY",
@@ -17518,7 +17518,7 @@
       "country": "US",
       "price": 15.42,
       "rsi": 58.4,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.99,
       "support": 14.23,
       "support_distance_pct": 7.7,
@@ -17527,8 +17527,8 @@
       "macd_momentum": 19.1,
       "trend": 2.0,
       "volatility_pct": 30.3,
-      "timing_v14": 20.1,
-      "buy_timing": 20.1,
+      "timing_v14": 15.1,
+      "buy_timing": 15.1,
       "potential_components": {
         "relative_strength_20": 11.4,
         "return_60": 15.7,
@@ -18150,7 +18150,7 @@
       "return_20_pct": 1.86,
       "return_60_pct": 13.51,
       "relative_strength_20_pct": 1.86,
-      "name": null
+      "name": "Best Buy Co., Inc."
     },
     {
       "symbol": "MATX",
@@ -18630,7 +18630,7 @@
       "return_20_pct": 7.93,
       "return_60_pct": -20.48,
       "relative_strength_20_pct": 7.94,
-      "name": null
+      "name": "RXO, Inc."
     },
     {
       "symbol": "IB",
@@ -23998,7 +23998,7 @@
       "country": "CA",
       "price": 10.95,
       "rsi": 61.3,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.0,
       "support": 9.81,
       "support_distance_pct": 10.4,
@@ -24007,8 +24007,8 @@
       "macd_momentum": 5.3,
       "trend": 2.0,
       "volatility_pct": 40.7,
-      "timing_v14": 12.7,
-      "buy_timing": 12.7,
+      "timing_v14": 7.7,
+      "buy_timing": 7.7,
       "potential_components": {
         "relative_strength_20": 16.1,
         "return_60": 7.1,
@@ -24030,7 +24030,7 @@
       "return_20_pct": 3.04,
       "return_60_pct": 3.53,
       "relative_strength_20_pct": 3.04,
-      "name": null
+      "name": "New Commerce Split Fund"
     },
     {
       "symbol": "PXT",
@@ -24758,7 +24758,7 @@
       "country": "CA",
       "price": 94.49,
       "rsi": 58.6,
-      "delta_rsi": -0.0,
+      "delta_rsi": 0.0,
       "rvol": 0.0,
       "support": 90.92,
       "support_distance_pct": 3.8,
@@ -24767,8 +24767,8 @@
       "macd_momentum": 17.4,
       "trend": 2.0,
       "volatility_pct": 22.0,
-      "timing_v14": 17.9,
-      "buy_timing": 17.9,
+      "timing_v14": 22.9,
+      "buy_timing": 22.9,
       "potential_components": {
         "relative_strength_20": 16.1,
         "return_60": 5.8,
@@ -27153,46 +27153,6 @@
       "name": "Sterling Infrastructure, Inc."
     },
     {
-      "symbol": "DPM",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 57.16,
-      "rsi": 41.1,
-      "delta_rsi": -12.8,
-      "rvol": 1.77,
-      "support": 56.6,
-      "support_distance_pct": 1.0,
-      "support_score": 10.0,
-      "support_strength": 73.2,
-      "macd_momentum": -71.6,
-      "trend": 1.0,
-      "volatility_pct": 54.2,
-      "timing_v14": 50.5,
-      "buy_timing": 50.5,
-      "potential_components": {
-        "relative_strength_20": 0.5,
-        "return_60": 18.3,
-        "trend": 16.0,
-        "rvol": 8.4,
-        "rsi": 1.2
-      },
-      "potential_score": 44.3,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": true,
-        "macd": false,
-        "trend": true
-      },
-      "passed": false,
-      "score": 44.3,
-      "return_20_pct": -4.76,
-      "return_60_pct": 16.93,
-      "relative_strength_20_pct": -4.75,
-      "name": "DPM Metals Inc."
-    },
-    {
       "symbol": "DEC",
       "market": "XTSX",
       "country": "CA",
@@ -27710,7 +27670,47 @@
       "return_20_pct": -3.86,
       "return_60_pct": 16.43,
       "relative_strength_20_pct": -3.86,
-      "name": null
+      "name": "DexCom, Inc."
+    },
+    {
+      "symbol": "DPM",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 57.16,
+      "rsi": 41.1,
+      "delta_rsi": -12.4,
+      "rvol": 1.73,
+      "support": 56.6,
+      "support_distance_pct": 1.0,
+      "support_score": 10.0,
+      "support_strength": 73.2,
+      "macd_momentum": -69.6,
+      "trend": 1.0,
+      "volatility_pct": 54.2,
+      "timing_v14": 50.8,
+      "buy_timing": 50.8,
+      "potential_components": {
+        "relative_strength_20": 4.1,
+        "return_60": 14.3,
+        "trend": 16.0,
+        "rvol": 8.1,
+        "rsi": 1.2
+      },
+      "potential_score": 43.7,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": false,
+        "trend": true
+      },
+      "passed": false,
+      "score": 43.7,
+      "return_20_pct": -2.93,
+      "return_60_pct": 12.14,
+      "relative_strength_20_pct": -2.93,
+      "name": "DPM Metals Inc."
     },
     {
       "symbol": "MKO",
@@ -27798,7 +27798,7 @@
       "country": "CA",
       "price": 4.75,
       "rsi": 71.7,
-      "delta_rsi": 0.0,
+      "delta_rsi": -0.0,
       "rvol": 0.67,
       "support": 4.6,
       "support_distance_pct": 3.2,
@@ -27807,8 +27807,8 @@
       "macd_momentum": -3.8,
       "trend": 2.0,
       "volatility_pct": 26.0,
-      "timing_v14": 18.6,
-      "buy_timing": 18.6,
+      "timing_v14": 13.6,
+      "buy_timing": 13.6,
       "potential_components": {
         "relative_strength_20": 10.0,
         "return_60": 11.2,
@@ -29473,46 +29473,6 @@
       "name": "Ingevity Corporation"
     },
     {
-      "symbol": "ACO.X",
-      "market": "XTSE",
-      "country": "CA",
-      "price": 73.72,
-      "rsi": 51.7,
-      "delta_rsi": 0.2,
-      "rvol": 1.07,
-      "support": 72.46,
-      "support_distance_pct": 1.7,
-      "support_score": 10.0,
-      "support_strength": 88.8,
-      "macd_momentum": 9.6,
-      "trend": 1.0,
-      "volatility_pct": 17.8,
-      "timing_v14": 44.3,
-      "buy_timing": 44.3,
-      "potential_components": {
-        "relative_strength_20": 15.4,
-        "return_60": 3.9,
-        "trend": 16.0,
-        "rvol": 3.4,
-        "rsi": 3.6
-      },
-      "potential_score": 42.3,
-      "filters": {
-        "rsi": false,
-        "reversal": false,
-        "support": true,
-        "rvol": true,
-        "macd": true,
-        "trend": true
-      },
-      "passed": false,
-      "score": 42.3,
-      "return_20_pct": 2.7,
-      "return_60_pct": -0.29,
-      "relative_strength_20_pct": 2.7,
-      "name": "ATCO Ltd."
-    },
-    {
       "symbol": "BEK.B",
       "market": "XTSE",
       "country": "CA",
@@ -30160,7 +30120,7 @@
       "rsi": 58.3,
       "delta_rsi": 4.7,
       "rvol": 0.36,
-      "support": 15.93,
+      "support": 15.94,
       "support_distance_pct": 1.6,
       "support_score": 10.0,
       "support_strength": 104.3,
@@ -31273,6 +31233,46 @@
       "name": "Ciena Corporation"
     },
     {
+      "symbol": "ACO.X",
+      "market": "XTSE",
+      "country": "CA",
+      "price": 73.72,
+      "rsi": 51.1,
+      "delta_rsi": 0.2,
+      "rvol": 1.06,
+      "support": 72.46,
+      "support_distance_pct": 1.7,
+      "support_score": 10.0,
+      "support_strength": 88.8,
+      "macd_momentum": 12.3,
+      "trend": 1.0,
+      "volatility_pct": 17.6,
+      "timing_v14": 44.6,
+      "buy_timing": 44.6,
+      "potential_components": {
+        "relative_strength_20": 12.6,
+        "return_60": 5.4,
+        "trend": 16.0,
+        "rvol": 3.3,
+        "rsi": 3.4
+      },
+      "potential_score": 40.7,
+      "filters": {
+        "rsi": false,
+        "reversal": false,
+        "support": true,
+        "rvol": true,
+        "macd": true,
+        "trend": true
+      },
+      "passed": false,
+      "score": 40.7,
+      "return_20_pct": 1.29,
+      "return_60_pct": 1.5,
+      "relative_strength_20_pct": 1.29,
+      "name": "ATCO Ltd."
+    },
+    {
       "symbol": "CGX",
       "market": "XTSE",
       "country": "CA",
@@ -31390,7 +31390,7 @@
       "return_20_pct": -2.08,
       "return_60_pct": 9.3,
       "relative_strength_20_pct": -2.08,
-      "name": null
+      "name": "Latin Metals Inc."
     },
     {
       "symbol": "BLCO",
@@ -37150,7 +37150,7 @@
       "return_20_pct": -6.3,
       "return_60_pct": 15.64,
       "relative_strength_20_pct": -6.3,
-      "name": null
+      "name": "Headwater Exploration Inc."
     },
     {
       "symbol": "IPO",
@@ -37310,7 +37310,7 @@
       "return_20_pct": -4.67,
       "return_60_pct": 7.83,
       "relative_strength_20_pct": -4.67,
-      "name": null
+      "name": "Bonterra Energy Corp."
     },
     {
       "symbol": "RL",
@@ -37680,10 +37680,10 @@
       "rsi": 47.1,
       "delta_rsi": 0.9,
       "rvol": 0.95,
-      "support": 7.71,
-      "support_distance_pct": 15.3,
+      "support": 7.62,
+      "support_distance_pct": 16.3,
       "support_score": 0.0,
-      "support_strength": 62.6,
+      "support_strength": 61.7,
       "macd_momentum": 10.4,
       "trend": 0.0,
       "volatility_pct": 41.3,
@@ -38280,7 +38280,7 @@
       "rsi": 45.0,
       "delta_rsi": -23.6,
       "rvol": 1.03,
-      "support": 10.27,
+      "support": 10.26,
       "support_distance_pct": 0.8,
       "support_score": 10.0,
       "support_strength": 105.8,
@@ -39390,7 +39390,7 @@
       "return_20_pct": -8.03,
       "return_60_pct": 11.32,
       "relative_strength_20_pct": -8.03,
-      "name": null
+      "name": "Amgen Inc."
     },
     {
       "symbol": "EQIX",
@@ -39630,7 +39630,7 @@
       "return_20_pct": -6.15,
       "return_60_pct": 13.93,
       "relative_strength_20_pct": -6.15,
-      "name": null
+      "name": "i-80 Gold Corp."
     },
     {
       "symbol": "BRK-B",
@@ -39790,7 +39790,7 @@
       "return_20_pct": 5.73,
       "return_60_pct": -12.89,
       "relative_strength_20_pct": 5.73,
-      "name": null
+      "name": "TransAlta Corporation"
     },
     {
       "symbol": "PVH",
