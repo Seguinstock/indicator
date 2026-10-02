@@ -1,0 +1,54 @@
+name: P T R S independent QA
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: read
+  issues: write
+jobs:
+  qa:
+    if: contains(github.event.issue.body, 'STOCK_INDICATOR_PTRS_QA') && github.actor == 'Seguinstock'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Python syntax
+        run: python -m compileall -q engine
+      - name: JavaScript syntax
+        run: |
+          node --check app.js
+          node --check backtest.js
+          node --check archives.js
+          node --check manage.js
+      - name: Cross-file P T R S assertions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files={p:Path(p).read_text() for p in ['app.js','backtest.js','archives.js','engine/filter_metrics.py','engine/relative_strength_runtime.py','engine/backtest_v2.py','engine/daily_archive.py','fonctionnement.html']}
+          checks={
+            'runtime shared': 'import filter_metrics' in files['engine/relative_strength_runtime.py'],
+            'backtest shared': 'import filter_metrics' in files['engine/backtest_v2.py'],
+            'risk reversed': "100-Number(document.getElementById('riskSelectivity')" in files['app.js'],
+            'health dashboard': 'healthMin' in files['app.js'],
+            'geo Canada': 'min_canada_pct' in files['app.js'],
+            'geo USA': 'min_usa_pct' in files['app.js'],
+            'ABC': 'confidenceBadge' in files['app.js'],
+            'PTRS archive': '<th>P</th><th>T</th><th>R</th><th>S</th>' in files['archives.js'],
+            'health archive': "'health':r.get('health')" in files['engine/daily_archive.py'],
+            'backtest health': 'filter_metrics.health' in files['engine/backtest_v2.py'],
+            'point in time health': 'filter_metrics.health(yf.Ticker(t),ASOF)' in files['engine/backtest_v2.py'],
+            'neutral 50 docs': '50 neutre' in files['fonctionnement.html'],
+          }
+          bad=[k for k,v in checks.items() if not v]
+          print(checks)
+          if bad: raise SystemExit('QA failed: '+', '.join(bad))
+          PY
+      - uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const ok = '${{ job.status }}' === 'success';
+            await github.rest.issues.createComment({owner:context.repo.owner,repo:context.repo.repo,issue_number:context.issue.number,body:ok?'FAA QA: tous les contrôles syntaxiques et croisés P/T/R/S ont réussi.':'FAA QA: échec. Ne pas lancer la mission; consulter le journal Actions.'});
+            await github.rest.issues.update({owner:context.repo.owner,repo:context.repo.repo,issue_number:context.issue.number,state:'closed'});
