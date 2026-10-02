@@ -22,6 +22,10 @@ def atr(h,n=14):
     return float(tr.tail(n).mean())
 def timing(h):
     c=h.Close.dropna(); hi=h.High; lo=h.Low; p=float(c.iloc[-1]); a=atr(h)
+    if not np.isfinite(a) or a <= 1e-12:
+        parts={"location":0,"extension":0,"structure":0,"confirmation":0,"immediate":0}
+        raw={"atr":round(a,6) if np.isfinite(a) else None,"support20":None,"resistance60":None,"high52":None,"extension_atr":None,"pullback20_pct":None,"gap3_max_pct":None}
+        return 50.0, parts, raw, "C"
     # Location: 20d support/resistance + 52w high. Reward nearby support and useful overhead room.
     sup=float(lo.tail(20).min()); res=float(hi.tail(60).max()); high52=float(hi.tail(252).max())
     d_sup=(p-sup)/a if a>0 else np.nan; d_res=(res-p)/a if a>0 else np.nan
