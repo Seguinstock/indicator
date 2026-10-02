@@ -48,7 +48,7 @@ def timing(h):
     immediate=-clip(max(gapmax-2,ret3abs-5)/8,0,1)
     parts={"location":15*loc,"extension":12*extension,"structure":10*structure,"confirmation":8*confirmation,"immediate":5*immediate}
     return round(np.clip(50+sum(parts.values()),0,100),1),{k:round(v,1) for k,v in parts.items()},{"atr":round(a,3),"support20":round(sup,3),"resistance60":round(res,3),"high52":round(high52,3),"extension_atr":round(ext,2),"pullback20_pct":round(pull,2),"gap3_max_pct":round(gapmax,2)},"A"
-def risk(h):
+def risk(h, benchmark):
     c=h.Close.dropna(); r=c.pct_change().dropna(); neg=r[r<0]
     downside=float(neg.std()*math.sqrt(252)) if len(neg)>10 else np.nan
     rollmax=c.cummax(); dd=(c/rollmax-1); maxdd=abs(float(dd.min()))
@@ -58,11 +58,16 @@ def risk(h):
     s_dd=clip((maxdd-.25)/.40) if np.isfinite(maxdd) else 0
     s_liq=clip((6-math.log10(max(adv,1)))/2) if np.isfinite(adv) else 0
     s_gap=clip((neg_gap-.03)/.07) if np.isfinite(neg_gap) else 0
-    # beta intentionally omitted in pilot if benchmark alignment unavailable => neutral/missing
+    aligned=pd.concat([r.rename("stock"),benchmark.rename("bench")],axis=1).dropna()
+    down=aligned[aligned.bench<0]; beta_down=np.nan
+    if len(down)>=30 and float(down.bench.var())>0:
+        beta_down=float(down.stock.cov(down.bench)/down.bench.var())
+    s_beta=clip((beta_down-1.0)/0.8) if np.isfinite(beta_down) else 0
     s_hist=-1 if len(c)>=450 else (0 if len(c)>=252 else 1)
-    parts={"downside_vol":14*s_down,"drawdown":12*s_dd,"liquidity":10*s_liq,"gaps_history":7*s_gap,"market_sensitivity":0,"history":3*s_hist}
-    available=14+12+10+7+3
-    return round(np.clip(50+sum(parts.values()),0,100),1),conf(available,50),{k:round(v,1) for k,v in parts.items()},{"downside_vol_pct":round(downside*100,1) if np.isfinite(downside) else None,"max_drawdown_pct":round(maxdd*100,1),"median_dollar_volume_60":round(adv) if np.isfinite(adv) else None,"bad_gap_p02_pct":round(neg_gap*100,1) if np.isfinite(neg_gap) else None,"downside_beta":round(beta_down,2) if np.isfinite(beta_down) else None}
+    parts={"downside_vol":14*s_down,"drawdown":12*s_dd,"liquidity":10*s_liq,"gaps_history":7*s_gap,"market_sensitivity":4*s_beta,"history":3*s_hist}
+    available=14+12+10+7+3+(4 if np.isfinite(beta_down) else 0)
+    raw={"downside_vol_pct":round(downside*100,1) if np.isfinite(downside) else None,"max_drawdown_pct":round(maxdd*100,1),"median_dollar_volume_60":round(adv) if np.isfinite(adv) else None,"bad_gap_p02_pct":round(neg_gap*100,1) if np.isfinite(neg_gap) else None,"downside_beta":round(beta_down,2) if np.isfinite(beta_down) else None}
+    return round(np.clip(50+sum(parts.values()),0,100),1),conf(available,50),{k:round(v,1) for k,v in parts.items()},raw
 def firstval(df,names):
     if df is None or df.empty:return None
     for n in names:
