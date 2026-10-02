@@ -1,128 +1,128 @@
 {
-  "generated_at": "2026-10-02T13:39:21.907091+00:00",
+  "generated_at": "2026-10-02T13:53:00.071620+00:00",
   "status": "EXPERIMENTAL V2 - ATR zero handling + prerevenue health + downside beta; no production formula changed",
   "sample_target": 30,
   "completed": 0,
   "errors": [
     {
       "symbol": "AAPL",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AMD",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AMZN",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "BA",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "BAC",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "CAT",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ADBE",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ABBV",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ABNB",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AVGO",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AEM",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AC",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ATD",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AQN",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "WSP",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "WCP",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "WPM",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ATZ",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ACB",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ATH",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ONE",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "EFF",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AUMB",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ACL",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AIS",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AUAU",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AME",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ABA",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "ACDC",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     },
     {
       "symbol": "AAG",
-      "error": "risk() takes 1 positional argument but 2 were given"
+      "error": "name 'prerevenue' is not defined"
     }
   ],
   "correlations": {},
