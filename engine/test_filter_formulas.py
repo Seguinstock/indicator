@@ -92,9 +92,12 @@ def health(t):
     ni=firstval(inc,["Net Income"])
     fcf=firstval(cf,["Free Cash Flow"])
     # Six fixed families; missing = zero displacement, never redistributed.
+    prerevenue=(rev is None or rev <= 0) or (ebitda is not None and ebitda < 0 and (rev is None or rev < 5_000_000))
     vals={}
-    if debt is not None and cash is not None and ebitda not in (None,0):
+    if debt is not None and cash is not None and ebitda not in (None,0) and not prerevenue:
         nde=(debt-cash)/abs(ebitda); vals["solvency"]=clip((3-nde)/3)
+    elif prerevenue and debt is not None and cash is not None:
+        vals["solvency"]=min(0.0, clip((cash-debt)/max(abs(cash),1)))
     if curA is not None and curL not in (None,0):
         cr=curA/curL; vals["balance_liquidity"]=clip((cr-1.2)/1.0)
     if fcf is not None and rev not in (None,0) and not prerevenue: vals["cashflow"]=clip((fcf/rev-.03)/.10)
@@ -134,6 +137,14 @@ def main():
             out.append({"symbol":sym,"market":market,"yahoo":y,"score":round(score,1),"timing":ti,"timing_confidence":tc,"risk":ri,"risk_confidence":rc,"health":he,"health_confidence":hc,"components":{"score":comp,"timing":tip,"risk":rip,"health":hep},"raw":{"timing":ti_raw,"risk":ri_raw,"health":he_raw}})
             print(sym,round(score,1),ti,ri,he,hc)
         except Exception as e: errors.append({"symbol":sym,"error":str(e)}); print("ERROR",sym,e)
+    if len(out) != len(SAMPLE) or errors:
+        raise RuntimeError(f"QA FAILED: completed={len(out)}/{len(SAMPLE)}, errors={len(errors)}; {errors[:3]}")
+    for x in out:
+        for key in ("score","timing","risk","health"):
+            if not np.isfinite(float(x[key])):
+                raise RuntimeError("QA FAILED: non-finite result")
+        if any(x[k] not in ("A","B","C") for k in ("timing_confidence","risk_confidence","health_confidence")):
+            raise RuntimeError("QA FAILED: invalid confidence")
     # correlations only as diagnostic, never part of scores
     df=pd.DataFrame(out)
     corr=df[["score","timing","risk","health"]].corr().round(3).to_dict() if len(df)>=4 else {}
