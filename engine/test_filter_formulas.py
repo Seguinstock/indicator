@@ -47,7 +47,7 @@ def timing(h):
     ret3abs=abs(ret3)
     immediate=-clip(max(gapmax-2,ret3abs-5)/8,0,1)
     parts={"location":15*loc,"extension":12*extension,"structure":10*structure,"confirmation":8*confirmation,"immediate":5*immediate}
-    return round(np.clip(50+sum(parts.values()),0,100),1),{k:round(v,1) for k,v in parts.items()},{"atr":round(a,3),"support20":round(sup,3),"resistance60":round(res,3),"high52":round(high52,3),"extension_atr":round(ext,2),"pullback20_pct":round(pull,2),"gap3_max_pct":round(gapmax,2)}
+    return round(np.clip(50+sum(parts.values()),0,100),1),{k:round(v,1) for k,v in parts.items()},{"atr":round(a,3),"support20":round(sup,3),"resistance60":round(res,3),"high52":round(high52,3),"extension_atr":round(ext,2),"pullback20_pct":round(pull,2),"gap3_max_pct":round(gapmax,2)},"A"
 def risk(h):
     c=h.Close.dropna(); r=c.pct_change().dropna(); neg=r[r<0]
     downside=float(neg.std()*math.sqrt(252)) if len(neg)>10 else np.nan
