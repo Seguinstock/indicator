@@ -1,57 +1,43 @@
-symbol,name,quantity,average_price,account
-BRK,Berkshire Hathaway CDR (CAD Hedged),,,
-GNRC,Generac Holdings Inc.,,,
-SRU.UN,SmartCentres Real Estate Investment Trust,,,
-TER,Teradyne Inc.,,,
-XBAL,iShares Core Balanced ETF Portfolio,,,
-ZLB,BMO Low Volatility Canadian Equity Fund,,,
-ANRG,Anaergia Inc.,,,
-ATD,"Alimentation-Couche Tard, Inc.",,,
-BDT,Bird Construction Inc,,,
-BEPC,Brookfield Renewable Corporation,,,
-CCO,Cameco Corporation,,,
-CNDU,BetaPro S&P/TSX 60 2X Daily Bull ETF - ETF Shares,,,
-CNQ,Canadian Natural Resources Ltd.,,,
-COW,iShares Global Agriculture ETF,,,
-CP,Canadian Pacific Kansas City Limited,,,
-CTVA,Corteva Inc.,,,
-CWW,BlackRock iShares Global Water Index ETF,,,
-GWW,W.w. Grainger Inc.,,,
-H,Hydro One Limited,,,
-HTO,H2O America,,,
-KILO.B,Purpose Gold Bullion Fund Non-Currency Hedged,,,
-LII,Lennox International Inc,,,
-MOD,Modine Manufacturing Company,,,
-MU,Micron CDR (CAD Hedged),,,
-NTR,Nutrien Limited,,,
-NVDA,Nvidia CDR (CAD Hedged),,,
-STN,Stantec Inc,,,
-TD,The Toronto-Dominion Bank,,,
-VDY,Vanguard Investments Canada Inc. - FTSE Canadian High Dividend Yield Index ETF,,,
-VE,Vanguard FTSE Developed Europe All Cap Index ETF,,,
-VMI,"Valmont Industries, Inc.",,,
-WTS,Watts Water Technologies Incorporation,,,
-XEQT,iShares Core Equity ETF Portfolio,,,
-XIC,BlackRock iShares Core S&P/TSX Capped Composite Index ETF,,,
-LMCU,Lumina Metals Corp.,,,
-NICE,NI-Co Energy Inc.,,,
-SUN,Stardust Solar Energy Inc.,,,
-TFII,TFI International Inc.,,,
-EEMV,iShares Inc. - MSCI Emerging Markets Min Vol Factor ETF,,,
-QCN,MacKenzie Financial Corp. - Canadian Equity Index ETF,,,
-VTI,"Vanguard Group, Inc. - Vanguard Morningstar Total Stock Market ETF",,,
-ZEA,BMO MSCI EAFE Index ETF,,,
-ZSP,BMO S&P 500 Index ETF,,,
-CRWD,CrowdStrike CDR (CAD Hedged),,,
-DELL,Dell Technologies Inc (Class C),,,
-HPQ,HP Inc.,,,
-SLF,Sun Life Financial Inc.,,,
-CNT,Century Global Commodities Corp,,,
-EU,Encore Energy Corp,,,
-BTE,Baytex Energy Corp.,,,
-ETL,E3 Lithium Ltd,,,
-GILD,Gilead Sciences Inc.,,,
-KXS,Kinaxis Inc,,,
-TNZ,Tenaz Energy Corp,,,
-VET,Vermilion Energy Inc,,,
-VLE,Valeura Energy Inc.,,,
+symbol,name,quantity,average_price,account,entry_date
+ANRG,Anaergia Inc.,550,2.63545455,🚀SkyCeli (test),2026-10-05
+ATD,"Alimentation-Couche Tard, Inc.",24,81.8,🚀SkyCeli (test),2026-10-05
+BDT,Bird Construction Inc,37,79.25891892,💰📈 CELI,2026-10-05
+BEPC,Brookfield Renewable Corporation,18,43.91,💰📈 CELI,2026-10-05
+BRK,Berkshire Hathaway CDR (CAD Hedged),105,36.78285714,🏝️ Vacances🦄🦎,2026-10-05
+BTE,Baytex Energy Corp.,250,6.94804,🚀SkyCeli (test),2026-10-05
+CCO,Cameco Corporation,4,139.31,💰📈 CELI,2026-10-05
+CHR,Chorus Aviation Inc.,24,30.51,💰📈 CELI,2026-10-05
+CNQ,Canadian Natural Resources Ltd.,50,68.01,💰📈 CELI,2026-10-05
+COV,Covalon Technologies Ltd.,400,4.12,💰📈 CELI,2026-10-05
+CRWD,CrowdStrike CDR (CAD Hedged),34,80.38,💰📈 CELI,2026-10-05
+CTVA,Corteva Inc.,25,81.08597858,💰📈 CELI,2026-10-05
+CVVY,Cavvy Energy Limited,1000,2.24,🚀SkyCeli (test),2026-10-05
+DELL,Dell Technologies Inc (Class C),1,574,🏝️ Vacances🦄🦎,2026-10-05
+GNRC,Generac Holdings Inc.,10,207.866,💰📈 CELI,2026-10-05
+GWW,W.w. Grainger Inc.,1,1324.99797652,💰📈 CELI,2026-10-05
+H,Hydro One Limited,126,52.96253968,💰📈 CELI,2026-10-05
+HBM,HudBay Minerals Inc.,27,39.02,💰📈 CELI,2026-10-05
+HPQ,HP Inc.,38,34.5,🏝️ Vacances🦄🦎,2026-10-05
+HTO,H2O America,18,63.16,💰📈 CELI,2026-10-05
+MDA,MDA Space Ltd.,120,43.19833333,💰📈 CELI,2026-10-05
+MOD,Modine Manufacturing Company,3,212.6,💰📈 CELI,2026-10-05
+MU,Micron CDR (CAD Hedged),41,46.73061645,🏝️ Vacances🦄🦎 | 💰📈 CELI,2026-10-05
+NTR,Nutrien Limited,34,108.72525952,💰📈 CELI,2026-10-05
+NVDA,Nvidia CDR (CAD Hedged),40,50.4,💰📈 CELI,2026-10-05
+OKTA,Okta Inc (Class A),9,202.27111111,💰📈 CELI,2026-10-05
+ORE,Orezone Gold Corp,500,3.26,💰📈 CELI,2026-10-05
+PRLB,Proto Labs Inc.,17,96.11588235,💰📈 CELI,2026-10-05
+SLF,Sun Life Financial Inc.,51,102.05058824,🏝️ Vacances🦄🦎 | 💰📈 CELI,2026-10-05
+SMTC,Semtech Corp.,14,181.69,💰📈 CELI,2026-10-05
+SRU.UN,SmartCentres Real Estate Investment Trust,80,27.3,🏝️ Vacances🦄🦎,2026-10-05
+STN,Stantec Inc,22,102.84272727,💰📈 CELI,2026-10-05
+TER,Teradyne Inc.,2,407.39,🚀SkyCeli (test),2026-10-05
+TFII,TFI International Inc.,5,183.75,🚀SkyCeli (test),2026-10-05
+TNZ,TENAZ ENERGY CORP COMMON,30,71.3,🚀SkyCeli (test),2026-10-05
+TOT,Total Energy Services Inc,40,34.47,💰📈 CELI,2026-10-05
+TWLO,Twilio Inc (Class A),14,273.12285714,🏝️ Vacances🦄🦎,2026-10-05
+VLE,Valeura Energy Inc.,240,15.17916667,🚀SkyCeli (test),2026-10-05
+VMI,"Valmont Industries, Inc.",1,502,💰📈 CELI,2026-10-05
+VYLR,Vylor Inc.,25,66,💰📈 CELI,2026-10-05
+WPM,Wheaton Precious Metals Corporation,10,204.31,🚀SkyCeli (test),2026-10-05
+WTS,Watts Water Technologies Incorporation,3,377.92,💰📈 CELI,2026-10-05
