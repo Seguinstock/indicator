@@ -67,7 +67,9 @@ def score(position, h, held_score, rel20, best_score):
     if entry <= 0 or not entry_date or close.empty:
         return {'score': None, 'reason': 'DONNÉES D’ENTRÉE REQUISES', 'ready': False}
     try:
-        d0 = pd.Timestamp(entry_date).tz_localize(None)
+        d0 = pd.Timestamp(entry_date)
+        if d0.tzinfo is not None:
+            d0 = d0.tz_localize(None)
     except Exception:
         return {'score': None, 'reason': 'DATE D’ENTRÉE INVALIDE', 'ready': False}
     c = close.loc[close.index >= d0]
