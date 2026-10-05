@@ -7,7 +7,7 @@ import pandas as pd
 import yfinance as yf
 
 import scanner
-import filter_metrics
+import filter_metrics\nimport sell_v8
 
 ROOT = Path(__file__).resolve().parents[1]
 # Runtime used by dashboard refreshes and full configuration recalculations.
@@ -160,23 +160,32 @@ def main():
         time.sleep(1)
 
     buy = sorted(results, key=lambda x: x['score'], reverse=True)
-    ranked = {}
-    volatility_values = [x['volatility_pct'] for x in results if x.get('volatility_pct') is not None]
-    for x in results:
-        sell_score, sell_timing, sell_potential = sell_v14_score(x, volatility_values)
-        y = dict(x)
-        y['sell_timing_v14'] = round(sell_timing, 1)
-        y['potential_v14'] = round(sell_potential, 1)
-        y['sell_signal'] = scanner.sell_signal(sell_timing)
-        y.pop('sell_components', None)
-        y['score'] = round(sell_score, 1)
-        y['filters'] = {}
-        y['passed'] = True
-        ranked[x['symbol']] = y
+    ranked = {x['symbol']: x for x in results}
 
     sell_by_portfolio = {}
     for pid, p in portfolios.items():
-        sell = sorted([ranked[s] for s in p['held'] if s in ranked], key=lambda x: x['score'], reverse=True)
+        candidates = [x['score'] for x in results if x['symbol'] not in p['held'] and np.isfinite(x.get('score', np.nan))]
+        best_score = max(candidates) if candidates else np.nan
+        sell = []
+        for symbol in p['held']:
+            if symbol not in ranked:
+                continue
+            x = ranked[symbol]
+            details = sell_v8.score(
+                p.get('positions', {}).get(symbol, {}),
+                history_by_symbol.get(symbol),
+                x.get('score', np.nan),
+                x.get('relative_strength_20_pct', np.nan),
+                best_score,
+            )
+            y = dict(x)
+            y['sell_v8'] = details
+            y['score'] = details.get('score')
+            y['sell_signal'] = 'VENTE' if details.get('ready') else ('SURVEILLER' if details.get('score') is not None and details.get('score') >= 80 else '--')
+            y['filters'] = {}
+            y['passed'] = True
+            sell.append(y)
+        sell.sort(key=lambda x: (-1 if x.get('score') is None else x['score']), reverse=True)
         sell_by_portfolio[pid] = sell[:cfg['visualisation']['sell_count']]
 
     buy_display = buy
@@ -200,7 +209,7 @@ def main():
         'failed_symbols': sorted(set(failed_symbols)),
         'buy_model': 'relative_strength_v1',
         'filter_model': 'trs_v2_neutral50',
-        'sell_model': 'v14',
+        'sell_model': 'v8_proximity',
         'benchmark_20d_symbol': benchmark_symbol,
         'benchmark_20d_return_pct': round(market20, 3),
         'parameter_snapshot': cfg,
