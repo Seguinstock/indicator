@@ -73,7 +73,7 @@ jobs:
         run: python engine/rescore_results.py
       - name: Full market recalculation
         if: env.RECALC_MODE == 'full'
-        run: python engine/scanner.py
+        run: python engine/relative_strength_runtime.py
       - name: Stamp exact parameters used
         if: env.RECALC_MODE != 'none'
         run: python engine/stamp_results.py
