@@ -10,6 +10,7 @@ import scanner
 import filter_metrics
 
 ROOT = Path(__file__).resolve().parents[1]
+# Runtime used by dashboard refreshes and full configuration recalculations.
 
 
 def _json_safe(value):
