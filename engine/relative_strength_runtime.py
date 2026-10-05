@@ -124,6 +124,7 @@ def main():
     benchmark_returns = bench_close.pct_change().dropna()
 
     results = []
+    history_by_symbol = {}
     errors = []
     failed_symbols = []
     for i in range(0, len(rows), 75):
@@ -136,6 +137,7 @@ def main():
         for r, ticker in zip(batch, tickers):
             try:
                 h = raw[ticker] if len(tickers) > 1 else raw
+                history_by_symbol[r['symbol']] = h.copy()
                 x = scanner.calc(r, h, cfg)
                 if not x:
                     failed_symbols.append(r['symbol']); continue
