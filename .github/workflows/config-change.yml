@@ -41,7 +41,7 @@ jobs:
           m=re.search(r'```json\s*(\{.*?\})\s*```',body,re.S)
           payload=json.loads(m.group(1)) if m else {}
           action=payload.get('action')
-          if action in {'add_holding','remove_holding','update_holdings'}:
+          if action in {'add_holding','remove_holding','update_holdings','sync_holdings'}:
               mode='none'
           else:
               if action=='set_parameter':
