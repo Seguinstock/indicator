@@ -29,7 +29,24 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Validate Python syntax
+        run: python -m py_compile engine/scanner.py engine/filter_metrics.py engine/sell_v8.py engine/relative_strength_runtime.py
       - run: python engine/relative_strength_runtime.py
+      - name: Validate generated results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/results.json')
+          if not p.exists() or p.stat().st_size < 100:
+              raise SystemExit('results.json missing or empty')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          if d.get('sell_model') != 'v8_proximity':
+              raise SystemExit('V8 sell model not generated')
+          if not isinstance(d.get('sell_by_portfolio'), dict):
+              raise SystemExit('sell_by_portfolio missing')
+          print('Validated results:', d.get('analyzed'), 'symbols; Michel sells:', len(d['sell_by_portfolio'].get('michel', [])))
+          PY
       - name: Commit refreshed results
         run: |
           git config user.name "stock-indicator-bot"
