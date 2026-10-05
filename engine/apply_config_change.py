@@ -1,4 +1,4 @@
-import csv, io, json, os, re
+import csv, io, json, os, re\nfrom datetime import date, datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,16 +109,16 @@ elif action == 'add_symbols':
     write_csv(path,rows,fields)
 
 elif action in ('add_holding','remove_holding'):
-    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
+    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account','entry_date']; rows=read_csv(path); symbol=clean_symbol(req.get('symbol'))
     rows=[r for r in rows if r.get('symbol','').upper()!=symbol]
     if action=='add_holding':
         ensure_scannable_symbol(symbol)
         name=str(req.get('name','')).strip()[:100]
-        rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
+        rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':'','entry_date':date.today().isoformat()})
     write_csv(path,rows,fields)
 
 elif action == 'update_holdings':
-    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account']; rows=read_csv(path)
+    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account','entry_date']; rows=read_csv(path)
     additions=req.get('add',[]); removals=req.get('remove',[])
     if not isinstance(additions,list) or not isinstance(removals,list) or len(additions)+len(removals)>100:
         raise ValueError('add/remove must be lists with at most 100 total changes')
@@ -136,8 +136,42 @@ elif action == 'update_holdings':
     for symbol,name,market,country in clean_add:
         req['market']=market; req['country']=country
         ensure_scannable_symbol(symbol)
-        rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':''})
+        rows.append({'symbol':symbol,'name':name,'quantity':'','average_price':'','account':'','entry_date':date.today().isoformat()})
     write_csv(path,rows,fields)
+
+elif action == 'sync_holdings':
+    path=portfolio_path(str(req.get('portfolio',''))); fields=['symbol','name','quantity','average_price','account','entry_date']
+    old_rows=read_csv(path); old={r.get('symbol','').upper():r for r in old_rows if r.get('symbol')}
+    items=req.get('holdings',[])
+    if not isinstance(items,list) or len(items)>250:
+        raise ValueError('holdings must be a list of at most 250 positions')
+    asof=str(req.get('asof') or date.today().isoformat())
+    asof_date=datetime.strptime(asof,'%Y-%m-%d').date()
+    new_rows=[]; seen=set()
+    for item in items:
+        if not isinstance(item,dict): raise ValueError('Invalid holding item')
+        symbol=clean_symbol(item.get('symbol'))
+        if symbol in seen: raise ValueError(f'Duplicate holding: {symbol}')
+        seen.add(symbol)
+        qty=float(item.get('quantity') or 0); avg=float(item.get('average_price') or 0)
+        if qty <= 0 or avg <= 0: raise ValueError(f'Invalid quantity/average price for {symbol}')
+        prev=old.get(symbol)
+        entry=asof
+        if prev:
+            prev_entry=str(prev.get('entry_date') or asof)
+            try: prev_qty=float(prev.get('quantity') or 0)
+            except ValueError: prev_qty=0
+            if qty > prev_qty > 0:
+                age=max((asof_date-datetime.strptime(prev_entry,'%Y-%m-%d').date()).days,0)
+                added=qty-prev_qty
+                weighted_age=round(age*prev_qty/qty)
+                entry=(asof_date-timedelta(days=weighted_age)).isoformat()
+            else:
+                entry=prev_entry
+        name=str(item.get('name') or (prev.get('name','') if prev else '')).strip()[:100]
+        account=str(item.get('account') or '').strip()[:100]
+        new_rows.append({'symbol':symbol,'name':name,'quantity':str(qty),'average_price':str(avg),'account':account,'entry_date':entry})
+    write_csv(path,new_rows,fields)
 
 elif action in ('set_parameter','set_parameters'):
     defaults=json.loads((ROOT/'config/parameter_defaults.json').read_text(encoding='utf-8'))
