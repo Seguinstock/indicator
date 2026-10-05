@@ -7,7 +7,8 @@ import pandas as pd
 import yfinance as yf
 
 import scanner
-import filter_metrics\nimport sell_v8
+import filter_metrics
+import sell_v8
 
 ROOT = Path(__file__).resolve().parents[1]
 # Runtime used by dashboard refreshes and full configuration recalculations.
