@@ -7,7 +7,7 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
+      "status": "partial",
       "average_return_pct": null,
       "picks": [
         {
@@ -68,9 +68,9 @@
             "rvol": 10.0,
             "rsi": 1.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 22.1200008392334,
+          "end_price": 21.360000610351562,
+          "return_pct": -3.436
         },
         {
           "symbol": "NTAP",
@@ -99,9 +99,9 @@
             "rvol": 9.8,
             "rsi": 0.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 225.47000122070312,
+          "end_price": 223.77000427246094,
+          "return_pct": -0.754
         },
         {
           "symbol": "ORE",
@@ -130,9 +130,9 @@
             "rvol": 6.4,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 3.3299999237060547,
+          "end_price": 3.190000057220459,
+          "return_pct": -4.204
         },
         {
           "symbol": "AVT",
@@ -161,9 +161,9 @@
             "rvol": 7.0,
             "rsi": 2.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 106.5999984741211,
+          "end_price": 106.19000244140625,
+          "return_pct": -0.385
         },
         {
           "symbol": "TWLO",
@@ -192,9 +192,9 @@
             "rvol": 5.9,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 294.5299987792969,
+          "end_price": 300.9100036621094,
+          "return_pct": 2.166
         },
         {
           "symbol": "FORM",
@@ -223,9 +223,9 @@
             "rvol": 7.6,
             "rsi": 1.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 150.63999938964844,
+          "end_price": 147.99000549316406,
+          "return_pct": -1.759
         },
         {
           "symbol": "SWKS",
@@ -254,9 +254,9 @@
             "rvol": 4.4,
             "rsi": 4.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 84.9000015258789,
+          "end_price": 83.91000366210938,
+          "return_pct": -1.166
         },
         {
           "symbol": "TER",
@@ -285,9 +285,9 @@
             "rvol": 5.6,
             "rsi": 2.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 447.2099914550781,
+          "end_price": 444.5299987792969,
+          "return_pct": -0.599
         },
         {
           "symbol": "COHU",
@@ -316,9 +316,9 @@
             "rvol": 5.4,
             "rsi": 1.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 73.05000305175781,
+          "end_price": 73.7300033569336,
+          "return_pct": 0.931
         },
         {
           "symbol": "WJX",
@@ -347,9 +347,9 @@
             "rvol": 6.9,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 39.279998779296875,
+          "end_price": 38.560001373291016,
+          "return_pct": -1.833
         },
         {
           "symbol": "ARW",
@@ -378,11 +378,21 @@
             "rvol": 10.0,
             "rsi": 2.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 249.42999267578125,
+          "end_price": 240.22000122070312,
+          "return_pct": -3.692
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -0.02,
+        "sp500_return_pct": 0.557,
+        "canada_picks": 3,
+        "usa_picks": 9,
+        "return_pct": 0.413
+      },
+      "vs_benchmark_pct": null,
+      "completed_at": "2026-10-05T19:12:14-04:00"
     },
     {
       "date": "2026-10-02",
