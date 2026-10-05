@@ -225,13 +225,19 @@ def load_portfolios():
     for p in portfolios:
         if not p.get('active',True): continue
         path=ROOT/p['file']
-        held=set(); names={}
+        held=set(); names={}; positions={}
         if path.exists():
             with open(path,encoding='utf-8-sig') as f:
                 entries=[r for r in csv.DictReader(f) if r.get('symbol')]
             held={r['symbol'] for r in entries}
             names={r['symbol']:r.get('name','').strip() for r in entries if r.get('name','').strip()}
-        out[p['id']]={'name':p['name'],'held':held,'names':names}
+            positions={r['symbol']:{
+                'quantity':r.get('quantity',''),
+                'average_price':r.get('average_price',''),
+                'account':r.get('account',''),
+                'entry_date':r.get('entry_date',''),
+            } for r in entries}
+        out[p['id']]={'name':p['name'],'held':held,'names':names,'positions':positions}
     return out
 
 def main():
