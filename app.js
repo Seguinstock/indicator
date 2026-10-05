@@ -22,10 +22,11 @@ function filteredBuyRows(){
  eligible.filter(isCA).slice(0,minCA).forEach(add);eligible.filter(isUS).slice(0,minUS).forEach(add);eligible.forEach(add);
  return selected.sort((x,y)=>Number(y.potential_score??y.score??0)-Number(x.potential_score??x.score??0));
 }
+function updateRangeFill(el){if(!el)return;const min=Number(el.min||0),max=Number(el.max||100),v=Number(el.value);const pct=max>min?((v-min)/(max-min))*100:0;el.style.setProperty('--range-fill',`${pct}%`);}
 function applyBuyFilters(){
  if(!RESULTS)return;
  const riskMax=Number(document.getElementById('riskSelectivity')?.value??100),timingMin=Number(document.getElementById('timingMin')?.value??0),healthMin=Number(document.getElementById('healthMin')?.value??0);
- document.getElementById('riskMaxValue').textContent=riskMax.toFixed(0);document.getElementById('timingMinValue').textContent=timingMin.toFixed(0);document.getElementById('healthMinValue').textContent=healthMin.toFixed(0);
+ document.getElementById('riskMaxValue').textContent=riskMax.toFixed(0);document.getElementById('timingMinValue').textContent=timingMin.toFixed(0);document.getElementById('healthMinValue').textContent=healthMin.toFixed(0);[document.getElementById('riskSelectivity'),document.getElementById('timingMin'),document.getElementById('healthMin')].forEach(updateRangeFill);
  const rows=filteredBuyRows(),ca=rows.filter(x=>x.country==='CA'||['XTSE','XTSX','XCNQ'].includes(x.market)).length,us=rows.filter(x=>x.country==='US').length;
  const count=document.getElementById('buyFilterCount');if(count)count.textContent=`${rows.length} titres affichés · Canada ${ca} · États-Unis ${us}`;
  render('buyList',rows,'buy');
