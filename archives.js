@@ -14,7 +14,7 @@
   const benchmarkOf=day=>day.benchmark||historicalBenchmarks[day.date]||null;
   try{
     const archiveUrl='https://raw.githubusercontent.com/Seguinstock/indicator/main/data/daily_archive.json?_'+Date.now();
-    const r=await STOCK_ORIGINAL_FETCH(archiveUrl,{cache:'no-store'});
+    const r=await fetch(archiveUrl,{cache:'no-store'});
     if(!r.ok) throw new Error(`Archive HTTP ${r.status}`);
     const text=await r.text();
     if(!text.trim()) throw new Error('Archive vide');
