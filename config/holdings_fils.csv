@@ -1,1 +1,44 @@
-symbol,name,quantity,average_price,account
+symbol,name,quantity,average_price,account,entry_date
+AAPL,Apple CDR (CAD Hedged),11.6824,42.261754,,2026-10-05
+ABT,Abbott Labs CDR (CAD Hedged),2.7388,19.030232,,2026-10-05
+AMZN,Amazon.com CDR (CAD Hedged),60.0,28.273333,,2026-10-05
+APTX,Apotex Health Corp.,4.7831,28.388869,,2026-10-05
+BSX,Boston Scientific Corp.,4.5999,73.797256,,2026-10-05
+BTE,Baytex Energy Corp.,14.0449,7.12002221,,2026-10-05
+CNQ,Canadian Natural Resources Ltd.,10.832,64.643169,,2026-10-05
+CNR,Canadian National Railway Co.,4.1077,168.420284,,2026-10-05
+CRM,Salesforce CDR (CAD Hedged),5.4112,18.48018924,,2026-10-05
+ENB,Enbridge Inc,9.84,73.413489,,2026-10-05
+FTS,Fortis Inc.,10.0,75.51,,2026-10-05
+GNRC,Generac Holdings Inc.,4.0,297.62,,2026-10-05
+GOLD,Physically backed gold,0.3425471995,5838.611447,,2026-10-05
+GOOG,Alphabet CDR (CAD Hedged),31.9033,52.377964,,2026-10-05
+H,Hydro One Limited,112.2,53.377702,,2026-10-05
+HUBS,HubSpot Inc,1.2827,318.234973,,2026-10-05
+IONQ,IonQ Inc,14.0,82.647857,,2026-10-05
+KEL,Kelt Exploration Ltd,9.0009,11.11,,2026-10-05
+LMT,Lockheed Martin CDR (CAD Hedged),39.0,29.11,,2026-10-05
+META,Meta CDR (CAD Hedged),46.4107,30.467694,,2026-10-05
+MSFT,Microsoft CDR (CAD Hedged),50.9739,28.207088,,2026-10-05
+MU,Micron CDR (CAD Hedged),40.5828,44.600175,,2026-10-05
+NFLX,Netflix CDR (CAD Hedged),8.4711,27.59,,2026-10-05
+NVDA,Nvidia CDR (CAD Hedged),22.8334,46.816113,,2026-10-05
+ORAC,Oracle CDR (CAD Hedged),119.5182,7.080356,,2026-10-05
+PEP,Pepsi CDR (CAD Hedged),24.0,20.75,,2026-10-05
+QQC,CI Invesco NASDAQ 100 Index ETF,35.1846,48.733702,,2026-10-05
+RKLB,Rocket Lab Corp.,4.0,135.285,,2026-10-05
+RY,Royal Bank of Canada,4.639,269.406299,,2026-10-05
+SJ,Stella-Jones Inc.,2.1933,68.390097,,2026-10-05
+SPCX,SpaceX CDR (CAD Hedged),49.4322,47.690706,,2026-10-05
+STN,Stantec Inc,7.8531,103.677529,,2026-10-05
+TNZ,TENAZ ENERGY CORP COMMON,2.0,71.4,,2026-10-05
+VEE,Vanguard Investments Canada Inc. - FTSE Emerging Markets All Capital Index ETF,1.0009,50.354681,,2026-10-05
+VET,Vermilion Energy Inc,5.3937,18.540149,,2026-10-05
+VFV,Vanguard Investments Canada Inc. - S&P 500 Index ETF,32.143,185.088942,,2026-10-05
+VIU,Vanguard Investments Canada Inc. - FTSE Developed All Capital Ex North America Index ETF,45.1551,49.451233,,2026-10-05
+XDG,iShares Core MSCI Global Quality Dividend Index ETF,75.3238,33.190041,,2026-10-05
+XEQT,iShares Core Equity ETF Portfolio,51.0286,44.909129,,2026-10-05
+XST,iShares S&P/TSX Capped Consumer Staples Index ETF - ETF,32.0153,62.470131,,2026-10-05
+XUT,BlackRock Canada iShares S&P/TSX Capped Utilities Index ETF,43.8468,34.210022,,2026-10-05
+ZEB,BMO Asset Management Inc. - Equal Weight Banks Index ETF,11.4564,74.35931,,2026-10-05
+ZIU,BMO S&P/TSX 60 Index ETF,25.5091,82.442736,,2026-10-05
