@@ -5,7 +5,6 @@ on:
   push:
     paths:
       - 'engine/**'
-      - 'config/**'
       - 'requirements.txt'
       - '.github/workflows/update-data.yml'
   schedule:
