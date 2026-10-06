@@ -13,7 +13,12 @@
   };
   const benchmarkOf=day=>day.benchmark||historicalBenchmarks[day.date]||null;
   try{
-    const r=await fetch('data/daily_archive.json',{cache:'no-store'}); const d=await r.json(); const days=d.days||[];
+    const archiveUrl='https://raw.githubusercontent.com/Seguinstock/indicator/main/data/daily_archive.json?_'+Date.now();
+    const r=await STOCK_ORIGINAL_FETCH(archiveUrl,{cache:'no-store'});
+    if(!r.ok) throw new Error(`Archive HTTP ${r.status}`);
+    const text=await r.text();
+    if(!text.trim()) throw new Error('Archive vide');
+    const d=JSON.parse(text); const days=Array.isArray(d.days)?d.days:[];
     const chronological=[...days].sort((a,b)=>String(a.date).localeCompare(String(b.date)));
     let capital=10000, marketCapital=10000, benchmarkDays=0;
     chronological.forEach(day=>{
@@ -46,5 +51,5 @@
       const rows=(day.picks||[]).map((p,i)=>{const rr=p.return_pct==null?null:Number(p.return_pct),badge=l=>l?` <span class="confidence confidence-${String(l).toLowerCase()}">${l}</span>`:'';return `<tr><td>${i+1}</td><td><b>${p.symbol||''}</b></td><td>${metric(p.score)}</td><td>${metric(p.timing??p.buy_timing??p.timing_v14)}${badge(p.timing_confidence)}</td><td>${metric(p.risk)}${badge(p.risk_confidence)}</td><td>${metric(p.health)}${badge(p.health_confidence)}</td><td>${p.start_price==null?'—':Number(p.start_price).toFixed(2)}</td><td>${p.end_price==null?'—':Number(p.end_price).toFixed(2)}</td><td>${rr!==null&&Number.isFinite(rr)?`${rr>=0?'+':''}${rr.toFixed(2)} %`:'—'}</td></tr>`}).join('');
       return `<details class="stock" ${idx===0?'open':''}><summary><b>${fmtDate(day.date)}</b> · ${day.count||0} titres · moyenne <b>${av}</b> · capital <b>${capitalText}</b></summary><div class="hint" style="margin:8px 0">Montant théorique par titre : <b>${money(allocation)}</b> · ${benchmarkText}</div><div style="overflow:auto"><table style="width:100%;margin-top:6px"><thead><tr><th>#</th><th>Titre</th><th>P</th><th>T</th><th>R</th><th>S</th><th>Ouverture</th><th>Clôture</th><th>Rendement</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
     }).join('');
-  }catch(e){box.textContent='Impossible de charger les archives.';console.error(e)}
+  }catch(e){box.innerHTML='<div class="empty">Impossible de charger les archives. <button type="button" class="secondary" onclick="location.reload()">Réessayer</button></div>';console.error('Archives:',e)}
 })();
