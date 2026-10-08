@@ -1,0 +1,32 @@
+name: Risk memory V2 100 stocks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/risk-memory-v2-100.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  historical-risk-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install research dependencies
+        run: pip install 'yfinance>=0.2.65' 'pandas>=2.2' 'numpy>=2.0'
+      - name: Analyze 100 stocks without touching production
+        run: python research/risk_memory_v2_100.py
+      - name: Save research results even on partial failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: risk-memory-v2-100-results
+          path: research/risk_memory_v2_100_results.json
+          if-no-files-found: warn
+          retention-days: 30
