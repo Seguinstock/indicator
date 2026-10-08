@@ -2,6 +2,9 @@ name: Risk memory 5y research
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/risk-memory-research.yml'
 
 permissions:
   contents: read
