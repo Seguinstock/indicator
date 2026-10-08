@@ -22,7 +22,7 @@ GROUPS = {
     "financials": "JPM BAC WFC C GS MS V MA AXP BLK SCHW SPGI CME",
     "industrial": "BA CAT DE GE HON MMM UPS FDX RTX LMT NOC UNP CSX",
     "energy_materials": "XOM CVX COP SLB EOG OXY MPC VLO FCX NEM LIN APD",
-    "communications_utilities_realestate": "GOOGL META NFLX DIS CMCSA VZ T NEE DUK SO AMT PLD",
+    "communications_utilities_realestate": "GOOGL META NFLX DIS CMCSA VZ T NEE DUK",
 }
 SYMBOLS = [(symbol, sector) for sector, names in GROUPS.items()
            for symbol in names.split()]
