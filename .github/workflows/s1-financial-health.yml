@@ -1,0 +1,34 @@
+name: S1 financial health - independent 100-stock audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/s1-financial-health.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  s1-independent-financial-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated research dependencies
+        run: pip install 'yfinance>=0.2.65' 'pandas>=2.2' 'numpy>=2.0'
+      - name: Run S1 100-stock independent financial audit
+        run: python research/s1_financial_health_100.py
+      - name: Upload S1 report and full audited fundamentals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s1-financial-health-100-results
+          path: |
+            research/s1_financial_health_100_results.json
+            research/s1_financial_health_100_report.md
+          if-no-files-found: warn
+          retention-days: 30
