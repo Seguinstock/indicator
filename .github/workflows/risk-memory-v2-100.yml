@@ -1,4 +1,5 @@
 name: Risk memory V2 100 stocks
+# Restart research after correcting 103 symbols to 100.
 
 on:
   workflow_dispatch:
