@@ -1,0 +1,33 @@
+name: S1 junior audit - TSXV financial health
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/s1-junior-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit-juniors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'yfinance>=0.2.65' 'pandas>=2.2' 'numpy>=2.0'
+      - name: Audit juniors with same S1 fundamentals
+        run: python research/s1_junior_audit.py
+      - name: Upload audit data and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s1-junior-audit-results
+          path: |
+            research/s1_junior_audit_results.json
+            research/s1_junior_audit_report.md
+          if-no-files-found: warn
+          retention-days: 30
