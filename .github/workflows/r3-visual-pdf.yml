@@ -1,0 +1,39 @@
+name: R3 visual PDF - 100 charts
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/r3-visual-pdf.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  generate-r3-visual-pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated report dependencies
+        run: pip install 'yfinance>=0.2.65' 'pandas>=2.2' 'numpy>=2.0' 'matplotlib>=3.9' 'reportlab>=4.0'
+      - name: Retrieve completed R3 scores artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 37835019843 -n risk-memory-r3-100-results -D research
+      - name: Build PDF with normalized weekly five-year charts
+        run: python research/build_r3_visual_report.py
+      - name: Upload printable report and data status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3-visual-ranking-pdf
+          path: |
+            research/classement_r3_100_courbes_5_ans.pdf
+            research/r3_chart_fetch_status.json
+          if-no-files-found: warn
+          retention-days: 30
