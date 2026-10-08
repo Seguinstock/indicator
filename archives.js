@@ -13,7 +13,7 @@
   };
   const benchmarkOf=day=>day.benchmark||historicalBenchmarks[day.date]||null;
   try{
-    const archiveUrl='https://raw.githubusercontent.com/Seguinstock/indicator/main/data/daily_archive.json?_'+Date.now();
+    const archiveUrl='data/daily_archive.json?_='+Date.now();
     const r=await fetch(archiveUrl,{cache:'no-store'});
     if(!r.ok) throw new Error(`Archive HTTP ${r.status}`);
     const text=await r.text();
