@@ -1,136 +1,88 @@
-"""R3: risque historique 5 ans, indépendant de tout rendement total.
-
-Prototype de recherche uniquement; ne modifie aucune logique de production.
-"""
-import json
-import math
-import time
+"""PDF de recherche R3: 100 courbes hebdomadaires normalisees."""
+import json,time
 from pathlib import Path
-import numpy as np
+from io import BytesIO
 import pandas as pd
 import yfinance as yf
-from risk_memory_v2_100 import SYMBOLS, v2_metrics
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
 
-def clamp(x):
-    return float(np.clip(x, 0, 1))
+base=Path("research")
+data=json.loads((base/"risk_memory_r3_100_results.json").read_text())["results"]
+rank=sorted(((k,v) for k,v in data.items() if "score_r3" in v),key=lambda x:x[1]["score_r3"])
+assert len(rank)==100
+prices={}
+errors={}
+for i,(symbol,_) in enumerate(rank,1):
+    for attempt in range(2):
+        try:
+            f=yf.download(symbol,period="5y",interval="1wk",auto_adjust=True,progress=False,threads=False,timeout=25)
+            if f.empty: raise ValueError("no prices")
+            p=f["Close"]
+            if isinstance(p,pd.DataFrame):p=p.iloc[:,0]
+            p=pd.to_numeric(p,errors="coerce").dropna()
+            if len(p)<156:raise ValueError("insufficient history")
+            prices[symbol]=p
+            break
+        except Exception as exc:
+            errors[symbol]=str(exc)[:150]
+            if attempt==0:time.sleep(4)
+    print(f"{i}/100 {symbol}: "+("OK" if symbol in prices else errors[symbol]),flush=True)
+    time.sleep(1.5)
+(base/"r3_chart_fetch_status.json").write_text(json.dumps({"success":len(prices),"errors":errors},indent=2))
+if len(prices)<95:raise RuntimeError("Fewer than 95 valid charts")
 
-def score_r3(close):
-    p = pd.to_numeric(close, errors="coerce").dropna()
-    p = p[(p > 0) & np.isfinite(p)]
-    if len(p) < 156:
-        raise ValueError(f"insufficient_weekly_history:{len(p)}")
-    a = p.to_numpy(dtype=float)
-    n = len(a)
-    running_peak = np.maximum.accumulate(a)
-    dd = 1 - a / running_peak
-    worst = float(dd.max())
-    # Amplitude: les corrections courantes sous 10% sont peu pénalisées.
-    severity = 25 * clamp((worst - .10) / .55) ** 1.25
-
-    # Durée et profondeur sous le dernier sommet (pondération quadratique).
-    underwater = np.maximum(dd - .05, 0)
-    area = float(np.mean(underwater ** 1.35))
-    duration = 20 * clamp(area / (.20 ** 1.35))
-
-    # Chaoticité: mouvements hebdomadaires dans les DEUX directions,
-    # sans récompenser ni pénaliser le rendement total.
-    lr = np.diff(np.log(a))
-    noise = float(np.sqrt(np.mean((lr - np.median(lr)) ** 2)) * math.sqrt(52))
-    # Pénaliser en plus les retournements fréquents de forte amplitude.
-    sign = np.sign(lr)
-    whipsaws = float(np.mean((sign[1:] * sign[:-1] < 0) *
-                            np.minimum(np.abs(lr[1:]), np.abs(lr[:-1])))) if len(lr)>1 else 0
-    chaos = 20 * (.8 * clamp((noise - .12) / .45) +
-                  .2 * clamp(whipsaws / .025))
-
-    # Crashs distincts: nouvel épisode après rebond d'au moins 20% depuis
-    # le creux précédent, même sans retrouver l'ancien sommet historique.
-    # Cela évite de cacher plusieurs effondrements sous un seul drawdown.
-    crash_events = []
-    peak = a[0]
-    peak_idx = 0
-    trough = a[0]
-    trough_idx = 0
-    active = False
-    for i in range(1, n):
-        price = a[i]
-        if price >= peak:
-            peak, peak_idx, trough, trough_idx, active = price, i, price, i, False
-        elif price < trough:
-            trough, trough_idx = price, i
-        if not active and 1 - price / peak >= .25:
-            active = True
-            crash_events.append({"peak_week": peak_idx, "start_week": i,
-                                 "peak_price": float(peak), "trough_week": i,
-                                 "trough_price": float(price)})
-        elif active:
-            event = crash_events[-1]
-            if price < event["trough_price"]:
-                event["trough_price"] = float(price)
-                event["trough_week"] = i
-            # Reprise significative : une autre chute de 25% depuis un nouveau
-            # sommet local pourra compter comme crash distinct.
-            if price >= event["trough_price"] * 1.20:
-                peak, peak_idx, trough, trough_idx, active = price, i, price, i, False
-    crash_depths = [1-e["trough_price"]/e["peak_price"] for e in crash_events]
-    crash_count = len(crash_events)
-    repeat = 20 * clamp(sum(clamp((d-.20)/.35) for d in crash_depths) / 3)
-
-    # Récence et qualité de la reprise: forte baisse récente plus pénalisante,
-    # tandis qu'une ancienne chute suivie de stabilité perd de son poids.
-    recent = []
-    for e,d in zip(crash_events, crash_depths):
-        weeks_ago = n - 1 - e["trough_week"]
-        age_weight = math.exp(-weeks_ago / 78)  # demi-vie ~54 semaines
-        since = a[e["trough_week"]:]
-        recovered = bool(np.any(since >= e["peak_price"]))
-        # Reprise chaotique mesurée sur les 52 dernières semaines disponibles
-        tail = np.diff(np.log(since[-53:])) if len(since)>2 else np.array([])
-        rebound_noise = float(np.std(tail)*math.sqrt(52)) if len(tail)>4 else 0
-        unrecovered_factor = 1 if not recovered else .45
-        recent.append(clamp(d/.65) * age_weight *
-                      unrecovered_factor * (1 + .35*clamp((rebound_noise-.15)/.4)))
-    recency = 15 * clamp(sum(recent) / 1.5)
-    components = {"amplitude_25":severity,"duration_20":duration,
-                  "chaos_20":chaos,"recency_recovery_15":recency,
-                  "repeated_crashes_20":repeat}
-    score = sum(components.values())
-    return {"score_r3":round(score,2),
-            "components":{k:round(v,2) for k,v in components.items()},
-            "worst_drawdown_pct":round(worst*100,2),
-            "crashes_25pct_count":crash_count,
-            "crash_depths_pct":[round(d*100,2) for d in crash_depths],
-            "annualized_weekly_noise_pct":round(noise*100,2),
-            "underwater_area":round(area,5),
-            "weeks":n,"as_of":str(p.index[-1].date())}
-
-def main():
-    out={"method":"R3_100_weekly_5y_experimental",
-         "weights":{"amplitude":25,"duration":20,"chaos":20,
-                    "recency_recovery":15,"repeated_crashes":20},
-         "universe_size":len(SYMBOLS),"results":{}}
-    target=Path("research/risk_memory_r3_100_results.json")
-    for i,(symbol,sector) in enumerate(SYMBOLS,1):
-        for attempt in range(2):
-            try:
-                f=yf.download(symbol,period="5y",interval="1wk",auto_adjust=True,
-                              progress=False,threads=False,timeout=25)
-                if f.empty: raise ValueError("empty_yahoo_response")
-                close=f["Close"]
-                if isinstance(close,pd.DataFrame): close=close.iloc[:,0]
-                r={"sector":sector,**score_r3(close),
-                   "score_r2":v2_metrics(close)["score_v2_full"]}
-                break
-            except Exception as exc:
-                r={"sector":sector,"error":str(exc)[:180]}
-                if attempt==0: time.sleep(5)
-        out["results"][symbol]=r
-        target.write_text(json.dumps(out,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-        print(f"{i}/100 {symbol}: {r.get('score_r3',r.get('error'))}",flush=True)
-        time.sleep(2)
-    good=sum("score_r3" in r for r in out["results"].values())
-    print(f"COMPLETE {good}/100",flush=True)
-    if good < 90: raise RuntimeError(f"Too few valid results: {good}/100")
-
-if __name__=="__main__":
-    main()
+W,H=595,842
+pdf=base/"classement_r3_100_courbes_5_ans.pdf"
+c=canvas.Canvas(str(pdf),pagesize=(W,H))
+def txt(x,y,s,size=10,bold=False):
+    c.setFont("Helvetica-Bold" if bold else "Helvetica",size)
+    c.drawString(x,y,s)
+txt(38,770,"STOCKINDICATOR - RISQUE HISTORIQUE R3",19,True)
+txt(38,737,"100 titres classes du risque le plus faible au plus eleve",12)
+txt(38,682,"METHODE DE LECTURE",13,True)
+for j,s in enumerate([
+    "Cours hebdomadaires ajustes sur 5 ans, normalises a 100 au depart.",
+    "Meme axe temporel sur chaque graphique. Axe vertical adapte a chaque titre.",
+    "Comparer la forme et les oscillations, pas la hauteur finale du cours.",
+    "R3 ignore volontairement l'ampleur du rendement total.",
+    "Ponderations : amplitude 25%, duree 20%, chaos 20%,",
+    "anciennete et reprise 15%, repetition des crashs 20%.",
+    "Les cours sont recuperes apres le test R3; les dates peuvent differer.",
+    "Recherche seulement : aucune modification de la production Stockindicator."
+]):txt(40,648-29*j,s,10)
+c.showPage()
+for i,(sym,r) in enumerate(rank):
+    if i%2==0:
+        txt(35,809,"R3 - CLASSEMENT VISUEL 5 ANS",13,True)
+        c.line(35,800,560,800)
+    top=757-(i%2)*372
+    txt(36,top,f"{i+1:03d}  {sym}",16,True)
+    txt(195,top,f"R3 : {r['score_r3']:.2f} / 100",12,True)
+    txt(382,top,f"Crashs : {r['crashes_25pct_count']}",10)
+    txt(38,top-24,f"Pire baisse : -{r['worst_drawdown_pct']:.2f}%     R2 : {r['score_r2']:.2f}",9)
+    if sym in prices:
+        p=prices[sym]
+        fig,ax=plt.subplots(figsize=(8,3.3),dpi=110)
+        ax.plot(p.index,p/p.iloc[0]*100,color="#2267A6",linewidth=1.5)
+        ax.axhline(100,color="#999999",linestyle="--",linewidth=.8)
+        ax.set_ylabel("Base 100",fontsize=8)
+        ax.grid(alpha=.2)
+        ax.tick_params(labelsize=8)
+        ax.set_xlim(p.index.min(),p.index.max())
+        fig.tight_layout()
+        buf=BytesIO()
+        fig.savefig(buf,format="png",dpi=110)
+        plt.close(fig)
+        buf.seek(0)
+        c.drawImage(ImageReader(buf),35,top-294,width=524,height=256)
+    else:txt(45,top-140,"Courbe indisponible : "+errors.get(sym,"erreur"),10)
+    if i%2==1 or i==len(rank)-1:
+        c.line(35,37,560,37)
+        txt(35,23,"Yahoo Finance - prix ajustes hebdomadaires / R3 experimental",8)
+        c.showPage()
+c.save()
+print(f"PDF_READY {pdf} {pdf.stat().st_size} bytes; charts={len(prices)}",flush=True)
