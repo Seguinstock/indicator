@@ -13,7 +13,7 @@ rows=list(csv.DictReader(SRC.open(encoding="utf-8")))
 def ticker(row):
     s=row["symbol"].removesuffix(".TO").removesuffix(".V").removesuffix(".CN").replace(".","-")
     return s+{"XTSE":".TO","XTSX":".V","XCNQ":".CN"}.get(row["mic"],"")
-end=pd.Timestamp.utcnow().tz_localize(None).normalize()+pd.Timedelta(days=1)
+end=pd.Timestamp.now('UTC').tz_localize(None).normalize()+pd.Timedelta(days=1)
 start=end-pd.Timedelta(days=501)
 prices={}; issues=[]
 for row in rows:
@@ -49,8 +49,8 @@ for months in (6,12,"500d"):
     counts.to_csv(OUT/f"pair_observations_{months}.csv")
     # Clustering conservateur: distance de correlation; corrélation manquante = 0.
     if len(valid)>=2:
-        matrix=corr.fillna(0).clip(-1,1); np.fill_diagonal(matrix.values,1)
-        distance=np.sqrt(np.maximum(0,2*(1-matrix.values)))
+        matrix=corr.fillna(0).clip(-1,1).copy(); matrix_values=matrix.to_numpy(copy=True); np.fill_diagonal(matrix_values,1)
+        distance=np.sqrt(np.maximum(0,2*(1-matrix_values)))
         clusters=fcluster(linkage(squareform(distance,checks=False),method="average"),t=np.sqrt(2*(1-0.45)),criterion="distance")
         pd.DataFrame({"instrument":valid,"cluster":clusters}).to_csv(OUT/f"families_{months}.csv",index=False)
     summary["windows"][str(months)]={"eligible":len(valid),"excluded":[c for c in all_prices if c not in valid],"minimum_daily_returns":minimum}
