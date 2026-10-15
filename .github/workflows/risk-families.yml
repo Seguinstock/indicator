@@ -1,6 +1,11 @@
 name: Research - Risk Families (read-only)
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'research/risk_families.py'
+      - 'research/risk_families_symbols.csv'
+      - '.github/workflows/risk-families.yml'
 permissions:
   contents: read
 jobs:
