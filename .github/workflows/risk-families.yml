@@ -1,0 +1,22 @@
+name: Research - Risk Families (read-only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'yfinance>=0.2.65' 'pandas>=2.2' 'numpy>=2.0' 'scipy>=1.13'
+      - run: python research/risk_families.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: risk-families-analysis
+          path: artifacts/risk_families/
+          if-no-files-found: warn
