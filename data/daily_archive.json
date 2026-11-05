@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": -3.627,
       "picks": [
         {
           "symbol": "ACQ",
@@ -37,9 +37,9 @@
             "rvol": 9.7,
             "rsi": 3.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 29.200000762939453,
+          "end_price": 28.31999969482422,
+          "return_pct": -3.014
         },
         {
           "symbol": "MX",
@@ -68,9 +68,9 @@
             "rvol": 8.4,
             "rsi": 3.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 92.97000122070312,
+          "end_price": 92.27999877929688,
+          "return_pct": -0.742
         },
         {
           "symbol": "GKOS",
@@ -99,9 +99,9 @@
             "rvol": 10.0,
             "rsi": 0.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 250.0,
+          "end_price": 222.36000061035156,
+          "return_pct": -11.056
         },
         {
           "symbol": "KDP",
@@ -130,9 +130,9 @@
             "rvol": 10.0,
             "rsi": 4.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 37.20000076293945,
+          "end_price": 36.8650016784668,
+          "return_pct": -0.901
         },
         {
           "symbol": "CRL",
@@ -161,9 +161,9 @@
             "rvol": 5.0,
             "rsi": 4.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 330.1400146484375,
+          "end_price": 317.54998779296875,
+          "return_pct": -3.814
         },
         {
           "symbol": "CRVL",
@@ -192,9 +192,9 @@
             "rvol": 10.0,
             "rsi": 3.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 88.56999969482422,
+          "end_price": 85.7300033569336,
+          "return_pct": -3.206
         },
         {
           "symbol": "GO",
@@ -223,9 +223,9 @@
             "rvol": 3.6,
             "rsi": 4.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 13.859999656677246,
+          "end_price": 13.204999923706055,
+          "return_pct": -4.726
         },
         {
           "symbol": "TGTX",
@@ -254,9 +254,9 @@
             "rvol": 5.4,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 61.5,
+          "end_price": 58.400001525878906,
+          "return_pct": -5.041
         },
         {
           "symbol": "HAE",
@@ -285,9 +285,9 @@
             "rvol": 3.5,
             "rsi": 3.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 126.05999755859375,
+          "end_price": 123.62000274658203,
+          "return_pct": -1.936
         },
         {
           "symbol": "IPCO",
@@ -316,9 +316,9 @@
             "rvol": 10.0,
             "rsi": 3.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 36.0,
+          "end_price": 34.880001068115234,
+          "return_pct": -3.111
         },
         {
           "symbol": "DFIN",
@@ -347,9 +347,9 @@
             "rvol": 6.8,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 70.11000061035156,
+          "end_price": 67.36000061035156,
+          "return_pct": -3.922
         },
         {
           "symbol": "DOCU",
@@ -378,11 +378,21 @@
             "rvol": 1.7,
             "rsi": 4.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 80.81999969482422,
+          "end_price": 79.15499877929688,
+          "return_pct": -2.06
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -2.362,
+        "sp500_return_pct": -3.912,
+        "canada_picks": 3,
+        "usa_picks": 9,
+        "return_pct": -3.524
+      },
+      "vs_benchmark_pct": -0.103,
+      "completed_at": "2026-11-05T15:26:23-05:00"
     },
     {
       "date": "2026-11-04",
