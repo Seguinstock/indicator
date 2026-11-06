@@ -1,51 +1,52 @@
 symbol,name,quantity,average_price,account,entry_date
-ATD,"Alimentation-Couche Tard, Inc.",24,81.8,🚀SkyCeli (test),2026-10-05
+ACM,AECOM,1,63.378,💰📈 CELI,
+APTX,Apotex Health Corp.,50,33.89,💰📈 CELI,
+ARE,Aecon Group Inc.,10,54.18,💰📈 CELI,
 BDT,Bird Construction Inc,37,79.25891892,💰📈 CELI,2026-10-05
-BEPC,Brookfield Renewable Corporation,18,43.91,💰📈 CELI,2026-10-05
-BTE,Baytex Energy Corp.,250,6.94804,🚀SkyCeli (test),2026-10-05
+BEPC,Brookfield Renewable Corporation,23,43.91434783,🤕 celi vendre,
+BTE,Baytex Energy Corp.,10,6.94804,💰📈 CELI,
 CCO,Cameco Corporation,4,139.31,💰📈 CELI,2026-10-05
-CHR,Chorus Aviation Inc.,24,30.51,💰📈 CELI,2026-10-05
-CNQ,Canadian Natural Resources Ltd.,50,68.01,💰📈 CELI,2026-10-05
-CNT,Century Global Commodities Corp,564,2.14547872,📣 Spécu CELI,2026-10-06
-COV,Covalon Technologies Ltd.,700,4.24,💰📈 CELI,2026-10-05
+CLS,Celestica Inc.,6,461.23,🚫 Non enregistré,
+CLS,Celestica Inc.,6,304.73,🤕 celi vendre,
+CNDU,BetaPro S&P/TSX 60 2X Daily Bull ETF - ETF Shares,80,55.12,💰📈 CELI,
+CNQ,Canadian Natural Resources Ltd.,96,69.15583333,💰📈 CELI,2026-10-05
 CRSR,Corsair Gaming Inc,100,13.7133,💰📈 CELI,2026-10-06
-CRWD,CrowdStrike CDR (CAD Hedged),34,80.38,💰📈 CELI,2026-10-05
+CRWD,CrowdStrike CDR (CAD Hedged),229,15.36842795,🏝️ Vacances🦄🦎,
+CRWD,CrowdStrike CDR (CAD Hedged),170,16.076,💰📈 CELI,2026-10-05
 CTVA,Corteva Inc.,25,81.08597858,💰📈 CELI,2026-10-05
-CVVY,Cavvy Energy Limited,1000,2.24,🚀SkyCeli (test),2026-10-05
 DELL,Dell Technologies Inc (Class C),1,574,🏝️ Vacances🦄🦎,2026-10-05
+ENB,Enbridge Inc,1,67.36333333,💰📈 CELI,
 ERO,Ero Copper Corp,50,52.69,💰📈 CELI,2026-10-06
-ETL,E3 Lithium Ltd,150,1.04,📣 Spécu CELI,2026-10-06
-EU,Encore Energy Corp,37,15.32405405,📣 Spécu CELI,2026-10-06
 GNRC,Generac Holdings Inc.,10,207.866,💰📈 CELI,2026-10-05
-GWW,W.w. Grainger Inc.,1,1324.99797652,💰📈 CELI,2026-10-05
-H,Hydro One Limited,126,52.96253968,💰📈 CELI,2026-10-05
-HBM,HudBay Minerals Inc.,27,39.02,💰📈 CELI,2026-10-05
+GOOGL,Alphabet Inc (Class A),10,282.518,💰📈 CELI,
+H,Hydro One Limited,106,54.28681342,💰📈 CELI,2026-10-05
+HBM,HudBay Minerals Inc.,49,35.43714286,💰📈 CELI,2026-10-05
+HMM.A,Hammond Manufacturing Co. Ltd. (Class A),5,26.95272727,💰📈 CELI,
 HPQ,HP Inc.,38,34.5,🏝️ Vacances🦄🦎,2026-10-05
-HTO,H2O America,18,63.16,💰📈 CELI,2026-10-05
-LMCU,Lumina Metals Corp.,73,10.72972603,📣 Spécu CELI,2026-10-06
+HPQ,HP Inc.,20,28.056,💰📈 CELI,
+HTO,H2O America,18,63.16,🤕 celi vendre,
+KILO.B,Purpose Gold Bullion Fund Non-Currency Hedged,30,75.66,💰📈 CELI,
 MDA,MDA Space Ltd.,120,43.19833333,💰📈 CELI,2026-10-05
-MOD,Modine Manufacturing Company,3,212.6,💰📈 CELI,2026-10-05
+MOD,Modine Manufacturing Company,3,212.6,🤕 celi vendre,
+MS,Morgan Stanley,6,191,💰📈 CELI,
 MSA,Mineros S.A.,150,10.16,💰📈 CELI,2026-10-06
-MU,Micron CDR (CAD Hedged),41,46.73061645,🏝️ Vacances🦄🦎 | 💰📈 CELI,2026-10-05
-NICE,NI-Co Energy Inc.,200,0.49,📣 Spécu CELI,2026-10-06
-NTR,Nutrien Limited,34,108.72525952,💰📈 CELI,2026-10-05
-NVDA,Nvidia CDR (CAD Hedged),40,50.4,💰📈 CELI,2026-10-05
-OKTA,Okta Inc (Class A),9,202.27111111,💰📈 CELI,2026-10-05
+MU,Micron CDR (CAD Hedged),89,38.01595506,🏝️ Vacances🦄🦎,
+MU,Micron CDR (CAD Hedged),102,37.35230661,💰📈 CELI,
+NTR,Nutrien Limited,49,106.5409964,💰📈 CELI,2026-10-05
+NVDA,Nvidia CDR (CAD Hedged),85,47.65235294,💰📈 CELI,2026-10-05
+OKTA,Okta Inc (Class A),1,202.27111111,💰📈 CELI,2026-10-05
 ORE,Orezone Gold Corp,500,3.26,💰📈 CELI,2026-10-05
-PRLB,Proto Labs Inc.,17,96.11588235,💰📈 CELI,2026-10-05
-SLF,Sun Life Financial Inc.,51,102.05058824,🏝️ Vacances🦄🦎 | 💰📈 CELI,2026-10-05
-SMTC,Semtech Corp.,14,181.69,💰📈 CELI,2026-10-05
-STN,Stantec Inc,22,102.84272727,💰📈 CELI,2026-10-05
-SUN,Stardust Solar Energy Inc.,1500,0.05,📣 Spécu CELI,2026-10-06
-TER,Teradyne Inc.,2,407.39,💰📈 CELI,2026-10-05
-TFII,TFI International Inc.,5,183.75,🚀SkyCeli (test),2026-10-05
-THRM,Gentherm Inc (Class A),1.3386,31.54,💰📈 CELI,2026-10-06
-TNZ,TENAZ ENERGY CORP COMMON,30,71.3,🚀SkyCeli (test),2026-10-05
-TOT,Total Energy Services Inc,40,34.47,💰📈 CELI,2026-10-05
+PRLB,Proto Labs Inc.,25,86.6652,💰📈 CELI,2026-10-05
+SLF,Sun Life Financial Inc.,3,113.38,🏝️ Vacances🦄🦎,
+SMTC,Semtech Corp.,19,159.89263158,💰📈 CELI,2026-10-05
+STN,Stantec Inc,1,101.93666667,💰📈 CELI,2026-10-05
+TER,Teradyne Inc.,5,321.932,💰📈 CELI,2026-10-05
+TNZ,TENAZ ENERGY CORP COMMON,2,71.3,🤕 celi vendre,
 TWLO,Twilio Inc (Class A),14,273.12285714,🏝️ Vacances🦄🦎,2026-10-05
-V,Verdera Energy Corp,3.996,0.345,📣 Spécu CELI,2026-10-06
-VLE,Valeura Energy Inc.,240,15.17916667,💰📈 CELI,2026-10-05
-VMI,"Valmont Industries, Inc.",1,502,💰📈 CELI,2026-10-05
-VYLR,Vylor Inc.,25,66,💰📈 CELI,2026-10-05
-WPM,Wheaton Precious Metals Corporation,10,204.31,🚀SkyCeli (test),2026-10-05
+VDY,Vanguard Investments Canada Inc. - FTSE Canadian High Dividend Yield Index ETF,20,78.5,💰📈 CELI,
+VLE,Valeura Energy Inc.,210,16.05615079,💰📈 CELI,2026-10-05
+VYLR,Vylor Inc.,5,66,💰📈 CELI,2026-10-05
+WPM,Wheaton Precious Metals Corporation,10,204.31,🤕 celi vendre,
+WSP,WSP Global Inc.,20,200.62,💰📈 CELI,
 WTS,Watts Water Technologies Incorporation,3,377.92,💰📈 CELI,2026-10-05
+XIC,BlackRock iShares Core S&P/TSX Capped Composite Index ETF,60,58.485,💰📈 CELI,
