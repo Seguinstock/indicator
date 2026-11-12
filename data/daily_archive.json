@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": -1.423,
       "picks": [
         {
           "symbol": "EXEL",
@@ -37,9 +37,9 @@
             "rvol": 9.9,
             "rsi": 3.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 70.69999694824219,
+          "end_price": 70.0999984741211,
+          "return_pct": -0.849
         },
         {
           "symbol": "TGTX",
@@ -68,9 +68,9 @@
             "rvol": 10.0,
             "rsi": 2.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 65.51000213623047,
+          "end_price": 64.98999786376953,
+          "return_pct": -0.794
         },
         {
           "symbol": "SBH",
@@ -99,9 +99,9 @@
             "rvol": 10.0,
             "rsi": 2.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 19.260000228881836,
+          "end_price": 18.520000457763672,
+          "return_pct": -3.842
         },
         {
           "symbol": "GUD",
@@ -130,9 +130,9 @@
             "rvol": 10.0,
             "rsi": 2.1
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.039999961853027,
+          "end_price": 12.039999961853027,
+          "return_pct": 0.0
         },
         {
           "symbol": "ACB",
@@ -161,9 +161,9 @@
             "rvol": 8.6,
             "rsi": 1.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 7.179999828338623,
+          "end_price": 7.114999771118164,
+          "return_pct": -0.905
         },
         {
           "symbol": "DCBO",
@@ -192,9 +192,9 @@
             "rvol": 7.9,
             "rsi": 2.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 46.849998474121094,
+          "end_price": 46.61000061035156,
+          "return_pct": -0.512
         },
         {
           "symbol": "PLMR",
@@ -223,9 +223,9 @@
             "rvol": 8.4,
             "rsi": 1.1
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 160.91000366210938,
+          "end_price": 158.83999633789062,
+          "return_pct": -1.286
         },
         {
           "symbol": "GO",
@@ -254,9 +254,9 @@
             "rvol": 7.9,
             "rsi": 3.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 13.079999923706055,
+          "end_price": 12.694999694824219,
+          "return_pct": -2.943
         },
         {
           "symbol": "PCTY",
@@ -285,9 +285,9 @@
             "rvol": 7.9,
             "rsi": 2.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 181.3000030517578,
+          "end_price": 179.39500427246094,
+          "return_pct": -1.051
         },
         {
           "symbol": "KXS",
@@ -316,9 +316,9 @@
             "rvol": 8.8,
             "rsi": 0.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 228.8800048828125,
+          "end_price": 229.74000549316406,
+          "return_pct": 0.376
         },
         {
           "symbol": "ACHC",
@@ -347,9 +347,9 @@
             "rvol": 7.4,
             "rsi": 0.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 38.845001220703125,
+          "end_price": 37.9900016784668,
+          "return_pct": -2.201
         },
         {
           "symbol": "VCEL",
@@ -378,11 +378,21 @@
             "rvol": 7.1,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 59.5,
+          "end_price": 57.67499923706055,
+          "return_pct": -3.067
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -0.104,
+        "sp500_return_pct": 0.515,
+        "canada_picks": 4,
+        "usa_picks": 8,
+        "return_pct": 0.309
+      },
+      "vs_benchmark_pct": -1.732,
+      "completed_at": "2026-11-12T15:37:06-05:00"
     },
     {
       "date": "2026-11-11",
