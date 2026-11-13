@@ -7,7 +7,7 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
+      "status": "partial",
       "average_return_pct": null,
       "picks": [
         {
@@ -37,9 +37,9 @@
             "rvol": 10.0,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 10.989999771118164,
+          "end_price": 11.029999732971191,
+          "return_pct": 0.364
         },
         {
           "symbol": "IPD",
@@ -68,9 +68,9 @@
             "rvol": 10.0,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 0.07000000029802322,
+          "end_price": 0.06499999761581421,
+          "return_pct": -7.143
         },
         {
           "symbol": "SDGR",
@@ -99,9 +99,9 @@
             "rvol": 4.5,
             "rsi": 4.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 30.709999084472656,
+          "end_price": 29.739999771118164,
+          "return_pct": -3.159
         },
         {
           "symbol": "CERT",
@@ -130,9 +130,9 @@
             "rvol": 4.4,
             "rsi": 3.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.020000457763672,
+          "end_price": 11.789999961853027,
+          "return_pct": -1.913
         },
         {
           "symbol": "KXS",
@@ -161,9 +161,9 @@
             "rvol": 8.0,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 227.6999969482422,
+          "end_price": 230.89999389648438,
+          "return_pct": 1.405
         },
         {
           "symbol": "VTRS",
@@ -192,9 +192,9 @@
             "rvol": 6.7,
             "rsi": 1.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 20.729999542236328,
+          "end_price": 20.774999618530273,
+          "return_pct": 0.217
         },
         {
           "symbol": "CHR",
@@ -223,9 +223,9 @@
             "rvol": 10.0,
             "rsi": 0.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 36.70000076293945,
+          "end_price": 36.439998626708984,
+          "return_pct": -0.708
         },
         {
           "symbol": "QBR.A",
@@ -285,9 +285,9 @@
             "rvol": 10.0,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 85.9000015258789,
+          "end_price": 85.26000213623047,
+          "return_pct": -0.745
         },
         {
           "symbol": "LFST",
@@ -316,9 +316,9 @@
             "rvol": 9.9,
             "rsi": 3.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 14.149999618530273,
+          "end_price": 14.119999885559082,
+          "return_pct": -0.212
         },
         {
           "symbol": "CDW",
@@ -347,9 +347,9 @@
             "rvol": 2.1,
             "rsi": 3.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 173.3000030517578,
+          "end_price": 171.8300018310547,
+          "return_pct": -0.848
         },
         {
           "symbol": "VSXY",
@@ -378,11 +378,21 @@
             "rvol": 2.5,
             "rsi": 3.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 104.05999755859375,
+          "end_price": 106.0,
+          "return_pct": 1.864
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -0.187,
+        "sp500_return_pct": -0.787,
+        "canada_picks": 5,
+        "usa_picks": 7,
+        "return_pct": -0.537
+      },
+      "vs_benchmark_pct": null,
+      "completed_at": "2026-11-13T15:13:41-05:00"
     },
     {
       "date": "2026-11-12",
