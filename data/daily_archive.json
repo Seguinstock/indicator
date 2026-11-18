@@ -7,7 +7,7 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
+      "status": "partial",
       "average_return_pct": null,
       "picks": [
         {
@@ -37,9 +37,9 @@
             "rvol": 7.5,
             "rsi": 2.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 69.36000061035156,
+          "end_price": 73.05000305175781,
+          "return_pct": 5.32
         },
         {
           "symbol": "VBNK",
@@ -99,9 +99,9 @@
             "rvol": 10.0,
             "rsi": 1.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 24.260000228881836,
+          "end_price": 25.8700008392334,
+          "return_pct": 6.636
         },
         {
           "symbol": "CERT",
@@ -130,9 +130,9 @@
             "rvol": 3.1,
             "rsi": 4.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 11.020000457763672,
+          "end_price": 11.180000305175781,
+          "return_pct": 1.452
         },
         {
           "symbol": "AMPH",
@@ -161,9 +161,9 @@
             "rvol": 4.0,
             "rsi": 3.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 28.899999618530273,
+          "end_price": 29.709999084472656,
+          "return_pct": 2.803
         },
         {
           "symbol": "DCBO",
@@ -192,9 +192,9 @@
             "rvol": 4.8,
             "rsi": 2.1
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 41.58000183105469,
+          "end_price": 43.380001068115234,
+          "return_pct": 4.329
         },
         {
           "symbol": "BHC",
@@ -223,9 +223,9 @@
             "rvol": 4.1,
             "rsi": 2.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.010000228881836,
+          "end_price": 12.520000457763672,
+          "return_pct": 4.246
         },
         {
           "symbol": "CRVL",
@@ -254,9 +254,9 @@
             "rvol": 7.4,
             "rsi": 3.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 87.58000183105469,
+          "end_price": 88.87000274658203,
+          "return_pct": 1.473
         },
         {
           "symbol": "GFR",
@@ -285,9 +285,9 @@
             "rvol": 3.5,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 11.010000228881836,
+          "end_price": 11.0,
+          "return_pct": -0.091
         },
         {
           "symbol": "DSG",
@@ -316,9 +316,9 @@
             "rvol": 3.9,
             "rsi": 2.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 131.22000122070312,
+          "end_price": 130.39999389648438,
+          "return_pct": -0.625
         },
         {
           "symbol": "CROX",
@@ -347,9 +347,9 @@
             "rvol": 3.1,
             "rsi": 2.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 157.36000061035156,
+          "end_price": 162.75999450683594,
+          "return_pct": 3.432
         },
         {
           "symbol": "USPH",
@@ -378,11 +378,21 @@
             "rvol": 4.1,
             "rsi": 1.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 96.63999938964844,
+          "end_price": 95.32499694824219,
+          "return_pct": -1.361
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": -1.375,
+        "sp500_return_pct": -0.437,
+        "canada_picks": 5,
+        "usa_picks": 7,
+        "return_pct": -0.828
+      },
+      "vs_benchmark_pct": null,
+      "completed_at": "2026-11-18T16:02:13-05:00"
     },
     {
       "date": "2026-11-17",
