@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": 1.588,
       "picks": [
         {
           "symbol": "BILL",
@@ -37,9 +37,9 @@
             "rvol": 10.0,
             "rsi": 2.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 61.540000915527344,
+          "end_price": 61.54999923706055,
+          "return_pct": 0.016
         },
         {
           "symbol": "DRX",
@@ -68,9 +68,9 @@
             "rvol": 10.0,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 21.84000015258789,
+          "end_price": 22.790000915527344,
+          "return_pct": 4.35
         },
         {
           "symbol": "XNCR",
@@ -99,9 +99,9 @@
             "rvol": 3.6,
             "rsi": 4.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 37.56999969482422,
+          "end_price": 38.369998931884766,
+          "return_pct": 2.129
         },
         {
           "symbol": "GME",
@@ -130,9 +130,9 @@
             "rvol": 4.1,
             "rsi": 3.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 27.270000457763672,
+          "end_price": 26.969999313354492,
+          "return_pct": -1.1
         },
         {
           "symbol": "COLM",
@@ -161,9 +161,9 @@
             "rvol": 5.2,
             "rsi": 2.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 78.19999694824219,
+          "end_price": 80.75,
+          "return_pct": 3.261
         },
         {
           "symbol": "PVH",
@@ -192,9 +192,9 @@
             "rvol": 2.0,
             "rsi": 4.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 95.0199966430664,
+          "end_price": 96.94000244140625,
+          "return_pct": 2.021
         },
         {
           "symbol": "ASO",
@@ -223,9 +223,9 @@
             "rvol": 2.4,
             "rsi": 4.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 72.2300033569336,
+          "end_price": 73.33000183105469,
+          "return_pct": 1.523
         },
         {
           "symbol": "CBRL",
@@ -254,9 +254,9 @@
             "rvol": 4.4,
             "rsi": 3.5
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 74.5199966430664,
+          "end_price": 75.3499984741211,
+          "return_pct": 1.114
         },
         {
           "symbol": "PGNY",
@@ -285,9 +285,9 @@
             "rvol": 3.7,
             "rsi": 3.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 36.40999984741211,
+          "end_price": 36.27000045776367,
+          "return_pct": -0.385
         },
         {
           "symbol": "GFR",
@@ -316,9 +316,9 @@
             "rvol": 3.4,
             "rsi": 3.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 10.960000038146973,
+          "end_price": 10.989999771118164,
+          "return_pct": 0.274
         },
         {
           "symbol": "VFC",
@@ -347,9 +347,9 @@
             "rvol": 1.6,
             "rsi": 5.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 20.610000610351562,
+          "end_price": 21.469999313354492,
+          "return_pct": 4.173
         },
         {
           "symbol": "COTY",
@@ -378,11 +378,21 @@
             "rvol": 1.9,
             "rsi": 4.4
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 4.179999828338623,
+          "end_price": 4.25,
+          "return_pct": 1.675
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": 1.961,
+        "sp500_return_pct": 1.734,
+        "canada_picks": 2,
+        "usa_picks": 10,
+        "return_pct": 1.772
+      },
+      "vs_benchmark_pct": -0.184,
+      "completed_at": "2026-11-25T17:05:33-05:00"
     },
     {
       "date": "2026-11-24",
