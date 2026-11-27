@@ -7,8 +7,8 @@
       "exit_method": "official_close",
       "risk_limit": 65,
       "count": 12,
-      "status": "selected",
-      "average_return_pct": null,
+      "status": "complete",
+      "average_return_pct": 1.843,
       "picks": [
         {
           "symbol": "KSS",
@@ -37,9 +37,9 @@
             "rvol": 10.0,
             "rsi": 3.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 26.75,
+          "end_price": 27.770000457763672,
+          "return_pct": 3.813
         },
         {
           "symbol": "ANF",
@@ -68,9 +68,9 @@
             "rvol": 8.6,
             "rsi": 3.1
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 174.88999938964844,
+          "end_price": 184.42999267578125,
+          "return_pct": 5.455
         },
         {
           "symbol": "ADEN",
@@ -99,9 +99,9 @@
             "rvol": 10.0,
             "rsi": 1.6
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 43.130001068115234,
+          "end_price": 43.349998474121094,
+          "return_pct": 0.51
         },
         {
           "symbol": "GUD",
@@ -130,9 +130,9 @@
             "rvol": 5.7,
             "rsi": 3.2
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.239999771118164,
+          "end_price": 12.199999809265137,
+          "return_pct": -0.327
         },
         {
           "symbol": "BILL",
@@ -161,9 +161,9 @@
             "rvol": 5.7,
             "rsi": 2.7
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 61.560001373291016,
+          "end_price": 61.72999954223633,
+          "return_pct": 0.276
         },
         {
           "symbol": "AMPH",
@@ -192,9 +192,9 @@
             "rvol": 3.1,
             "rsi": 4.9
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 29.030000686645508,
+          "end_price": 30.200000762939453,
+          "return_pct": 4.03
         },
         {
           "symbol": "DCBO",
@@ -223,9 +223,9 @@
             "rvol": 5.1,
             "rsi": 2.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 46.2599983215332,
+          "end_price": 46.70000076293945,
+          "return_pct": 0.951
         },
         {
           "symbol": "BHC",
@@ -254,9 +254,9 @@
             "rvol": 3.9,
             "rsi": 4.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 12.3100004196167,
+          "end_price": 12.420000076293945,
+          "return_pct": 0.894
         },
         {
           "symbol": "ENR",
@@ -285,9 +285,9 @@
             "rvol": 5.2,
             "rsi": 2.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 27.440000534057617,
+          "end_price": 28.90999984741211,
+          "return_pct": 5.357
         },
         {
           "symbol": "SWP",
@@ -316,9 +316,9 @@
             "rvol": 7.2,
             "rsi": 0.0
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 11.180000305175781,
+          "end_price": 11.550000190734863,
+          "return_pct": 3.309
         },
         {
           "symbol": "GME",
@@ -347,9 +347,9 @@
             "rvol": 2.6,
             "rsi": 4.3
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 26.729999542236328,
+          "end_price": 26.34000015258789,
+          "return_pct": -1.459
         },
         {
           "symbol": "DOL",
@@ -378,11 +378,21 @@
             "rvol": 3.9,
             "rsi": 2.8
           },
-          "start_price": null,
-          "end_price": null,
-          "return_pct": null
+          "start_price": 224.75999450683594,
+          "end_price": 223.19000244140625,
+          "return_pct": -0.699
         }
-      ]
+      ],
+      "benchmark": {
+        "method": "open_to_close_weighted_by_pick_market",
+        "tsx_composite_return_pct": 0.303,
+        "sp500_return_pct": 0.48,
+        "canada_picks": 6,
+        "usa_picks": 6,
+        "return_pct": 0.392
+      },
+      "vs_benchmark_pct": 1.451,
+      "completed_at": "2026-11-27T16:46:32-05:00"
     },
     {
       "date": "2026-11-26",
